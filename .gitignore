@@ -1,0 +1,21 @@
+Debug/*
+Release/*
+STM32CubeIDE/Debug/*
+STM32CubeIDE/Release/*
+TouchGFX/build/*
+*.bat
+*.Margit Róbert
+*.uvopt
+*.bak
+*.dep
+*.sdf
+*.suo
+*.filters
+*.user
+*.opensdf
+*.tmp
+
+/IMAGES
+TouchGFX/simulator/msvs/.vs/*
+/STM32CubeIDE/.settings/stm32cubeide.project.prefs
+language.settings.xml

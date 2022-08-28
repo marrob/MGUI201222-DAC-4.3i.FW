@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.19.1">
+  <Languages>
+    <Language Id="GB" />
+  </Languages>
+  <Texts>
+    <TextGroup Id="Group1">
+      <Text Id="TextId1" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;number&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_GOXD" Alignment="Center" TypographyId="Desc">
+        <Translation Language="GB">FORMAT</Translation>
+      </Text>
+      <Text Id="__SingleUse_8EJL" Alignment="Center" TypographyId="Value">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_7PO6" Alignment="Center" TypographyId="Desc">
+        <Translation Language="GB">DEPTH</Translation>
+      </Text>
+      <Text Id="__SingleUse_J9QW" Alignment="Center" TypographyId="Value">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LPXD" Alignment="Center" TypographyId="Desc">
+        <Translation Language="GB">FREQ</Translation>
+      </Text>
+      <Text Id="__SingleUse_YD6A" Alignment="Center" TypographyId="Value">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_C7U0" Alignment="Center" TypographyId="Desc">
+        <Translation Language="GB">MCLK OUT: ON</Translation>
+      </Text>
+      <Text Id="__SingleUse_SPLI" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Display</Translation>
+      </Text>
+      <Text Id="__SingleUse_VB1R" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Settings&#10;</Translation>
+      </Text>
+      <Text Id="__SingleUse_IO3K" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_WDG2" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Screen ON</Translation>
+      </Text>
+      <Text Id="__SingleUse_XWX2" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_YPEX" Alignment="Center" TypographyId="Value">
+        <Translation Language="GB">Settings</Translation>
+      </Text>
+      <Text Id="__SingleUse_AGOP" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Enable all output at startup.</Translation>
+      </Text>
+      <Text Id="__SingleUse_9IH2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Last output state at startup.</Translation>
+      </Text>
+      <Text Id="__SingleUse_4E2A" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Enable MasterClock Out on I2S output.</Translation>
+      </Text>
+      <Text Id="__SingleUse_GIYT" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_6WFO" Alignment="Center" TypographyId="Value">
+        <Translation Language="GB">Display</Translation>
+      </Text>
+      <Text Id="__SingleUse_BX5F" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Screen OFF</Translation>
+      </Text>
+      <Text Id="__SingleUse_L22C" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Set display auto sleep Time &#10;.</Translation>
+      </Text>
+      <Text Id="__SingleUse_7ZX9" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Off timer</Translation>
+      </Text>
+      <Text Id="__SingleUse_HAQR" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">1 min</Translation>
+      </Text>
+      <Text Id="__SingleUse_KFWO" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">5 min</Translation>
+      </Text>
+      <Text Id="__SingleUse_7E5B" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">10 min</Translation>
+      </Text>
+      <Text Id="__SingleUse_J0VM" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">30 min</Translation>
+      </Text>
+      <Text Id="__SingleUse_KJC4" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">60 min</Translation>
+      </Text>
+      <Text Id="__SingleUse_AQQB" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">120 min</Translation>
+      </Text>
+      <Text Id="__SingleUse_4TRH" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">128</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZC4G" Alignment="Left" TypographyId="Value">
+        <Translation Language="GB">32 bit</Translation>
+      </Text>
+      <Text Id="__SingleUse_3FKW" Alignment="Left" TypographyId="Value">
+        <Translation Language="GB">358.2 kHz</Translation>
+      </Text>
+      <Text Id="__SingleUse_G2P3" Alignment="Left" TypographyId="Value">
+        <Translation Language="GB">DoP</Translation>
+      </Text>
+      <Text Id="__SingleUse_ONW5" Alignment="Right" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_8FBD" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">100</Translation>
+      </Text>
+      <Text Id="__SingleUse_FF38" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Brightness : </Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_KZHU" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Unknown</Translation>
+      </Text>
+      <Text Id="__SingleUse_0PRL" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_DLPA" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Clock Int-Ext source :  </Translation>
+      </Text>
+      <Text Id="__SingleUse_QHRN" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB" />
+      </Text>
+      <Text Id="__SingleUse_BMC7" Alignment="Center" TypographyId="Desc">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_AFXB" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Clock Temperature ranges </Translation>
+      </Text>
+      <Text Id="__SingleUse_DSCM" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Clock heated temperature :  </Translation>
+      </Text>
+      <Text Id="__SingleUse_MVNG" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_KMGP" Alignment="Center" TypographyId="SWText">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_IX9B" Alignment="Center" TypographyId="SWText_high">
+        <Translation Language="GB">+</Translation>
+      </Text>
+      <Text Id="__SingleUse_BWV6" Alignment="Center" TypographyId="SWText_high">
+        <Translation Language="GB">-&#10;</Translation>
+      </Text>
+      <Text Id="__SingleUse_PVRW" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Debug screen</Translation>
+      </Text>
+      <Text Id="__SingleUse_MHPH" Alignment="Center" TypographyId="Value">
+        <Translation Language="GB">Debug</Translation>
+      </Text>
+      <Text Id="__SingleUse_SX6S" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_G3O6" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_MGJ6" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">AI_3</Translation>
+      </Text>
+      <Text Id="__SingleUse_B78P" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_SP6U" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_VZ2D" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">AI_2</Translation>
+      </Text>
+      <Text Id="__SingleUse_82GT" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_984M" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_RZ96" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">AI_1</Translation>
+      </Text>
+      <Text Id="__SingleUse_94Q1" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_VX4C" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_OB5W" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">AI_0</Translation>
+      </Text>
+      <Text Id="__SingleUse_GK7P" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_7</Translation>
+      </Text>
+      <Text Id="__SingleUse_IMDO" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_6</Translation>
+      </Text>
+      <Text Id="__SingleUse_18PO" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_5</Translation>
+      </Text>
+      <Text Id="__SingleUse_TA5O" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_4</Translation>
+      </Text>
+      <Text Id="__SingleUse_QI35" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_3</Translation>
+      </Text>
+      <Text Id="__SingleUse_48NN" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_2</Translation>
+      </Text>
+      <Text Id="__SingleUse_PW3D" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_1</Translation>
+      </Text>
+      <Text Id="__SingleUse_SBEA" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_0</Translation>
+      </Text>
+      <Text Id="__SingleUse_M3H7" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_15</Translation>
+      </Text>
+      <Text Id="__SingleUse_F24O" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_14</Translation>
+      </Text>
+      <Text Id="__SingleUse_05DQ" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_13</Translation>
+      </Text>
+      <Text Id="__SingleUse_Y37K" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_12</Translation>
+      </Text>
+      <Text Id="__SingleUse_XZYJ" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_11</Translation>
+      </Text>
+      <Text Id="__SingleUse_IV9O" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_10</Translation>
+      </Text>
+      <Text Id="__SingleUse_HBYJ" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_9</Translation>
+      </Text>
+      <Text Id="__SingleUse_JL2J" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_8</Translation>
+      </Text>
+      <Text Id="__SingleUse_IZJG" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_7</Translation>
+      </Text>
+      <Text Id="__SingleUse_VIJT" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_6</Translation>
+      </Text>
+      <Text Id="__SingleUse_9PXR" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_5</Translation>
+      </Text>
+      <Text Id="__SingleUse_ETIW" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_4</Translation>
+      </Text>
+      <Text Id="__SingleUse_MH5A" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_3</Translation>
+      </Text>
+      <Text Id="__SingleUse_X2HN" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_2</Translation>
+      </Text>
+      <Text Id="__SingleUse_WVNP" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_1</Translation>
+      </Text>
+      <Text Id="__SingleUse_39RD" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DO_0</Translation>
+      </Text>
+      <Text Id="__SingleUse_MKUD" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">DI_0</Translation>
+      </Text>
+      <Text Id="__SingleUse_830Q" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_03EE" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Enable Screensaver [1 min]</Translation>
+      </Text>
+      <Text Id="__SingleUse_KJEE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">DSD - 1bit - 2.4MHz </Translation>
+      </Text>
+      <Text Id="__SingleUse_KBUK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">21.06.2022 20:35</Translation>
+      </Text>
+      <Text Id="__SingleUse_58MF" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZBCN" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_JVEY" Alignment="Right" TypographyId="Value">
+        <Translation Language="GB">Karuna Atlantis</Translation>
+      </Text>
+      <Text Id="__SingleUse_PRBY" Alignment="Left" TypographyId="Value">
+        <Translation Language="GB">CORE AUDIO</Translation>
+      </Text>
+      <Text Id="__SingleUse_6BR6" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_9QB9" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_KPYH" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Uart Error counter : </Translation>
+      </Text>
+      <Text Id="__SingleUse_WMAQ" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_3TGM" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_W2OM" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Bus Uart Error counter : </Translation>
+      </Text>
+      <Text Id="__SingleUse_Z9BW" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_KTHD" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_3GMJ" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Bootup counter : </Translation>
+      </Text>
+      <Text Id="__SingleUse_T381" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Soft reset</Translation>
+      </Text>
+      <Text Id="__SingleUse_GKKS" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Fatcory default</Translation>
+      </Text>
+      <Text Id="__SingleUse_AT65" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_G1LA" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Firmware version :</Translation>
+      </Text>
+      <Text Id="__SingleUse_Q6L7" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_1OG4" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Firmware version :</Translation>
+      </Text>
+      <Text Id="__SingleUse_C8R6" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">GUI</Translation>
+      </Text>
+      <Text Id="__SingleUse_YROX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">TRI Clock</Translation>
+      </Text>
+      <Text Id="__SingleUse_0LDD" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Karuna</Translation>
+      </Text>
+      <Text Id="__SingleUse_VBNA" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Unknown</Translation>
+      </Text>
+      <Text Id="__SingleUse_9LCW" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_3OH6" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">22.5792 MHz PLL Lock :  </Translation>
+      </Text>
+      <Text Id="__SingleUse_LWCL" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Unknown</Translation>
+      </Text>
+      <Text Id="__SingleUse_8T1B" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_FST6" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">24.5760 MHz PLL Lock : </Translation>
+      </Text>
+      <Text Id="__SingleUse_S5AG" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Unknown</Translation>
+      </Text>
+      <Text Id="__SingleUse_8J5N" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_PNNL" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">24.000 MHz PLL Lock :</Translation>
+      </Text>
+      <Text Id="__SingleUse_1E1R" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_Q4R5" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt; °C</Translation>
+      </Text>
+      <Text Id="__SingleUse_AR9N" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">OCXO main temperature :</Translation>
+      </Text>
+      <Text Id="__SingleUse_IA01" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_27WL" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_QYPN" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Uptime counter : </Translation>
+      </Text>
+      <Text Id="__SingleUse_Y806" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">ERROR</Translation>
+      </Text>
+      <Text Id="__SingleUse_G4CD" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">WARN</Translation>
+      </Text>
+      <Text Id="__SingleUse_LTA0" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">INFO</Translation>
+      </Text>
+      <Text Id="__SingleUse_HXDW" Alignment="Left" TypographyId="Desc">
+        <Translation Language="GB">23.08.2022 - 20.08.2022</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZK75" Alignment="Left" TypographyId="Desc">
+        <Translation Language="GB">Date : &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_9NVL" Alignment="Left" TypographyId="Desc">
+        <Translation Language="GB" />
+      </Text>
+      <Text Id="__SingleUse_GCT7" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_C0B1" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Next Page</Translation>
+      </Text>
+      <Text Id="__SingleUse_FDYF" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_BPY3" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Prev. Page</Translation>
+      </Text>
+      <Text Id="__SingleUse_USF5" Alignment="Left" TypographyId="Desc">
+        <Translation Language="GB">00:00</Translation>
+      </Text>
+      <Text Id="__SingleUse_SC3P" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Time To Off  &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_GJVC" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">01.01.2022 00:00</Translation>
+      </Text>
+      <Text Id="__SingleUse_HGJP" Alignment="Center" TypographyId="Desc">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LJNE" Alignment="Center" TypographyId="Value">
+        <Translation Language="GB">Service</Translation>
+      </Text>
+      <Text Id="__SingleUse_U9MK" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">06.06.2022 09:50:36</Translation>
+      </Text>
+      <Text Id="__SingleUse_PJKD" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_HFD2" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">and time</Translation>
+      </Text>
+      <Text Id="__SingleUse_3USL" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">Current date</Translation>
+      </Text>
+      <Text Id="__SingleUse_23R7" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Clock</Translation>
+      </Text>
+      <Text Id="__SingleUse_37JV" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Set Clock time</Translation>
+      </Text>
+      <Text Id="__SingleUse_AYJC" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Set clock time</Translation>
+      </Text>
+      <Text Id="__SingleUse_9D4M" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Sec</Translation>
+      </Text>
+      <Text Id="__SingleUse_6A9X" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Min</Translation>
+      </Text>
+      <Text Id="__SingleUse_NP4N" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Hour</Translation>
+      </Text>
+      <Text Id="__SingleUse_9I9C" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Year</Translation>
+      </Text>
+      <Text Id="__SingleUse_9VLR" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Month</Translation>
+      </Text>
+      <Text Id="__SingleUse_NJLN" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Day</Translation>
+      </Text>
+      <Text Id="__SingleUse_DUXL" Alignment="Center" TypographyId="Value">
+        <Translation Language="GB">Clock</Translation>
+      </Text>
+      <Text Id="__SingleUse_IKXG" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_X53I" Alignment="Left" TypographyId="SWText_high">
+        <Translation Language="GB">10</Translation>
+      </Text>
+      <Text Id="__SingleUse_QH9M" Alignment="Left" TypographyId="SWText_high">
+        <Translation Language="GB">10</Translation>
+      </Text>
+      <Text Id="__SingleUse_T1YD" Alignment="Center" TypographyId="SWText_high">
+        <Translation Language="GB">&lt;val&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_FGW4" Alignment="Center" TypographyId="SWText">
+        <Translation Language="GB">&lt;val&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_VP13" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Karuna</Translation>
+      </Text>
+      <Text Id="__SingleUse_PMC0" Alignment="Left" TypographyId="Typography_00">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_H4DE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">The PIN is not correct</Translation>
+      </Text>
+      <Text Id="__SingleUse_CJEC" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_LOWN" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">OK</Translation>
+      </Text>
+      <Text Id="__SingleUse_G81B" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_YQCS" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">the PIN code</Translation>
+      </Text>
+      <Text Id="__SingleUse_Q977" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Please enter</Translation>
+      </Text>
+      <Text Id="__SingleUse_L5OG" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_7J4G" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">3</Translation>
+      </Text>
+      <Text Id="__SingleUse_O6OI" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">2</Translation>
+      </Text>
+      <Text Id="__SingleUse_9F30" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">1</Translation>
+      </Text>
+      <Text Id="__SingleUse_DPOV" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">6</Translation>
+      </Text>
+      <Text Id="__SingleUse_8WBT" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">5</Translation>
+      </Text>
+      <Text Id="__SingleUse_X6QP" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">4</Translation>
+      </Text>
+      <Text Id="__SingleUse_70WT" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">9</Translation>
+      </Text>
+      <Text Id="__SingleUse_XAZG" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">8</Translation>
+      </Text>
+      <Text Id="__SingleUse_3CBB" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">7</Translation>
+      </Text>
+      <Text Id="__SingleUse_YTJC" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Service</Translation>
+      </Text>
+      <Text Id="__SingleUse_IGHU" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Show Log</Translation>
+      </Text>
+      <Text Id="__SingleUse_HW10" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+    </TextGroup>
+  </Texts>
+  <Typographies>
+    <Typography Id="Default" Font="Asap-Regular.ttf" Size="25" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@" WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="Desc" Font="micross.ttf" Size="25" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@, &lt;,&gt;," WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="Value" Font="micross.ttf" Size="52" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="Settings" Font="corbell.ttf" Size="30" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters=":" WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="Typography_00" Font="consola.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="SWText_high" Font="arialbd.ttf" Size="32" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="SWText" Font="arial.ttf" Size="28" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters=":,.,-" WildcardCharacterRanges="0-9" />
+    <Typography Id="Small" Font="micross.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@, &lt;,&gt;," WildcardCharacterRanges="0-9,a-z,A-Z" />
+  </Typographies>
+</TextDatabase>
