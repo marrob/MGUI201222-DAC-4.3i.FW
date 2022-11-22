@@ -14,7 +14,7 @@
           {
             "Type": "FlexButton",
             "Name": "btnHDMI",
-            "X": 8,
+            "X": 76,
             "Y": 8,
             "Width": 64,
             "Height": 64,
@@ -58,7 +58,7 @@
           {
             "Type": "FlexButton",
             "Name": "btnRCA",
-            "X": 152,
+            "X": 220,
             "Y": 8,
             "Width": 64,
             "Height": 64,
@@ -97,7 +97,7 @@
           {
             "Type": "FlexButton",
             "Name": "btnBNC",
-            "X": 80,
+            "X": 148,
             "Y": 8,
             "Width": 64,
             "Height": 64,
@@ -142,7 +142,7 @@
           {
             "Type": "FlexButton",
             "Name": "btnXLR",
-            "X": 222,
+            "X": 290,
             "Y": 8,
             "Width": 64,
             "Height": 64,
@@ -154,6 +154,50 @@
                 "Type": "ImageButtonStyle",
                 "ImageReleased": "XLR_80x80_fb.png",
                 "ImagePressed": "XLR_80x80_fb.png"
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 64,
+                "Height": 64,
+                "LockToFlexButtonSize": true,
+                "ColorReleased": {
+                  "Red": 150,
+                  "Green": 118,
+                  "Blue": 73
+                },
+                "ColorPressed": {
+                  "Red": 32,
+                  "Green": 32,
+                  "Blue": 32
+                },
+                "ColorBorderReleased": {
+                  "Red": 100,
+                  "Green": 100,
+                  "Blue": 100
+                },
+                "ColorBorderPressed": {
+                  "Red": 100,
+                  "Green": 100,
+                  "Blue": 100
+                }
+              }
+            ]
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "btnUSB",
+            "X": 4,
+            "Y": 8,
+            "Width": 64,
+            "Height": 64,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "USB_80x80_fb.png",
+                "ImagePressed": "USB_80x80_s.png"
               },
               {
                 "Type": "BoxWithBorderButtonStyle",
@@ -205,7 +249,7 @@
           {
             "Type": "Container",
             "Name": "containerFormat",
-            "X": 9,
+            "X": 260,
             "Y": 80,
             "Width": 270,
             "Height": 320,
@@ -247,26 +291,11 @@
               },
               {
                 "Type": "TextArea",
-                "Name": "lblMCLKON",
-                "X": -9,
-                "Y": 279,
-                "Width": 323,
-                "Height": 31,
-                "TextId": "__SingleUse_C7U0",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              },
-              {
-                "Type": "TextArea",
                 "Name": "lblDSDValue",
-                "X": 85,
-                "Y": 228,
-                "Width": 162,
-                "Height": 72,
+                "X": 133,
+                "Y": 185,
+                "Width": 114,
+                "Height": 33,
                 "Visible": false,
                 "TextId": "__SingleUse_IO3K",
                 "TextRotation": "0",
@@ -286,48 +315,11 @@
           {
             "Type": "Container",
             "Name": "containerBitDepth",
-            "X": 265,
+            "X": 4,
             "Y": 80,
             "Width": 265,
             "Height": 320,
-            "Components": [
-              {
-                "Type": "TextArea",
-                "Name": "lblDescBitDepth",
-                "X": 93,
-                "Y": 11,
-                "Width": 85,
-                "Height": 28,
-                "TextId": "__SingleUse_7PO6",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "AutoSize": true
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblValueBitDepth",
-                "X": -26,
-                "Y": 134,
-                "Width": 323,
-                "Height": 74,
-                "TextId": "__SingleUse_J9QW",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 150,
-                  "Green": 118,
-                  "Blue": 73
-                },
-                "Wildcard1": {
-                  "TextId": "__SingleUse_ZC4G",
-                  "UseBuffer": true,
-                  "BufferSize": 10
-                }
-              }
-            ]
+            "Components": []
           },
           {
             "Type": "Container",
@@ -661,15 +653,15 @@
           {
             "Type": "Container",
             "Name": "containerTemperature",
-            "X": 308,
-            "Y": 7,
-            "Width": 185,
-            "Height": 67,
+            "X": 358,
+            "Y": 8,
+            "Width": 150,
+            "Height": 65,
             "Components": [
               {
                 "Type": "Circle",
                 "Name": "circTemp3",
-                "X": 118,
+                "X": 100,
                 "Y": 8,
                 "Width": 50,
                 "Height": 50,
@@ -687,7 +679,7 @@
               {
                 "Type": "Circle",
                 "Name": "circTemp2",
-                "X": 68,
+                "X": 50,
                 "Y": 8,
                 "Width": 50,
                 "Height": 50,
@@ -705,7 +697,6 @@
               {
                 "Type": "Circle",
                 "Name": "circTemp1",
-                "X": 18,
                 "Y": 8,
                 "Width": 50,
                 "Height": 50,

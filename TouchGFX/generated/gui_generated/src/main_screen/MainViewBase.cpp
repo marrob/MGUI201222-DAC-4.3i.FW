@@ -25,7 +25,7 @@ MainViewBase::MainViewBase() :
     btnHDMI.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(32, 32, 32), touchgfx::Color::getColorFromRGB(100, 100, 100), touchgfx::Color::getColorFromRGB(100, 100, 100));
     btnHDMI.setBitmaps(Bitmap(BITMAP_HDMI_80X80_FB_ID), Bitmap(BITMAP_HDMI_80X80_S_ID));
     btnHDMI.setBitmapXY(0, 0);
-    btnHDMI.setPosition(8, 8, 64, 64);
+    btnHDMI.setPosition(76, 8, 64, 64);
     btnHDMI.setAction(flexButtonCallback);
 
     btnRCA.setBoxWithBorderPosition(0, 0, 64, 64);
@@ -33,7 +33,7 @@ MainViewBase::MainViewBase() :
     btnRCA.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 0, 0), touchgfx::Color::getColorFromRGB(32, 32, 32), touchgfx::Color::getColorFromRGB(100, 100, 100), touchgfx::Color::getColorFromRGB(100, 100, 100));
     btnRCA.setBitmaps(Bitmap(BITMAP_RCA_80X80_S_ID), Bitmap(BITMAP_RCA_80X80_S_ID));
     btnRCA.setBitmapXY(0, 0);
-    btnRCA.setPosition(152, 8, 64, 64);
+    btnRCA.setPosition(220, 8, 64, 64);
     btnRCA.setAction(flexButtonCallback);
 
     btnBNC.setBoxWithBorderPosition(0, 0, 64, 64);
@@ -41,7 +41,7 @@ MainViewBase::MainViewBase() :
     btnBNC.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(32, 32, 32), touchgfx::Color::getColorFromRGB(100, 100, 100), touchgfx::Color::getColorFromRGB(100, 100, 100));
     btnBNC.setBitmaps(Bitmap(BITMAP_BNC_80X80_FB_ID), Bitmap(BITMAP_BNC_80X80_FB_ID));
     btnBNC.setBitmapXY(0, 0);
-    btnBNC.setPosition(80, 8, 64, 64);
+    btnBNC.setPosition(148, 8, 64, 64);
     btnBNC.setAction(flexButtonCallback);
 
     btnXLR.setBoxWithBorderPosition(0, 0, 64, 64);
@@ -49,15 +49,22 @@ MainViewBase::MainViewBase() :
     btnXLR.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(32, 32, 32), touchgfx::Color::getColorFromRGB(100, 100, 100), touchgfx::Color::getColorFromRGB(100, 100, 100));
     btnXLR.setBitmaps(Bitmap(BITMAP_XLR_80X80_FB_ID), Bitmap(BITMAP_XLR_80X80_FB_ID));
     btnXLR.setBitmapXY(0, 0);
-    btnXLR.setPosition(222, 8, 64, 64);
+    btnXLR.setPosition(290, 8, 64, 64);
     btnXLR.setAction(flexButtonCallback);
+
+    btnUSB.setBoxWithBorderPosition(0, 0, 64, 64);
+    btnUSB.setBorderSize(0);
+    btnUSB.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(32, 32, 32), touchgfx::Color::getColorFromRGB(100, 100, 100), touchgfx::Color::getColorFromRGB(100, 100, 100));
+    btnUSB.setBitmaps(Bitmap(BITMAP_USB_80X80_FB_ID), Bitmap(BITMAP_USB_80X80_S_ID));
+    btnUSB.setBitmapXY(0, 0);
+    btnUSB.setPosition(4, 8, 64, 64);
 
     boxWithBorder1.setPosition(4, 80, 792, 320);
     boxWithBorder1.setColor(touchgfx::Color::getColorFromRGB(25, 25, 25));
     boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     boxWithBorder1.setBorderSize(1);
 
-    containerFormat.setPosition(9, 80, 270, 320);
+    containerFormat.setPosition(260, 80, 270, 320);
 
     lblDescFormat.setPosition(92, 11, 106, 28);
     lblDescFormat.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
@@ -73,13 +80,7 @@ MainViewBase::MainViewBase() :
     lblValueFormat.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8EJL));
     containerFormat.add(lblValueFormat);
 
-    lblMCLKON.setPosition(-9, 279, 323, 31);
-    lblMCLKON.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
-    lblMCLKON.setLinespacing(0);
-    lblMCLKON.setTypedText(touchgfx::TypedText(T___SINGLEUSE_C7U0));
-    containerFormat.add(lblMCLKON);
-
-    lblDSDValue.setPosition(85, 228, 162, 72);
+    lblDSDValue.setPosition(133, 185, 114, 33);
     lblDSDValue.setVisible(false);
     lblDSDValue.setColor(touchgfx::Color::getColorFromRGB(150, 118, 73));
     lblDSDValue.setLinespacing(0);
@@ -88,21 +89,7 @@ MainViewBase::MainViewBase() :
     lblDSDValue.setTypedText(touchgfx::TypedText(T___SINGLEUSE_IO3K));
     containerFormat.add(lblDSDValue);
 
-    containerBitDepth.setPosition(265, 80, 265, 320);
-
-    lblDescBitDepth.setXY(93, 11);
-    lblDescBitDepth.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
-    lblDescBitDepth.setLinespacing(0);
-    lblDescBitDepth.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7PO6));
-    containerBitDepth.add(lblDescBitDepth);
-
-    lblValueBitDepth.setPosition(-26, 134, 323, 74);
-    lblValueBitDepth.setColor(touchgfx::Color::getColorFromRGB(150, 118, 73));
-    lblValueBitDepth.setLinespacing(0);
-    Unicode::snprintf(lblValueBitDepthBuffer, LBLVALUEBITDEPTH_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_ZC4G).getText());
-    lblValueBitDepth.setWildcard(lblValueBitDepthBuffer);
-    lblValueBitDepth.setTypedText(touchgfx::TypedText(T___SINGLEUSE_J9QW));
-    containerBitDepth.add(lblValueBitDepth);
+    containerBitDepth.setPosition(4, 80, 265, 320);
 
     containerFreq.setPosition(519, 80, 270, 320);
 
@@ -192,9 +179,9 @@ MainViewBase::MainViewBase() :
     btnShowSaver.setVisible(false);
     btnShowSaver.setAction(flexButtonCallback);
 
-    containerTemperature.setPosition(308, 7, 185, 67);
+    containerTemperature.setPosition(358, 8, 150, 65);
 
-    circTemp3.setPosition(118, 8, 50, 50);
+    circTemp3.setPosition(100, 8, 50, 50);
     circTemp3.setCenter(25, 25);
     circTemp3.setRadius(20);
     circTemp3.setLineWidth(0);
@@ -203,7 +190,7 @@ MainViewBase::MainViewBase() :
     circTemp3.setPainter(circTemp3Painter);
     containerTemperature.add(circTemp3);
 
-    circTemp2.setPosition(68, 8, 50, 50);
+    circTemp2.setPosition(50, 8, 50, 50);
     circTemp2.setCenter(25, 25);
     circTemp2.setRadius(20);
     circTemp2.setLineWidth(0);
@@ -212,7 +199,7 @@ MainViewBase::MainViewBase() :
     circTemp2.setPainter(circTemp2Painter);
     containerTemperature.add(circTemp2);
 
-    circTemp1.setPosition(18, 8, 50, 50);
+    circTemp1.setPosition(0, 8, 50, 50);
     circTemp1.setCenter(25, 25);
     circTemp1.setRadius(20);
     circTemp1.setLineWidth(0);
@@ -227,6 +214,7 @@ MainViewBase::MainViewBase() :
     add(btnRCA);
     add(btnBNC);
     add(btnXLR);
+    add(btnUSB);
     add(boxWithBorder1);
     add(containerFormat);
     add(containerBitDepth);

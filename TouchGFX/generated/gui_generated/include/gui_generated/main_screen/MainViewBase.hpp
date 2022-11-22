@@ -61,15 +61,13 @@ protected:
     touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnRCA;
     touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnBNC;
     touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnXLR;
+    touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnUSB;
     touchgfx::BoxWithBorder boxWithBorder1;
     touchgfx::Container containerFormat;
     touchgfx::TextArea lblDescFormat;
     touchgfx::TextAreaWithOneWildcard lblValueFormat;
-    touchgfx::TextArea lblMCLKON;
     touchgfx::TextAreaWithOneWildcard lblDSDValue;
     touchgfx::Container containerBitDepth;
-    touchgfx::TextArea lblDescBitDepth;
-    touchgfx::TextAreaWithOneWildcard lblValueBitDepth;
     touchgfx::Container containerFreq;
     touchgfx::TextArea lblDescFreq;
     touchgfx::TextAreaWithOneWildcard lblValueFreq;
@@ -100,8 +98,6 @@ protected:
     touchgfx::Unicode::UnicodeChar lblValueFormatBuffer[LBLVALUEFORMAT_SIZE];
     static const uint16_t LBLDSDVALUE_SIZE = 10;
     touchgfx::Unicode::UnicodeChar lblDSDValueBuffer[LBLDSDVALUE_SIZE];
-    static const uint16_t LBLVALUEBITDEPTH_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar lblValueBitDepthBuffer[LBLVALUEBITDEPTH_SIZE];
     static const uint16_t LBLVALUEFREQ_SIZE = 10;
     touchgfx::Unicode::UnicodeChar lblValueFreqBuffer[LBLVALUEFREQ_SIZE];
     static const uint16_t LBLDATETIME_SIZE = 25;

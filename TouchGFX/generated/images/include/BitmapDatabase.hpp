@@ -31,8 +31,10 @@ const uint16_t BITMAP_RCA_80X80_FB_ID = 21;
 const uint16_t BITMAP_RCA_80X80_S_ID = 22;
 const uint16_t BITMAP_SETTINGS_ID = 23;
 const uint16_t BITMAP_SLIDER_930_ID = 24;
-const uint16_t BITMAP_XLR_80X80_FB_ID = 25;
-const uint16_t BITMAP_XLR_80X80_S_ID = 26;
+const uint16_t BITMAP_USB_80X80_FB_ID = 25;
+const uint16_t BITMAP_USB_80X80_S_ID = 26;
+const uint16_t BITMAP_XLR_80X80_FB_ID = 27;
+const uint16_t BITMAP_XLR_80X80_S_ID = 28;
 
 namespace BitmapDatabase
 {

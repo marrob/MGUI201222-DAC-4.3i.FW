@@ -14,20 +14,11 @@
       <Text Id="__SingleUse_8EJL" Alignment="Center" TypographyId="Value">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_7PO6" Alignment="Center" TypographyId="Desc">
-        <Translation Language="GB">DEPTH</Translation>
-      </Text>
-      <Text Id="__SingleUse_J9QW" Alignment="Center" TypographyId="Value">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
       <Text Id="__SingleUse_LPXD" Alignment="Center" TypographyId="Desc">
         <Translation Language="GB">FREQ</Translation>
       </Text>
       <Text Id="__SingleUse_YD6A" Alignment="Center" TypographyId="Value">
         <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_C7U0" Alignment="Center" TypographyId="Desc">
-        <Translation Language="GB">MCLK OUT: ON</Translation>
       </Text>
       <Text Id="__SingleUse_SPLI" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Display</Translation>
@@ -35,7 +26,7 @@
       <Text Id="__SingleUse_VB1R" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Settings&#10;</Translation>
       </Text>
-      <Text Id="__SingleUse_IO3K" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_IO3K" Alignment="Center" TypographyId="SWText_high">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_WDG2" Alignment="Center" TypographyId="Default">
@@ -91,9 +82,6 @@
       </Text>
       <Text Id="__SingleUse_4TRH" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">128</Translation>
-      </Text>
-      <Text Id="__SingleUse_ZC4G" Alignment="Left" TypographyId="Value">
-        <Translation Language="GB">32 bit</Translation>
       </Text>
       <Text Id="__SingleUse_3FKW" Alignment="Left" TypographyId="Value">
         <Translation Language="GB">358.2 kHz</Translation>

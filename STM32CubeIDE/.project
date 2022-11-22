@@ -934,6 +934,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Slider_930.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_USB_80x80_fb.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_USB_80x80_fb.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_USB_80x80_s.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_USB_80x80_s.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_XLR_80x80_fb.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_XLR_80x80_fb.cpp</locationURI>
