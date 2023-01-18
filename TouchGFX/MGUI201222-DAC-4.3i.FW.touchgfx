@@ -12,222 +12,6 @@
             "Height": 480
           },
           {
-            "Type": "FlexButton",
-            "Name": "btnHDMI",
-            "X": 76,
-            "Y": 8,
-            "Width": 64,
-            "Height": 64,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "ImageButtonStyle",
-                "ImageReleased": "HDMI_80x80_fb.png",
-                "ImagePressed": "HDMI_80x80_s.png"
-              },
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 64,
-                "Height": 64,
-                "LockToFlexButtonSize": true,
-                "ColorReleased": {
-                  "Red": 150,
-                  "Green": 118,
-                  "Blue": 73
-                },
-                "ColorPressed": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
-                },
-                "ColorBorderReleased": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "ColorBorderPressed": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              }
-            ]
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "btnRCA",
-            "X": 220,
-            "Y": 8,
-            "Width": 64,
-            "Height": 64,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "ImageButtonStyle",
-                "ImageReleased": "RCA_80x80_s.png",
-                "ImagePressed": "RCA_80x80_s.png"
-              },
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 64,
-                "Height": 64,
-                "LockToFlexButtonSize": true,
-                "ColorPressed": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
-                },
-                "ColorBorderReleased": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "ColorBorderPressed": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              }
-            ]
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "btnBNC",
-            "X": 148,
-            "Y": 8,
-            "Width": 64,
-            "Height": 64,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "ImageButtonStyle",
-                "ImageReleased": "BNC_80x80_fb.png",
-                "ImagePressed": "BNC_80x80_fb.png"
-              },
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 64,
-                "Height": 64,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 1,
-                "ColorReleased": {
-                  "Red": 150,
-                  "Green": 118,
-                  "Blue": 73
-                },
-                "ColorPressed": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
-                },
-                "ColorBorderReleased": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "ColorBorderPressed": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              }
-            ]
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "btnXLR",
-            "X": 290,
-            "Y": 8,
-            "Width": 64,
-            "Height": 64,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "ImageButtonStyle",
-                "ImageReleased": "XLR_80x80_fb.png",
-                "ImagePressed": "XLR_80x80_fb.png"
-              },
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 64,
-                "Height": 64,
-                "LockToFlexButtonSize": true,
-                "ColorReleased": {
-                  "Red": 150,
-                  "Green": 118,
-                  "Blue": 73
-                },
-                "ColorPressed": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
-                },
-                "ColorBorderReleased": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "ColorBorderPressed": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              }
-            ]
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "btnUSB",
-            "X": 4,
-            "Y": 8,
-            "Width": 64,
-            "Height": 64,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "ImageButtonStyle",
-                "ImageReleased": "USB_80x80_fb.png",
-                "ImagePressed": "USB_80x80_s.png"
-              },
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 64,
-                "Height": 64,
-                "LockToFlexButtonSize": true,
-                "ColorReleased": {
-                  "Red": 150,
-                  "Green": 118,
-                  "Blue": 73
-                },
-                "ColorPressed": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
-                },
-                "ColorBorderReleased": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "ColorBorderPressed": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              }
-            ]
-          },
-          {
             "Type": "BoxWithBorder",
             "Name": "boxWithBorder1",
             "X": 4,
@@ -248,16 +32,83 @@
           },
           {
             "Type": "Container",
-            "Name": "containerFormat",
-            "X": 260,
+            "Name": "containerVolume",
+            "X": 9,
             "Y": 80,
-            "Width": 270,
-            "Height": 320,
+            "Width": 271,
+            "Height": 264,
+            "Components": [
+              {
+                "Type": "ScalableImage",
+                "Name": "pbxSwap",
+                "X": 144,
+                "Y": 158,
+                "Width": 60,
+                "Height": 33,
+                "Filename": "SwapON.png",
+                "ScalingAlgorithm": "Bilinear Interpolation"
+              },
+              {
+                "Type": "FlexButton",
+                "Name": "btnVolume",
+                "X": 52,
+                "Y": 96,
+                "Width": 174,
+                "Height": 72,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "TextButtonStyle",
+                    "Y": -7,
+                    "TextId": "__SingleUse_9CVP",
+                    "TextRotation": "0",
+                    "Wildcard1": {
+                      "TextId": "__SingleUse_UAA6"
+                    },
+                    "ColorReleased": {
+                      "Red": 150,
+                      "Green": 118,
+                      "Blue": 73
+                    },
+                    "ColorPressed": {
+                      "Red": 10,
+                      "Green": 10,
+                      "Blue": 10
+                    }
+                  }
+                ]
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblDescVolume",
+                "X": 86,
+                "Y": 11,
+                "Width": 106,
+                "Height": 28,
+                "TextId": "__SingleUse_S2EB",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 100,
+                  "Green": 100,
+                  "Blue": 100
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerFormat",
+            "X": 265,
+            "Y": 80,
+            "Width": 265,
+            "Height": 264,
             "Components": [
               {
                 "Type": "TextArea",
                 "Name": "lblDescFormat",
-                "X": 92,
+                "X": 79,
                 "Y": 11,
                 "Width": 106,
                 "Height": 28,
@@ -272,10 +123,10 @@
               {
                 "Type": "TextArea",
                 "Name": "lblValueFormat",
-                "X": -16,
-                "Y": 134,
-                "Width": 323,
-                "Height": 73,
+                "X": -3,
+                "Y": 100,
+                "Width": 268,
+                "Height": 52,
                 "TextId": "__SingleUse_8EJL",
                 "TextRotation": "0",
                 "Color": {
@@ -292,11 +143,10 @@
               {
                 "Type": "TextArea",
                 "Name": "lblDSDValue",
-                "X": 133,
-                "Y": 185,
-                "Width": 114,
+                "X": 121,
+                "Y": 158,
+                "Width": 96,
                 "Height": 33,
-                "Visible": false,
                 "TextId": "__SingleUse_IO3K",
                 "TextRotation": "0",
                 "Color": {
@@ -309,26 +159,53 @@
                   "UseBuffer": true,
                   "BufferSize": 10
                 }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblDSDValue_2",
+                "X": 78,
+                "Y": 158,
+                "Width": 71,
+                "Height": 33,
+                "Visible": false,
+                "TextId": "__SingleUse_TVNE",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 150,
+                  "Green": 118,
+                  "Blue": 73
+                }
               }
             ]
-          },
-          {
-            "Type": "Container",
-            "Name": "containerBitDepth",
-            "X": 4,
-            "Y": 80,
-            "Width": 265,
-            "Height": 320,
-            "Components": []
           },
           {
             "Type": "Container",
             "Name": "containerFreq",
             "X": 519,
             "Y": 80,
-            "Width": 270,
-            "Height": 320,
+            "Width": 275,
+            "Height": 264,
             "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "lblSRCFreq",
+                "X": 124,
+                "Y": 158,
+                "Width": 110,
+                "Height": 33,
+                "TextId": "__SingleUse_ZIQ7",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 150,
+                  "Green": 118,
+                  "Blue": 73
+                },
+                "Wildcard1": {
+                  "TextId": "__SingleUse_QH1M",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
+              },
               {
                 "Type": "TextArea",
                 "Name": "lblDescFreq",
@@ -347,10 +224,10 @@
               {
                 "Type": "TextArea",
                 "Name": "lblValueFreq",
-                "X": 11,
-                "Y": 134,
-                "Width": 249,
-                "Height": 74,
+                "X": 9,
+                "Y": 100,
+                "Width": 253,
+                "Height": 52,
                 "TextId": "__SingleUse_YD6A",
                 "TextRotation": "0",
                 "Color": {
@@ -363,6 +240,16 @@
                   "UseBuffer": true,
                   "BufferSize": 10
                 }
+              },
+              {
+                "Type": "ScalableImage",
+                "Name": "pbxSRCOn",
+                "X": 84,
+                "Y": 158,
+                "Width": 32,
+                "Height": 32,
+                "Filename": "RightSrc.png",
+                "ScalingAlgorithm": "Bilinear Interpolation"
               }
             ]
           },
@@ -603,10 +490,11 @@
           {
             "Type": "TextArea",
             "Name": "lblDateTime",
-            "X": 545,
-            "Y": 359,
-            "Width": 219,
-            "Height": 28,
+            "X": 483,
+            "Y": 304,
+            "Width": 298,
+            "Height": 34,
+            "Visible": false,
             "TextId": "__SingleUse_HGJP",
             "TextRotation": "0",
             "Color": {
@@ -623,8 +511,8 @@
           {
             "Type": "FlexButton",
             "Name": "btnShowSaver",
-            "X": 32,
-            "Y": 463,
+            "X": 4,
+            "Y": 455,
             "Width": 18,
             "Height": 21,
             "Visible": false,
@@ -653,7 +541,7 @@
           {
             "Type": "Container",
             "Name": "containerTemperature",
-            "X": 358,
+            "X": 325,
             "Y": 8,
             "Width": 150,
             "Height": 65,
@@ -712,53 +600,433 @@
                 "CapPrecision": "Butt"
               }
             ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerDACFilter",
+            "X": 5,
+            "Y": 334,
+            "Width": 790,
+            "Height": 56,
+            "Components": [
+              {
+                "Type": "ScalableImage",
+                "Name": "pbxPhase",
+                "X": 30,
+                "Y": 7,
+                "Width": 80,
+                "Height": 43,
+                "Filename": "PhaseOn.png",
+                "ScalingAlgorithm": "Bilinear Interpolation"
+              },
+              {
+                "Type": "ScalableImage",
+                "Name": "pbxPrec",
+                "X": 160,
+                "Y": 7,
+                "Width": 80,
+                "Height": 43,
+                "Filename": "HighPrecOn.png",
+                "ScalingAlgorithm": "Bilinear Interpolation"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "tbxDeEmp",
+                "X": 420,
+                "Y": 17,
+                "Width": 80,
+                "Height": 22,
+                "TextId": "__SingleUse_9TVO",
+                "TextRotation": "0"
+              },
+              {
+                "Type": "ScalableImage",
+                "Name": "pbxFIR",
+                "X": 290,
+                "Y": 7,
+                "Width": 80,
+                "Height": 43,
+                "Filename": "FIROn.png",
+                "ScalingAlgorithm": "Bilinear Interpolation"
+              },
+              {
+                "Type": "ScalableImage",
+                "Name": "pbxDeltaSigma",
+                "X": 550,
+                "Y": 13,
+                "Width": 80,
+                "Height": 31,
+                "Filename": "DeltaSigmaOn.png",
+                "ScalingAlgorithm": "Bilinear Interpolation"
+              },
+              {
+                "Type": "ScalableImage",
+                "Name": "pbxDSD",
+                "X": 680,
+                "Y": 13,
+                "Width": 80,
+                "Height": 31,
+                "Filename": "DSDOFF.png",
+                "ScalingAlgorithm": "Bilinear Interpolation"
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerSelectInput",
+            "Width": 295,
+            "Height": 80,
+            "Components": [
+              {
+                "Type": "BoxWithBorder",
+                "Name": "boxWithBorder4",
+                "X": 4,
+                "Y": 4,
+                "Width": 285,
+                "Height": 72,
+                "Visible": false,
+                "BorderColor": {
+                  "Red": 100,
+                  "Green": 100,
+                  "Blue": 100
+                },
+                "BorderSize": 1
+              },
+              {
+                "Type": "FlexButton",
+                "Name": "btnHideInputs",
+                "X": 79,
+                "Y": 4,
+                "Width": 210,
+                "Height": 72,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "TextButtonStyle",
+                    "X": -20,
+                    "Y": 20,
+                    "TextId": "__SingleUse_WPEH",
+                    "TextRotation": "0",
+                    "ColorReleased": {
+                      "Red": 150,
+                      "Green": 118,
+                      "Blue": 73
+                    },
+                    "ColorPressed": {
+                      "Red": 64,
+                      "Green": 64,
+                      "Blue": 64
+                    }
+                  }
+                ]
+              },
+              {
+                "Type": "FlexButton",
+                "Name": "btnSelectInput",
+                "X": 79,
+                "Y": 4,
+                "Width": 210,
+                "Height": 72,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "TextButtonStyle",
+                    "X": -20,
+                    "Y": 20,
+                    "TextId": "__SingleUse_HIE3",
+                    "TextRotation": "0",
+                    "ColorReleased": {
+                      "Red": 150,
+                      "Green": 118,
+                      "Blue": 73
+                    },
+                    "ColorPressed": {
+                      "Red": 64,
+                      "Green": 64,
+                      "Blue": 64
+                    }
+                  },
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "Y": 1,
+                    "Width": 200,
+                    "Height": 67,
+                    "BorderSize": 5
+                  }
+                ]
+              },
+              {
+                "Type": "Box",
+                "Name": "boxinput",
+                "X": 9,
+                "Y": 8,
+                "Width": 64,
+                "Height": 64,
+                "Color": {
+                  "Red": 150,
+                  "Green": 118,
+                  "Blue": 73
+                }
+              },
+              {
+                "Type": "ScalableImage",
+                "Name": "pbxInput",
+                "X": 9,
+                "Y": 8,
+                "Width": 64,
+                "Height": 64,
+                "Filename": "BNC_80x80_fb.png",
+                "ScalingAlgorithm": "Bilinear Interpolation"
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerInputs",
+            "X": 305,
+            "Y": -88,
+            "Width": 491,
+            "Height": 79,
+            "Components": [
+              {
+                "Type": "BoxWithBorder",
+                "Name": "boxWithBorder3",
+                "Y": 4,
+                "Width": 491,
+                "Height": 71,
+                "BorderSize": 5
+              },
+              {
+                "Type": "Box",
+                "Name": "bxInput",
+                "X": 138,
+                "Y": 7,
+                "Width": 64,
+                "Height": 64,
+                "Color": {
+                  "Red": 150,
+                  "Green": 118,
+                  "Blue": 73
+                }
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbBNC",
+                "X": 282,
+                "Y": 7,
+                "Width": 64,
+                "Height": 64,
+                "FileNameSelected": "BNC_80x80_fb.png",
+                "FileNameSelectedPressed": "BNC_80x80_s.png",
+                "FileNameUnselected": "BNC_80x80_s.png",
+                "FileNameUnselectedPressed": "BNC_80x80_fb.png",
+                "RadioButtonGroup": "inputs"
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbRCA",
+                "X": 354,
+                "Y": 7,
+                "Width": 64,
+                "Height": 64,
+                "FileNameSelected": "RCA_80x80_fb.png",
+                "FileNameSelectedPressed": "RCA_80x80_s.png",
+                "FileNameUnselected": "RCA_80x80_s.png",
+                "FileNameUnselectedPressed": "RCA_80x80_fb.png",
+                "RadioButtonGroup": "inputs"
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbHDMI",
+                "X": 210,
+                "Y": 7,
+                "Width": 64,
+                "Height": 64,
+                "FileNameSelected": "HDMI_80x80_fb.png",
+                "FileNameSelectedPressed": "HDMI_80x80_s.png",
+                "FileNameUnselected": "HDMI_80x80_s.png",
+                "FileNameUnselectedPressed": "HDMI_80x80_fb.png",
+                "RadioButtonGroup": "inputs"
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbUSB",
+                "X": 138,
+                "Y": 7,
+                "Width": 64,
+                "Height": 64,
+                "Selected": true,
+                "FileNameSelected": "USB_80x80_fb.png",
+                "FileNameSelectedPressed": "USB_80x80_s.png",
+                "FileNameUnselected": "USB_80x80_s.png",
+                "FileNameUnselectedPressed": "USB_80x80_fb.png",
+                "RadioButtonGroup": "inputs"
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbXLR",
+                "X": 424,
+                "Y": 7,
+                "Width": 64,
+                "Height": 64,
+                "FileNameSelected": "XLR_80x80_fb.png",
+                "FileNameSelectedPressed": "XLR_80x80_s.png",
+                "FileNameUnselected": "XLR_80x80_s.png",
+                "FileNameUnselectedPressed": "XLR_80x80_fb.png",
+                "RadioButtonGroup": "inputs"
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerVolumeSet",
+            "X": 6,
+            "Y": -200,
+            "Width": 789,
+            "Height": 199,
+            "Components": [
+              {
+                "Type": "BoxWithBorder",
+                "Name": "boxWithBorder2",
+                "Width": 789,
+                "Height": 199,
+                "Color": {
+                  "Red": 32,
+                  "Green": 32,
+                  "Blue": 32
+                },
+                "BorderSize": 5
+              },
+              {
+                "Type": "Slider",
+                "Name": "sldrVolume",
+                "X": 32,
+                "Y": 129,
+                "Width": 732,
+                "Height": 44,
+                "IsHorizontalSlider": true,
+                "BackgroundUnselected": "Slider_930.png",
+                "BackgroundSelected": "Slider_930.png",
+                "Indicator": "ON_44x44.png",
+                "BackgroundX": 2,
+                "BackgroundY": 16,
+                "IndicatorMax": 688,
+                "ValueMax": 100,
+                "InitValue": 100
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblVolume",
+                "X": 202,
+                "Y": 91,
+                "Width": 77,
+                "Height": 44,
+                "TextId": "__SingleUse_CCHA",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "Wildcard1": {
+                  "TextId": "__SingleUse_2A2C",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
+              },
+              {
+                "Type": "ToggleButton",
+                "Name": "chbxMute",
+                "X": 719,
+                "Y": 41,
+                "Width": 44,
+                "Height": 44,
+                "Pressed": "ON_44x44.png",
+                "Released": "OFF_44x44.png"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblVolumeLevel",
+                "X": 23,
+                "Y": 91,
+                "Width": 184,
+                "Height": 44,
+                "TextId": "__SingleUse_8F58",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblMute",
+                "X": 629,
+                "Y": 41,
+                "Width": 82,
+                "Height": 44,
+                "TextId": "__SingleUse_5WVY",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "FlexButton",
+                "Name": "btnBackVolume",
+                "X": 23,
+                "Y": 19,
+                "Width": 134,
+                "Height": 44,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "TextButtonStyle",
+                    "TextId": "__SingleUse_B3K6",
+                    "TextRotation": "0",
+                    "ColorReleased": {
+                      "Red": 150,
+                      "Green": 118,
+                      "Blue": 73
+                    },
+                    "ColorPressed": {
+                      "Red": 150,
+                      "Green": 118,
+                      "Blue": 73
+                    }
+                  },
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "Width": 134,
+                    "Height": 44,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 2,
+                    "ColorReleased": {
+                      "Red": 21,
+                      "Green": 21,
+                      "Blue": 21
+                    },
+                    "ColorPressed": {
+                      "Red": 32,
+                      "Green": 32,
+                      "Blue": 32
+                    }
+                  }
+                ]
+              }
+            ]
           }
         ],
         "Interactions": [
-          {
-            "InteractionName": "ToggleHDMI",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnHDMI"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "ToggleHDMI"
-            }
-          },
-          {
-            "InteractionName": "ToggleXLR",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnXLR"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "ToggleXLR"
-            }
-          },
-          {
-            "InteractionName": "ToggleBNC",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnBNC"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "ToggleBNC"
-            }
-          },
-          {
-            "InteractionName": "ToggleRCA",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnRCA"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "ToggleRCA"
-            }
-          },
           {
             "InteractionName": "ShowDipslay",
             "Trigger": {
@@ -796,6 +1064,171 @@
               "ScreenTransitionType": "ScreenTransitionWipe",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "SaverScreen"
+            }
+          },
+          {
+            "InteractionName": "ShowVolumeSet",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btnVolume"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 6,
+              "Y": 81,
+              "Easing": "Sine",
+              "EasingOption": "In",
+              "Duration": 500,
+              "ActionComponent": "containerVolumeSet"
+            }
+          },
+          {
+            "InteractionName": "HideVolumeSet",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btnBackVolume"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 6,
+              "Y": -210,
+              "Easing": "Sine",
+              "EasingOption": "Out",
+              "Duration": 500,
+              "ActionComponent": "containerVolumeSet"
+            }
+          },
+          {
+            "InteractionName": "ShowInputs",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btnSelectInput"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 303,
+              "Easing": "Sine",
+              "EasingOption": "In",
+              "Duration": 300,
+              "ActionComponent": "containerInputs"
+            }
+          },
+          {
+            "InteractionName": "HideInputButton",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "ShowInputs"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "btnSelectInput"
+            }
+          },
+          {
+            "InteractionName": "HideInputs",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btnHideInputs"
+            },
+            "Action": {
+              "Type": "ActionMove",
+              "X": 303,
+              "Y": -100,
+              "Easing": "Sine",
+              "EasingOption": "Out",
+              "Duration": 300,
+              "ActionComponent": "containerInputs"
+            }
+          },
+          {
+            "InteractionName": "ShowInputButton",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "HideInputs"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "btnSelectInput"
+            }
+          },
+          {
+            "InteractionName": "OnVolumeValueChanged",
+            "Trigger": {
+              "Type": "TriggerSliderValueChanged",
+              "TriggerComponent": "sldrVolume"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "sldrVolumeValueChanged"
+            }
+          },
+          {
+            "InteractionName": "OnMuteChanged",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "chbxMute"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "chbxMuteChanged"
+            }
+          },
+          {
+            "InteractionName": "XLRInputsSelected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbXLR"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbXLRInputsSelected"
+            }
+          },
+          {
+            "InteractionName": "USBInputsSelected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbUSB"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbUSBInputsSelected"
+            }
+          },
+          {
+            "InteractionName": "HDMIInputsSelected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbHDMI"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbHDMIInputsSelected"
+            }
+          },
+          {
+            "InteractionName": "RCAInputsSelected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbRCA"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbRCAInputsSelected"
+            }
+          },
+          {
+            "InteractionName": "BNCInputsSelected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbBNC"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbBNCInputsSelected"
             }
           }
         ]
@@ -1049,10 +1482,9 @@
             "Type": "ScrollableContainer",
             "Name": "scrollableContainerSettings",
             "X": 4,
-            "Y": 80,
+            "Y": 83,
             "Width": 792,
-            "Height": 320,
-            "HorizontalScrollEnabled": true,
+            "Height": 313,
             "VerticalScrollEnabled": true,
             "ScrollbarsVisible": true,
             "ScrollbarsColor": {
@@ -1063,208 +1495,105 @@
             "ScrollbarsAlpha": 255,
             "Components": [
               {
-                "Type": "FlexButton",
-                "Name": "btnClockSettings",
-                "X": 46,
-                "Y": 233,
-                "Width": 700,
-                "Height": 72,
-                "ButtonTrigger": {
-                  "Type": "ClickButtonTrigger"
-                },
-                "ButtonStyles": [
+                "Type": "CustomContainerInstance",
+                "Name": "dacContainer1",
+                "Width": 792,
+                "Height": 1501,
+                "CustomContainerDefinitionName": "DacContainer"
+              },
+              {
+                "Type": "Container",
+                "Name": "containerClock",
+                "X": -4,
+                "Y": 1485,
+                "Width": 796,
+                "Height": 157,
+                "Components": [
                   {
-                    "Type": "TextButtonStyle",
-                    "X": -20,
-                    "Y": 20,
-                    "TextId": "__SingleUse_37JV",
-                    "TextRotation": "0",
-                    "ColorReleased": {
-                      "Red": 150,
-                      "Green": 118,
-                      "Blue": 73
+                    "Type": "FlexButton",
+                    "Name": "btnClockSettings",
+                    "X": 41,
+                    "Y": 39,
+                    "Width": 700,
+                    "Height": 72,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
                     },
-                    "ColorPressed": {
+                    "ButtonStyles": [
+                      {
+                        "Type": "TextButtonStyle",
+                        "X": -20,
+                        "Y": 20,
+                        "TextId": "__SingleUse_37JV",
+                        "TextRotation": "0",
+                        "ColorReleased": {
+                          "Red": 150,
+                          "Green": 118,
+                          "Blue": 73
+                        },
+                        "ColorPressed": {
+                          "Red": 64,
+                          "Green": 64,
+                          "Blue": 64
+                        }
+                      },
+                      {
+                        "Type": "BoxWithBorderButtonStyle",
+                        "Width": 700,
+                        "Height": 72,
+                        "LockToFlexButtonSize": true,
+                        "BorderSize": 1,
+                        "ColorPressed": {
+                          "Red": 32,
+                          "Green": 32,
+                          "Blue": 32
+                        },
+                        "ColorBorderReleased": {
+                          "Red": 100,
+                          "Green": 100,
+                          "Blue": 100
+                        },
+                        "ColorBorderPressed": {
+                          "Red": 100,
+                          "Green": 100,
+                          "Blue": 100
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "Type": "Line",
+                    "Name": "line2",
+                    "X": 53,
+                    "Y": 142,
+                    "Width": 710,
+                    "Height": 15,
+                    "Color": {
                       "Red": 64,
                       "Green": 64,
                       "Blue": 64
-                    }
+                    },
+                    "EndX": 920,
+                    "EndY": 1,
+                    "LineWidth": 2,
+                    "LineEndingStyle": "Butt"
                   },
                   {
-                    "Type": "BoxWithBorderButtonStyle",
-                    "Width": 700,
-                    "Height": 72,
-                    "LockToFlexButtonSize": true,
-                    "BorderSize": 1,
-                    "ColorPressed": {
-                      "Red": 32,
-                      "Green": 32,
-                      "Blue": 32
+                    "Type": "TextArea",
+                    "Name": "lblClockTitle",
+                    "X": 16,
+                    "Width": 62,
+                    "Height": 29,
+                    "TextId": "__SingleUse_23R7",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 200,
+                      "Green": 200,
+                      "Blue": 200
                     },
-                    "ColorBorderReleased": {
-                      "Red": 100,
-                      "Green": 100,
-                      "Blue": 100
-                    },
-                    "ColorBorderPressed": {
-                      "Red": 100,
-                      "Green": 100,
-                      "Blue": 100
-                    }
+                    "AutoSize": true
                   }
                 ]
-              },
-              {
-                "Type": "RadioButton",
-                "Name": "rdbtnEnableAll",
-                "X": 28,
-                "Y": 42,
-                "Width": 44,
-                "Height": 44,
-                "Selected": true,
-                "FileNameSelected": "ON_44x44.png",
-                "FileNameSelectedPressed": "OFF_44x44.png",
-                "FileNameUnselected": "OFF_44x44.png",
-                "FileNameUnselectedPressed": "ON_44x44.png",
-                "RadioButtonGroup": "radioButtonGroup1"
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblAllOutput",
-                "X": 85,
-                "Y": 50,
-                "Width": 308,
-                "Height": 29,
-                "TextId": "__SingleUse_AGOP",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 200,
-                  "Green": 200,
-                  "Blue": 200
-                },
-                "AutoSize": true
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblLastState",
-                "X": 471,
-                "Y": 50,
-                "Width": 302,
-                "Height": 29,
-                "TextId": "__SingleUse_9IH2",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 200,
-                  "Green": 200,
-                  "Blue": 200
-                },
-                "AutoSize": true
-              },
-              {
-                "Type": "ToggleButton",
-                "Name": "chbxMCLKON",
-                "X": 28,
-                "Y": 111,
-                "Width": 44,
-                "Height": 44,
-                "InitialStatePressed": true,
-                "Pressed": "OFF_44x44.png",
-                "Released": "ON_44x44.png"
-              },
-              {
-                "Type": "RadioButton",
-                "Name": "rdbtnLastState",
-                "X": 410,
-                "Y": 42,
-                "Width": 44,
-                "Height": 44,
-                "FileNameSelected": "ON_44x44.png",
-                "FileNameSelectedPressed": "OFF_44x44.png",
-                "FileNameUnselected": "OFF_44x44.png",
-                "FileNameUnselectedPressed": "ON_44x44.png",
-                "RadioButtonGroup": "radioButtonGroup1"
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblMasterClkEnable",
-                "X": 85,
-                "Y": 119,
-                "Width": 425,
-                "Height": 29,
-                "TextId": "__SingleUse_4E2A",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 200,
-                  "Green": 200,
-                  "Blue": 200
-                },
-                "AutoSize": true
-              },
-              {
-                "Type": "Line",
-                "Name": "line1",
-                "X": 38,
-                "Y": 99,
-                "Width": 710,
-                "Height": 15,
-                "Color": {
-                  "Red": 64,
-                  "Green": 64,
-                  "Blue": 64
-                },
-                "Alpha": 128,
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 1,
-                "LineEndingStyle": "Butt"
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblGUITitle",
-                "X": 10,
-                "Y": 2,
-                "Width": 294,
-                "Height": 44,
-                "TextId": "__SingleUse_VP13",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 200,
-                  "Green": 200,
-                  "Blue": 200
-                }
-              },
-              {
-                "Type": "Line",
-                "Name": "line2",
-                "X": 38,
-                "Y": 174,
-                "Width": 710,
-                "Height": 15,
-                "Color": {
-                  "Red": 64,
-                  "Green": 64,
-                  "Blue": 64
-                },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
-                "LineEndingStyle": "Butt"
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblClockTitle",
-                "X": 10,
-                "Y": 190,
-                "Width": 62,
-                "Height": 29,
-                "TextId": "__SingleUse_23R7",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 200,
-                  "Green": 200,
-                  "Blue": 200
-                },
-                "AutoSize": true
               }
             ]
           }
@@ -1294,39 +1623,6 @@
               "ScreenTransitionType": "ScreenTransitionSlide",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "PasswordScreen"
-            }
-          },
-          {
-            "InteractionName": "SelectAllOutputAtStartUp",
-            "Trigger": {
-              "Type": "TriggerRadioButtonSelected",
-              "TriggerComponent": "rdbtnEnableAll"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "RdbBtnSelectEnableAllOutputAtStartUp"
-            }
-          },
-          {
-            "InteractionName": "SelectLastStateAtStartUp",
-            "Trigger": {
-              "Type": "TriggerRadioButtonSelected",
-              "TriggerComponent": "rdbtnLastState"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "RdbBtnSelectLastOutputStatAtStartUp"
-            }
-          },
-          {
-            "InteractionName": "ClickOnMasterClockOnI2S",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "chbxMCLKON"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "ClickMasterClkOnI2S"
             }
           },
           {
@@ -4256,9 +4552,9 @@
           {
             "Type": "TextArea",
             "Name": "lblDeviceName",
-            "X": 380,
+            "X": 342,
             "Y": 251,
-            "Width": 353,
+            "Width": 407,
             "Height": 59,
             "TextId": "__SingleUse_JVEY",
             "TextRotation": "0",
@@ -4352,15 +4648,15 @@
             "Type": "Container",
             "Name": "containerInfo",
             "X": 64,
-            "Y": 240,
+            "Y": 230,
             "Width": 672,
-            "Height": 101,
+            "Height": 111,
             "Components": [
               {
                 "Type": "Line",
                 "Name": "lineMidle",
-                "X": 9,
-                "Y": 48,
+                "X": 10,
+                "Y": 55,
                 "Width": 650,
                 "Height": 15,
                 "Color": {
@@ -4368,7 +4664,6 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "Alpha": 80,
                 "EndX": 960,
                 "LineWidth": 2,
                 "LineEndingStyle": "Butt"
@@ -4376,16 +4671,16 @@
               {
                 "Type": "TextArea",
                 "Name": "lblAudioFormat",
-                "X": 30,
-                "Y": 9,
-                "Width": 473,
-                "Height": 46,
+                "X": 29,
+                "Y": -6,
+                "Width": 630,
+                "Height": 57,
                 "TextId": "__SingleUse_ZBCN",
                 "TextRotation": "0",
                 "Color": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
+                  "Red": 100,
+                  "Green": 100,
+                  "Blue": 100
                 },
                 "Wildcard1": {
                   "TextId": "__SingleUse_KJEE",
@@ -4396,16 +4691,16 @@
               {
                 "Type": "TextArea",
                 "Name": "lblDateTime",
-                "X": 120,
+                "X": 10,
                 "Y": 55,
-                "Width": 527,
-                "Height": 46,
+                "Width": 637,
+                "Height": 56,
                 "TextId": "__SingleUse_58MF",
                 "TextRotation": "0",
                 "Color": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
+                  "Red": 100,
+                  "Green": 100,
+                  "Blue": 100
                 },
                 "Wildcard1": {
                   "TextId": "__SingleUse_KBUK",
@@ -6742,6 +7037,1090 @@
             "Description": "Up Down value Changing",
             "HasValue": true,
             "ValueType": "uint32_t"
+          }
+        ]
+      },
+      {
+        "Name": "DacContainer",
+        "X": 4,
+        "Width": 792,
+        "Height": 1501,
+        "Components": [
+          {
+            "Type": "Container",
+            "Name": "containerSRC",
+            "Y": 1159,
+            "Width": 792,
+            "Height": 342,
+            "Components": [
+              {
+                "Type": "TextArea",
+                "Name": "lblSRC",
+                "X": 15,
+                "Y": -1,
+                "Width": 294,
+                "Height": 44,
+                "TextId": "__SingleUse_QEB5",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblOutputFreq",
+                "X": 32,
+                "Y": 90,
+                "Width": 236,
+                "Height": 37,
+                "TextId": "__SingleUse_EZGK",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbSRCFreqLow",
+                "X": 32,
+                "Y": 139,
+                "Width": 44,
+                "Height": 44,
+                "Selected": true,
+                "FileNameSelected": "ON_44x44.png",
+                "FileNameSelectedPressed": "OFF_44x44.png",
+                "FileNameUnselected": "OFF_44x44.png",
+                "FileNameUnselectedPressed": "ON_44x44.png",
+                "RadioButtonGroup": "SRC"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblLowFreq",
+                "X": 87,
+                "Y": 139,
+                "Width": 138,
+                "Height": 37,
+                "TextId": "__SingleUse_OTL7",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbSRCFreqMid",
+                "X": 283,
+                "Y": 139,
+                "Width": 44,
+                "Height": 44,
+                "FileNameSelected": "ON_44x44.png",
+                "FileNameSelectedPressed": "OFF_44x44.png",
+                "FileNameUnselected": "OFF_44x44.png",
+                "FileNameUnselectedPressed": "ON_44x44.png",
+                "RadioButtonGroup": "SRC"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblMidFreq",
+                "X": 338,
+                "Y": 139,
+                "Width": 140,
+                "Height": 37,
+                "TextId": "__SingleUse_7PLI",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbSRCFreqHigh",
+                "X": 538,
+                "Y": 139,
+                "Width": 44,
+                "Height": 44,
+                "FileNameSelected": "ON_44x44.png",
+                "FileNameSelectedPressed": "OFF_44x44.png",
+                "FileNameUnselected": "OFF_44x44.png",
+                "FileNameUnselectedPressed": "ON_44x44.png",
+                "RadioButtonGroup": "SRC"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblHighFreq",
+                "X": 593,
+                "Y": 139,
+                "Width": 162,
+                "Height": 37,
+                "TextId": "__SingleUse_NVL7",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblOutputBit",
+                "X": 31,
+                "Y": 197,
+                "Width": 218,
+                "Height": 37,
+                "TextId": "__SingleUse_HVM1",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbSRCBit16",
+                "X": 31,
+                "Y": 246,
+                "Width": 44,
+                "Height": 44,
+                "Selected": true,
+                "FileNameSelected": "ON_44x44.png",
+                "FileNameSelectedPressed": "OFF_44x44.png",
+                "FileNameUnselected": "OFF_44x44.png",
+                "FileNameUnselectedPressed": "ON_44x44.png",
+                "RadioButtonGroup": "SRCBitGroup"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lbl16Bit",
+                "X": 86,
+                "Y": 246,
+                "Width": 65,
+                "Height": 37,
+                "TextId": "__SingleUse_4ETD",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "RadioButton",
+                "Name": "rdbSRCBit24",
+                "X": 283,
+                "Y": 246,
+                "Width": 44,
+                "Height": 44,
+                "FileNameSelected": "ON_44x44.png",
+                "FileNameSelectedPressed": "OFF_44x44.png",
+                "FileNameUnselected": "OFF_44x44.png",
+                "FileNameUnselectedPressed": "ON_44x44.png",
+                "RadioButtonGroup": "SRCBitGroup"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lbl24Bit",
+                "X": 338,
+                "Y": 246,
+                "Width": 68,
+                "Height": 37,
+                "TextId": "__SingleUse_RUFG",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblEnableSRC",
+                "X": 32,
+                "Y": 43,
+                "Width": 168,
+                "Height": 37,
+                "TextId": "__SingleUse_JH90",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "ToggleButton",
+                "Name": "chbxEnableSRC",
+                "X": 283,
+                "Y": 43,
+                "Width": 44,
+                "Height": 44,
+                "Pressed": "ON_44x44.png",
+                "Released": "OFF_44x44.png"
+              },
+              {
+                "Type": "Line",
+                "Name": "lineSRC",
+                "X": 43,
+                "Y": 321,
+                "Width": 710,
+                "Height": 15,
+                "Color": {
+                  "Red": 64,
+                  "Green": 64,
+                  "Blue": 64
+                },
+                "EndX": 920,
+                "EndY": 1,
+                "LineWidth": 2,
+                "LineEndingStyle": "Butt"
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerPCM",
+            "Y": 663,
+            "Width": 792,
+            "Height": 495,
+            "Components": [
+              {
+                "Type": "Line",
+                "Name": "linePCM",
+                "X": 45,
+                "Y": 481,
+                "Width": 710,
+                "Height": 15,
+                "Color": {
+                  "Red": 64,
+                  "Green": 64,
+                  "Blue": 64
+                },
+                "EndX": 920,
+                "EndY": 1,
+                "LineWidth": 2,
+                "LineEndingStyle": "Butt"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblPCM",
+                "X": 15,
+                "Width": 294,
+                "Height": 44,
+                "TextId": "__SingleUse_46CJ",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblHighPrec",
+                "X": 32,
+                "Y": 44,
+                "Width": 265,
+                "Height": 37,
+                "TextId": "__SingleUse_GVR4",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "ToggleButton",
+                "Name": "chbxHighPrec",
+                "X": 564,
+                "Y": 15,
+                "Width": 130,
+                "Height": 66,
+                "Pressed": "HighPrecOn.png",
+                "Released": "HighPrecOff.png"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblFIR",
+                "X": 32,
+                "Y": 123,
+                "Width": 188,
+                "Height": 37,
+                "TextId": "__SingleUse_A6Y0",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "nudFIR",
+                "X": 506,
+                "Y": 116,
+                "Width": 250,
+                "Height": 50,
+                "CustomContainerDefinitionName": "UpDownContainer"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblDeEemp",
+                "X": 32,
+                "Y": 246,
+                "Width": 299,
+                "Height": 37,
+                "TextId": "__SingleUse_4A5B",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "nudDeEnp",
+                "X": 506,
+                "Y": 239,
+                "Width": 250,
+                "Height": 50,
+                "CustomContainerDefinitionName": "UpDownContainer"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblDeltaSigm",
+                "X": 31,
+                "Y": 373,
+                "Width": 338,
+                "Height": 37,
+                "TextId": "__SingleUse_UEM5",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "nudDeltaSigma",
+                "X": 505,
+                "Y": 366,
+                "Width": 250,
+                "Height": 50,
+                "CustomContainerDefinitionName": "UpDownContainer"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblFirDesc",
+                "X": 32,
+                "Y": 170,
+                "Width": 618,
+                "Height": 41,
+                "TextId": "__SingleUse_CBB4",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblDeltaSigmaDesc",
+                "X": 31,
+                "Y": 419,
+                "Width": 618,
+                "Height": 41,
+                "TextId": "__SingleUse_CGEQ",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblDeempDesc",
+                "X": 32,
+                "Y": 295,
+                "Width": 618,
+                "Height": 41,
+                "TextId": "__SingleUse_J09Y",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerDSD",
+            "Y": 539,
+            "Width": 792,
+            "Height": 124,
+            "Components": [
+              {
+                "Type": "Line",
+                "Name": "lineDSD",
+                "X": 45,
+                "Y": 109,
+                "Width": 710,
+                "Height": 15,
+                "Color": {
+                  "Red": 64,
+                  "Green": 64,
+                  "Blue": 64
+                },
+                "EndX": 920,
+                "EndY": 1,
+                "LineWidth": 2,
+                "LineEndingStyle": "Butt"
+              },
+              {
+                "Type": "CustomContainerInstance",
+                "Name": "nudDSDCutOff",
+                "X": 506,
+                "Y": 38,
+                "Width": 250,
+                "Height": 50,
+                "CustomContainerDefinitionName": "UpDownContainer"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblDSDCutOff",
+                "X": 32,
+                "Y": 45,
+                "Width": 366,
+                "Height": 37,
+                "TextId": "__SingleUse_GO88",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblDSD",
+                "X": 15,
+                "Width": 294,
+                "Height": 44,
+                "TextId": "__SingleUse_D1OG",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerAllSettings",
+            "Y": 289,
+            "Width": 792,
+            "Height": 250,
+            "Components": [
+              {
+                "Type": "Line",
+                "Name": "lineChannel",
+                "X": 45,
+                "Y": 111,
+                "Width": 710,
+                "Height": 15,
+                "Color": {
+                  "Red": 64,
+                  "Green": 64,
+                  "Blue": 64
+                },
+                "EndX": 920,
+                "EndY": 1,
+                "LineWidth": 2,
+                "LineEndingStyle": "Butt"
+              },
+              {
+                "Type": "ToggleButton",
+                "Name": "chbxSwap",
+                "X": 565,
+                "Y": 21,
+                "Width": 126,
+                "Height": 62,
+                "Pressed": "SwapON.png",
+                "Released": "SwapOff.png"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblSwap",
+                "X": 32,
+                "Y": 46,
+                "Width": 222,
+                "Height": 37,
+                "TextId": "__SingleUse_12IE",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblChannel",
+                "X": 15,
+                "Y": 2,
+                "Width": 294,
+                "Height": 44,
+                "TextId": "__SingleUse_7IGM",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "Line",
+                "Name": "linePerformance",
+                "X": 45,
+                "Y": 235,
+                "Width": 710,
+                "Height": 15,
+                "Color": {
+                  "Red": 64,
+                  "Green": 64,
+                  "Blue": 64
+                },
+                "EndX": 920,
+                "EndY": 1,
+                "LineWidth": 2,
+                "LineEndingStyle": "Butt"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblPerformance",
+                "X": 15,
+                "Y": 126,
+                "Width": 294,
+                "Height": 44,
+                "TextId": "__SingleUse_CBHE",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "ToggleButton",
+                "Name": "chbxPhase",
+                "X": 563,
+                "Y": 137,
+                "Width": 130,
+                "Height": 70,
+                "Pressed": "PhaseOn.png",
+                "Released": "PhaseOFF.png"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblPhase",
+                "X": 32,
+                "Y": 170,
+                "Width": 229,
+                "Height": 37,
+                "TextId": "__SingleUse_9T0G",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "AutoSize": true
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerVolume",
+            "Y": 150,
+            "Width": 792,
+            "Height": 141,
+            "Components": [
+              {
+                "Type": "Line",
+                "Name": "lineVolume",
+                "X": 45,
+                "Y": 126,
+                "Width": 710,
+                "Height": 15,
+                "Color": {
+                  "Red": 64,
+                  "Green": 64,
+                  "Blue": 64
+                },
+                "EndX": 920,
+                "EndY": 1,
+                "LineWidth": 2,
+                "LineEndingStyle": "Butt"
+              },
+              {
+                "Type": "Slider",
+                "Name": "sldrVolume",
+                "X": 24,
+                "Y": 67,
+                "Width": 732,
+                "Height": 44,
+                "IsHorizontalSlider": true,
+                "BackgroundUnselected": "Slider_930.png",
+                "BackgroundSelected": "Slider_930.png",
+                "Indicator": "ON_44x44.png",
+                "BackgroundX": 2,
+                "BackgroundY": 16,
+                "IndicatorMax": 688,
+                "ValueMax": 100,
+                "InitValue": 100
+              },
+              {
+                "Type": "ToggleButton",
+                "Name": "chbxMute",
+                "X": 711,
+                "Y": 2,
+                "Width": 44,
+                "Height": 44,
+                "Pressed": "ON_44x44.png",
+                "Released": "OFF_44x44.png"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblVolume",
+                "X": 215,
+                "Y": 40,
+                "Width": 77,
+                "Height": 44,
+                "TextId": "__SingleUse_HVH6",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                },
+                "Wildcard1": {
+                  "TextId": "__SingleUse_QCK7",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblVolumeLevel",
+                "X": 32,
+                "Y": 40,
+                "Width": 184,
+                "Height": 44,
+                "TextId": "__SingleUse_ZAYX",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblVolumeMute",
+                "X": 629,
+                "Y": 3,
+                "Width": 82,
+                "Height": 44,
+                "TextId": "__SingleUse_HTO2",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblVolumeTitle",
+                "X": 15,
+                "Y": 3,
+                "Width": 135,
+                "Height": 37,
+                "TextId": "__SingleUse_DRWF",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              }
+            ]
+          },
+          {
+            "Type": "Container",
+            "Name": "containerFilters",
+            "Width": 792,
+            "Height": 150,
+            "Components": [
+              {
+                "Type": "Line",
+                "Name": "lineProfie",
+                "X": 45,
+                "Y": 142,
+                "Width": 710,
+                "Height": 15,
+                "Color": {
+                  "Red": 64,
+                  "Green": 64,
+                  "Blue": 64
+                },
+                "EndX": 920,
+                "EndY": 1,
+                "LineWidth": 2,
+                "LineEndingStyle": "Butt"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "lblProfile",
+                "X": 15,
+                "Y": 6,
+                "Width": 166,
+                "Height": 36,
+                "TextId": "__SingleUse_WKT5",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 200,
+                  "Green": 200,
+                  "Blue": 200
+                }
+              },
+              {
+                "Type": "FlexButton",
+                "Name": "btnFactoryProfile",
+                "X": 31,
+                "Y": 51,
+                "Width": 350,
+                "Height": 72,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "TextButtonStyle",
+                    "Y": 20,
+                    "TextId": "__SingleUse_5U3A",
+                    "TextRotation": "0",
+                    "ColorReleased": {
+                      "Red": 150,
+                      "Green": 118,
+                      "Blue": 73
+                    },
+                    "ColorPressed": {
+                      "Red": 64,
+                      "Green": 64,
+                      "Blue": 64
+                    }
+                  },
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "Width": 350,
+                    "Height": 72,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 1,
+                    "ColorPressed": {
+                      "Red": 32,
+                      "Green": 32,
+                      "Blue": 32
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 100,
+                      "Green": 100,
+                      "Blue": 100
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 100,
+                      "Green": 100,
+                      "Blue": 100
+                    }
+                  }
+                ]
+              },
+              {
+                "Type": "FlexButton",
+                "Name": "btnUserProfile",
+                "X": 405,
+                "Y": 51,
+                "Width": 350,
+                "Height": 72,
+                "Visible": false,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "TextButtonStyle",
+                    "Y": 20,
+                    "TextId": "__SingleUse_8MP9",
+                    "TextRotation": "0",
+                    "ColorReleased": {
+                      "Red": 150,
+                      "Green": 118,
+                      "Blue": 73
+                    },
+                    "ColorPressed": {
+                      "Red": 64,
+                      "Green": 64,
+                      "Blue": 64
+                    }
+                  },
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "Width": 350,
+                    "Height": 72,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 1,
+                    "ColorPressed": {
+                      "Red": 32,
+                      "Green": 32,
+                      "Blue": 32
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 100,
+                      "Green": 100,
+                      "Blue": 100
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 100,
+                      "Green": 100,
+                      "Blue": 100
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "DSDCutOffValueChanged",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "UpDownContainer ValueChangedTrigger happens",
+              "TriggerComponent": "nudDSDCutOff"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "OnDSDCutOffValueChanged"
+            }
+          },
+          {
+            "InteractionName": "FirValueChanged",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "UpDownContainer ValueChangedTrigger happens",
+              "TriggerComponent": "nudFIR"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "OnFirValueChanged"
+            }
+          },
+          {
+            "InteractionName": "DeEmpValueChanged",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "UpDownContainer ValueChangedTrigger happens",
+              "TriggerComponent": "nudDeEnp"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "OnDeEmpValueChanged"
+            }
+          },
+          {
+            "InteractionName": "DeltaSigmaValueChanged",
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "UpDownContainer ValueChangedTrigger happens",
+              "TriggerComponent": "nudDeltaSigma"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "OnDeltaSigmaValueChanged"
+            }
+          },
+          {
+            "InteractionName": "SwapLRChanged",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "chbxSwap"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "chbxSwapChanged"
+            }
+          },
+          {
+            "InteractionName": "PhaseChanged",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "chbxPhase"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "chbxPhaseChanged"
+            }
+          },
+          {
+            "InteractionName": "HighPrecChanged",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "chbxHighPrec"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "chbxHighPrecChanged"
+            }
+          },
+          {
+            "InteractionName": "MuteChenged",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "chbxMute"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "chbxMuteChanged"
+            }
+          },
+          {
+            "InteractionName": "VolumeValueChanged",
+            "Trigger": {
+              "Type": "TriggerSliderValueChanged",
+              "TriggerComponent": "sldrVolume"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "sldrVolumeValueChanged"
+            }
+          },
+          {
+            "InteractionName": "EnableSRC",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "chbxEnableSRC"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "chbxEnableSRCChecked"
+            }
+          },
+          {
+            "InteractionName": "SRCFreqLowSelected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbSRCFreqLow"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbSRCFreqLowSelected"
+            }
+          },
+          {
+            "InteractionName": "SRCFreqMidSelected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbSRCFreqMid"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbSRCFreqMidSelected"
+            }
+          },
+          {
+            "InteractionName": "SRCFreqHighSelected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbSRCFreqHigh"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbSRCFreqHighSelected"
+            }
+          },
+          {
+            "InteractionName": "SRCBit16Selected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbSRCBit16"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbSRCBit16Selected"
+            }
+          },
+          {
+            "InteractionName": "SRCBit24Selected",
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "rdbSRCBit24"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "rdbSRCBit24Selected"
+            }
+          },
+          {
+            "InteractionName": "UserProfileClicked",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btnUserProfile"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btnUserProfileClicked"
+            }
+          },
+          {
+            "InteractionName": "FactoryProfileClicked",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btnFactoryProfile"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "btnFactoryProfileClicked"
+            }
           }
         ]
       }

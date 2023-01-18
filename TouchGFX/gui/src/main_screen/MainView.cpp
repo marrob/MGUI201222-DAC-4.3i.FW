@@ -3,6 +3,7 @@
 #include <touchgfx/containers/buttons/ImageButtonStyle.hpp>
 #include "BitmapDatabase.hpp"
 #include <time.h> 
+#include <gui/containers/DacContainer.hpp>
 
 time_t saverDateTime;
 
@@ -11,62 +12,7 @@ time_t saverDateTime;
 //Sumlated Time
 time_t simMainDateTime;
 
-//Simulated flash memory
-static uint8_t  SimIsHdmiON;
-static uint8_t  SimIsRcaON;
-static uint8_t  SimIsXlrON;
-static uint8_t  SimIsBncON;
-
-/*** Karuna ***/
-uint8_t MainView::GuiItfGetKarunaStatus()
-{
-	return 0b00100011;
-}
-
-void MainView::GuiItfSetKarunaHdmi(uint8_t onfoff)
-{
-	SimIsHdmiON = onfoff;
-}
-
-uint8_t MainView::GuitIfGetKarunaIsHdmiSet(void)
-{
-	return 1; //SimIsHdmiON;
-}
-
-void MainView::GuiItfSetKarunaRca(uint8_t onfoff)
-{
-	SimIsRcaON = onfoff;
-}
-
-uint8_t MainView::GuitIfGetKarunaIsRcaSet(void)
-{
-	return 0;// SimIsRcaON;
-}
-
-void MainView::GuiItfSetKarunaBnc(uint8_t onfoff)
-{
-	SimIsBncON = onfoff;
-}
-
-uint8_t MainView::GuitIfGetKarunaIsBncSet(void)
-{
-	return SimIsBncON;
-}
-
-void MainView::GuiItfSetKarunaXlr(uint8_t onfoff)
-{
-	SimIsXlrON = onfoff;
-}
-
-uint8_t MainView::GuitIfGetKarunaIsXlrSet(void)
-{
-	return SimIsXlrON;
-}
-
-uint8_t MainView::GuiItfGetKarunaMclkOutIsEanbled(void)
-{
-	return 1;
-}
+static uint8_t simDACMode = DacModes::DAC_PCM_384_0KHZ;
 
 /*** Time ***/
 
@@ -123,7 +69,7 @@ uint8_t MainView::GuiItfGetDasClockIsExt(void)
 
 float MainView::GuiItfGetTempCh1(void)
 {
-	return 50.42;
+	return 50.42f;
 }
 
 uint8_t MainView::GuiItfGetDi1(void) {
@@ -152,21 +98,65 @@ void MainView::GuiItfSetDasClockHeatedTemperature(uint32_t temp)
 
 }
 
+/*** DAC Config, Volume ***/
+
+uint8_t MainView::GuiItfGetDACActualMode()
+{
+	return simDACMode;
+}
+
+uint8_t MainView::GuiItfGetDACActualRoute()
+{
+	return DacContainer::simDACRoute;
+}
+
+void MainView::GuiItfSetDACActualRoute(uint8_t p_Route)
+{
+	DacContainer::simDACRoute = p_Route;
+}
+
+void MainView::GuiItfSetVolume(uint8_t p_Volume)
+{
+	DacContainer::simVolume = p_Volume;
+}
+
+uint8_t MainView::GuiItfGetVolume()
+{
+	return DacContainer::simVolume;
+}
+
+void MainView::GuiItfSetMute(uint8_t p_Mute)
+{
+	DacContainer::simMute = p_Mute;
+}
+
+uint8_t MainView::GuiItfGetMute()
+{
+	return DacContainer::simMute;
+}
+
+uint8_t(*MainView::GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS]
+{
+	return DacContainer::DacConfigArray;
+}
+
+/*** SRC ***/
+
+uint8_t MainView::GuiItfGetSRCEnabled()
+{
+	return DacContainer::simSRCEn;
+}
+uint8_t MainView::GuiItfGetSRCFreq() {
+	return DacContainer::simSRCFreq;
+}
+uint8_t MainView::GuiItfGetSRCBit()
+{
+	return DacContainer::simSrcBit;
+}
+
 #else
 extern "C"
 {
-	/*** Karuna ***/
-	uint8_t GuiItfGetKarunaStatus();
-	void GuiItfSetKarunaHdmi(uint8_t onfoff);
-	uint8_t GuitIfGetKarunaIsHdmiSet(void);
-	void GuiItfSetKarunaRca(uint8_t onfoff);
-	uint8_t GuitIfGetKarunaIsRcaSet(void);
-	void GuiItfSetKarunaBnc(uint8_t onfoff);
-	uint8_t GuitIfGetKarunaIsBncSet(void);
-	void GuiItfSetKarunaXlr(uint8_t onfoff);
-	uint8_t GuitIfGetKarunaIsXlrSet(void);
-	uint8_t GuiItfGetKarunaMclkOutIsEanbled(void);
-
 	/*** Time ***/
 	void GuiItfGetRtc(time_t* dt);
 
@@ -194,14 +184,23 @@ extern "C"
 	uint8_t GuiItfGetDi15(void);
 #endif
 
+	/*** DAC Config, Volume ***/
+	uint8_t GuiItfGetDACActualMode();
+	uint8_t GuiItfGetDACActualRoute();
+	void GuiItfSetDACActualRoute(uint8_t p_Route);
+
+	void GuiItfSetVolume(uint8_t p_Volume);
+	uint8_t GuiItfGetVolume();
+	void GuiItfSetMute(uint8_t p_Mute);
+	uint8_t GuiItfGetMute();
+	uint8_t(*GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS];
+
+	/*** SRC ***/
+	uint8_t GuiItfGetSRCEnabled();
+	uint8_t GuiItfGetSRCFreq();
+	uint8_t GuiItfGetSRCBit();
 }
 #endif
-
-//OUTPUTS
-static bool  mIsHdmiON;
-static bool  mIsRcaON;
-static bool  mIsXlrON;
-static bool  mIsBncON;
 
 //CLOCKS
 static bool mIs24Locked;
@@ -224,7 +223,12 @@ uint8_t mKarunaControl;
 int mTemp;
 
 //Audio
-int mAudioFormat;
+uint8_t  mPreDacMode;
+uint8_t  mPreDacRoute;
+bool mOnlyRefreshInputUI;
+uint8_t(*CurrentDacConfigPtr)[DAC_SETTINGS_SIZE_COLS];
+bool m_ShowDacInfo = false;
+Unicode::UnicodeChar mUniVolume[5];
 
 //Gui Refresh
 int mTickCount;
@@ -238,94 +242,50 @@ MainView::MainView()
 	MIDGRAYCOLOR = touchgfx::Color::getColorFrom24BitRGB(64, 64, 64);
 	REDCOLOR = touchgfx::Color::getColorFrom24BitRGB(0x8B, 0, 0);
 
+	CurrentDacConfigPtr = GuiItfGetDacFilters();
+	mPreDacMode = mPreDacRoute = 0xFF;
+
 	//Audio and Clocks temperature
-	RefreshKarunaAndClockInfo();
+	RefreshUI();
 	GuiItfGetRtc(&saverDateTime);
 	RequestCurrentTime();
 }
 
+// Toogle inputs
 
-//Toogle outputs
-
-void MainView::ToggleHDMI()
+void MainView::rdbXLRInputsSelected()
 {
-	mIsHdmiON = !mIsHdmiON;
-	GuiItfSetKarunaHdmi(mIsHdmiON);
+	bxInput.moveTo(rdbXLR.getX(), rdbXLR.getY());
+	if (!mOnlyRefreshInputUI)
+		GuiItfSetDACActualRoute(DACRoute::ROUTE_XLR_DAC);
 }
 
-void MainView::ToggleRCA()
+void MainView::rdbUSBInputsSelected()
 {
-	mIsRcaON = !mIsRcaON;
-	GuiItfSetKarunaRca(mIsRcaON);
+	bxInput.moveTo(rdbUSB.getX(), rdbUSB.getY());
+	if (!mOnlyRefreshInputUI)
+		GuiItfSetDACActualRoute(DACRoute::ROUTE_USB_DAC);
 }
 
-void MainView::ToggleBNC()
+void MainView::rdbHDMIInputsSelected()
 {
-	mIsBncON = !mIsBncON;
-	GuiItfSetKarunaBnc(mIsBncON);
+	bxInput.moveTo(rdbHDMI.getX(), rdbHDMI.getY());
+	if (!mOnlyRefreshInputUI)
+		GuiItfSetDACActualRoute(DACRoute::ROUTE_HDMI_DAC);
 }
 
-void MainView::ToggleXLR()
+void MainView::rdbRCAInputsSelected()
 {
-	mIsXlrON = !mIsXlrON;
-	GuiItfSetKarunaXlr(mIsXlrON);
+	bxInput.moveTo(rdbRCA.getX(), rdbRCA.getY());
+	if (!mOnlyRefreshInputUI)
+		GuiItfSetDACActualRoute(DACRoute::ROUTE_RCA_DAC);
 }
 
-//AUDIO OUTPUTS
-void MainView::RefreshHDMIOutput()
+void MainView::rdbBNCInputsSelected()
 {
-	btnHDMI.setBoxWithBorderColors(GetOutputPressColor(mIsHdmiON), GetOutputReleaseColor(mIsHdmiON), BLACKCOLOR, BLACKCOLOR);
-	if (mIsHdmiON)
-	{
-		btnHDMI.setBitmaps(Bitmap(BITMAP_HDMI_80X80_FB_ID), Bitmap(BITMAP_HDMI_80X80_S_ID));
-	}
-	else
-	{
-		btnHDMI.setBitmaps(Bitmap(BITMAP_HDMI_80X80_S_ID), Bitmap(BITMAP_HDMI_80X80_S_ID));
-	}
-	btnHDMI.invalidate();
-}
-
-void MainView::RefreshRCAOutput()
-{
-	btnRCA.setBoxWithBorderColors(GetOutputPressColor(mIsRcaON), GetOutputReleaseColor(mIsRcaON), BLACKCOLOR, BLACKCOLOR);
-	if (mIsRcaON)
-	{
-		btnRCA.setBitmaps(Bitmap(BITMAP_RCA_80X80_FB_ID), Bitmap(BITMAP_RCA_80X80_S_ID));
-	}
-	else
-	{
-		btnRCA.setBitmaps(Bitmap(BITMAP_RCA_80X80_S_ID), Bitmap(BITMAP_RCA_80X80_S_ID));
-	}
-	btnRCA.invalidate();
-}
-
-void MainView::RefreshBNCOutput()
-{
-	btnBNC.setBoxWithBorderColors(GetOutputPressColor(mIsBncON), GetOutputReleaseColor(mIsBncON), BLACKCOLOR, BLACKCOLOR);
-	if (mIsBncON)
-	{
-		btnBNC.setBitmaps(Bitmap(BITMAP_BNC_80X80_FB_ID), Bitmap(BITMAP_BNC_80X80_S_ID));
-	}
-	else
-	{
-		btnBNC.setBitmaps(Bitmap(BITMAP_BNC_80X80_S_ID), Bitmap(BITMAP_BNC_80X80_S_ID));
-	}
-	btnBNC.invalidate();
-}
-
-void MainView::RefreshXLROutput()
-{
-	btnXLR.setBoxWithBorderColors(GetOutputPressColor(mIsXlrON), GetOutputReleaseColor(mIsXlrON), BLACKCOLOR, BLACKCOLOR);
-	if (mIsXlrON)
-	{
-		btnXLR.setBitmaps(Bitmap(BITMAP_XLR_80X80_FB_ID), Bitmap(BITMAP_XLR_80X80_S_ID));
-	}
-	else
-	{
-		btnXLR.setBitmaps(Bitmap(BITMAP_XLR_80X80_S_ID), Bitmap(BITMAP_XLR_80X80_S_ID));
-	}
-	btnXLR.invalidate();
+	bxInput.moveTo(rdbBNC.getX(), rdbXLR.getY());
+	if (!mOnlyRefreshInputUI)
+		GuiItfSetDACActualRoute(DACRoute::ROUTE_BNC_DAC);
 }
 
 // CLOCK PROPS
@@ -384,7 +344,7 @@ void  MainView::SetTemp(int p_Temp)
 	{
 		PaintDot(CORECOLOR, CORECOLOR, CORECOLOR);
 	}
-	else if (p_Temp >= heatedTemp +  10 && p_Temp < heatedTemp + 15)
+	else if (p_Temp >= heatedTemp + 10 && p_Temp < heatedTemp + 15)
 	{
 		PaintDot(REDCOLOR, CORECOLOR, CORECOLOR);
 	}
@@ -412,47 +372,144 @@ void MainView::PaintDot(colortype p_Dot1, colortype p_Dot2, colortype p_Dot3)
 
 //SET GUI AUDIO VALUE
 
-/// <summary>
-/// DSD_PCM , SEL_3_ISO , SEL_2_ISO , SEL_1_ISO , SEL_0_ISO - 5 bites  inform�ci�
-/// </summary>
-/// <param name="p_AudiFormat"></param>
+void MainView::RefreshSRCInfo(uint8_t p_AudiFormat)
+{
+	if (p_AudiFormat < DacModes::DAC_DSD_64)
+	{
+		bool isSRCEnabled = GuiItfGetSRCEnabled() &&
+			(p_AudiFormat == DacModes::DAC_PCM_44_1KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_88_2KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_176_4KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_48_0KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_96_0KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_192_KHZ);
+
+		if (isSRCEnabled)
+		{
+			Unicode::strncpy(lblValueFormatBuffer, "SRC", LBLVALUEFORMAT_SIZE);
+
+			switch (GuiItfGetSRCBit())
+			{
+			case SRC_Bit_16:
+			{
+				Unicode::strncpy(lblDSDValueBuffer, "16 bit", LBLDSDVALUE_SIZE);
+			}
+			break;
+			case SRC_Bit_24:
+			{
+				Unicode::strncpy(lblDSDValueBuffer, "24 bit", LBLDSDVALUE_SIZE);
+			}
+			break;
+			default:
+				break;
+			}
+
+			uint8_t srcFreq = GuiItfGetSRCFreq();
+
+			if (p_AudiFormat == DacModes::DAC_PCM_44_1KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_88_2KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_176_4KHZ)
+			{
+				switch (srcFreq)
+				{
+				case SRCF_Low:
+				{
+					Unicode::strncpy(lblSRCFreqBuffer, "44.1 kHz", LBLSRCFREQ_SIZE);
+				}
+				break;
+				case SRCF_Mid:
+				{
+					Unicode::strncpy(lblSRCFreqBuffer, "88.2 kHz", LBLSRCFREQ_SIZE);
+				}
+				break;
+				case SRCF_High:
+				{
+					Unicode::strncpy(lblSRCFreqBuffer, "176.4 kHz", LBLSRCFREQ_SIZE);
+				}
+				break;
+				default:
+					break;
+				}
+			}
+			else if (p_AudiFormat == DacModes::DAC_PCM_48_0KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_96_0KHZ ||
+				p_AudiFormat == DacModes::DAC_PCM_192_KHZ)
+			{
+				switch (srcFreq)
+				{
+				case SRCF_Low:
+				{
+					Unicode::strncpy(lblSRCFreqBuffer, "48 kHz", LBLSRCFREQ_SIZE);
+				}
+				break;
+				case SRCF_Mid:
+				{
+					Unicode::strncpy(lblSRCFreqBuffer, "96 kHz", LBLSRCFREQ_SIZE);
+				}
+				break;
+				case SRCF_High:
+				{
+					Unicode::strncpy(lblSRCFreqBuffer, "192 kHz", LBLSRCFREQ_SIZE);
+				}
+				break;
+				default:
+					break;
+				}
+			}
+		}
+		pbxSRCOn.setVisible(isSRCEnabled);
+		lblDSDValue.setVisible(isSRCEnabled);
+		lblSRCFreq.setVisible(isSRCEnabled);
+
+		lblDSDValue.invalidate();
+		lblValueFormat.invalidate();
+		lblSRCFreq.invalidate();
+	}
+	else
+	{
+		pbxSRCOn.setVisible(false);
+		lblSRCFreq.setVisible(false);
+		lblSRCFreq.invalidate();
+	}
+
+}
+
 void  MainView::SetDSDPCM(int p_AudiFormat)
 {
-	bool isDsd = ToBinary(p_AudiFormat, 4);
+	bool isDsd = p_AudiFormat >= DacModes::DAC_DSD_64;
 
 	if (isDsd)
 	{
-		bool isDoP = !ToBinary(p_AudiFormat, 3);
+		/*bool isDoP = !ToBinary(p_AudiFormat, 3);
 		if (isDoP)
 		{
 			Unicode::strncpy(lblValueFormatBuffer, "DoP", LBLVALUEFORMAT_SIZE);
 		}
-		else
+		else*/
 		{
 			Unicode::strncpy(lblValueFormatBuffer, "DSD", LBLVALUEFORMAT_SIZE);
 		}
-		//Unicode::snprintf(lblValueFormatBuffer, 3, "%s", "DSD");
 		int dsdFormat = p_AudiFormat >> 1;
 		dsdFormat = dsdFormat & 0b00000011;
 
 		Unicode::strncpy(lblDSDValueBuffer, "N.A.", LBLDSDVALUE_SIZE);
 
 
-		switch (dsdFormat)
+		switch (p_AudiFormat)
 		{
-		case 0b10:
+		case DacModes::DAC_DSD_64:
 		{
 			Unicode::strncpy(lblDSDValueBuffer, "64", LBLDSDVALUE_SIZE);
 		}break;
-		case 0b11:
+		case DacModes::DAC_DSD_128:
 		{
 			Unicode::strncpy(lblDSDValueBuffer, "128", LBLDSDVALUE_SIZE);
 		}break;
-		case 0b01:
+		case DacModes::DAC_DSD_256:
 		{
 			Unicode::strncpy(lblDSDValueBuffer, "256", LBLDSDVALUE_SIZE);
 		}break;
-		case 0b00:
+		case DacModes::DAC_DSD_512:
 		{
 			Unicode::strncpy(lblDSDValueBuffer, "512", LBLDSDVALUE_SIZE);
 		}break;
@@ -463,146 +520,173 @@ void  MainView::SetDSDPCM(int p_AudiFormat)
 	}
 	else
 	{
-		Unicode::strncpy(lblValueFormatBuffer, "PCM", LBLVALUEFORMAT_SIZE);
+		{
+			Unicode::strncpy(lblValueFormatBuffer, "PCM", LBLVALUEFORMAT_SIZE);
+		}
 	}
 
 	lblDSDValue.setVisible(isDsd);
+	RefreshSRCInfo(p_AudiFormat);
+
 	lblDSDValue.invalidate();
 	lblValueFormat.invalidate();
 }
 
-void  MainView::SetBitDepth(int p_AudiFormat)
-{
-	bool isDsd = ToBinary(p_AudiFormat, 4);
-
-	if (isDsd)
-	{
-		Unicode::strncpy(lblValueBitDepthBuffer, "1 bit", LBLVALUEBITDEPTH_SIZE);
-	}
-	else
-	{ 
-		int BitDepthVal = p_AudiFormat >> 5;
-		BitDepthVal = BitDepthVal & 0b00000011; 
-
-		switch (BitDepthVal)
-		{
-			//case 0b00:
-			//{
-			//	strcpy(BitDepth, "1 bit");
-			//}break;
-		case 0b00:
-		{
-			Unicode::strncpy(lblValueBitDepthBuffer, "16 bit", LBLVALUEBITDEPTH_SIZE);
-		}break;
-		case 0b01:
-		{
-			Unicode::strncpy(lblValueBitDepthBuffer, "24 bit", LBLVALUEBITDEPTH_SIZE);
-		}break;
-		case 0b11:
-		{
-			Unicode::strncpy(lblValueBitDepthBuffer, "32 bit", LBLVALUEBITDEPTH_SIZE);
-		}break;
-
-		default:
-			Unicode::strncpy(lblValueBitDepthBuffer, "16 bit", LBLVALUEBITDEPTH_SIZE);
-			break;
-		}
-	}
-
-	lblValueBitDepth.invalidate();
-}
-
 void  MainView::SetFreq(int p_AudiFormat)
 {
-	bool isDsd = ToBinary(p_AudiFormat, 4);
-
 	Unicode::strncpy(lblValueFreqBuffer, "N.A.", LBLVALUEFREQ_SIZE);
 
-	if (!isDsd)
+	switch (p_AudiFormat)
 	{
-		//PCM FREQ.
-
-		int freqVal = p_AudiFormat & 0b00001111;
-
-		switch (freqVal)
-		{
-		case 0b0000:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "44.1 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b0001:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "48 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b0010:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "88.2 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b0011:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "96 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b0100:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "176.4 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b0101:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "192 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b0110:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "352.8 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b0111:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "384 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b1000:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "705.6 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b1001:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "768 kHz", LBLVALUEFREQ_SIZE);
-		}break;
-
-
-		default:
-			break;
-		}
-	}
-	else
+	case DacModes::DAC_PCM_44_1KHZ:
 	{
-		//DSD FREQ.
+		Unicode::strncpy(lblValueFreqBuffer, "44.1 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_48_0KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "48 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_88_2KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "88.2 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_96_0KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "96 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_176_4KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "176.4 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_192_KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "192 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_362_8KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "352.8 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_384_0KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "384 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_705_6KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "705.6 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_PCM_768_0KHZ:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "768 kHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_DSD_64:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "2.8 MHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_DSD_128:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "5.8 MHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_DSD_256:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "11.2 MHz", LBLVALUEFREQ_SIZE);
+	}break;
+	case DacModes::DAC_DSD_512:
+	{
+		Unicode::strncpy(lblValueFreqBuffer, "22.6 MHz", LBLVALUEFREQ_SIZE);
+	}break;
 
-		int freqVal = p_AudiFormat >> 1;
-		freqVal = freqVal & 0b00000011;
-
-		switch (freqVal)
-		{
-		case 0b10:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "2.8 MHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b11:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "5.8 MHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b01:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "11.2 MHz", LBLVALUEFREQ_SIZE);
-		}break;
-		case 0b00:
-		{
-			Unicode::strncpy(lblValueFreqBuffer, "22.6 MHz", LBLVALUEFREQ_SIZE);
-		}break;
-
-		default:
-			break;
-		}
+	default:
+		break;
 	}
+
+	RefreshSRCInfo(p_AudiFormat);
+
 	lblValueFreq.invalidate();
+}
+
+void MainView::SetInput(int actualDacRoute)
+{
+	mOnlyRefreshInputUI = true;
+	switch (actualDacRoute)
+	{
+	case ROUTE_NONE_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_DARK_ICONS_INFO_48_ID));
+	}
+	break;
+	case ROUTE_MUTE_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_DARK_ICONS_INFO_48_ID));
+	}
+	break;
+	case ROUTE_USB_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_USB_80X80_FB_ID));
+		rdbUSB.setSelected(true);
+	}
+	break;
+	case ROUTE_USB_SRC_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_USB_80X80_FB_ID));
+		rdbUSB.setSelected(true);
+	}
+	break;
+	case ROUTE_HDMI_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_HDMI_80X80_FB_ID));
+		rdbHDMI.setSelected(true);
+	}
+	break;
+	case ROUTE_HDMI_SRC_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_HDMI_80X80_FB_ID));
+		rdbHDMI.setSelected(true);
+	}
+	break;
+	case ROUTE_BNC_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_BNC_80X80_FB_ID));
+		rdbBNC.setSelected(true);
+
+	}
+	break;
+	case ROUTE_BNC_SRC_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_BNC_80X80_FB_ID));
+		rdbBNC.setSelected(true);
+
+	}
+	break;
+	case ROUTE_RCA_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_RCA_80X80_FB_ID));
+		rdbRCA.setSelected(true);
+	}
+	break;
+	case ROUTE_RCA_SRC_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_RCA_80X80_FB_ID));
+		rdbRCA.setSelected(true);
+	}
+	break;
+	case ROUTE_XLR_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_XLR_80X80_FB_ID));
+		rdbXLR.setSelected(true);
+	}
+	break;
+	case ROUTE_XLR_SRC_DAC:
+	{
+		pbxInput.setBitmap(Bitmap(BITMAP_XLR_80X80_FB_ID));
+		rdbXLR.setSelected(true);
+	}
+	break;
+	default:
+		break;
+	}
+
+	pbxInput.invalidate();
+	mOnlyRefreshInputUI = false;
 }
 
 colortype MainView::GetOutputPressColor(bool p_State)
@@ -653,7 +737,7 @@ void MainView::handleTickEvent()
 {
 	mTickCount++;
 
-	RefreshKarunaAndClockInfo();
+	RefreshUI();
 	//Wait for 0.5sec
 	if (mTickCount % 10 == 0)
 	{
@@ -666,17 +750,47 @@ void MainView::handleTickEvent()
 	}
 }
 
-void MainView::RefreshKarunaAndClockInfo()
+void MainView::RefreshUI()
 {
 	//Read audio format
-	uint8_t  KRN_STAT = GuiItfGetKarunaStatus();
+	uint8_t  actualDacMode = GuiItfGetDACActualMode();
+	if (actualDacMode != mPreDacMode)
+	{
+		SetDSDPCM(actualDacMode);
+		//SetBitDepth(KRN_STAT);
+		SetFreq(actualDacMode);
 
-	SetDSDPCM(KRN_STAT);
-	SetBitDepth(KRN_STAT);
-	SetFreq(KRN_STAT);
+		ShowDacConfigs(actualDacMode);
+	}
+	mPreDacMode = actualDacMode;
 
-	float temp = 0;  
+	//VOLUME
+	uint8_t volume = GuiItfGetVolume();
+	bool mute = GuiItfGetMute() == 1;
 
+	chbxMute.forceState(mute);
+	Unicode::snprintf(lblVolumeBuffer, LBLVOLUME_SIZE, "%d", volume);
+	lblVolume.invalidate();
+
+	Unicode::snprintf(mUniVolume, 5, "%d", volume);
+	btnVolume.setWildcardTextBuffer(mUniVolume);
+
+	colortype volColor = mute ? BLACKCOLOR : CORECOLOR;
+	btnVolume.setWildcardTextColors(volColor, volColor);
+	btnVolume.invalidate();
+
+	//Read Inut
+	uint8_t  actualDacRoute = GuiItfGetDACActualRoute();
+	if (mPreDacRoute != actualDacRoute)
+	{
+		SetInput(actualDacRoute);
+}
+	mPreDacRoute = actualDacRoute;
+
+
+	float temp = 0;
+
+	//CLOCKs
 #ifdef KARUNA_7i
 	/*** DAS Clock ***/
 	mIs22Locked = GuiItfGetDasClockStatusLock1();
@@ -698,7 +812,7 @@ void MainView::RefreshKarunaAndClockInfo()
 	temp = GuiItfGetTempCh1();
 
 #endif
-	
+
 	SetTemp((int)temp);
 
 	Refresh24Lock();
@@ -706,19 +820,6 @@ void MainView::RefreshKarunaAndClockInfo()
 	Refresh22Lock();
 	RefreshIntExt();
 
-	//Refresh Karuna outputs
-	mIsBncON = GuitIfGetKarunaIsBncSet();
-	mIsHdmiON = GuitIfGetKarunaIsHdmiSet();
-	mIsRcaON = GuitIfGetKarunaIsRcaSet();
-	mIsXlrON = GuitIfGetKarunaIsXlrSet();
-
-	RefreshHDMIOutput();
-	RefreshRCAOutput();
-	RefreshBNCOutput();
-	RefreshXLROutput();
-
-	lblMCLKON.setVisible(GuiItfGetKarunaMclkOutIsEanbled() > 0);
-	lblMCLKON.invalidate();
 }
 
 time_t MainView::RequestCurrentTime()
@@ -735,4 +836,129 @@ time_t MainView::RequestCurrentTime()
 	lblDateTime.invalidate();
 
 	return dtp;
+}
+
+// ======================== DAC ========================
+
+
+void MainView::ShowDacConfigs(uint8_t p_Mode)
+{
+	m_ShowDacInfo = true;
+
+
+	//LrSwap: Audio Data Swap Control
+	uint8_t	swap = CurrentDacConfigPtr[p_Mode][DacConfigBytes::AudioIF3];
+	if (swap == 1)
+	{
+		pbxSwap.setBitmap(Bitmap(BITMAP_SWAPON_ID));
+	}
+	else
+	{
+		pbxSwap.setBitmap(Bitmap(BITMAP_SWAPOFF_ID));
+	}
+	pbxSwap.setWidth(60);
+	pbxSwap.setHeight(33);
+	pbxSwap.invalidate();
+
+	//PhaseAdj: Phase Adjustment Control for Internal Clock
+	uint8_t	phaseAdj = CurrentDacConfigPtr[p_Mode][DacConfigBytes::Clock2];
+	if (phaseAdj == 1)
+	{
+		pbxPhase.setBitmap(Bitmap(BITMAP_PHASEON_ID));
+	}
+	else
+	{
+		pbxPhase.setBitmap(Bitmap(BITMAP_PHASEOFF_ID));
+	}
+	pbxPhase.setWidth(80);
+	pbxPhase.setHeight(43);
+	pbxPhase.invalidate();
+
+	//Sampling Frequency  for De-Emphasis (For PCM mode) 
+	uint8_t	deempEnabled = CurrentDacConfigPtr[p_Mode][DacConfigBytes::DeEmp2];
+	if (deempEnabled == 0)
+	{
+		tbxDeEmp.setColor(BLACKCOLOR);
+	}
+	else
+	{
+		tbxDeEmp.setColor(CORECOLOR);
+	}
+	tbxDeEmp.setWidth(80);
+	tbxDeEmp.setHeight(22);
+	tbxDeEmp.invalidate();
+
+	// Oversampling Rate Selection for delta-sigma Modulator
+	uint8_t	deltaSigma = CurrentDacConfigPtr[p_Mode][DacConfigBytes::DeltaSigma];
+	if (deltaSigma == 0)
+	{
+		pbxDeltaSigma.setBitmap(Bitmap(BITMAP_DELTASIGMAOFF_ID));
+	}
+	else
+	{
+		pbxDeltaSigma.setBitmap(Bitmap(BITMAP_DELTASIGMAON_ID));
+	}
+	pbxDeltaSigma.setWidth(80);
+	pbxDeltaSigma.setHeight(31);
+	pbxDeltaSigma.invalidate();
+
+	//FIR Filters - Sharp Roll-Off/Slow Roll-Off
+	uint8_t	fir1 = CurrentDacConfigPtr[p_Mode][DacConfigBytes::FIR1];
+	if (fir1 == 0 || fir1 == 8)
+	{
+		pbxFIR.setBitmap(Bitmap(BITMAP_FIROFF_ID));
+	}
+	else
+	{
+		pbxFIR.setBitmap(Bitmap(BITMAP_FIRON_ID));
+	}
+	pbxFIR.setWidth(80);
+	pbxFIR.setHeight(43);
+	pbxFIR.invalidate();
+
+	// High Precision Calculation Mode Control (For PCM mode)
+	uint8_t	HPCM = CurrentDacConfigPtr[p_Mode][DacConfigBytes::FIR2] & 0x80;
+	if (HPCM == 0)
+	{
+		pbxPrec.setBitmap(Bitmap(BITMAP_HIGHPRECON_ID));
+	}
+	else
+	{
+		pbxPrec.setBitmap(Bitmap(BITMAP_HIGHPRECOFF_ID));
+	}
+	pbxPrec.setWidth(80);
+	pbxPrec.setHeight(43);
+	pbxPrec.invalidate();
+
+	//Cut Off Frequency of DSD Filter
+	uint8_t	DSDFilter = CurrentDacConfigPtr[p_Mode][DacConfigBytes::DSDFilter];
+	if (DSDFilter == 0)
+	{
+		pbxDSD.setBitmap(Bitmap(BITMAP_DSDOFF_ID));
+	}
+	else
+	{
+		pbxDSD.setBitmap(Bitmap(BITMAP_DSDON_ID));
+	}
+	pbxDSD.setWidth(80);
+	pbxDSD.setHeight(31);
+	pbxDSD.invalidate();
+
+	sldrVolume.setValue(GuiItfGetVolume());
+
+	m_ShowDacInfo = false;
+}
+
+void MainView::chbxMuteChanged()
+{
+	GuiItfSetMute(chbxMute.getState() ? 1 : 0);
+}
+
+void MainView::sldrVolumeValueChanged(int value)
+{
+	if (!m_ShowDacInfo)
+	{
+		GuiItfSetVolume((uint8_t)value);
+	}
+
 }

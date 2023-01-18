@@ -3,26 +3,26 @@
 
 #include <gui_generated/main_screen/MainViewBase.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
-
+#include <gui/containers/DacContainer.hpp>
+ 
 class MainView : public MainViewBase
 {
 public:
 	MainView(); 
 	virtual ~MainView() {} 
-	virtual void ToggleHDMI();
-	virtual void ToggleRCA();
-	virtual void ToggleBNC();
-	virtual void ToggleXLR();
+	virtual void rdbXLRInputsSelected();
+	virtual void rdbUSBInputsSelected();
+	virtual void rdbHDMIInputsSelected();
+	virtual void rdbRCAInputsSelected();
+	virtual void rdbBNCInputsSelected();
+	//Volume
+	virtual void chbxMuteChanged();
+	virtual void sldrVolumeValueChanged(int value);
 
 	virtual void handleTickEvent();
 
-	void RefreshKarunaAndClockInfo();
+	void RefreshUI();
 	time_t RequestCurrentTime();
-
-	void RefreshBNCOutput();
-	void RefreshRCAOutput();
-	void RefreshHDMIOutput();
-	void RefreshXLROutput();
 
 	void Refresh24Lock();
 	void Refresh245Lock();
@@ -30,8 +30,8 @@ public:
 	void RefreshIntExt();
 
 	void SetDSDPCM(int p_AudiFormat);
-	void SetBitDepth(int p_AudiFormat);
 	void SetFreq(int p_AudiFormat);
+	void SetInput(int p_DacRoute);
 
 	void SetTemp(int p_Temp);
 	void PaintDot(colortype p_Dot1, colortype p_Dot2, colortype p_Dot3);
@@ -42,22 +42,13 @@ public:
 	bool ToBinary(int number, int p_Position);
 	void CopyBit(int input, int* output, int CopyFrom, int CopyTo);
 	void SetBit(uint8_t* input, bool bit, int SetTo);
+	
+	void RefreshSRCInfo(uint8_t p_AudioFormat);
+	void ShowDacConfigs(uint8_t p_Mode);
 
 
 #ifdef SIMULATOR
-
-  /*** Karuna ****/
-  uint8_t GuiItfGetKarunaStatus();
-  void GuiItfSetKarunaHdmi(uint8_t onfoff);
-  uint8_t GuitIfGetKarunaIsHdmiSet(void);
-  void GuiItfSetKarunaRca(uint8_t onfoff);
-  uint8_t GuitIfGetKarunaIsRcaSet(void);
-  void GuiItfSetKarunaBnc(uint8_t onfoff);
-  uint8_t GuitIfGetKarunaIsBncSet(void);
-  void GuiItfSetKarunaXlr(uint8_t onfoff);
-  uint8_t GuitIfGetKarunaIsXlrSet(void);
-  uint8_t GuiItfGetKarunaMclkOutIsEanbled(void);
-
+	 
   /*** Time ***/
   void GuiItfGetRtc(time_t* dt);
 
@@ -85,12 +76,27 @@ public:
   uint32_t GuiItfGetDasClockHeatedTemperature();
   void GuiItfSetDasClockHeatedTemperature(uint32_t temp);
 
+  /*** DAC ***/
+  uint8_t GuiItfGetDACActualMode();
+  uint8_t GuiItfGetDACActualRoute();
+  void GuiItfSetDACActualRoute(uint8_t p_Route);
+
+  void GuiItfSetVolume(uint8_t p_Volume);
+  uint8_t GuiItfGetVolume();
+
+  void GuiItfSetMute(uint8_t p_Mute);
+  uint8_t GuiItfGetMute();
+
+  uint8_t(*GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS];
+  
+  /*** SRC ***/
+  uint8_t GuiItfGetSRCEnabled();
+  uint8_t GuiItfGetSRCFreq();
+  uint8_t GuiItfGetSRCBit();
+
 #endif
 
-
 protected:
-
-
 private:
 	uint8_t count;
 };

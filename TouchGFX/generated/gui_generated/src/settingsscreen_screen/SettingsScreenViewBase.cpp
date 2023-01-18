@@ -9,9 +9,7 @@
 
 
 SettingsScreenViewBase::SettingsScreenViewBase() :
-    buttonCallback(this, &SettingsScreenViewBase::buttonCallbackHandler),
-    flexButtonCallback(this, &SettingsScreenViewBase::flexButtonCallbackHandler),
-    radioButtonSelectedCallback(this, &SettingsScreenViewBase::radioButtonSelectedCallbackHandler)
+    flexButtonCallback(this, &SettingsScreenViewBase::flexButtonCallbackHandler)
 {
 
     touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
@@ -54,8 +52,14 @@ SettingsScreenViewBase::SettingsScreenViewBase() :
     boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     boxWithBorder1.setBorderSize(1);
 
-    scrollableContainerSettings.setPosition(4, 80, 792, 320);
+    scrollableContainerSettings.setPosition(4, 83, 792, 313);
+    scrollableContainerSettings.enableHorizontalScroll(false);
     scrollableContainerSettings.setScrollbarsColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+
+    dacContainer1.setXY(0, 0);
+    scrollableContainerSettings.add(dacContainer1);
+
+    containerClock.setPosition(-4, 1485, 796, 157);
 
     btnClockSettings.setBoxWithBorderPosition(0, 0, 700, 72);
     btnClockSettings.setBorderSize(1);
@@ -63,76 +67,25 @@ SettingsScreenViewBase::SettingsScreenViewBase() :
     btnClockSettings.setText(TypedText(T___SINGLEUSE_37JV));
     btnClockSettings.setTextPosition(-20, 20, 700, 72);
     btnClockSettings.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnClockSettings.setPosition(46, 233, 700, 72);
+    btnClockSettings.setPosition(41, 39, 700, 72);
     btnClockSettings.setAction(flexButtonCallback);
-    scrollableContainerSettings.add(btnClockSettings);
+    containerClock.add(btnClockSettings);
 
-    rdbtnEnableAll.setXY(28, 42);
-    rdbtnEnableAll.setBitmaps(touchgfx::Bitmap(BITMAP_OFF_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_OFF_44X44_ID));
-    rdbtnEnableAll.setSelected(true);
-    rdbtnEnableAll.setDeselectionEnabled(false);
-    scrollableContainerSettings.add(rdbtnEnableAll);
-
-    lblAllOutput.setXY(85, 50);
-    lblAllOutput.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
-    lblAllOutput.setLinespacing(0);
-    lblAllOutput.setTypedText(touchgfx::TypedText(T___SINGLEUSE_AGOP));
-    scrollableContainerSettings.add(lblAllOutput);
-
-    lblLastState.setXY(471, 50);
-    lblLastState.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
-    lblLastState.setLinespacing(0);
-    lblLastState.setTypedText(touchgfx::TypedText(T___SINGLEUSE_9IH2));
-    scrollableContainerSettings.add(lblLastState);
-
-    chbxMCLKON.setXY(28, 111);
-    chbxMCLKON.setBitmaps(touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_OFF_44X44_ID));
-    chbxMCLKON.forceState(true);
-    chbxMCLKON.setAction(buttonCallback);
-    scrollableContainerSettings.add(chbxMCLKON);
-
-    rdbtnLastState.setXY(410, 42);
-    rdbtnLastState.setBitmaps(touchgfx::Bitmap(BITMAP_OFF_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_OFF_44X44_ID));
-    rdbtnLastState.setSelected(false);
-    rdbtnLastState.setDeselectionEnabled(false);
-    scrollableContainerSettings.add(rdbtnLastState);
-
-    lblMasterClkEnable.setXY(85, 119);
-    lblMasterClkEnable.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
-    lblMasterClkEnable.setLinespacing(0);
-    lblMasterClkEnable.setTypedText(touchgfx::TypedText(T___SINGLEUSE_4E2A));
-    scrollableContainerSettings.add(lblMasterClkEnable);
-
-    line1.setPosition(38, 99, 710, 15);
-    line1Painter.setColor(touchgfx::Color::getColorFromRGB(64, 64, 64));
-    line1.setPainter(line1Painter);
-    line1.setStart(0, 0);
-    line1.setEnd(920, 1);
-    line1.setLineWidth(1);
-    line1.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
-    line1.setAlpha(128);
-    scrollableContainerSettings.add(line1);
-
-    lblGUITitle.setPosition(10, 2, 294, 44);
-    lblGUITitle.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
-    lblGUITitle.setLinespacing(0);
-    lblGUITitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_VP13));
-    scrollableContainerSettings.add(lblGUITitle);
-
-    line2.setPosition(38, 174, 710, 15);
+    line2.setPosition(53, 142, 710, 15);
     line2Painter.setColor(touchgfx::Color::getColorFromRGB(64, 64, 64));
     line2.setPainter(line2Painter);
     line2.setStart(0, 0);
     line2.setEnd(920, 1);
     line2.setLineWidth(2);
     line2.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
-    scrollableContainerSettings.add(line2);
+    containerClock.add(line2);
 
-    lblClockTitle.setXY(10, 190);
+    lblClockTitle.setXY(16, 0);
     lblClockTitle.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
     lblClockTitle.setLinespacing(0);
     lblClockTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_23R7));
-    scrollableContainerSettings.add(lblClockTitle);
+    containerClock.add(lblClockTitle);
+    scrollableContainerSettings.add(containerClock);
     scrollableContainerSettings.setScrollbarsPermanentlyVisible();
     scrollableContainerSettings.setScrollbarsVisible(false);
 
@@ -143,25 +96,11 @@ SettingsScreenViewBase::SettingsScreenViewBase() :
     add(lblTitle);
     add(boxWithBorder1);
     add(scrollableContainerSettings);
-    radioButtonGroup1.add(rdbtnEnableAll);
-    radioButtonGroup1.add(rdbtnLastState);
-    radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
 }
 
 void SettingsScreenViewBase::setupScreen()
 {
-
-}
-
-void SettingsScreenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
-{
-    if (&src == &chbxMCLKON)
-    {
-        //ClickOnMasterClockOnI2S
-        //When chbxMCLKON clicked call virtual function
-        //Call ClickMasterClkOnI2S
-        ClickMasterClkOnI2S();
-    }
+    dacContainer1.initialize();
 }
 
 void SettingsScreenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
@@ -186,23 +125,5 @@ void SettingsScreenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //When btnClockSettings clicked change screen to ClockScreen
         //Go to ClockScreen with screen transition towards East
         application().gotoClockScreenScreenSlideTransitionEast();
-    }
-}
-
-void SettingsScreenViewBase::radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src)
-{
-    if (&src == &rdbtnEnableAll)
-    {
-        //SelectAllOutputAtStartUp
-        //When rdbtnEnableAll selected call virtual function
-        //Call RdbBtnSelectEnableAllOutputAtStartUp
-        RdbBtnSelectEnableAllOutputAtStartUp();
-    }
-    else if (&src == &rdbtnLastState)
-    {
-        //SelectLastStateAtStartUp
-        //When rdbtnLastState selected call virtual function
-        //Call RdbBtnSelectLastOutputStatAtStartUp
-        RdbBtnSelectLastOutputStatAtStartUp();
     }
 }

@@ -39,7 +39,7 @@ SplashScreenViewBase::SplashScreenViewBase() :
     lblCoreAudio.setLinespacing(0);
     lblCoreAudio.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PRBY));
 
-    lblDeviceName.setXY(380, 251);
+    lblDeviceName.setXY(342, 251);
     lblDeviceName.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     lblDeviceName.setLinespacing(0);
     lblDeviceName.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JVEY));

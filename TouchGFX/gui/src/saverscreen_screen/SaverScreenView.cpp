@@ -7,13 +7,14 @@ int mTickSaverCount;
 char FormatStr[10];
 char BitDepth[10];
 char Freq[12];
-int contDir = -1;
+int contDir = -1; 
 
+uint8_t  mSaverPreDacMode;
 
 #ifdef SIMULATOR
 
 time_t simSaverDateTime;
-
+static uint8_t simDACSaverMode = DacModes::DAC_DSD_256;
 
 void SaverScreenView::GuiItfGetRtc(time_t* dt)
 {
@@ -32,20 +33,19 @@ void SaverScreenView::GuiItfGetRtc(time_t* dt)
 	}
 	simSaverDateTime++;
 	*dt = simSaverDateTime;
-}
-/*** Karuna ****/
-uint8_t SaverScreenView::GuiItfGetKarunaStatus()
+} 
+
+uint8_t SaverScreenView::GuiItfGetDACActualMode()
 {
-	return 0b00100011;
+	return simDACSaverMode;
 }
 
 #else
 extern "C"
 {
 	/*** RTC ***/
-	void GuiItfGetRtc(time_t* dt);
-	/*** Karuna ****/
-	uint8_t GuiItfGetKarunaStatus();
+	void GuiItfGetRtc(time_t* dt); 
+	uint8_t GuiItfGetDACActualMode();
 }
 #endif
 
@@ -76,8 +76,7 @@ void SaverScreenView::handleTickEvent()
 	if (mTickSaverCount % 10 == 0)
 	{
 		RequestCurrentTime();
-		RefreshCurrentAudio();
-
+		RefreshCurrentAudio(); 
 	}
 
 	if (mTickSaverCount % (60) == 0)
@@ -93,14 +92,7 @@ void SaverScreenView::handleTickEvent()
 		containerInfo.moveRelative(0, contDir*1); 
 	}
 }
-
-bool SaverScreenView::ToBinary(int number, int position)
-{
-	bool ret = ((1 << position) & number) != 0;
-	return ret;
-}
-
-
+  
 void SaverScreenView::RequestCurrentTime()
 {
 	time_t dtp;
@@ -117,53 +109,51 @@ void SaverScreenView::RequestCurrentTime()
 
 void SaverScreenView::RefreshCurrentAudio()
 {
-	uint8_t  KRN_STAT = GuiItfGetKarunaStatus();
+	//Read audio format
+	uint8_t  actualDacMode = GuiItfGetDACActualMode();
+	if (actualDacMode != mSaverPreDacMode)
+	{
+		SetDSDPCM(actualDacMode);
+		//SetBitDepth(KRN_STAT);
+		SetFreq(actualDacMode); 
+	}
+	mSaverPreDacMode = actualDacMode; 
 
 	char audioFormat[LBLAUDIOFORMAT_SIZE];
-	snprintf(audioFormat, LBLAUDIOFORMAT_SIZE, "%s - %s - %s", SetDSDPCM(KRN_STAT), SetBitDepth(KRN_STAT), SetFreq(KRN_STAT));
+	snprintf(audioFormat, LBLAUDIOFORMAT_SIZE, "%s - %s", SetDSDPCM(actualDacMode), SetFreq(actualDacMode));
 
 	Unicode::UnicodeChar uniText[LBLAUDIOFORMAT_SIZE];
 	Unicode::fromUTF8((const uint8_t*)audioFormat, uniText, LBLAUDIOFORMAT_SIZE);
 	Unicode::snprintf(lblAudioFormatBuffer, LBLAUDIOFORMAT_SIZE, "%s", uniText);
 }
- 
+    
 char* SaverScreenView::SetDSDPCM(uint8_t p_AudiFormat)
-{ 
+{
 	static char format[5];
 	static char freq[5];
-
-	bool isDsd = ToBinary(p_AudiFormat, 4);
+	bool isDsd = p_AudiFormat >= DacModes::DAC_DSD_64;
 
 	if (isDsd)
-	{
-		bool isDoP = !ToBinary(p_AudiFormat, 3);
-		if (isDoP)
+	{ 		 
 		{
-			strcpy(format, "DoP");
-		}
-		else
+			strcpy(format, "DSD"); 
+		} 
+		 
+		switch (p_AudiFormat)
 		{
-			strcpy(format, "DSD");
-		}
-
-		int dsdFormat = p_AudiFormat >> 1;
-		dsdFormat = dsdFormat & 0b00000011;
-
-		switch (dsdFormat)
+		case DacModes::DAC_DSD_64:
 		{
-		case 0b10:
-		{
-			strcpy(freq, "64");
+			strcpy(freq, "64"); 
 		}break;
-		case 0b11:
-		{
+		case DacModes::DAC_DSD_128:
+		{	
 			strcpy(freq, "128");
 		}break;
-		case 0b01:
+		case DacModes::DAC_DSD_256:
 		{
 			strcpy(freq, "256");
 		}break;
-		case 0b00:
+		case DacModes::DAC_DSD_512:
 		{
 			strcpy(freq, "512");
 		}break;
@@ -174,147 +164,79 @@ char* SaverScreenView::SetDSDPCM(uint8_t p_AudiFormat)
 	}
 	else
 	{
-		strcpy(format, "PCM");
-	}
-
+		strcpy(format, "PCM"); 
+	} 
 
 	snprintf(FormatStr, 10, "%s%s", format, freq);
 
 	return FormatStr;
 }
 
-char* SaverScreenView::SetBitDepth(uint8_t p_AudiFormat)
-{
-
-	bool isDsd = ToBinary(p_AudiFormat, 4);
-
-	if (isDsd)
-	{
-		strcpy(BitDepth, "1 bit");
-	}
-	else
-	{ 
-		int BitDepthVal = p_AudiFormat >> 5;
-		BitDepthVal = BitDepthVal & 0b00000011;
-
-		switch (BitDepthVal)
-		{
-			//case 0b00:
-			//{
-			//	
-			//}break;
-		case 0b00:
-		{
-			strcpy(BitDepth, "16 bit");
-		}break;
-		case 0b01:
-		{
-			strcpy(BitDepth, "24 bit");
-		}break;
-		case 0b11:
-		{
-			strcpy(BitDepth, "32 bit");
-		}break;
-
-		default:
-		{
-			strcpy(BitDepth, "1 bit");
-		}
-			break;
-		}
-	}
-	return BitDepth;
-}
-
 char* SaverScreenView::SetFreq(uint8_t p_AudiFormat)
 {
-	bool isDsd = ToBinary(p_AudiFormat, 4);
+	strcpy(Freq, "N.a.");
 
-	strcpy(Freq, "N.A.");
-
-	if (!isDsd)
+	switch (p_AudiFormat)
 	{
-		//PCM FREQ.
-
-		int freqVal = p_AudiFormat & 0b00001111;
-
-		switch (freqVal)
-		{
-		case 0b0000:
-		{
-			strcpy(Freq, "44.1 kHz");
-		}break;
-		case 0b0001:
-		{
-			strcpy(Freq, "48 kHz");
-		}break;
-		case 0b0010:
-		{
-			strcpy(Freq, "88.2 kHz");
-		}break;
-		case 0b0011:
-		{
-			strcpy(Freq, "96 kHz");
-		}break;
-		case 0b0100:
-		{
-			strcpy(Freq, "176.4 kHz");
-		}break;
-		case 0b0101:
-		{
-			strcpy(Freq, "192 kHz");
-		}break;
-		case 0b0110:
-		{
-			strcpy(Freq, "352.8 kHz");
-		}break;
-		case 0b0111:
-		{
-			strcpy(Freq, "384 kHz");
-		}break;
-		case 0b1000:
-		{
-			strcpy(Freq, "705.6 kHz");
-		}break;
-		case 0b1001:
-		{
-			strcpy(Freq, "768 kHz");
-		}break;
-
-
-		default:
-			break;
-		}
-	}
-	else
+	case DacModes::DAC_PCM_44_1KHZ:
 	{
-		//DSD FREQ.
+		strcpy(Freq, "44.1 kHz");
+	}break;
+	case DacModes::DAC_PCM_48_0KHZ:
+	{
+		strcpy(Freq, "48 kHz");
+	}break;
+	case DacModes::DAC_PCM_88_2KHZ:
+	{
+		strcpy(Freq, "88.2 kHz");
+	}break;
+	case DacModes::DAC_PCM_96_0KHZ:
+	{
+		strcpy(Freq, "96 kHz");
+	}break;
+	case DacModes::DAC_PCM_176_4KHZ:
+	{
+		strcpy(Freq, "176.4 kHz");
+	}break;
+	case DacModes::DAC_PCM_192_KHZ:
+	{
+		strcpy(Freq, "192 kHz");
+	}break;
+	case DacModes::DAC_PCM_362_8KHZ:
+	{
+		strcpy(Freq, "352.8 kHz");
+	}break;
+	case DacModes::DAC_PCM_384_0KHZ:
+	{
+		strcpy(Freq, "384 kHz");
+	}break;
+	case DacModes::DAC_PCM_705_6KHZ:
+	{
+		strcpy(Freq, "705.6 kHz");
+	}break;
+	case DacModes::DAC_PCM_768_0KHZ:
+	{
+		strcpy(Freq, "768 kHz");
+	}break;
+	case DacModes::DAC_DSD_64:
+	{
+		strcpy(Freq, "2.8 MHz");
+	}break;
+	case DacModes::DAC_DSD_128:
+	{
+		strcpy(Freq, "5.8 MHz");
+	}break;
+	case DacModes::DAC_DSD_256:
+	{
+		strcpy(Freq, "11.2 MHz");
+	}break;
+	case DacModes::DAC_DSD_512:
+	{
+		strcpy(Freq, "22.6 MHz");
+	}break;
 
-		int freqVal = p_AudiFormat >> 1;
-		freqVal = freqVal & 0b00000011;
-
-		switch (freqVal)
-		{
-		case 0b10:
-		{
-			strcpy(Freq, "2.8 MHz");
-		}break;
-		case 0b11:
-		{
-			strcpy(Freq, "5.8 MHz");
-		}break;
-		case 0b01:
-		{
-			strcpy(Freq, "11.2 MHz");
-		}break;
-		case 0b00:
-		{
-			strcpy(Freq, "22.6 MHz");
-		}break;
-
-		default:
-			break;
-		}
+	default:
+		break;
 	}
 
 	return Freq;

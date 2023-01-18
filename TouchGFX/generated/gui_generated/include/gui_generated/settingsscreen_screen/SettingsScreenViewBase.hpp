@@ -12,11 +12,10 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/containers/ScrollableContainer.hpp>
-#include <touchgfx/widgets/RadioButton.hpp>
-#include <touchgfx/widgets/ToggleButton.hpp>
+#include <gui/containers/DacContainer.hpp>
+#include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
-#include <touchgfx/widgets/RadioButtonGroup.hpp>
 
 class SettingsScreenViewBase : public touchgfx::View<SettingsScreenPresenter>
 {
@@ -24,24 +23,6 @@ public:
     SettingsScreenViewBase();
     virtual ~SettingsScreenViewBase() {}
     virtual void setupScreen();
-
-    /*
-     * Virtual Action Handlers
-     */
-    virtual void RdbBtnSelectEnableAllOutputAtStartUp()
-    {
-        // Override and implement this function in SettingsScreen
-    }
-
-    virtual void RdbBtnSelectLastOutputStatAtStartUp()
-    {
-        // Override and implement this function in SettingsScreen
-    }
-
-    virtual void ClickMasterClkOnI2S()
-    {
-        // Override and implement this function in SettingsScreen
-    }
 
 protected:
     FrontendApplication& application() {
@@ -58,36 +39,24 @@ protected:
     touchgfx::TextArea lblTitle;
     touchgfx::BoxWithBorder boxWithBorder1;
     touchgfx::ScrollableContainer scrollableContainerSettings;
+    DacContainer dacContainer1;
+    touchgfx::Container containerClock;
     touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnClockSettings;
-    touchgfx::RadioButton rdbtnEnableAll;
-    touchgfx::TextArea lblAllOutput;
-    touchgfx::TextArea lblLastState;
-    touchgfx::ToggleButton chbxMCLKON;
-    touchgfx::RadioButton rdbtnLastState;
-    touchgfx::TextArea lblMasterClkEnable;
-    touchgfx::Line line1;
-    touchgfx::PainterRGB565 line1Painter;
-    touchgfx::TextArea lblGUITitle;
     touchgfx::Line line2;
     touchgfx::PainterRGB565 line2Painter;
     touchgfx::TextArea lblClockTitle;
-    touchgfx::RadioButtonGroup<2> radioButtonGroup1;
 
 private:
 
     /*
      * Callback Declarations
      */
-    touchgfx::Callback<SettingsScreenViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<SettingsScreenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-    touchgfx::Callback<SettingsScreenViewBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
 
     /*
      * Callback Handler Declarations
      */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
-    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
 
     /*
      * Canvas Buffer Size

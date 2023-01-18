@@ -1,11 +1,13 @@
 #include <gui/containers/UpDownContainer.hpp>
 
-int mValue;
+
  
 
 UpDownContainer::UpDownContainer()
 {
     mValue = 0;
+    MinValue = 0;
+    MaxValue = 100;
 }
 
 void UpDownContainer::initialize()
@@ -30,6 +32,14 @@ void UpDownContainer::OnBtnDownClick()
 
 void UpDownContainer::RefreshValue()
 {
+    if (mValue < MinValue)
+    {
+        mValue = MinValue;
+    }
+    if (mValue > MaxValue)
+    {
+        mValue = MaxValue;
+    }
     Unicode::snprintf(lblValueBuffer, LBLVALUE_SIZE, "%d", mValue);
     lblValue.invalidate();
 }
@@ -41,6 +51,7 @@ int UpDownContainer::GetValue()
 
 void UpDownContainer::SetValue(int value)
 {
+   
     mValue = value;
     RefreshValue();
 }

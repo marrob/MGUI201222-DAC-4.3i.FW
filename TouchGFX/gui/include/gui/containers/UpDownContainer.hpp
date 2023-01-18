@@ -5,6 +5,8 @@
 
 class UpDownContainer : public UpDownContainerBase
 {
+private:
+	int mValue;
 public:
 	UpDownContainer();
 	virtual ~UpDownContainer() {}
@@ -16,7 +18,9 @@ public:
 	 
 	int GetValue();
 	void SetValue(int value);
-
+	 
+	int MaxValue;
+	int MinValue; 
 protected:
 };
 

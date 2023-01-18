@@ -3,6 +3,7 @@
 
 #include <gui_generated/saverscreen_screen/SaverScreenViewBase.hpp>
 #include <gui/saverscreen_screen/SaverScreenPresenter.hpp>
+#include <gui/containers/DacContainer.hpp>
 
 class SaverScreenView : public SaverScreenViewBase
 {
@@ -15,9 +16,7 @@ public:
     virtual void handleTickEvent();
 
     void RequestCurrentTime();
-    void RefreshCurrentAudio();
-
-    bool  ToBinary(int number, int position);
+    void RefreshCurrentAudio(); 
 
     char* SetDSDPCM(uint8_t);
     char* SetBitDepth(uint8_t);
@@ -27,8 +26,8 @@ public:
 
     /*** RTC ***/ 
     void GuiItfGetRtc(time_t* dt);  
-    /*** Karuna ****/
-    uint8_t GuiItfGetKarunaStatus();
+    /*** DAC ****/
+    uint8_t GuiItfGetDACActualMode();
 
 #endif
 

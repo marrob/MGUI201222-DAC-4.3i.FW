@@ -8,14 +8,20 @@
 #include <mvp/View.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/ScalableImage.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/ScalableImage.hpp>
 #include <touchgfx/widgets/canvas/Circle.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
+#include <touchgfx/widgets/RadioButton.hpp>
+#include <touchgfx/containers/Slider.hpp>
+#include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/widgets/RadioButtonGroup.hpp>
+#include <touchgfx/EasingEquations.hpp>
+#include <touchgfx/mixins/MoveAnimator.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -27,22 +33,37 @@ public:
     /*
      * Virtual Action Handlers
      */
-    virtual void ToggleHDMI()
+    virtual void sldrVolumeValueChanged(int value)
     {
         // Override and implement this function in Main
     }
 
-    virtual void ToggleXLR()
+    virtual void chbxMuteChanged()
     {
         // Override and implement this function in Main
     }
 
-    virtual void ToggleBNC()
+    virtual void rdbXLRInputsSelected()
     {
         // Override and implement this function in Main
     }
 
-    virtual void ToggleRCA()
+    virtual void rdbUSBInputsSelected()
+    {
+        // Override and implement this function in Main
+    }
+
+    virtual void rdbHDMIInputsSelected()
+    {
+        // Override and implement this function in Main
+    }
+
+    virtual void rdbRCAInputsSelected()
+    {
+        // Override and implement this function in Main
+    }
+
+    virtual void rdbBNCInputsSelected()
     {
         // Override and implement this function in Main
     }
@@ -57,20 +78,21 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnHDMI;
-    touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnRCA;
-    touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnBNC;
-    touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnXLR;
-    touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnUSB;
     touchgfx::BoxWithBorder boxWithBorder1;
+    touchgfx::Container containerVolume;
+    touchgfx::ScalableImage pbxSwap;
+    touchgfx::WildcardTextButtonStyle< touchgfx::ClickButtonTrigger >  btnVolume;
+    touchgfx::TextArea lblDescVolume;
     touchgfx::Container containerFormat;
     touchgfx::TextArea lblDescFormat;
     touchgfx::TextAreaWithOneWildcard lblValueFormat;
     touchgfx::TextAreaWithOneWildcard lblDSDValue;
-    touchgfx::Container containerBitDepth;
+    touchgfx::TextArea lblDSDValue_2;
     touchgfx::Container containerFreq;
+    touchgfx::TextAreaWithOneWildcard lblSRCFreq;
     touchgfx::TextArea lblDescFreq;
     touchgfx::TextAreaWithOneWildcard lblValueFreq;
+    touchgfx::ScalableImage pbxSRCOn;
     touchgfx::BoxWithBorder box22;
     touchgfx::ScalableImage img22;
     touchgfx::BoxWithBorder box24;
@@ -90,6 +112,36 @@ protected:
     touchgfx::PainterRGB565 circTemp2Painter;
     touchgfx::Circle circTemp1;
     touchgfx::PainterRGB565 circTemp1Painter;
+    touchgfx::Container containerDACFilter;
+    touchgfx::ScalableImage pbxPhase;
+    touchgfx::ScalableImage pbxPrec;
+    touchgfx::TextArea tbxDeEmp;
+    touchgfx::ScalableImage pbxFIR;
+    touchgfx::ScalableImage pbxDeltaSigma;
+    touchgfx::ScalableImage pbxDSD;
+    touchgfx::Container containerSelectInput;
+    touchgfx::BoxWithBorder boxWithBorder4;
+    touchgfx::TextButtonStyle< touchgfx::ClickButtonTrigger >  btnHideInputs;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnSelectInput;
+    touchgfx::Box boxinput;
+    touchgfx::ScalableImage pbxInput;
+    touchgfx::MoveAnimator< touchgfx::Container > containerInputs;
+    touchgfx::BoxWithBorder boxWithBorder3;
+    touchgfx::Box bxInput;
+    touchgfx::RadioButton rdbBNC;
+    touchgfx::RadioButton rdbRCA;
+    touchgfx::RadioButton rdbHDMI;
+    touchgfx::RadioButton rdbUSB;
+    touchgfx::RadioButton rdbXLR;
+    touchgfx::MoveAnimator< touchgfx::Container > containerVolumeSet;
+    touchgfx::BoxWithBorder boxWithBorder2;
+    touchgfx::Slider sldrVolume;
+    touchgfx::TextAreaWithOneWildcard lblVolume;
+    touchgfx::ToggleButton chbxMute;
+    touchgfx::TextArea lblVolumeLevel;
+    touchgfx::TextArea lblMute;
+    touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnBackVolume;
+    touchgfx::RadioButtonGroup<5> inputs;
 
     /*
      * Wildcard Buffers
@@ -98,22 +150,44 @@ protected:
     touchgfx::Unicode::UnicodeChar lblValueFormatBuffer[LBLVALUEFORMAT_SIZE];
     static const uint16_t LBLDSDVALUE_SIZE = 10;
     touchgfx::Unicode::UnicodeChar lblDSDValueBuffer[LBLDSDVALUE_SIZE];
+    static const uint16_t LBLSRCFREQ_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar lblSRCFreqBuffer[LBLSRCFREQ_SIZE];
     static const uint16_t LBLVALUEFREQ_SIZE = 10;
     touchgfx::Unicode::UnicodeChar lblValueFreqBuffer[LBLVALUEFREQ_SIZE];
     static const uint16_t LBLDATETIME_SIZE = 25;
     touchgfx::Unicode::UnicodeChar lblDateTimeBuffer[LBLDATETIME_SIZE];
+    static const uint16_t LBLVOLUME_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar lblVolumeBuffer[LBLVOLUME_SIZE];
 
 private:
 
     /*
      * Callback Declarations
      */
+    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<MainViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<MainViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
+    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
 
     /*
      * Callback Handler Declarations
      */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
+    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
+    /*
+     * Interaction Callback Declarations
+     */
+    touchgfx::Callback < MainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > showInputsEndedCallback;
+    touchgfx::Callback < MainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > hideInputsEndedCallback;
+
+
+    /*
+     * Interaction Handlers
+     */
+    void showInputsEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp);
+    void hideInputsEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp);
 
     /*
      * Canvas Buffer Size

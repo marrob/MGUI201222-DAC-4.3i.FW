@@ -25,28 +25,27 @@ SaverScreenViewBase::SaverScreenViewBase() :
     btnShowMain.setPosition(0, 0, 800, 480);
     btnShowMain.setAction(flexButtonCallback);
 
-    containerInfo.setPosition(64, 240, 672, 101);
+    containerInfo.setPosition(64, 230, 672, 111);
 
-    lineMidle.setPosition(9, 48, 650, 15);
+    lineMidle.setPosition(10, 55, 650, 15);
     lineMidlePainter.setColor(touchgfx::Color::getColorFromRGB(150, 118, 73));
     lineMidle.setPainter(lineMidlePainter);
     lineMidle.setStart(0, 0);
     lineMidle.setEnd(960, 0);
     lineMidle.setLineWidth(2);
     lineMidle.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
-    lineMidle.setAlpha(80);
     containerInfo.add(lineMidle);
 
-    lblAudioFormat.setPosition(30, 9, 473, 46);
-    lblAudioFormat.setColor(touchgfx::Color::getColorFromRGB(32, 32, 32));
+    lblAudioFormat.setPosition(29, -6, 630, 57);
+    lblAudioFormat.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     lblAudioFormat.setLinespacing(0);
     Unicode::snprintf(lblAudioFormatBuffer, LBLAUDIOFORMAT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_KJEE).getText());
     lblAudioFormat.setWildcard(lblAudioFormatBuffer);
     lblAudioFormat.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ZBCN));
     containerInfo.add(lblAudioFormat);
 
-    lblDateTime.setPosition(120, 55, 527, 46);
-    lblDateTime.setColor(touchgfx::Color::getColorFromRGB(32, 32, 32));
+    lblDateTime.setPosition(10, 55, 637, 56);
+    lblDateTime.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     lblDateTime.setLinespacing(0);
     Unicode::snprintf(lblDateTimeBuffer, LBLDATETIME_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_KBUK).getText());
     lblDateTime.setWildcard(lblDateTimeBuffer);

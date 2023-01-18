@@ -201,8 +201,7 @@ ServiceContainer::ServiceContainer() :
 
 	uint32_t heatedTemp = GuiItfGetDasClockHeatedTemperature();
 	OffsetUpDownContainer.SetValue(heatedTemp);
-	RefresTempRanges(heatedTemp);
-
+	RefresTempRanges(heatedTemp); 
 }
 
 void ServiceContainer::OffsetValueChangedCallbackHandler(uint32_t value)

@@ -26,7 +26,7 @@
       <Text Id="__SingleUse_VB1R" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Settings&#10;</Translation>
       </Text>
-      <Text Id="__SingleUse_IO3K" Alignment="Center" TypographyId="SWText_high">
+      <Text Id="__SingleUse_IO3K" Alignment="Center" TypographyId="SWText">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_WDG2" Alignment="Center" TypographyId="Default">
@@ -37,15 +37,6 @@
       </Text>
       <Text Id="__SingleUse_YPEX" Alignment="Center" TypographyId="Value">
         <Translation Language="GB">Settings</Translation>
-      </Text>
-      <Text Id="__SingleUse_AGOP" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Enable all output at startup.</Translation>
-      </Text>
-      <Text Id="__SingleUse_9IH2" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Last output state at startup.</Translation>
-      </Text>
-      <Text Id="__SingleUse_4E2A" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Enable MasterClock Out on I2S output.</Translation>
       </Text>
       <Text Id="__SingleUse_GIYT" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Back</Translation>
@@ -81,13 +72,13 @@
         <Translation Language="GB">120 min</Translation>
       </Text>
       <Text Id="__SingleUse_4TRH" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">128</Translation>
+        <Translation Language="GB">24bit</Translation>
       </Text>
       <Text Id="__SingleUse_3FKW" Alignment="Left" TypographyId="Value">
-        <Translation Language="GB">358.2 kHz</Translation>
+        <Translation Language="GB">192 kHz</Translation>
       </Text>
       <Text Id="__SingleUse_G2P3" Alignment="Left" TypographyId="Value">
-        <Translation Language="GB">DoP</Translation>
+        <Translation Language="GB">SRC</Translation>
       </Text>
       <Text Id="__SingleUse_ONW5" Alignment="Right" TypographyId="Settings">
         <Translation Language="GB">&lt;value&gt;%</Translation>
@@ -100,6 +91,147 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_8MP9" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">User Profile</Translation>
+      </Text>
+      <Text Id="__SingleUse_5U3A" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Factory profile</Translation>
+      </Text>
+      <Text Id="__SingleUse_WKT5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Audio profiles</Translation>
+      </Text>
+      <Text Id="__SingleUse_JH90" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Enable ASRC :</Translation>
+      </Text>
+      <Text Id="__SingleUse_RUFG" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">24 bit</Translation>
+      </Text>
+      <Text Id="__SingleUse_4ETD" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">16 bit</Translation>
+      </Text>
+      <Text Id="__SingleUse_HVM1" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Output Bit Depth: </Translation>
+      </Text>
+      <Text Id="__SingleUse_NVL7" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">176.4/192 kHz</Translation>
+      </Text>
+      <Text Id="__SingleUse_7PLI" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">88.2/96 kHz</Translation>
+      </Text>
+      <Text Id="__SingleUse_OTL7" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">44.1/48 kHz</Translation>
+      </Text>
+      <Text Id="__SingleUse_EZGK" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Output Frequency : </Translation>
+      </Text>
+      <Text Id="__SingleUse_QEB5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Sampling Rate Converter</Translation>
+      </Text>
+      <Text Id="__SingleUse_QCK7" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">100</Translation>
+      </Text>
+      <Text Id="__SingleUse_HVH6" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_J09Y" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0: OFF          1: 32 kHz          2: 44.1 kHz          3: 48 kHz</Translation>
+      </Text>
+      <Text Id="__SingleUse_CGEQ" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0: 8X          1: 16X          2: 32X</Translation>
+      </Text>
+      <Text Id="__SingleUse_WPEH" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Hide Input</Translation>
+      </Text>
+      <Text Id="__SingleUse_QH1M" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">192 kHz</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZIQ7" Alignment="Right" TypographyId="SWText">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_TVNE" Alignment="Left" TypographyId="SWText">
+        <Translation Language="GB">SRC</Translation>
+      </Text>
+      <Text Id="__SingleUse_HIE3" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Select Input</Translation>
+      </Text>
+      <Text Id="__SingleUse_B3K6" Alignment="Center" TypographyId="Settings">
+        <Translation Language="GB">Back</Translation>
+      </Text>
+      <Text Id="__SingleUse_HTO2" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Mute : </Translation>
+      </Text>
+      <Text Id="__SingleUse_ZAYX" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Volume Level : </Translation>
+      </Text>
+      <Text Id="__SingleUse_DRWF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Volume</Translation>
+      </Text>
+      <Text Id="__SingleUse_5WVY" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Mute : </Translation>
+      </Text>
+      <Text Id="__SingleUse_8F58" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Volume Level : </Translation>
+      </Text>
+      <Text Id="__SingleUse_2A2C" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">100</Translation>
+      </Text>
+      <Text Id="__SingleUse_CCHA" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">&lt;value&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_S2EB" Alignment="Left" TypographyId="Desc">
+        <Translation Language="GB">VOLUME</Translation>
+      </Text>
+      <Text Id="__SingleUse_9TVO" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">De-Emp</Translation>
+      </Text>
+      <Text Id="__SingleUse_76VX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">100</Translation>
+      </Text>
+      <Text Id="__SingleUse_BNG5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">100</Translation>
+      </Text>
+      <Text Id="__SingleUse_UAA6" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">95</Translation>
+      </Text>
+      <Text Id="__SingleUse_9CVP" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_CBB4" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">0: OFF          1: Sharp Roll-Off          2:Slow Roll-Off</Translation>
+      </Text>
+      <Text Id="__SingleUse_UEM5" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Delta Sigma Settings [0..2] : </Translation>
+      </Text>
+      <Text Id="__SingleUse_4A5B" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">De-Emphisis Filter [0..3] :</Translation>
+      </Text>
+      <Text Id="__SingleUse_A6Y0" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">FIR Filter [0..2] :</Translation>
+      </Text>
+      <Text Id="__SingleUse_GVR4" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">High Precision mode : </Translation>
+      </Text>
+      <Text Id="__SingleUse_46CJ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">PCM</Translation>
+      </Text>
+      <Text Id="__SingleUse_GO88" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">DSD Cut Off Frequency [0..2] : </Translation>
+      </Text>
+      <Text Id="__SingleUse_D1OG" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">DSD</Translation>
+      </Text>
+      <Text Id="__SingleUse_9T0G" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Phase Adjustment: </Translation>
+      </Text>
+      <Text Id="__SingleUse_CBHE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Performance</Translation>
+      </Text>
+      <Text Id="__SingleUse_12IE" Alignment="Left" TypographyId="Settings">
+        <Translation Language="GB">Swap LR channel : </Translation>
+      </Text>
+      <Text Id="__SingleUse_7IGM" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Channel</Translation>
+      </Text>
       <Text Id="__SingleUse_KZHU" Alignment="Left" TypographyId="Settings">
         <Translation Language="GB">Unknown</Translation>
       </Text>
@@ -262,14 +394,14 @@
       <Text Id="__SingleUse_KBUK" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">21.06.2022 20:35</Translation>
       </Text>
-      <Text Id="__SingleUse_58MF" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_58MF" Alignment="Right" TypographyId="Value">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_ZBCN" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_ZBCN" Alignment="Left" TypographyId="Value">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_JVEY" Alignment="Right" TypographyId="Value">
-        <Translation Language="GB">Karuna Atlantis</Translation>
+        <Translation Language="GB">Denpo Reference</Translation>
       </Text>
       <Text Id="__SingleUse_PRBY" Alignment="Left" TypographyId="Value">
         <Translation Language="GB">CORE AUDIO</Translation>
@@ -412,7 +544,7 @@
       <Text Id="__SingleUse_GJVC" Alignment="Left" TypographyId="SWText">
         <Translation Language="GB">01.01.2022 00:00</Translation>
       </Text>
-      <Text Id="__SingleUse_HGJP" Alignment="Center" TypographyId="Desc">
+      <Text Id="__SingleUse_HGJP" Alignment="Right" TypographyId="Desc">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_LJNE" Alignment="Center" TypographyId="Value">
@@ -474,9 +606,6 @@
       </Text>
       <Text Id="__SingleUse_FGW4" Alignment="Center" TypographyId="SWText">
         <Translation Language="GB">&lt;val&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_VP13" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Karuna</Translation>
       </Text>
       <Text Id="__SingleUse_PMC0" Alignment="Left" TypographyId="Typography_00">
         <Translation Language="GB">0</Translation>
@@ -543,11 +672,11 @@
   <Typographies>
     <Typography Id="Default" Font="Asap-Regular.ttf" Size="25" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@" WildcardCharacterRanges="0-9,a-z,A-Z" />
     <Typography Id="Desc" Font="micross.ttf" Size="25" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@, &lt;,&gt;," WildcardCharacterRanges="0-9,a-z,A-Z" />
-    <Typography Id="Value" Font="micross.ttf" Size="52" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="Value" Font="micross.ttf" Size="52" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@, &lt;,&gt;," WildcardCharacterRanges="0-9,a-z,A-Z" />
     <Typography Id="Settings" Font="corbell.ttf" Size="30" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters=":" WildcardCharacterRanges="0-9,a-z,A-Z" />
     <Typography Id="Typography_00" Font="consola.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="SWText_high" Font="arialbd.ttf" Size="32" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
-    <Typography Id="SWText" Font="arial.ttf" Size="28" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters=":,.,-" WildcardCharacterRanges="0-9" />
+    <Typography Id="SWText_high" Font="arialbd.ttf" Size="32" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@, ," WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="SWText" Font="arial.ttf" Size="28" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@, &lt;,&gt;,/," WildcardCharacterRanges="0-9,a-z,A-Z" />
     <Typography Id="Small" Font="micross.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,_,:,.,[,],(,),@, &lt;,&gt;," WildcardCharacterRanges="0-9,a-z,A-Z" />
   </Typographies>
 </TextDatabase>

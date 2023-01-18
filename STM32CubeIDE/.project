@@ -439,6 +439,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/DIContainer.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/gui/DacContainer.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/DacContainer.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/gui/ScrollElment.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/gui/src/containers/ScrollElment.cpp</locationURI>
@@ -729,6 +734,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/DIContainerBase.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/DacContainerBase.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/DacContainerBase.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/ScrollElmentBase.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/gui_generated/src/containers/ScrollElmentBase.cpp</locationURI>
@@ -874,9 +884,39 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_DISPLAY.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_DSDOFF.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_DSDOFF.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_DSDOn.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_DSDOn.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_Dark_Icons_Info_48.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Dark_Icons_Info_48.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_DeltaSigmaOff.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_DeltaSigmaOff.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_DeltaSigmaOn.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_DeltaSigmaOn.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_FIROFF.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_FIROFF.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_FIROn.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_FIROn.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_GoBack.cpp</name>
@@ -892,6 +932,21 @@
 			<name>Application/User/generated/image_HDMI_80x80_s.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_HDMI_80x80_s.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_HighPrecOff.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_HighPrecOff.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_HighPrecOn.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_HighPrecOn.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Inputs.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Inputs.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_Log.cpp</name>
@@ -914,6 +969,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_ON_44x44.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_PhaseOFF.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_PhaseOFF.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_PhaseOn.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_PhaseOn.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_RCA_80x80_fb.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_RCA_80x80_fb.cpp</locationURI>
@@ -924,6 +989,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_RCA_80x80_s.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_RightSrc.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_RightSrc.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_Settings.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Settings.cpp</locationURI>
@@ -932,6 +1002,16 @@
 			<name>Application/User/generated/image_Slider_930.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Slider_930.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_SwapON.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_SwapON.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_SwapOff.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_SwapOff.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_USB_80x80_fb.cpp</name>
