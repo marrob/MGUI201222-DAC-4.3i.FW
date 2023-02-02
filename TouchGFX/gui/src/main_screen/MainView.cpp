@@ -5,6 +5,7 @@
 #include <time.h> 
 #include <gui/containers/DacContainer.hpp>
 
+
 time_t saverDateTime;
 
 #ifdef SIMULATOR
@@ -12,7 +13,7 @@ time_t saverDateTime;
 //Sumlated Time
 time_t simMainDateTime;
 
-static uint8_t simDACMode = DacModes::DAC_PCM_384_0KHZ;
+static uint8_t simDACMode = DacConfig::DAC_PCM_384_0KHZ;
 
 /*** Time ***/
 
@@ -100,17 +101,17 @@ void MainView::GuiItfSetDasClockHeatedTemperature(uint32_t temp)
 
 /*** DAC Config, Volume ***/
 
-uint8_t MainView::GuiItfGetDACActualMode()
+uint8_t MainView::GuiItfGetConfig()
 {
 	return simDACMode;
 }
 
-uint8_t MainView::GuiItfGetDACActualRoute()
+uint8_t MainView::GuiItfGetRoute()
 {
 	return DacContainer::simDACRoute;
 }
 
-void MainView::GuiItfSetDACActualRoute(uint8_t p_Route)
+void MainView::GuiItfSetRoute(uint8_t p_Route)
 {
 	DacContainer::simDACRoute = p_Route;
 }
@@ -185,9 +186,9 @@ extern "C"
 #endif
 
 	/*** DAC Config, Volume ***/
-	uint8_t GuiItfGetDACActualMode();
-	uint8_t GuiItfGetDACActualRoute();
-	void GuiItfSetDACActualRoute(uint8_t p_Route);
+	uint8_t GuiItfGetConfig();
+	uint8_t GuiItfGetRoute();
+	void GuiItfSetRoute(uint8_t p_Route);
 
 	void GuiItfSetVolume(uint8_t p_Volume);
 	uint8_t GuiItfGetVolume();
@@ -257,35 +258,35 @@ void MainView::rdbXLRInputsSelected()
 {
 	bxInput.moveTo(rdbXLR.getX(), rdbXLR.getY());
 	if (!mOnlyRefreshInputUI)
-		GuiItfSetDACActualRoute(DACRoute::ROUTE_XLR_DAC);
+		GuiItfSetRoute(DacRoute::ROUTE_XLR_DAC);
 }
 
 void MainView::rdbUSBInputsSelected()
 {
 	bxInput.moveTo(rdbUSB.getX(), rdbUSB.getY());
 	if (!mOnlyRefreshInputUI)
-		GuiItfSetDACActualRoute(DACRoute::ROUTE_USB_DAC);
+		GuiItfSetRoute(DacRoute::ROUTE_USB_DAC);
 }
 
 void MainView::rdbHDMIInputsSelected()
 {
 	bxInput.moveTo(rdbHDMI.getX(), rdbHDMI.getY());
 	if (!mOnlyRefreshInputUI)
-		GuiItfSetDACActualRoute(DACRoute::ROUTE_HDMI_DAC);
+		GuiItfSetRoute(DacRoute::ROUTE_HDMI_DAC);
 }
 
 void MainView::rdbRCAInputsSelected()
 {
 	bxInput.moveTo(rdbRCA.getX(), rdbRCA.getY());
 	if (!mOnlyRefreshInputUI)
-		GuiItfSetDACActualRoute(DACRoute::ROUTE_RCA_DAC);
+		GuiItfSetRoute(DacRoute::ROUTE_RCA_DAC);
 }
 
 void MainView::rdbBNCInputsSelected()
 {
 	bxInput.moveTo(rdbBNC.getX(), rdbXLR.getY());
 	if (!mOnlyRefreshInputUI)
-		GuiItfSetDACActualRoute(DACRoute::ROUTE_BNC_DAC);
+		GuiItfSetRoute(DacRoute::ROUTE_BNC_DAC);
 }
 
 // CLOCK PROPS
@@ -374,15 +375,15 @@ void MainView::PaintDot(colortype p_Dot1, colortype p_Dot2, colortype p_Dot3)
 
 void MainView::RefreshSRCInfo(uint8_t p_AudiFormat)
 {
-	if (p_AudiFormat < DacModes::DAC_DSD_64)
+	if (p_AudiFormat < DacConfig::DAC_DSD_64)
 	{
 		bool isSRCEnabled = GuiItfGetSRCEnabled() &&
-			(p_AudiFormat == DacModes::DAC_PCM_44_1KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_88_2KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_176_4KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_48_0KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_96_0KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_192_KHZ);
+			(p_AudiFormat == DacConfig::DAC_PCM_44_1KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_88_2KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_176_4KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_48_0KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_96_0KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_192_KHZ);
 
 		if (isSRCEnabled)
 		{
@@ -406,9 +407,9 @@ void MainView::RefreshSRCInfo(uint8_t p_AudiFormat)
 
 			uint8_t srcFreq = GuiItfGetSRCFreq();
 
-			if (p_AudiFormat == DacModes::DAC_PCM_44_1KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_88_2KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_176_4KHZ)
+			if (p_AudiFormat == DacConfig::DAC_PCM_44_1KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_88_2KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_176_4KHZ)
 			{
 				switch (srcFreq)
 				{
@@ -431,9 +432,9 @@ void MainView::RefreshSRCInfo(uint8_t p_AudiFormat)
 					break;
 				}
 			}
-			else if (p_AudiFormat == DacModes::DAC_PCM_48_0KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_96_0KHZ ||
-				p_AudiFormat == DacModes::DAC_PCM_192_KHZ)
+			else if (p_AudiFormat == DacConfig::DAC_PCM_48_0KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_96_0KHZ ||
+				p_AudiFormat == DacConfig::DAC_PCM_192_KHZ)
 			{
 				switch (srcFreq)
 				{
@@ -476,7 +477,7 @@ void MainView::RefreshSRCInfo(uint8_t p_AudiFormat)
 
 void  MainView::SetDSDPCM(int p_AudiFormat)
 {
-	bool isDsd = p_AudiFormat >= DacModes::DAC_DSD_64;
+	bool isDsd = p_AudiFormat >= DacConfig::DAC_DSD_64;
 
 	if (isDsd)
 	{
@@ -497,19 +498,19 @@ void  MainView::SetDSDPCM(int p_AudiFormat)
 
 		switch (p_AudiFormat)
 		{
-		case DacModes::DAC_DSD_64:
+		case DAC_DSD_64:
 		{
 			Unicode::strncpy(lblDSDValueBuffer, "64", LBLDSDVALUE_SIZE);
 		}break;
-		case DacModes::DAC_DSD_128:
+		case DAC_DSD_128:
 		{
 			Unicode::strncpy(lblDSDValueBuffer, "128", LBLDSDVALUE_SIZE);
 		}break;
-		case DacModes::DAC_DSD_256:
+		case DAC_DSD_256:
 		{
 			Unicode::strncpy(lblDSDValueBuffer, "256", LBLDSDVALUE_SIZE);
 		}break;
-		case DacModes::DAC_DSD_512:
+		case DAC_DSD_512:
 		{
 			Unicode::strncpy(lblDSDValueBuffer, "512", LBLDSDVALUE_SIZE);
 		}break;
@@ -538,59 +539,59 @@ void  MainView::SetFreq(int p_AudiFormat)
 
 	switch (p_AudiFormat)
 	{
-	case DacModes::DAC_PCM_44_1KHZ:
+	case DAC_PCM_44_1KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "44.1 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_48_0KHZ:
+	case DAC_PCM_48_0KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "48 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_88_2KHZ:
+	case DAC_PCM_88_2KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "88.2 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_96_0KHZ:
+	case DAC_PCM_96_0KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "96 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_176_4KHZ:
+	case DAC_PCM_176_4KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "176.4 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_192_KHZ:
+	case DAC_PCM_192_KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "192 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_362_8KHZ:
+	case DAC_PCM_362_8KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "352.8 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_384_0KHZ:
+	case DAC_PCM_384_0KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "384 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_705_6KHZ:
+	case DAC_PCM_705_6KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "705.6 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_PCM_768_0KHZ:
+	case DAC_PCM_768_0KHZ:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "768 kHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_DSD_64:
+	case DAC_DSD_64:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "2.8 MHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_DSD_128:
+	case DAC_DSD_128:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "5.8 MHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_DSD_256:
+	case DAC_DSD_256:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "11.2 MHz", LBLVALUEFREQ_SIZE);
 	}break;
-	case DacModes::DAC_DSD_512:
+	case DAC_DSD_512:
 	{
 		Unicode::strncpy(lblValueFreqBuffer, "22.6 MHz", LBLVALUEFREQ_SIZE);
 	}break;
@@ -607,6 +608,7 @@ void  MainView::SetFreq(int p_AudiFormat)
 void MainView::SetInput(int actualDacRoute)
 {
 	mOnlyRefreshInputUI = true;
+
 	switch (actualDacRoute)
 	{
 	case ROUTE_NONE_DAC:
@@ -684,7 +686,6 @@ void MainView::SetInput(int actualDacRoute)
 	default:
 		break;
 	}
-
 	pbxInput.invalidate();
 	mOnlyRefreshInputUI = false;
 }
@@ -753,7 +754,7 @@ void MainView::handleTickEvent()
 void MainView::RefreshUI()
 {
 	//Read audio format
-	uint8_t  actualDacMode = GuiItfGetDACActualMode();
+	uint8_t  actualDacMode = GuiItfGetConfig();
 	if (actualDacMode != mPreDacMode)
 	{
 		SetDSDPCM(actualDacMode);
@@ -780,7 +781,7 @@ void MainView::RefreshUI()
 	btnVolume.invalidate();
 
 	//Read Inut
-	uint8_t  actualDacRoute = GuiItfGetDACActualRoute();
+	uint8_t  actualDacRoute = GuiItfGetRoute();
 	if (mPreDacRoute != actualDacRoute)
 	{
 		SetInput(actualDacRoute);

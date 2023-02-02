@@ -16,13 +16,20 @@
 #define EEP_MAGICWORD_ADDR                  0x0000
 #define EPP_BOOTUP_CNT_ADDR                 0x0004
 #define EEP_BACKLIGHT_ADDR                  0x0008
+
+
 #define EEP_KARUNA_SAVED_DO_ADDR            0x000C
+
 #define EEP_RTC_IS_SET_ADDR                 0x0010
 #define EEP_LOG_LAST_PAGE_ADDR              0x0014
 #define EEP_KARUNA_SAVED_FLAGS_ADDR         0x0018
 #define EEP_BACKLIGHT_OFFTIMER_ENABLED_ADDR 0x0030
 #define EEP_SCREENSAVER_ENABLED_ADDR        0x0034
 #define EEP_DASCLOCK_HEATED_TEMP            0x0038
+
+
+#define EEP_DENPO_DAC_LASTROUTE_ADDR            1;
+#define EEP_DENPO_DAC_SRC_ENABLED_ADDR          2;
 
 #define MAGIC_WORD                          0x55AA55AA
 
@@ -58,19 +65,19 @@ uint8_t GuiItfLoad(void)
 
     /*** Karuna ***/
     EepromU32Read(EEP_KARUNA_SAVED_FLAGS_ADDR, &value);
-    Device.Karuna.SavedFlags = value;
+    Device.DenpoDAC.SavedFlags = value;
 
-    if(Device.Karuna.SavedFlags & KRN_FLAG_MSTR_CLK_ON_I2S_EN)
-      Device.Karuna.DO |= KRN_DO_MCLK_I2S_EN;
+    if(Device.DenpoDAC.SavedFlags & KRN_FLAG_MSTR_CLK_ON_I2S_EN)
+      Device.DenpoDAC.DO |= KRN_DO_MCLK_I2S_EN;
     else
-      Device.Karuna.DO &= ~KRN_DO_MCLK_I2S_EN;
+      Device.DenpoDAC.DO &= ~KRN_DO_MCLK_I2S_EN;
 
-    if(Device.Karuna.SavedFlags & KRN_FLAG_ALL_OUT_EN_AT_STARTUP)
-      Device.Karuna.DO = KRN_DO_RCA_EN | KRN_DO_BNC_EN | KRN_DO_XLR_EN | KRN_DO_I2S_EN;
+    if(Device.DenpoDAC.SavedFlags & KRN_FLAG_ALL_OUT_EN_AT_STARTUP)
+      Device.DenpoDAC.DO = KRN_DO_RCA_EN | KRN_DO_BNC_EN | KRN_DO_XLR_EN | KRN_DO_I2S_EN;
     else
     {
       EepromU32Read(EEP_KARUNA_SAVED_DO_ADDR, &value);
-      Device.Karuna.DO = value;
+      Device.DenpoDAC.DO = value;
     }
 
     /*** Log ***/
@@ -111,11 +118,11 @@ uint8_t GuiItfSetDefault(void)
   /*** Karuna ***/
   value = KRN_DO_RCA_EN | KRN_DO_BNC_EN | KRN_DO_XLR_EN | KRN_DO_I2S_EN;
   EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, value);
-  Device.Karuna.DO = value;
+  Device.DenpoDAC.DO = value;
 
   value = KRN_FLAG_ALL_OUT_EN_AT_STARTUP;
   EepromU32Write(EEP_KARUNA_SAVED_FLAGS_ADDR, value);
-  Device.Karuna.SavedFlags = value;
+  Device.DenpoDAC.SavedFlags = value;
 
   /*** RTC ***/
   value = 0x01;
@@ -425,29 +432,29 @@ uint8_t GuiItfGetDi15(void)
  */
 uint8_t GuiItfGetKarunaVersion(char **fw, char **uid, char **pcb)
 {
-  *fw = Device.Karuna.FW;
-  *uid = Device.Karuna.UID;
-  *pcb = Device.Karuna.PCB;
+  *fw = Device.DenpoDAC.FW;
+  *uid = Device.DenpoDAC.UID;
+  *pcb = Device.DenpoDAC.PCB;
   return GUIITF_OK;
 }
 
 uint32_t GuiItfGetKarunaUptimeCnt(void)
 {
-  return Device.Karuna.UpTimeSec;
+  return Device.DenpoDAC.UpTimeSec;
 }
 
 uint8_t GuiItfGetKarunaStatus(void)
 {
-  return Device.Karuna.DI;
+  return Device.DenpoDAC.DI;
 }
 
 void GuiItfSetKarunaHdmi(uint8_t onoff)
 {
   if(onoff)
-    Device.Karuna.DO |= KRN_DO_I2S_EN;
+    Device.DenpoDAC.DO |= KRN_DO_I2S_EN;
   else
-    Device.Karuna.DO &= ~KRN_DO_I2S_EN;
-  EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, Device.Karuna.DO);
+    Device.DenpoDAC.DO &= ~KRN_DO_I2S_EN;
+  EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, Device.DenpoDAC.DO);
 
   if(onoff)
     LogWriteLine("GuiItfSetKarunaHdmi: On");
@@ -457,17 +464,17 @@ void GuiItfSetKarunaHdmi(uint8_t onoff)
 
 uint8_t GuitIfGetKarunaIsHdmiSet(void)
 {
-  return (Device.Karuna.DI & KRN_DI_I2S) == KRN_DI_I2S;
+  return (Device.DenpoDAC.DI & DENPO_DAC_DI_UNUSED7) == DENPO_DAC_DI_UNUSED7;
 }
 
 void GuiItfSetKarunaRca(uint8_t onoff)
 {
   if(onoff)
-    Device.Karuna.DO |= KRN_DO_RCA_EN;
+    Device.DenpoDAC.DO |= KRN_DO_RCA_EN;
   else
-    Device.Karuna.DO &= ~KRN_DO_RCA_EN;
+    Device.DenpoDAC.DO &= ~KRN_DO_RCA_EN;
 
-  EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, Device.Karuna.DO);
+  EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, Device.DenpoDAC.DO);
 
   if(onoff)
     LogWriteLine("GuiItfSetKarunaRca: On");
@@ -477,17 +484,17 @@ void GuiItfSetKarunaRca(uint8_t onoff)
 
 uint8_t GuitIfGetKarunaIsRcaSet(void)
 {
-  return (Device.Karuna.DI & KRN_DI_RCA) == KRN_DI_RCA;
+  return (Device.DenpoDAC.DI & DENPO_DAC_DI_UNUSED4) == DENPO_DAC_DI_UNUSED4;
 }
 
 void GuiItfSetKarunaBnc(uint8_t onoff)
 {
   if(onoff)
-    Device.Karuna.DO |= (KRN_DO_BNC_EN);
+    Device.DenpoDAC.DO |= (KRN_DO_BNC_EN);
   else
-    Device.Karuna.DO &= ~KRN_DO_BNC_EN;
+    Device.DenpoDAC.DO &= ~KRN_DO_BNC_EN;
 
-  EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, Device.Karuna.DO);
+  EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, Device.DenpoDAC.DO);
 
   if(onoff)
     LogWriteLine("GuiItfSetKarunaBnc: On");
@@ -497,17 +504,17 @@ void GuiItfSetKarunaBnc(uint8_t onoff)
 
 uint8_t GuitIfGetKarunaIsBncSet(void)
 {
-  return (Device.Karuna.DI & KRN_DI_BNC) == KRN_DI_BNC;
+  return (Device.DenpoDAC.DI & DENPO_DAC_DI_UNUSED5) == DENPO_DAC_DI_UNUSED5;
 }
 
 void GuiItfSetKarunaXlr(uint8_t onoff)
 {
   if(onoff)
-    Device.Karuna.DO |= KRN_DO_XLR_EN;
+    Device.DenpoDAC.DO |= KRN_DO_XLR_EN;
   else
-    Device.Karuna.DO &= ~KRN_DO_XLR_EN;
+    Device.DenpoDAC.DO &= ~KRN_DO_XLR_EN;
 
-  EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, Device.Karuna.DO);
+  EepromU32Write(EEP_KARUNA_SAVED_DO_ADDR, Device.DenpoDAC.DO);
 
   if(onoff)
     LogWriteLine("GuiItfSetKarunaXlr: On");
@@ -517,22 +524,22 @@ void GuiItfSetKarunaXlr(uint8_t onoff)
 
 uint8_t GuitIfGetKarunaIsXlrSet()
 {
-  return (Device.Karuna.DI & KRN_DI_XLR) == KRN_DI_XLR;
+  return (Device.DenpoDAC.DI & DENPO_DAC_DI_UNUSED6) == DENPO_DAC_DI_UNUSED6;
 }
 
 uint8_t GuiItfGetKarunaOutputsAllEnabledAfterStart(void)
 {
-  return (Device.Karuna.SavedFlags & KRN_FLAG_ALL_OUT_EN_AT_STARTUP) == KRN_FLAG_ALL_OUT_EN_AT_STARTUP;
+  return (Device.DenpoDAC.SavedFlags & KRN_FLAG_ALL_OUT_EN_AT_STARTUP) == KRN_FLAG_ALL_OUT_EN_AT_STARTUP;
 }
 
 void GuiItfSetKarunaOutputsAllEnabledAfterStart(uint8_t onoff)
 {
   if(onoff)
-    Device.Karuna.SavedFlags |= KRN_FLAG_ALL_OUT_EN_AT_STARTUP;
+    Device.DenpoDAC.SavedFlags |= KRN_FLAG_ALL_OUT_EN_AT_STARTUP;
   else
-    Device.Karuna.SavedFlags &= ~KRN_FLAG_ALL_OUT_EN_AT_STARTUP;
+    Device.DenpoDAC.SavedFlags &= ~KRN_FLAG_ALL_OUT_EN_AT_STARTUP;
 
-  EepromU32Write(EEP_KARUNA_SAVED_FLAGS_ADDR, Device.Karuna.SavedFlags);
+  EepromU32Write(EEP_KARUNA_SAVED_FLAGS_ADDR, Device.DenpoDAC.SavedFlags);
 
   if(onoff)
     LogWriteLine("GuiItfSetKarunaOutputsAllEnabledAfterStart: On");
@@ -544,15 +551,15 @@ void GuiItfSetKarunaMasterClkOnI2S(uint8_t onoff)
 {
   if(onoff)
   {
-    Device.Karuna.DO |= KRN_DO_MCLK_I2S_EN;
-    Device.Karuna.SavedFlags |= KRN_FLAG_MSTR_CLK_ON_I2S_EN;
+    Device.DenpoDAC.DO |= KRN_DO_MCLK_I2S_EN;
+    Device.DenpoDAC.SavedFlags |= KRN_FLAG_MSTR_CLK_ON_I2S_EN;
   }
   else
   {
-    Device.Karuna.DO &= ~KRN_DO_MCLK_I2S_EN;
-    Device.Karuna.SavedFlags &= ~KRN_FLAG_MSTR_CLK_ON_I2S_EN;
+    Device.DenpoDAC.DO &= ~KRN_DO_MCLK_I2S_EN;
+    Device.DenpoDAC.SavedFlags &= ~KRN_FLAG_MSTR_CLK_ON_I2S_EN;
   }
-  EepromU32Write(EEP_KARUNA_SAVED_FLAGS_ADDR, Device.Karuna.SavedFlags);
+  EepromU32Write(EEP_KARUNA_SAVED_FLAGS_ADDR, Device.DenpoDAC.SavedFlags);
 
   if(onoff)
     LogWriteLine("GuiItfSetKarunaMasterClkOnI2S: On");
@@ -562,12 +569,12 @@ void GuiItfSetKarunaMasterClkOnI2S(uint8_t onoff)
 
 uint8_t GuiItfGetKarunaMasterClkOnI2SIsEnabled(void)
 {
-  return (Device.Karuna.SavedFlags & KRN_FLAG_MSTR_CLK_ON_I2S_EN) == KRN_FLAG_MSTR_CLK_ON_I2S_EN;
+  return (Device.DenpoDAC.SavedFlags & KRN_FLAG_MSTR_CLK_ON_I2S_EN) == KRN_FLAG_MSTR_CLK_ON_I2S_EN;
 }
 
 uint32_t GuiItfGetKarunaUartErrorCnt(void)
 {
-  return Device.Karuna.UartErrorCnt;
+  return Device.DenpoDAC.UartErrorCnt;
 }
 
 uint8_t GuiItfGetBacklightIsEnabled(void)
@@ -577,7 +584,7 @@ uint8_t GuiItfGetBacklightIsEnabled(void)
 
 uint8_t GuiItfGetKarunaMclkOutIsEanbled(void)
 {
-  return (Device.Karuna.DI & KRN_DI_MCLK_OUT) == KRN_DI_MCLK_OUT;
+  return (Device.DenpoDAC.DI & DENPO_DAC_DI_UNUSED9) == DENPO_DAC_DI_UNUSED9;
 }
 
 /* DasClock -----------------------------------------------------------------*/
@@ -804,15 +811,14 @@ void GuiItfSaveDacFilters(void)
 /*Volume ---------------------------------------------------------------------*/
 void GuiItfSetVolume(uint8_t value)
 {
-
+  Device.DenpoDAC.Volume1 = value;
+  Device.DenpoDAC.Volume2 = value;
 }
 
 uint8_t GuiItfGetVolume(void)
 {
-
-  return 0;
+  return (Device.DenpoDAC.StatusOfVolume1 + Device.DenpoDAC.StatusOfVolume2)/2;
 }
-
 
 /*SRC ------------------------------------------------------------------------*/
 
@@ -848,36 +854,41 @@ void GuiItfSetSRCEnabled(int value)
 
 }
 
-void GuiItfSetDACActualRoute(int value)
-{
-
-}
-
 
 /*Mute -----------------------------------------------------------------------*/
 void GuiItfSetMute(int value)
 {
-
+  static Route_t lastRoute = ROUTE_MUTE_DAC;
+  if(value != 0){
+    lastRoute = Device.DenpoDAC.StatusOfRoute;
+    Device.DenpoDAC.Route = ROUTE_MUTE_DAC;
+  }
+  else {
+    if(lastRoute != ROUTE_MUTE_DAC)
+      Device.DenpoDAC.Route = lastRoute;
+  }
 }
 
 uint8_t GuiItfGetMute(void)
 {
-
-  return 0;
+  return (ROUTE_MUTE_DAC == Device.DenpoDAC.StatusOfRoute);
 }
 
 /*Route ----------------------------------------------------------------------*/
-uint8_t GuiItfGetDACActualRoute(void)
+uint8_t GuiItfGetRoute(void)
 {
-
-  return 0;
+  return Device.DenpoDAC.StatusOfRoute;
 }
 
-
-uint8_t GuiItfGetDACActualMode(void)
+void GuiItfSetRoute(int value)
 {
+  Device.DenpoDAC.Route = value;
+}
 
-  return 0;
+/*Route ----------------------------------------------------------------------*/
+uint8_t GuiItfGetConfig(void)
+{
+  return Device.DenpoDAC.StatusOfConfig;
 }
 
 

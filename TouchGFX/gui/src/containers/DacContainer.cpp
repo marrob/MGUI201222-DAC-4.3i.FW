@@ -130,12 +130,12 @@ uint8_t DacContainer::GuiItfGetSRCBit()
 
 
 
-uint8_t DacContainer::GuiItfGetDACActualRoute()
+uint8_t DacContainer::GuiItfGetRoute()
 {
 	return simDACRoute;
 }
 
-void DacContainer::GuiItfSetDACActualRoute(uint8_t p_Route)
+void DacContainer::GuiItfSetRoute(uint8_t p_Route)
 {
 	simDACRoute = p_Route;
 }
@@ -161,8 +161,9 @@ extern "C"
 	void  GuiItfSetSRCBit(uint8_t p_Bit);
 	uint8_t  GuiItfGetSRCBit();
 
-	uint8_t GuiItfGetDACActualRoute();
-	void GuiItfSetDACActualRoute(uint8_t p_Route);
+	uint8_t GuiItfGetRoute();
+	void GuiItfSetRoute(uint8_t p_Route);
+
 }
 #endif
 
@@ -190,16 +191,16 @@ void DacContainer::ShowDacConfigs()
 	CurrentDacConfigArray = GuiItfGetDacFilters();
 
 	//LrSwap: Audio Data Swap Control
-	uint8_t	swap = CurrentDacConfigArray[DacModes::DAC_PCM_96_0KHZ][DacConfigBytes::AudioIF3];
+	uint8_t	swap = CurrentDacConfigArray[DacConfig::DAC_PCM_96_0KHZ][DacConfigBytes::AudioIF3];
 	chbxSwap.forceState(swap == 1);
 
 	//PhaseAdj: Phase Adjustment Control for Internal Clock
-	uint8_t	phaseAdj = CurrentDacConfigArray[DacModes::DAC_PCM_96_0KHZ][DacConfigBytes::Clock2];
+	uint8_t	phaseAdj = CurrentDacConfigArray[DacConfig::DAC_PCM_96_0KHZ][DacConfigBytes::Clock2];
 	chbxPhase.forceState(phaseAdj == 1);
 
 	//Sampling Frequency  for De-Emphasis (For PCM mode)
-	uint8_t	deemp1 = CurrentDacConfigArray[DacModes::DAC_PCM_96_0KHZ][DacConfigBytes::DeEmp1];
-	uint8_t	deempEnabled = CurrentDacConfigArray[DacModes::DAC_PCM_96_0KHZ][DacConfigBytes::DeEmp2];
+	uint8_t	deemp1 = CurrentDacConfigArray[DacConfig::DAC_PCM_96_0KHZ][DacConfigBytes::DeEmp1];
+	uint8_t	deempEnabled = CurrentDacConfigArray[DacConfig::DAC_PCM_96_0KHZ][DacConfigBytes::DeEmp2];
 	if (deempEnabled == 0)
 	{
 		nudDeEnp.SetValue(0);
@@ -210,7 +211,7 @@ void DacContainer::ShowDacConfigs()
 	}
 
 	// Oversampling Rate Selection for delta-sigma Modulator
-	uint8_t	deltaSigma = CurrentDacConfigArray[DacModes::DAC_PCM_96_0KHZ][DacConfigBytes::DeltaSigma];
+	uint8_t	deltaSigma = CurrentDacConfigArray[DacConfig::DAC_PCM_96_0KHZ][DacConfigBytes::DeltaSigma];
 	if (deltaSigma == 0)
 	{
 		nudDeltaSigma.SetValue(0);
@@ -222,8 +223,8 @@ void DacContainer::ShowDacConfigs()
 	}
 
 	//FIR Filters - Sharp Roll-Off/Slow Roll-Off
-	uint8_t	fir1 = CurrentDacConfigArray[DacModes::DAC_PCM_96_0KHZ][DacConfigBytes::FIR1];
-	uint8_t	fir2 = CurrentDacConfigArray[DacModes::DAC_PCM_96_0KHZ][DacConfigBytes::FIR2] & 0x0F;
+	uint8_t	fir1 = CurrentDacConfigArray[DacConfig::DAC_PCM_96_0KHZ][DacConfigBytes::FIR1];
+	uint8_t	fir2 = CurrentDacConfigArray[DacConfig::DAC_PCM_96_0KHZ][DacConfigBytes::FIR2] & 0x0F;
 	if (fir1 == 0 || fir1 == 8)
 	{
 		nudFIR.SetValue(0);
@@ -241,11 +242,11 @@ void DacContainer::ShowDacConfigs()
 	}
 
 	// High Precision Calculation Mode Control (For PCM mode)
-	uint8_t	HPCM = CurrentDacConfigArray[DacModes::DAC_PCM_96_0KHZ][DacConfigBytes::FIR2] & 0x80;
+	uint8_t	HPCM = CurrentDacConfigArray[DacConfig::DAC_PCM_96_0KHZ][DacConfigBytes::FIR2] & 0x80;
 	chbxHighPrec.forceState(HPCM == 0);
 
 	//Cut Off Frequency of DSD Filter
-	uint8_t	DSDFilter = CurrentDacConfigArray[DacModes::DAC_DSD_64][DacConfigBytes::DSDFilter];
+	uint8_t	DSDFilter = CurrentDacConfigArray[DacConfig::DAC_DSD_64][DacConfigBytes::DSDFilter];
 	nudDSDCutOff.SetValue(DSDFilter);
 
 	//VOLUME
@@ -314,7 +315,7 @@ void DacContainer::btnFactoryProfileClicked()
 {
 	for (size_t config = DacConfigBytes::Clock2; config < DacConfigBytes::DeltaSigma; config++)
 	{
-		for (size_t mode = DacModes::DAC_PCM_32_0KHZ; mode < DacModes::DAC_DSD_512; mode++)
+		for (size_t mode = DacConfig::DAC_PCM_32_0KHZ; mode < DacConfig::DAC_DSD_512; mode++)
 		{
 			SetDacConfig(mode, config, RohmDefaultConfigArray[mode][config]);
 		}
@@ -369,7 +370,7 @@ void DacContainer::OnDSDCutOffValueChanged(uint32_t value)
 		11 Prohibition
 	*/
 
-	for (int y = DacModes::DAC_DSD_64; y <= DacModes::DAC_DSD_512; y++)
+	for (int y = DacConfig::DAC_DSD_64; y <= DacConfig::DAC_DSD_512; y++)
 	{
 		SetDacConfig(y, DacConfigBytes::DSDFilter, value);
 	}
@@ -389,7 +390,7 @@ void DacContainer::OnFirValueChanged(uint32_t value)
 	//Fir oFF
 	if (value == 0)
 	{
-		for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_PCM_768_0KHZ; y++)
+		for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_PCM_768_0KHZ; y++)
 		{
 			SetDacConfig(y, DacConfigBytes::FIR1, 0);
 			SetDacConfigWithMask(y, DacConfigBytes::FIR2, 0, mask);
@@ -399,65 +400,65 @@ void DacContainer::OnFirValueChanged(uint32_t value)
 	//Sharp Roll-Off
 	if (value == 1)
 	{
-		SetDacConfig(DacModes::DAC_PCM_32_0KHZ, DacConfigBytes::FIR1, 1);
-		SetDacConfigWithMask(DacModes::DAC_PCM_32_0KHZ, DacConfigBytes::FIR2, 0, mask);
-		SetDacConfig(DacModes::DAC_PCM_44_1KHZ, DacConfigBytes::FIR1, 1);
-		SetDacConfigWithMask(DacModes::DAC_PCM_44_1KHZ, DacConfigBytes::FIR2, 0, mask);
-		SetDacConfig(DacModes::DAC_PCM_48_0KHZ, DacConfigBytes::FIR1, 1);
-		SetDacConfigWithMask(DacModes::DAC_PCM_48_0KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_32_0KHZ, DacConfigBytes::FIR1, 1);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_32_0KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_44_1KHZ, DacConfigBytes::FIR1, 1);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_44_1KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_48_0KHZ, DacConfigBytes::FIR1, 1);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_48_0KHZ, DacConfigBytes::FIR2, 0, mask);
 
-		SetDacConfig(DacModes::DAC_PCM_88_2KHZ, DacConfigBytes::FIR1, 2);
-		SetDacConfigWithMask(DacModes::DAC_PCM_88_2KHZ, DacConfigBytes::FIR2, 1, mask);
-		SetDacConfig(DacModes::DAC_PCM_96_0KHZ, DacConfigBytes::FIR1, 2);
-		SetDacConfigWithMask(DacModes::DAC_PCM_96_0KHZ, DacConfigBytes::FIR2, 1, mask);
+		SetDacConfig(DacConfig::DAC_PCM_88_2KHZ, DacConfigBytes::FIR1, 2);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_88_2KHZ, DacConfigBytes::FIR2, 1, mask);
+		SetDacConfig(DacConfig::DAC_PCM_96_0KHZ, DacConfigBytes::FIR1, 2);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_96_0KHZ, DacConfigBytes::FIR2, 1, mask);
 
-		SetDacConfig(DacModes::DAC_PCM_176_4KHZ, DacConfigBytes::FIR1, 4);
-		SetDacConfigWithMask(DacModes::DAC_PCM_176_4KHZ, DacConfigBytes::FIR2, 2, mask);
-		SetDacConfig(DacModes::DAC_PCM_192_KHZ, DacConfigBytes::FIR1, 4);
-		SetDacConfigWithMask(DacModes::DAC_PCM_192_KHZ, DacConfigBytes::FIR2, 2, mask);
+		SetDacConfig(DacConfig::DAC_PCM_176_4KHZ, DacConfigBytes::FIR1, 4);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_176_4KHZ, DacConfigBytes::FIR2, 2, mask);
+		SetDacConfig(DacConfig::DAC_PCM_192_KHZ, DacConfigBytes::FIR1, 4);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_192_KHZ, DacConfigBytes::FIR2, 2, mask);
 
 
-		SetDacConfig(DacModes::DAC_PCM_362_8KHZ, DacConfigBytes::FIR1, 8);
-		SetDacConfigWithMask(DacModes::DAC_PCM_362_8KHZ, DacConfigBytes::FIR2, 0, mask);
-		SetDacConfig(DacModes::DAC_PCM_384_0KHZ, DacConfigBytes::FIR1, 8);
-		SetDacConfigWithMask(DacModes::DAC_PCM_384_0KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_362_8KHZ, DacConfigBytes::FIR1, 8);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_362_8KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_384_0KHZ, DacConfigBytes::FIR1, 8);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_384_0KHZ, DacConfigBytes::FIR2, 0, mask);
 
-		SetDacConfig(DacModes::DAC_PCM_705_6KHZ, DacConfigBytes::FIR1, 8);
-		SetDacConfigWithMask(DacModes::DAC_PCM_705_6KHZ, DacConfigBytes::FIR2, 0, mask);
-		SetDacConfig(DacModes::DAC_PCM_768_0KHZ, DacConfigBytes::FIR1, 8);
-		SetDacConfigWithMask(DacModes::DAC_PCM_768_0KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_705_6KHZ, DacConfigBytes::FIR1, 8);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_705_6KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_768_0KHZ, DacConfigBytes::FIR1, 8);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_768_0KHZ, DacConfigBytes::FIR2, 0, mask);
 	}
 
 	//Slow Roll-OFF
 	if (value == 2)
 	{
-		SetDacConfig(DacModes::DAC_PCM_32_0KHZ, DacConfigBytes::FIR1, 1);
-		SetDacConfigWithMask(DacModes::DAC_PCM_32_0KHZ, DacConfigBytes::FIR2, 3, mask);
-		SetDacConfig(DacModes::DAC_PCM_44_1KHZ, DacConfigBytes::FIR1, 1);
-		SetDacConfigWithMask(DacModes::DAC_PCM_44_1KHZ, DacConfigBytes::FIR2, 3, mask);
-		SetDacConfig(DacModes::DAC_PCM_48_0KHZ, DacConfigBytes::FIR1, 1);
-		SetDacConfigWithMask(DacModes::DAC_PCM_48_0KHZ, DacConfigBytes::FIR2, 3, mask);
+		SetDacConfig(DacConfig::DAC_PCM_32_0KHZ, DacConfigBytes::FIR1, 1);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_32_0KHZ, DacConfigBytes::FIR2, 3, mask);
+		SetDacConfig(DacConfig::DAC_PCM_44_1KHZ, DacConfigBytes::FIR1, 1);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_44_1KHZ, DacConfigBytes::FIR2, 3, mask);
+		SetDacConfig(DacConfig::DAC_PCM_48_0KHZ, DacConfigBytes::FIR1, 1);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_48_0KHZ, DacConfigBytes::FIR2, 3, mask);
 
-		SetDacConfig(DacModes::DAC_PCM_88_2KHZ, DacConfigBytes::FIR1, 2);
-		SetDacConfigWithMask(DacModes::DAC_PCM_88_2KHZ, DacConfigBytes::FIR2, 4, mask);
-		SetDacConfig(DacModes::DAC_PCM_96_0KHZ, DacConfigBytes::FIR1, 2);
-		SetDacConfigWithMask(DacModes::DAC_PCM_96_0KHZ, DacConfigBytes::FIR2, 4, mask);
+		SetDacConfig(DacConfig::DAC_PCM_88_2KHZ, DacConfigBytes::FIR1, 2);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_88_2KHZ, DacConfigBytes::FIR2, 4, mask);
+		SetDacConfig(DacConfig::DAC_PCM_96_0KHZ, DacConfigBytes::FIR1, 2);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_96_0KHZ, DacConfigBytes::FIR2, 4, mask);
 
-		SetDacConfig(DacModes::DAC_PCM_176_4KHZ, DacConfigBytes::FIR1, 4);
-		SetDacConfigWithMask(DacModes::DAC_PCM_176_4KHZ, DacConfigBytes::FIR2, 5, mask);
-		SetDacConfig(DacModes::DAC_PCM_192_KHZ, DacConfigBytes::FIR1, 4);
-		SetDacConfigWithMask(DacModes::DAC_PCM_192_KHZ, DacConfigBytes::FIR2, 5, mask);
+		SetDacConfig(DacConfig::DAC_PCM_176_4KHZ, DacConfigBytes::FIR1, 4);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_176_4KHZ, DacConfigBytes::FIR2, 5, mask);
+		SetDacConfig(DacConfig::DAC_PCM_192_KHZ, DacConfigBytes::FIR1, 4);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_192_KHZ, DacConfigBytes::FIR2, 5, mask);
 
 
-		SetDacConfig(DacModes::DAC_PCM_362_8KHZ, DacConfigBytes::FIR1, 8);
-		SetDacConfigWithMask(DacModes::DAC_PCM_362_8KHZ, DacConfigBytes::FIR2, 0, mask);
-		SetDacConfig(DacModes::DAC_PCM_384_0KHZ, DacConfigBytes::FIR1, 8);
-		SetDacConfigWithMask(DacModes::DAC_PCM_384_0KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_362_8KHZ, DacConfigBytes::FIR1, 8);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_362_8KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_384_0KHZ, DacConfigBytes::FIR1, 8);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_384_0KHZ, DacConfigBytes::FIR2, 0, mask);
 
-		SetDacConfig(DacModes::DAC_PCM_705_6KHZ, DacConfigBytes::FIR1, 8);
-		SetDacConfigWithMask(DacModes::DAC_PCM_705_6KHZ, DacConfigBytes::FIR2, 0, mask);
-		SetDacConfig(DacModes::DAC_PCM_768_0KHZ, DacConfigBytes::FIR1, 8);
-		SetDacConfigWithMask(DacModes::DAC_PCM_768_0KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_705_6KHZ, DacConfigBytes::FIR1, 8);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_705_6KHZ, DacConfigBytes::FIR2, 0, mask);
+		SetDacConfig(DacConfig::DAC_PCM_768_0KHZ, DacConfigBytes::FIR1, 8);
+		SetDacConfigWithMask(DacConfig::DAC_PCM_768_0KHZ, DacConfigBytes::FIR2, 0, mask);
 	}
 
 	//SET HPC Mode
@@ -476,7 +477,7 @@ void DacContainer::OnDeEmpValueChanged(uint32_t value)
 
 	if (value == 0)
 	{
-		for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_PCM_768_0KHZ; y++)
+		for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_PCM_768_0KHZ; y++)
 		{
 			SetDacConfig(y, DacConfigBytes::DeEmp1, 0);
 			SetDacConfig(y, DacConfigBytes::DeEmp2, 0);
@@ -484,7 +485,7 @@ void DacContainer::OnDeEmpValueChanged(uint32_t value)
 	}
 	else
 	{
-		for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_PCM_768_0KHZ; y++)
+		for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_PCM_768_0KHZ; y++)
 		{
 			SetDacConfig(y, DacConfigBytes::DeEmp1, value);
 			SetDacConfig(y, DacConfigBytes::DeEmp2, 3);
@@ -503,7 +504,7 @@ void DacContainer::OnDeltaSigmaValueChanged(uint32_t value)
 
 	if (value == 0)
 	{
-		for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_PCM_768_0KHZ; y++)
+		for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_PCM_768_0KHZ; y++)
 		{
 			SetDacConfig(y, DacConfigBytes::DeltaSigma, value);
 		}
@@ -513,7 +514,7 @@ void DacContainer::OnDeltaSigmaValueChanged(uint32_t value)
 		//DsSetting set to 1
 		uint8_t ds = 0x10 + (value - 1);
 
-		for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_PCM_768_0KHZ; y++)
+		for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_PCM_768_0KHZ; y++)
 		{
 			SetDacConfig(y, DacConfigBytes::DeltaSigma, ds);
 		}
@@ -535,7 +536,7 @@ void DacContainer::chbxSwapChanged()
 		OnSwapChanel = 0;
 	}
 
-	for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_DSD_512; y++)
+	for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_DSD_512; y++)
 	{
 		SetDacConfig(y, DacConfigBytes::AudioIF3, OnSwapChanel);
 	}
@@ -558,7 +559,7 @@ void DacContainer::chbxPhaseChanged()
 		OnPhase = 0;
 	}
 
-	for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_DSD_512; y++)
+	for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_DSD_512; y++)
 	{
 		SetDacConfig(y, DacConfigBytes::Clock2, OnPhase);
 	}
@@ -573,25 +574,25 @@ void DacContainer::chbxHighPrecChanged()
 	uint8_t mask = 0x80;
 	if (chbxHighPrec.getState())
 	{
-		for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_PCM_192_KHZ; y++)
+		for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_PCM_192_KHZ; y++)
 		{
 			SetDacConfigWithMask(y, DacConfigBytes::FIR2, 0, mask);
 		}
-		for (int y = DacModes::DAC_PCM_362_8KHZ; y <= DacModes::DAC_PCM_768_0KHZ; y++)
+		for (int y = DacConfig::DAC_PCM_362_8KHZ; y <= DacConfig::DAC_PCM_768_0KHZ; y++)
 		{
 			SetDacConfigWithMask(y, DacConfigBytes::FIR2, 0x80, mask);
 		}
 	}
 	else
 	{
-		for (int y = DacModes::DAC_PCM_32_0KHZ; y <= DacModes::DAC_PCM_768_0KHZ; y++)
+		for (int y = DacConfig::DAC_PCM_32_0KHZ; y <= DacConfig::DAC_PCM_768_0KHZ; y++)
 		{
 			SetDacConfigWithMask(y, DacConfigBytes::FIR2, 0x80, mask);
 		}
 	}
 
 	//clear dsd
-	for (int y = DacModes::DAC_DSD_64; y <= DacModes::DAC_DSD_512; y++)
+	for (int y = DacConfig::DAC_DSD_64; y <= DacConfig::DAC_DSD_512; y++)
 	{
 		SetDacConfig(y, DacConfigBytes::FIR2, 0);
 	}
@@ -624,7 +625,7 @@ void DacContainer::chbxEnableSRCChecked()
 	if (!m_ShowInfo)
 	{
 		bool srcEnabled = chbxEnableSRC.getState();
-		uint8_t dacRoute = GuiItfGetDACActualRoute();
+		uint8_t dacRoute = GuiItfGetRoute();
 		GuiItfSetSRCEnabled(srcEnabled);
 
 		if (srcEnabled)
@@ -632,19 +633,19 @@ void DacContainer::chbxEnableSRCChecked()
 			switch (dacRoute)
 			{
 			case ROUTE_USB_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_USB_SRC_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_USB_SRC_DAC);
 				break;
 			case ROUTE_HDMI_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_HDMI_SRC_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_HDMI_SRC_DAC);
 				break;
 			case ROUTE_BNC_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_BNC_SRC_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_BNC_SRC_DAC);
 				break;
 			case ROUTE_RCA_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_RCA_SRC_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_RCA_SRC_DAC);
 				break;
 			case ROUTE_XLR_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_XLR_SRC_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_XLR_SRC_DAC);
 				break; 
 			default:
 				break;
@@ -655,19 +656,19 @@ void DacContainer::chbxEnableSRCChecked()
 			switch (dacRoute)
 			{
 			case ROUTE_USB_SRC_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_USB_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_USB_DAC);
 				break;
 			case ROUTE_HDMI_SRC_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_HDMI_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_HDMI_DAC);
 				break;
 			case ROUTE_BNC_SRC_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_BNC_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_BNC_DAC);
 				break;
 			case ROUTE_RCA_SRC_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_RCA_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_RCA_DAC);
 				break;
 			case ROUTE_XLR_SRC_DAC:
-				GuiItfSetDACActualRoute(DACRoute::ROUTE_XLR_DAC);
+				GuiItfSetRoute(DacRoute::ROUTE_XLR_DAC);
 				break; 
 			default:
 				break;

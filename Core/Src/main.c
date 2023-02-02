@@ -174,32 +174,16 @@ static char RS485_UART_RxBuffer[RS485_BUFFER_SIZE];
 
 RS485TxItem_t RS485TxCollection[] =
 {
-  /*** Karuna ***/
-  {"#%02X UPTIME?", KRN_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 200,},
-  {"#%02X DI?",     KRN_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 100 },
-  {"#%02X DO %08X", KRN_HOST_TX_ADDR, TX_ITEM_INT_ARG, &Device.Karuna.DO, 100 },
-  {"#%02X FW?",     KRN_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4000 },
-  {"#%02X UID?",    KRN_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4200 },
-  {"#%02X PCB?",    KRN_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4600 },
-  {"#%02X UE?",     KRN_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4800 },
-
-#ifdef KARUNA_7i
-  /*** DasClock ***/
-  {"#%02X UPTIME?", DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 200,},
-  {"#%02X FW?",     DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 5000 },
-  {"#%02X UID?",    DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 5200 },
-  {"#%02X PCB?",    DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 5400 },
-  {"#%02X UE?",     DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 5400 },
-
-  {"#%02X DI?",     DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 200 },
-  {"#%02X AI? 0",   DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL ,2100 },
-  {"#%02X AI? 1",   DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL ,2200 },
-  {"#%02X AI? 2",   DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL ,2300 },
-  {"#%02X AI? 3",   DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL ,2400 },
-  {"#%02X AI? 4",   DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL ,2500 },
-  {"#%02X AI? 5",   DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL ,2600 },
-  {"#%02X AI? 6",   DAS_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL ,2700 },
-#endif
+  /*** DenpoDAC ***/
+  {"#%02X UPTIME?",        DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 200,},
+  {"#%02X FW?",            DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4000 },
+  {"#%02X UID?",           DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4200 },
+  {"#%02X PCB?",           DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4600 },
+  {"#%02X UE?",            DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4800 },
+  {"#%02X DAC:VOL1?",      DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
+  {"#%02X DAC:VOL2?",      DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
+  {"#%02X ROUTE?",         DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
+  {"#%02X DAC:CONFIG?",    DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
 };
 
 
@@ -242,7 +226,7 @@ void UsbUartTx(char *str);
 /*** RS485 ***/
 void RS485DirTx(void);
 void RS485DirRx(void);
-void RS485Parser(char *response);
+void RS485Parser(char *line);
 void RS485UartTx(char *str);
 
 uint8_t DeviceTimeUpdate(void);
@@ -1524,132 +1508,85 @@ void RS485UartTx(char *str)
 }
 
 
-void RS485Parser(char *response)
+void RS485Parser(char *line)
 {
   unsigned int addr = 0;
+  char buffer[RS485_BUFFER_SIZE];
   char cmd[RS485_CMD_LENGTH];
   char arg1[RS485_ARG1_LENGTH];
   char arg2[RS485_ARG2_LENGTH];
 
-  if(strlen(response) !=0)
-  {
-    memset(cmd,0x00, RS485_CMD_LENGTH);
-    memset(arg1,0x00, RS485_ARG1_LENGTH);
-    memset(arg2,0x00, RS485_ARG2_LENGTH);
+  int intarg;
 
-    Device.Diag.RS485ResponseCnt++;
-    sscanf(response, "#%x %s %s", &addr, cmd, arg1);
-    if(addr == KRN_HOST_RX_ADDR )
-    {
-      if(!strcmp(cmd, "OK"))
-      {
-        Device.Karuna.OkCnt++;
-      }
-      else if(!strcmp(cmd, "FW"))
-      {
-         uint8_t i = strlen(arg1);
-         if(i<DEVICE_FW_SIZE && i!=0)
-           strcpy(Device.Karuna.FW, arg1);
-         else
-           strcpy(Device.Karuna.FW, "?");
-      }
-      else if(!strcmp(cmd, "UID"))
-      {
-        uint8_t i = strlen(arg1);
-        if(i<DEVICE_UID_SIZE && i!=0)
-          strcpy(Device.Karuna.UID, arg1);
-        else
-          strcpy(Device.Karuna.UID, "?");
-      }
-      else if(!strcmp(cmd, "PCB"))
-      {
-        uint8_t i = strlen(arg1);
-        if(i<DEVICE_PCB_SIZE && i!=0)
-          strcpy(Device.Karuna.PCB, arg1);
-        else
-          strcpy(Device.Karuna.PCB, "?");
-      }
-      else if(!strcmp(cmd,"UPTIME"))
-      {
-        Device.Karuna.UpTimeSec = strtol(arg1, NULL, 16);
-      }
-      else if(!strcmp(cmd, "DI"))
-      {
-        Device.Karuna.DI = strtol(arg1, NULL, 16);
-      }
-      else if(!strcmp(cmd, "DO"))
-      {
-        Device.Karuna.DO = strtol(arg1, NULL, 16);
-      }
-      else if(!strcmp(cmd, "UE"))
-      {
-        Device.Karuna.UartErrorCnt = strtol(arg1, NULL, 16);
-      }
+  memset(cmd,0x00, RS485_CMD_LENGTH);
+  memset(arg1,0x00, RS485_ARG1_LENGTH);
+  memset(arg2,0x00, RS485_ARG2_LENGTH);
+
+  Device.Diag.RS485ResponseCnt++;
+  sscanf(line, "#%x %s %s", &addr, cmd, arg1);
+  if(addr == DENPO_DAC_HOST_RX_ADDR )
+  {
+    if(!strcmp(cmd, "OK")){
+      Device.DenpoDAC.OkCnt++;
+    }
+    else if(!strcmp(cmd, "FW")){
+       uint8_t i = strlen(arg1);
+       if(i<DEVICE_FW_SIZE && i!=0)
+         strcpy(Device.DenpoDAC.FW, arg1);
+       else
+         strcpy(Device.DenpoDAC.FW, "?");
+    }
+    else if(!strcmp(cmd, "UID")){
+      uint8_t i = strlen(arg1);
+      if(i<DEVICE_UID_SIZE && i!=0)
+        strcpy(Device.DenpoDAC.UID, arg1);
       else
-      {
-        Device.Karuna.UnknownCnt++;
-      }
+        strcpy(Device.DenpoDAC.UID, "?");
+    }
+    else if(!strcmp(cmd, "PCB")){
+      uint8_t i = strlen(arg1);
+      if(i<DEVICE_PCB_SIZE && i!=0)
+        strcpy(Device.DenpoDAC.PCB, arg1);
+      else
+        strcpy(Device.DenpoDAC.PCB, "?");
+    }
+    else if(!strcmp(cmd,"UPTIME")){
+      Device.DenpoDAC.UpTimeSec = strtol(arg1, NULL, 16);
+    }
+    else if(!strcmp(cmd, "DI")){
+      Device.DenpoDAC.DI = strtol(arg1, NULL, 16);
+    }
+    else if(!strcmp(cmd, "DO")){
+      Device.DenpoDAC.DO = strtol(arg1, NULL, 16);
+    }
+    else if(!strcmp(cmd, "UE")){
+      Device.DenpoDAC.UartErrorCnt = strtol(arg1, NULL, 16);
+    }
+    else if(!strcmp(cmd,"DAC:VOL1"))
+    {
+      sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
+      Device.DenpoDAC.StatusOfVolume1 = intarg;
+      strcpy(buffer, "DAC:VOL1 OK");
+    }
+    else if(!strcmp(cmd,"DAC:VOL2"))
+    {
+      sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
+      Device.DenpoDAC.StatusOfVolume2 = intarg;
+      strcpy(buffer, "DAC:VOL2 OK");
+    }
+    else if(!strcmp(cmd,"ROUTE")){
+      sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
+      Device.DenpoDAC.StatusOfRoute = intarg;
+      strcpy(buffer, "ROUTE OK");
+    }
+    else if(!strcmp(cmd,"DAC:CONFIG")){
+      sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
+      Device.DenpoDAC.StatusOfConfig = intarg;
+      strcpy(buffer, "DAC:CONFIG OK");
     }
 
-    if(addr == DAS_HOST_RX_ADDR)
-    {
-      if(!strcmp(cmd, "OK"))
-      {
-        Device.DasClock.OkCnt++;
-      }
-
-      if(!strcmp(cmd, "FW"))
-      {
-        uint8_t i = strlen(arg1);
-        if(i<DEVICE_FW_SIZE && i!=0)
-          strcpy(Device.DasClock.FW, arg1);
-        else
-          strcpy(Device.DasClock.UID, "?");
-      }
-      else if(!strcmp(cmd, "UID"))
-      {
-        uint8_t i = strlen(arg1);
-        if(i<DEVICE_UID_SIZE && i!=0)
-          strcpy(Device.DasClock.UID, arg1);
-        else
-          strcpy(Device.DasClock.UID, "?");
-      }
-      else if(!strcmp(cmd, "PCB"))
-      {
-        uint8_t i = strlen(arg1);
-        if(i<DEVICE_PCB_SIZE && i!=0)
-          strcpy(Device.DasClock.PCB, arg1);
-        else
-          strcpy(Device.DasClock.PCB, "?");
-      }
-      else if(!strcmp(cmd,"UPTIME"))
-      {
-         Device.DasClock.UpTimeSec = strtol(arg1, NULL, 16);
-      }
-      else if(!strcmp(cmd, "DI"))
-      {
-        Device.DasClock.DI = strtol(arg1, NULL, 16);
-      }
-      else if(!strcmp(cmd, "DO"))
-      {
-        Device.DasClock.DO = strtol(arg1, NULL, 16);
-      }
-      else if(!strcmp(cmd, "UE"))
-      {
-        Device.DasClock.UartErrorCnt = strtol(arg1, NULL, 16);
-      }
-      if(!strcmp(cmd, "AI"))
-      {
-        sscanf(response, "#%x %s %s %s", &addr, cmd, arg1, arg2);
-        uint8_t ch = strtol(arg1, NULL, 10);
-        double value = atof(arg2);
-        if(ch < DAS_AI_CHANNELS)
-         Device.DasClock.AI[ch] = value;
-      }
-      else
-      {
-        Device.DasClock.UnknownCnt++;
-      }
+    else{
+      Device.DenpoDAC.UnknownCnt++;
     }
   }
 }

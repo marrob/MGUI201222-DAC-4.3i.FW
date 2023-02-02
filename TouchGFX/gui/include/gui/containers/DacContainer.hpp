@@ -6,25 +6,39 @@
 #define DAC_SETTINGS_SIZE_COLS	8 //DoDo: ezt valahol GuiItf.h-ban kell deklarálni mert a c fájlbol ennek az értékét nem érem el...
 #define DAC_SETTINSG_ITEMS_ROWS	15 //DoDo: ezt valahol egy GuiItf.h-ban kell deklarálni mert a c fájlbol ennek az értékét nem érem el...
 
-
-
-enum DacModes
+enum DacConfig
 {
-	DAC_PCM_32_0KHZ = 0,
-	DAC_PCM_44_1KHZ,
-	DAC_PCM_48_0KHZ,
-	DAC_PCM_88_2KHZ,
-	DAC_PCM_96_0KHZ,
-	DAC_PCM_176_4KHZ,
-	DAC_PCM_192_KHZ,
-	DAC_PCM_362_8KHZ,
-	DAC_PCM_384_0KHZ,
-	DAC_PCM_705_6KHZ,
-	DAC_PCM_768_0KHZ,
-	DAC_DSD_64,
-	DAC_DSD_128,
-	DAC_DSD_256,
-	DAC_DSD_512
+  DAC_PCM_32_0KHZ = 0,
+  DAC_PCM_44_1KHZ,
+  DAC_PCM_48_0KHZ,
+  DAC_PCM_88_2KHZ,
+  DAC_PCM_96_0KHZ,
+  DAC_PCM_176_4KHZ,
+  DAC_PCM_192_KHZ,
+  DAC_PCM_362_8KHZ,
+  DAC_PCM_384_0KHZ,
+  DAC_PCM_705_6KHZ,
+  DAC_PCM_768_0KHZ,
+  DAC_DSD_64,
+  DAC_DSD_128,
+  DAC_DSD_256,
+  DAC_DSD_512
+};
+
+enum DacRoute
+{
+  ROUTE_NONE_DAC = 0,
+  ROUTE_MUTE_DAC,
+  ROUTE_USB_DAC,
+  ROUTE_USB_SRC_DAC,
+  ROUTE_HDMI_DAC,
+  ROUTE_HDMI_SRC_DAC,
+  ROUTE_BNC_DAC,
+  ROUTE_BNC_SRC_DAC,
+  ROUTE_RCA_DAC,
+  ROUTE_RCA_SRC_DAC,
+  ROUTE_XLR_DAC,
+  ROUTE_XLR_SRC_DAC
 };
 
 enum DacConfigBytes {
@@ -39,21 +53,6 @@ enum DacConfigBytes {
 	DeltaSigma
 };
 
-enum DACRoute
-{
-	ROUTE_NONE_DAC = 0,
-	ROUTE_MUTE_DAC,
-	ROUTE_USB_DAC,
-	ROUTE_USB_SRC_DAC,
-	ROUTE_HDMI_DAC,
-	ROUTE_HDMI_SRC_DAC,
-	ROUTE_BNC_DAC,
-	ROUTE_BNC_SRC_DAC,
-	ROUTE_RCA_DAC,
-	ROUTE_RCA_SRC_DAC,
-	ROUTE_XLR_DAC,
-	ROUTE_XLR_SRC_DAC
-};
 
 enum SRCFreq
 {
@@ -105,6 +104,8 @@ public:
 
 
 #ifdef SIMULATOR
+
+
 	 
 	static uint8_t DacConfigArray[15][8];
 

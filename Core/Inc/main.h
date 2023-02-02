@@ -109,19 +109,36 @@ typedef struct _AppTypeDef
     uint32_t DI;
     uint8_t ScreenSaverIsEnabled;
   }Gui;
-  struct _Karuna
+  struct _DenpoDAC
   {
     char FW[DEVICE_FW_SIZE];
     char UID[DEVICE_UID_SIZE];
     char PCB[DEVICE_PCB_SIZE];
     uint32_t OkCnt;
     uint32_t UnknownCnt;
+
     uint32_t DI;
     uint32_t DO;
+
     uint32_t UpTimeSec;
     uint32_t SavedFlags;
+
+    uint8_t LastRoute;
+    uint8_t IsSRCEnabled;
+
     uint32_t UartErrorCnt;
-  }Karuna;
+
+    uint8_t Volume1;
+    uint8_t StatusOfVolume1;
+    uint8_t Volume2;
+    uint8_t StatusOfVolume2;
+
+    uint8_t Route;
+    uint8_t StatusOfRoute;
+
+    uint8_t StatusOfConfig;
+
+  }DenpoDAC;
   struct _DasClock
   {
     char FW[DEVICE_FW_SIZE];

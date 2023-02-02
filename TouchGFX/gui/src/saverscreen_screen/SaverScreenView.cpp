@@ -35,7 +35,7 @@ void SaverScreenView::GuiItfGetRtc(time_t* dt)
 	*dt = simSaverDateTime;
 } 
 
-uint8_t SaverScreenView::GuiItfGetDACActualMode()
+uint8_t SaverScreenView::GuiItfGetConfig()
 {
 	return simDACSaverMode;
 }
@@ -45,7 +45,7 @@ extern "C"
 {
 	/*** RTC ***/
 	void GuiItfGetRtc(time_t* dt); 
-	uint8_t GuiItfGetDACActualMode();
+	uint8_t GuiItfGetConfig();
 }
 #endif
 
@@ -110,7 +110,7 @@ void SaverScreenView::RequestCurrentTime()
 void SaverScreenView::RefreshCurrentAudio()
 {
 	//Read audio format
-	uint8_t  actualDacMode = GuiItfGetDACActualMode();
+	uint8_t  actualDacMode = GuiItfGetConfig();
 	if (actualDacMode != mSaverPreDacMode)
 	{
 		SetDSDPCM(actualDacMode);
@@ -131,7 +131,7 @@ char* SaverScreenView::SetDSDPCM(uint8_t p_AudiFormat)
 {
 	static char format[5];
 	static char freq[5];
-	bool isDsd = p_AudiFormat >= DacModes::DAC_DSD_64;
+	bool isDsd = p_AudiFormat >= DAC_DSD_64;
 
 	if (isDsd)
 	{ 		 
@@ -141,19 +141,19 @@ char* SaverScreenView::SetDSDPCM(uint8_t p_AudiFormat)
 		 
 		switch (p_AudiFormat)
 		{
-		case DacModes::DAC_DSD_64:
+		case DAC_DSD_64:
 		{
 			strcpy(freq, "64"); 
 		}break;
-		case DacModes::DAC_DSD_128:
+		case DAC_DSD_128:
 		{	
 			strcpy(freq, "128");
 		}break;
-		case DacModes::DAC_DSD_256:
+		case DAC_DSD_256:
 		{
 			strcpy(freq, "256");
 		}break;
-		case DacModes::DAC_DSD_512:
+		case DAC_DSD_512:
 		{
 			strcpy(freq, "512");
 		}break;
@@ -178,59 +178,59 @@ char* SaverScreenView::SetFreq(uint8_t p_AudiFormat)
 
 	switch (p_AudiFormat)
 	{
-	case DacModes::DAC_PCM_44_1KHZ:
+	case DAC_PCM_44_1KHZ:
 	{
 		strcpy(Freq, "44.1 kHz");
 	}break;
-	case DacModes::DAC_PCM_48_0KHZ:
+	case DAC_PCM_48_0KHZ:
 	{
 		strcpy(Freq, "48 kHz");
 	}break;
-	case DacModes::DAC_PCM_88_2KHZ:
+	case DAC_PCM_88_2KHZ:
 	{
 		strcpy(Freq, "88.2 kHz");
 	}break;
-	case DacModes::DAC_PCM_96_0KHZ:
+	case DAC_PCM_96_0KHZ:
 	{
 		strcpy(Freq, "96 kHz");
 	}break;
-	case DacModes::DAC_PCM_176_4KHZ:
+	case DAC_PCM_176_4KHZ:
 	{
 		strcpy(Freq, "176.4 kHz");
 	}break;
-	case DacModes::DAC_PCM_192_KHZ:
+	case DAC_PCM_192_KHZ:
 	{
 		strcpy(Freq, "192 kHz");
 	}break;
-	case DacModes::DAC_PCM_362_8KHZ:
+	case DAC_PCM_362_8KHZ:
 	{
 		strcpy(Freq, "352.8 kHz");
 	}break;
-	case DacModes::DAC_PCM_384_0KHZ:
+	case DAC_PCM_384_0KHZ:
 	{
 		strcpy(Freq, "384 kHz");
 	}break;
-	case DacModes::DAC_PCM_705_6KHZ:
+	case DAC_PCM_705_6KHZ:
 	{
 		strcpy(Freq, "705.6 kHz");
 	}break;
-	case DacModes::DAC_PCM_768_0KHZ:
+	case DAC_PCM_768_0KHZ:
 	{
 		strcpy(Freq, "768 kHz");
 	}break;
-	case DacModes::DAC_DSD_64:
+	case DAC_DSD_64:
 	{
 		strcpy(Freq, "2.8 MHz");
 	}break;
-	case DacModes::DAC_DSD_128:
+	case DAC_DSD_128:
 	{
 		strcpy(Freq, "5.8 MHz");
 	}break;
-	case DacModes::DAC_DSD_256:
+	case DAC_DSD_256:
 	{
 		strcpy(Freq, "11.2 MHz");
 	}break;
-	case DacModes::DAC_DSD_512:
+	case DAC_DSD_512:
 	{
 		strcpy(Freq, "22.6 MHz");
 	}break;

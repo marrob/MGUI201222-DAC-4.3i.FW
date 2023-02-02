@@ -1,7 +1,7 @@
 /*//
  * GuiItf.h
  *
- *  Created on: 2022. máj. 14.
+ *  Created on: 2023. feb. 02.
  *      Author: Margit Robert
  */
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -10,27 +10,63 @@
 
 #include <time.h>
 
+typedef enum _Route
+{
+  ROUTE_NONE_DAC = 0,
+  ROUTE_MUTE_DAC,
+  ROUTE_USB_DAC,
+  ROUTE_USB_SRC_DAC,
+  ROUTE_HDMI_DAC,
+  ROUTE_HDMI_SRC_DAC,
+  ROUTE_BNC_DAC,
+  ROUTE_BNC_SRC_DAC,
+  ROUTE_RCA_DAC,
+  ROUTE_RCA_SRC_DAC,
+  ROUTE_XLR_DAC,
+  ROUTE_XLR_SRC_DAC
+}Route_t;
+
+enum DacConfig
+{
+  DAC_PCM_32_0KHZ = 0,
+  DAC_PCM_44_1KHZ,
+  DAC_PCM_48_0KHZ,
+  DAC_PCM_88_2KHZ,
+  DAC_PCM_96_0KHZ,
+  DAC_PCM_176_4KHZ,
+  DAC_PCM_192_KHZ,
+  DAC_PCM_362_8KHZ,
+  DAC_PCM_384_0KHZ,
+  DAC_PCM_705_6KHZ,
+  DAC_PCM_768_0KHZ,
+  DAC_DSD_64,
+  DAC_DSD_128,
+  DAC_DSD_256,
+  DAC_DSD_512
+};
+
 #define GUIITF_OK             0x00
 #define GUIITF_FAIL           0x01
 #define GUIITF_OUT_OF_RANGE   0x02
 
-/*** Karuna ***/
-//Host:0, Device:1
-#define KRN_HOST_TX_ADDR        0x01  // Host->Device 0->1
-#define KRN_HOST_RX_ADDR        0x10
-#define KRN_DI_A0             ((uint32_t)1<<0)
-#define KRN_DI_A1             ((uint32_t)1<<1)
-#define KRN_DI_A2             ((uint32_t)1<<2)
-#define KRN_DI_A3             ((uint32_t)1<<3)
-#define KRN_DI_DSD_PCM        ((uint32_t)1<<4)
-#define KRN_DI_H51            ((uint32_t)1<<5)
-#define KRN_DI_H53            ((uint32_t)1<<6)
-#define KRN_DI_RCA            ((uint32_t)1<<7)
-#define KRN_DI_BNC            ((uint32_t)1<<8)
-#define KRN_DI_XLR            ((uint32_t)1<<9)
-#define KRN_DI_I2S            ((uint32_t)1<<10)
-#define KRN_DI_MCLK_I2S       ((uint32_t)1<<11)
-#define KRN_DI_MCLK_OUT       ((uint32_t)1<<12)
+/*** Denpo DAC ***/
+//Host:0, Device:3
+#define DENPO_DAC_HOST_TX_ADDR      0x03//Host->Device 0->1
+#define DENPO_DAC_HOST_RX_ADDR      0x30
+
+#define DENPO_DAC_DI_A0             ((uint32_t)1<<0)
+#define DENPO_DAC_DI_A1             ((uint32_t)1<<1)
+#define DENPO_DAC_DI_A2             ((uint32_t)1<<2)
+#define DENPO_DAC_DI_A3             ((uint32_t)1<<3)
+#define DENPO_DAC_DI_UNUSED1        ((uint32_t)1<<4)
+#define DENPO_DAC_DI_UNUSED2        ((uint32_t)1<<5)
+#define DENPO_DAC_DI_UNUSED3        ((uint32_t)1<<6)
+#define DENPO_DAC_DI_UNUSED4        ((uint32_t)1<<7)
+#define DENPO_DAC_DI_UNUSED5        ((uint32_t)1<<8)
+#define DENPO_DAC_DI_UNUSED6        ((uint32_t)1<<9)
+#define DENPO_DAC_DI_UNUSED7        ((uint32_t)1<<10)
+#define DENPO_DAC_DI_UNUSED8        ((uint32_t)1<<11)
+#define DENPO_DAC_DI_UNUSED9        ((uint32_t)1<<12)
 
 #define KRN_DO_RCA_EN         ((uint32_t)1<<0)
 #define KRN_DO_BNC_EN         ((uint32_t)1<<1)
@@ -164,5 +200,15 @@ void GuiItfGetRtc(time_t *dt);
 uint32_t GuiItfLogGetLastAddress(void);
 void GuitItfLogGetLine(uint32_t address, char *line, uint32_t size);
 void GuiItfLogIncPage(void);
+
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+
+
+
+
+
+
 
 #endif /* _GUIITF_H_ */
