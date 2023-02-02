@@ -12,6 +12,7 @@
 #include "GuiItf.h"
 #include "EEPROM.h"
 
+
 #define EEP_MAGICWORD_ADDR                  0x0000
 #define EPP_BOOTUP_CNT_ADDR                 0x0004
 #define EEP_BACKLIGHT_ADDR                  0x0008
@@ -782,5 +783,102 @@ void GuiItfLogIncPage(void)
     Device.Log.LastAddress = 0;
   EepromU32Write(EEP_LOG_LAST_PAGE_ADDR, Device.Log.LastAddress);
 }
+
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+
+/*Filters --------------------------------------------------------------------*/
+#define DAC_SETTINGS_SIZE_COLS  8
+#define DAC_SETTINSG_ITEMS_ROWS 15
+
+uint8_t(*GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS]
+{
+  return NULL;
+}
+void GuiItfSaveDacFilters(void)
+{
+
+}
+
+/*Volume ---------------------------------------------------------------------*/
+void GuiItfSetVolume(uint8_t value)
+{
+
+}
+
+uint8_t GuiItfGetVolume(void)
+{
+
+  return 0;
+}
+
+
+/*SRC ------------------------------------------------------------------------*/
+
+uint8_t GuiItfGetSRCEnabled(void)
+{
+
+  return 0;
+}
+
+int GuiItfGetSRCFreq(void)
+{
+  return 0;
+}
+
+
+int GuiItfGetSRCBit(void)
+{
+  return 0;
+}
+
+void GuiItfSetSRCFreq(int value)
+{
+
+}
+
+void GuiItfSetSRCBit(int value)
+{
+
+}
+
+void GuiItfSetSRCEnabled(int value)
+{
+
+}
+
+void GuiItfSetDACActualRoute(int value)
+{
+
+}
+
+
+/*Mute -----------------------------------------------------------------------*/
+void GuiItfSetMute(int value)
+{
+
+}
+
+uint8_t GuiItfGetMute(void)
+{
+
+  return 0;
+}
+
+/*Route ----------------------------------------------------------------------*/
+uint8_t GuiItfGetDACActualRoute(void)
+{
+
+  return 0;
+}
+
+
+uint8_t GuiItfGetDACActualMode(void)
+{
+
+  return 0;
+}
+
 
 

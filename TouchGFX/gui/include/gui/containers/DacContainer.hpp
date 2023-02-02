@@ -3,8 +3,8 @@
 
 #include <gui_generated/containers/DacContainerBase.hpp>
 
-#define DAC_SETTINGS_SIZE_COLS	8
-#define DAC_SETTINSG_ITEMS_ROWS	15 
+#define DAC_SETTINGS_SIZE_COLS	8 //DoDo: ezt valahol GuiItf.h-ban kell deklarálni mert a c fájlbol ennek az értékét nem érem el...
+#define DAC_SETTINSG_ITEMS_ROWS	15 //DoDo: ezt valahol egy GuiItf.h-ban kell deklarálni mert a c fájlbol ennek az értékét nem érem el...
 
 
 

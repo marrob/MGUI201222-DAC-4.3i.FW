@@ -1669,7 +1669,7 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
 
-  LogWriteLine("Start Default Task");
+ // LogWriteLine("Start Default Task");
 
   MX_TouchGFX_Process();
   /* Infinite loop */
