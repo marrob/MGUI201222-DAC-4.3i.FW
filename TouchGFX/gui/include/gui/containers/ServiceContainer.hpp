@@ -16,7 +16,6 @@ public:
     void RefreshServiceInfo();
     void GetVersionInfo(); 
 
-
 #ifdef SIMULATOR
 
     /*** GUI ***/
@@ -26,37 +25,9 @@ public:
     void GuiItfFacotryReset(void);
     void GuiItfSoftReset(void);
 
-    /*** Karuna ***/
-    uint8_t GuiItfGetKarunaVersion(char** fw, char** uid, char** pcb);
-    uint32_t GuiItfGetKarunaUptimeCnt();
-    uint32_t GuiItfGetKarunaUartErrorCnt();
-
-#ifdef KARUNA_7i
-    /*** DasClock ***/
-    uint8_t GuiItfGetDasClockVersion(char** fw, char** uid, char** pcb);
-    uint32_t GuiItfGetDasClockUptimeCnt();
-
-    float GuiItfGetDasClockMV341Temp();
-    float GuiItfGetDasClockMVOCX1Temp();
-    float GuiItfGetDasClockMVOCX2Temp();
-    float GuiItfGetDasClockMV341Current();
-    float GuiItfGetDasClockMVOCX1Current();
-    float GuiItfGetDasClockMVOCX2Current();
-    float GuiItfGetDasClockMainVoltage();
-#endif
-
-#ifdef KARUNA_43i
-    /*** Tri Clock ***/
-    float GuiItfGetTempCh1(void);
-    uint8_t GuiItfGetDi1(void);
-    uint8_t GuiItfGetDi11(void);
-    uint8_t GuiItfGetDi13(void);
-    uint8_t GuiItfGetDi15(void);
-#endif
-
-    uint32_t GuiItfGetDasClocUartErrorCnt(void);
-    uint32_t GuiItfGetDasClockHeatedTemperature();
-    void GuiItfSetDasClockHeatedTemperature(uint32_t temp);
+    /*** Denpo DAC ***/
+    uint32_t GuiItfGetClockHeatedTemperature();
+    void GuiItfSetClockHeatedTemperature(uint32_t temp);
 
 #endif
 

@@ -68,11 +68,6 @@ enum DacConfig
 #define DENPO_DAC_DI_UNUSED8        ((uint32_t)1<<11)
 #define DENPO_DAC_DI_UNUSED9        ((uint32_t)1<<12)
 
-#define KRN_DO_RCA_EN         ((uint32_t)1<<0)
-#define KRN_DO_BNC_EN         ((uint32_t)1<<1)
-#define KRN_DO_XLR_EN         ((uint32_t)1<<2)
-#define KRN_DO_I2S_EN         ((uint32_t)1<<3)
-#define KRN_DO_MCLK_I2S_EN    ((uint32_t)1<<4)
 
 /*** Saved Flags for Karuna ***/
 #define KRN_FLAG_ALL_OUT_EN_AT_STARTUP    ((uint32_t)1<<0)
@@ -148,40 +143,6 @@ uint8_t GuiItfGetDi13(void);
 uint8_t GuiItfGetDi14(void);
 uint8_t GuiItfGetDi15(void);
 
-/* Karuna --------------------------------------------------------------------*/
-uint8_t GuiItfGetKarunaVersion(char **fw, char **uid, char **pcb);
-uint8_t GuiItfGetKarunaStatus(void);
-void GuiItfSetKarunaHdmi(uint8_t onfoff);
-uint8_t GuitIfGetKarunaIsHdmiSet(void);
-void GuiItfSetKarunaRca(uint8_t onfoff);
-uint8_t GuitIfGetKarunaIsRcaSet(void);
-void GuiItfSetKarunaBnc(uint8_t onfoff);
-uint8_t GuitIfGetKarunaIsBncSet(void);
-void GuiItfSetKarunaXlr(uint8_t onfoff);
-uint8_t GuitIfGetKarunaIsXlrSet(void);
-uint32_t GuiItfGetKarunaUptimeCnt(void);
-uint8_t GuiItfGetKarunaOutputsAllEnabledAfterStart(void);
-void GuiItfSetKarunaOutputsAllEnabledAfterStart(uint8_t onoff);
-void GuiItfSetKarunaMasterClkOnI2S(uint8_t onoff);
-uint8_t GuiItfGetKarunaMasterClkOnI2SIsEnabled(void);
-uint32_t GuiItfGetKarunaUartErrorCnt(void);
-uint8_t GuiItfGetKarunaMclkOutIsEanbled(void);
-
-/* DasClock-------------------------------------------------------------------*/
-uint8_t GuiItfGetDasClockVersion(char **fw, char **uid, char **pcb);
-uint32_t GuiItfGetDasClockUptimeCnt(void);
-float GuiItfGetDasClockMV341Temp(void);
-float GuiItfGetDasClockMVOCX1Temp(void);
-float GuiItfGetDasClockMVOCX2Temp(void);
-float GuiItfGetDasClockMV341Current(void);
-float GuiItfGetDasClockMVOCX1Current(void);
-float GuiItfGetDasClockMVOCX2Current(void);
-float GuiItfGetDasClockMainVoltage(void);
-uint8_t GuiItfGetDasClockStatusLock1(void);
-uint8_t GuiItfGetDasClockStatusLock2(void);
-uint8_t GuiItfGetDasClockIsExt(void);
-uint32_t GuiItfGetDasClocUartErrorCnt(void);
-
 /* Backlight -----------------------------------------------------------------*/
 uint8_t GuiItfSetBacklight(uint8_t percent);
 uint8_t GuiItfGetBacklight(void);
@@ -190,8 +151,8 @@ void GuiItfSetBackLightAutoOff(uint32_t sec);
 uint32_t GuiItfGetBacklightAutoOff(void);
 uint32_t GuiItfGetRemainingTimeToOff(void);
 uint8_t GuiItfGetBacklightIsEnabled(void);
-uint32_t GuiItfGetDasClockHeatedTemperature();
-void GuiItfSetDasClockHeatedTemperature(uint32_t temp);
+uint32_t GuiItfGetClockHeatedTemperature();
+void GuiItfSetClockHeatedTemperature(uint32_t temp);
 
 /* RTC -----------------------------------------------------------------------*/
 void GuiItfSetRtc(time_t dt);

@@ -25,9 +25,9 @@ public:
 #ifdef SIMULATOR
 
     /*** RTC ***/ 
-    void GuiItfGetRtc(time_t* dt);  
-    /*** DAC ****/
-    uint8_t GuiItfGetDACActualMode();
+    void GuiItfGetRtc(time_t* dt);
+    /*** Denpo DAC ****/
+    uint8_t GuiItfGetConfig();
 
 #endif
 

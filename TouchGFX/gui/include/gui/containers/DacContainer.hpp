@@ -105,8 +105,6 @@ public:
 
 #ifdef SIMULATOR
 
-
-	 
 	static uint8_t DacConfigArray[15][8];
 
 	static uint8_t simVolume;
@@ -115,7 +113,6 @@ public:
 	static uint8_t simSrcBit;
 	static uint8_t simMute;
 	static uint8_t simDACRoute;
-
 
 	void GuiItfSetVolume(uint8_t p_Volume);
 	uint8_t  GuiItfGetVolume();
@@ -126,17 +123,17 @@ public:
 	void GuiItfSaveDacFilters();
 	uint8_t(*GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS];
 
-	void GuiItfSetSRCEnabled(uint8_t p_Enabled);
-	uint8_t GuiItfGetSRCEnabled();
+	void GuiItfSetSRCEnable(uint8_t p_Enabled);
+	uint8_t GuiItfGetSRCEnable();
 
-	void GuiItfSetSRCFreq(uint8_t p_Freq);
-	uint8_t GuiItfGetSRCFreq();
+	void GuiItfSetSRCFsout(uint8_t p_Freq);
+	uint8_t GuiItfGetSRCFsout();
 
-	void GuiItfSetSRCBit(uint8_t p_Bit);
-	uint8_t GuiItfGetSRCBit();
+	void GuiItfSetSRCBits(uint8_t p_Bit);
+	uint8_t GuiItfGetSRCBits();
 
-	uint8_t GuiItfGetDACActualRoute();
-	void GuiItfSetDACActualRoute(uint8_t p_Route);	 
+	uint8_t GuiItfGetRoute();
+	void GuiItfSetRoute(uint8_t p_Route);
 
 #endif
 	

@@ -55,31 +55,16 @@ public:
   /*** Display ***/
   uint8_t GuiItfGetScreenSaverEnable();
 
-#ifdef KARUNA_7i
-  /*** DAS Clock ***/
-  float GuiItfGetDasClockMV341Temp();
-  uint8_t GuiItfGetDasClockStatusLock1();
-  uint8_t GuiItfGetDasClockStatusLock2();
-  uint8_t GuiItfGetDasClockIsExt();
-#endif 
-
-#ifdef KARUNA_43i
-  /*** Tri Clock ***/
-  float GuiItfGetTempCh1(void);
-  uint8_t GuiItfGetDi1(void);
-  uint8_t GuiItfGetDi11(void);
-  uint8_t GuiItfGetDi13(void);
-  uint8_t GuiItfGetDi15(void);
-#endif
 
   /*** Clock Temp ***/
-  uint32_t GuiItfGetDasClockHeatedTemperature();
-  void GuiItfSetDasClockHeatedTemperature(uint32_t temp);
+  uint32_t GuiItfGetClockHeatedTemperature();
+  void GuiItfSetClockHeatedTemperature(uint32_t temp);
 
   /*** DAC ***/
-  uint8_t GuiItfGetDACActualMode();
-  uint8_t GuiItfGetDACActualRoute();
-  void GuiItfSetDACActualRoute(uint8_t p_Route);
+  uint8_t GuiItfGetConfig();
+
+  uint8_t GuiItfGetRoute();
+  void GuiItfSetRoute(uint8_t p_Route);
 
   void GuiItfSetVolume(uint8_t p_Volume);
   uint8_t GuiItfGetVolume();
@@ -90,9 +75,10 @@ public:
   uint8_t(*GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS];
   
   /*** SRC ***/
-  uint8_t GuiItfGetSRCEnabled();
-  uint8_t GuiItfGetSRCFreq();
-  uint8_t GuiItfGetSRCBit();
+  uint8_t GuiItfGetSRCEnable();
+  uint8_t GuiItfGetSRCFsout();
+  uint8_t GuiItfGetSRCBits();
+  uint8_t GuiItfSetSRCBits();
 
 #endif
 

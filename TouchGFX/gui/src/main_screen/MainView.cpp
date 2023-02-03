@@ -37,66 +37,19 @@ void MainView::GuiItfGetRtc(time_t* dt)
 }
 
 /*** Display ***/
-
 uint8_t MainView::GuiItfGetScreenSaverEnable()
 {
 	return false;
 }
 
-#ifdef KARUNA_7i
-/*** Das Clock ***/
-
-float MainView::GuiItfGetDasClockMV341Temp(void)
-{
-	return 52.8f;
-}
-uint8_t MainView::GuiItfGetDasClockStatusLock1(void)
-{
-	return true;
-}
-uint8_t MainView::GuiItfGetDasClockStatusLock2(void)
-{
-	return true;
-}
-uint8_t MainView::GuiItfGetDasClockIsExt(void)
-{
-	return false;
-}
-
-#endif
-
-#ifdef KARUNA_43i
-/*** Tri Clock ***/
-
-float MainView::GuiItfGetTempCh1(void)
-{
-	return 50.42f;
-}
-
-uint8_t MainView::GuiItfGetDi1(void) {
-	return 1;
-}
-uint8_t MainView::GuiItfGetDi11(void) {
-	return 1;
-}
-uint8_t MainView::GuiItfGetDi13(void) {
-	return 1;
-}
-uint8_t MainView::GuiItfGetDi15(void) {
-	return 0;
-}
-
-#endif
-
 /*** Clock Temp ***/
-uint32_t  MainView::GuiItfGetDasClockHeatedTemperature()
+uint32_t  MainView::GuiItfGetClockHeatedTemperature()
 {
 	return 55;
 }
 
-void MainView::GuiItfSetDasClockHeatedTemperature(uint32_t temp)
+void MainView::GuiItfSetClockHeatedTemperature(uint32_t temp)
 {
-
 }
 
 /*** DAC Config, Volume ***/
@@ -142,15 +95,14 @@ uint8_t(*MainView::GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS]
 }
 
 /*** SRC ***/
-
-uint8_t MainView::GuiItfGetSRCEnabled()
-{
+uint8_t MainView::GuiItfGetSRCEnable(){
 	return DacContainer::simSRCEn;
 }
-uint8_t MainView::GuiItfGetSRCFreq() {
+uint8_t MainView::GuiItfGetSRCFsout() {
 	return DacContainer::simSRCFreq;
 }
-uint8_t MainView::GuiItfGetSRCBit()
+
+uint8_t MainView::GuiItfGetSRCBits()
 {
 	return DacContainer::simSrcBit;
 }
@@ -165,25 +117,8 @@ extern "C"
 	uint8_t GuiItfGetScreenSaverEnable();
 
 	/*** Clock Temp ***/
-	uint32_t GuiItfGetDasClockHeatedTemperature();
+	uint32_t GuiItfGetClockHeatedTemperature();
 	void GuiItfSetDasClockHeatedTemperature(uint32_t temp);
-
-#ifdef KARUNA_7i
-	/*** DasClock***/
-	float GuiItfGetDasClockMV341Temp();
-	uint8_t GuiItfGetDasClockStatusLock1();
-	uint8_t GuiItfGetDasClockStatusLock2();
-	uint8_t GuiItfGetDasClockIsExt();
-#endif
-
-#ifdef KARUNA_43i
-	/*** Tri Clock ***/
-	float GuiItfGetTempCh1(void);
-	uint8_t GuiItfGetDi1(void);
-	uint8_t GuiItfGetDi11(void);
-	uint8_t GuiItfGetDi13(void);
-	uint8_t GuiItfGetDi15(void);
-#endif
 
 	/*** DAC Config, Volume ***/
 	uint8_t GuiItfGetConfig();
@@ -197,9 +132,9 @@ extern "C"
 	uint8_t(*GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS];
 
 	/*** SRC ***/
-	uint8_t GuiItfGetSRCEnabled();
-	uint8_t GuiItfGetSRCFreq();
-	uint8_t GuiItfGetSRCBit();
+	uint8_t GuiItfGetSRCEnable();
+	uint8_t GuiItfGetSRCFsout();
+	uint8_t GuiItfGetSRCBits();
 }
 #endif
 
@@ -327,7 +262,7 @@ void MainView::RefreshIntExt()
 
 void  MainView::SetTemp(int p_Temp)
 {
-	int heatedTemp = GuiItfGetDasClockHeatedTemperature();
+	int heatedTemp = GuiItfGetClockHeatedTemperature();
 
 	if (p_Temp < heatedTemp - 30)
 	{
@@ -377,7 +312,7 @@ void MainView::RefreshSRCInfo(uint8_t p_AudiFormat)
 {
 	if (p_AudiFormat < DacConfig::DAC_DSD_64)
 	{
-		bool isSRCEnabled = GuiItfGetSRCEnabled() &&
+		bool isSRCEnabled = GuiItfGetSRCEnable() &&
 			(p_AudiFormat == DacConfig::DAC_PCM_44_1KHZ ||
 				p_AudiFormat == DacConfig::DAC_PCM_88_2KHZ ||
 				p_AudiFormat == DacConfig::DAC_PCM_176_4KHZ ||
@@ -389,7 +324,7 @@ void MainView::RefreshSRCInfo(uint8_t p_AudiFormat)
 		{
 			Unicode::strncpy(lblValueFormatBuffer, "SRC", LBLVALUEFORMAT_SIZE);
 
-			switch (GuiItfGetSRCBit())
+			switch (GuiItfGetSRCBits())
 			{
 			case SRC_Bit_16:
 			{
@@ -405,7 +340,7 @@ void MainView::RefreshSRCInfo(uint8_t p_AudiFormat)
 				break;
 			}
 
-			uint8_t srcFreq = GuiItfGetSRCFreq();
+			uint8_t srcFreq = GuiItfGetSRCFsout();
 
 			if (p_AudiFormat == DacConfig::DAC_PCM_44_1KHZ ||
 				p_AudiFormat == DacConfig::DAC_PCM_88_2KHZ ||

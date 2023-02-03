@@ -1562,17 +1562,11 @@ void RS485Parser(char *line)
     else if(!strcmp(cmd, "UE")){
       Device.DenpoDAC.UartErrorCnt = strtol(arg1, NULL, 16);
     }
-    else if(!strcmp(cmd,"DAC:VOL1"))
+    else if(!strcmp(cmd,"DAC:VOL"))
     {
       sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
-      Device.DenpoDAC.StatusOfVolume1 = intarg;
+      Device.DenpoDAC.StatusOfVolume = intarg;
       strcpy(buffer, "DAC:VOL1 OK");
-    }
-    else if(!strcmp(cmd,"DAC:VOL2"))
-    {
-      sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
-      Device.DenpoDAC.StatusOfVolume2 = intarg;
-      strcpy(buffer, "DAC:VOL2 OK");
     }
     else if(!strcmp(cmd,"ROUTE")){
       sscanf(line, "#%x %s %d",&addr, cmd, &intarg);

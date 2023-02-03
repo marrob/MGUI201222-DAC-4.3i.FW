@@ -123,40 +123,30 @@ typedef struct _AppTypeDef
     uint32_t UpTimeSec;
     uint32_t SavedFlags;
 
-    uint8_t LastRoute;
     uint8_t IsSRCEnabled;
 
     uint32_t UartErrorCnt;
 
-    uint8_t Volume1;
-    uint8_t StatusOfVolume1;
-    uint8_t Volume2;
-    uint8_t StatusOfVolume2;
+    uint8_t Volume;
+    uint8_t StatusOfVolume;
 
     uint8_t Route;
     uint8_t StatusOfRoute;
 
     uint8_t StatusOfConfig;
 
-  }DenpoDAC;
-  struct _DasClock
-  {
-    char FW[DEVICE_FW_SIZE];
-    char UID[DEVICE_UID_SIZE];
-    char PCB[DEVICE_PCB_SIZE];
-    uint32_t HeatedTemp;
-    uint32_t OkCnt;
-    uint32_t UnknownCnt;
-    uint32_t DO;
-    uint32_t DI;
-    double AI[DAS_AI_CHANNELS];
-    uint32_t UpTimeSec;
-    uint32_t UartErrorCnt;
-  }DasClock;
-  struct
-  {
+    uint8_t SRCEnabled;
 
-  }Periph;
+    uint8_t SRCFsout;
+    uint8_t StatusOfSRCFsout;
+
+    uint8_t SRCBits;
+    uint8_t StatusOfSRCBits;
+
+    uint8_t HeatedTemp;
+
+  }DenpoDAC;
+
 
   struct _Log
   {

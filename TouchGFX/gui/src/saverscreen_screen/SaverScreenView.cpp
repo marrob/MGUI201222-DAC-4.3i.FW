@@ -14,7 +14,7 @@ uint8_t  mSaverPreDacMode;
 #ifdef SIMULATOR
 
 time_t simSaverDateTime;
-static uint8_t simDACSaverMode = DacModes::DAC_DSD_256;
+static uint8_t simDACSaverMode = DAC_DSD_256;
 
 void SaverScreenView::GuiItfGetRtc(time_t* dt)
 {

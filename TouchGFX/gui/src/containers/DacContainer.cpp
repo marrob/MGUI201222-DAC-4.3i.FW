@@ -26,41 +26,6 @@ uint8_t(*CurrentDacConfigArray)[DAC_SETTINGS_SIZE_COLS];
 bool m_ShowInfo = false;
 
 
-// Debug Console
-//char str[256];
-//
-//const char* DacModes_name[] =
-//{ "DAC_PCM_32_0KHZ",
-//	"DAC_PCM_44_1KHZ",
-//	"DAC_PCM_48_0KHZ",
-//	"DAC_PCM_88_2KHZ",
-//	"DAC_PCM_96_0KHZ",
-//	"DAC_PCM_176_4KHZ",
-//	"DAC_PCM_192_KHZ",
-//	"DAC_PCM_362_8KHZ",
-//	"DAC_PCM_384_0KHZ",
-//	"DAC_PCM_705_6KHZ",
-//	"DAC_PCM_768_0KHZ",
-//	"DAC_DSD_64",
-//	"DAC_DSD_128",
-//	"DAC_DSD_256",
-//	"DAC_DSD_512"
-//};
-//
-//const char* DacConfigBytes_name[] =
-//{
-//	"Clock2",
-//	"AudioIF3",
-//	"DSDFilter",
-//	"FIR1",
-//	"FIR2",
-//	"DeEmp1",
-//	"DeEmp2",
-//	"DeltaSigma"
-//};
-
-
-
 #ifdef SIMULATOR
 
 uint8_t DacContainer::DacConfigArray[15][8];
@@ -70,7 +35,7 @@ uint8_t DacContainer::simSRCEn;
 uint8_t DacContainer::simSRCFreq;
 uint8_t DacContainer::simSrcBit;
 uint8_t DacContainer::simMute;
-uint8_t DacContainer::simDACRoute = DACRoute::ROUTE_HDMI_DAC;
+uint8_t DacContainer::simDACRoute = ROUTE_HDMI_DAC;
 
 void DacContainer::GuiItfSetVolume(uint8_t p_Volume)
 {
@@ -91,9 +56,7 @@ uint8_t DacContainer::GuiItfGetMute()
 	return simMute;
 }
 
-void DacContainer::GuiItfSaveDacFilters()
-{
-
+void DacContainer::GuiItfSaveDacFilters(){
 }
 
 uint8_t(*DacContainer::GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS]
@@ -102,33 +65,31 @@ uint8_t(*DacContainer::GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS]
 }
 
 
-void DacContainer::GuiItfSetSRCEnabled(uint8_t p_Enabled)
+void DacContainer::GuiItfSetSRCEnable(uint8_t p_Enabled)
 {
 	simSRCEn = p_Enabled;
 }
-uint8_t DacContainer::GuiItfGetSRCEnabled()
+uint8_t DacContainer::GuiItfGetSRCEnable()
 {
 	return simSRCEn;
 }
 
-void DacContainer::GuiItfSetSRCFreq(uint8_t p_Freq)
+void DacContainer::GuiItfSetSRCFsout(uint8_t p_Freq)
 {
 	simSRCFreq = p_Freq;
 }
-uint8_t DacContainer::GuiItfGetSRCFreq() {
+uint8_t DacContainer::GuiItfGetSRCFsout() {
 	return simSRCFreq;
 }
 
-void DacContainer::GuiItfSetSRCBit(uint8_t p_Bit)
-{
+void DacContainer::GuiItfSetSRCBits(uint8_t p_Bit){
 	simSrcBit = p_Bit;
 }
-uint8_t DacContainer::GuiItfGetSRCBit()
+
+uint8_t DacContainer::GuiItfGetSRCBits()
 {
 	return simSrcBit;
 }
-
-
 
 uint8_t DacContainer::GuiItfGetRoute()
 {
@@ -152,14 +113,14 @@ extern "C"
 	void  GuiItfSaveDacFilters();
 	uint8_t(*GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS];
 
-	void  GuiItfSetSRCEnabled(uint8_t p_Enabled);
-	uint8_t  GuiItfGetSRCEnabled();
+	void  GuiItfSetSRCEnable(uint8_t p_Enabled);
+	uint8_t  GuiItfGetSRCEnable();
 
-	void  GuiItfSetSRCFreq(uint8_t p_Freq);
-	uint8_t  GuiItfGetSRCFreq();
+	void  GuiItfSetSRCFsout(uint8_t p_Freq);
+	uint8_t  GuiItfGetSRCFsout();
 
-	void  GuiItfSetSRCBit(uint8_t p_Bit);
-	uint8_t  GuiItfGetSRCBit();
+	void  GuiItfSetSRCBits(uint8_t p_Bit);
+	uint8_t  GuiItfGetSRCBits();
 
 	uint8_t GuiItfGetRoute();
 	void GuiItfSetRoute(uint8_t p_Route);
@@ -254,10 +215,10 @@ void DacContainer::ShowDacConfigs()
 	chbxMute.forceState(GuiItfGetMute());
 
 	//SRC ENABLED
-	chbxEnableSRC.forceState(GuiItfGetSRCEnabled());
+	chbxEnableSRC.forceState(GuiItfGetSRCEnable());
 
 	// SRC FREQUENCY
-	switch (GuiItfGetSRCFreq())
+	switch (GuiItfGetSRCFsout())
 	{
 	case SRCF_Low:
 	{
@@ -279,7 +240,7 @@ void DacContainer::ShowDacConfigs()
 	}
 
 	//SRC BIT DEPTH
-	switch (GuiItfGetSRCBit())
+	switch (GuiItfGetSRCBits())
 	{
 	case SRC_Bit_16:
 	{
@@ -626,7 +587,7 @@ void DacContainer::chbxEnableSRCChecked()
 	{
 		bool srcEnabled = chbxEnableSRC.getState();
 		uint8_t dacRoute = GuiItfGetRoute();
-		GuiItfSetSRCEnabled(srcEnabled);
+		GuiItfSetSRCEnable(srcEnabled);
 
 		if (srcEnabled)
 		{
@@ -680,29 +641,29 @@ void DacContainer::chbxEnableSRCChecked()
 void DacContainer::rdbSRCFreqLowSelected()
 {
 	if (!m_ShowInfo)
-		GuiItfSetSRCFreq(SRCFreq::SRCF_Low);
+		GuiItfSetSRCFsout(SRCFreq::SRCF_Low);
 }
 
 void DacContainer::rdbSRCFreqMidSelected()
 {
 	if (!m_ShowInfo)
-		GuiItfSetSRCFreq(SRCFreq::SRCF_Mid);
+		GuiItfSetSRCFsout(SRCFreq::SRCF_Mid);
 }
 
 void DacContainer::rdbSRCFreqHighSelected()
 {
 	if (!m_ShowInfo)
-		GuiItfSetSRCFreq(SRCFreq::SRCF_High);
+		GuiItfSetSRCFsout(SRCFreq::SRCF_High);
 }
 
 void DacContainer::rdbSRCBit16Selected()
 {
 	if (!m_ShowInfo)
-		GuiItfSetSRCBit(SRCBit::SRC_Bit_16);
+		GuiItfSetSRCBits(SRCBit::SRC_Bit_16);
 }
 
 void DacContainer::rdbSRCBit24Selected()
 {
 	if (!m_ShowInfo)
-		GuiItfSetSRCBit(SRCBit::SRC_Bit_24);
+		GuiItfSetSRCBits(SRCBit::SRC_Bit_24);
 }
