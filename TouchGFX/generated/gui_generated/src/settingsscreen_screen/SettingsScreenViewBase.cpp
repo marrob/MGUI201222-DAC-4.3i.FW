@@ -56,7 +56,7 @@ SettingsScreenViewBase::SettingsScreenViewBase() :
     scrollableContainerSettings.enableHorizontalScroll(false);
     scrollableContainerSettings.setScrollbarsColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
-    dacContainer1.setXY(0, 0);
+    dacContainer1.setXY(2, 0);
     scrollableContainerSettings.add(dacContainer1);
 
     containerClock.setPosition(-4, 1485, 796, 157);

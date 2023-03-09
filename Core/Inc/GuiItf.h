@@ -69,33 +69,6 @@ enum DacConfig
 #define DENPO_DAC_DI_UNUSED9        ((uint32_t)1<<12)
 
 
-/*** Saved Flags for Karuna ***/
-#define KRN_FLAG_ALL_OUT_EN_AT_STARTUP    ((uint32_t)1<<0)
-#define KRN_FLAG_MSTR_CLK_ON_I2S_EN       ((uint32_t)1<<1)
-
-/*** DasClock ***/
-//Host:0, Device:2
-#define DAS_HOST_TX_ADDR        0x02
-#define DAS_HOST_RX_ADDR        0x20
-#define DAS_AI_CHANNELS         7
-
-#define DAS_DI_LOCK1        ((uint32_t) 1<<0)
-#define DAS_DI_LOCK2        ((uint32_t) 1<<1)
-#define DAS_DI_EXT_IS_EN    ((uint32_t) 1<<2)
-#define DAS_DI_MV1_IS_EN    ((uint32_t) 1<<3)
-#define DAS_DI_MV2_IS_EN    ((uint32_t) 1<<4)
-
-#define DAS_DO_MV1_EN       ((uint32_t) 1<<0)
-#define DAS_DO_MV2_EN       ((uint32_t) 1<<1)
-
-#define DAS_AI_MV341_I_MA     0
-#define DAS_AI_MV205_1_I_MA   1
-#define DAS_AI_MV205_2_I_MA   2
-#define DAS_AI_U_MAIN         3
-#define DAS_AI_MV341_TEMP     4
-#define DAS_AI_MV205_1_TEMP   5
-#define DAS_AI_MV205_2_TEMP   6
-
 /* Exported functions prototypes ---------------------------------------------*/
 /* GUI -----------------------------------------------------------------------*/
 uint8_t GuiItfLoad(void);

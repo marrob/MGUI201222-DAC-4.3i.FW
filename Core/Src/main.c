@@ -175,17 +175,19 @@ static char RS485_UART_RxBuffer[RS485_BUFFER_SIZE];
 RS485TxItem_t RS485TxCollection[] =
 {
   /*** DenpoDAC ***/
-  {"#%02X UPTIME?",        DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 200,},
-  {"#%02X FW?",            DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4000 },
-  {"#%02X UID?",           DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4200 },
-  {"#%02X PCB?",           DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4600 },
-  {"#%02X UE?",            DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4800 },
-  {"#%02X DAC:VOL1?",      DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
-  {"#%02X DAC:VOL2?",      DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
-  {"#%02X ROUTE?",         DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
-  {"#%02X DAC:CONFIG?",    DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
-};
+    {"#%02X UPTIME?",        DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 200,},
+    {"#%02X FW?",            DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4000 },
+    {"#%02X UID?",           DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4200 },
+    {"#%02X PCB?",           DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4600 },
+  //{"#%02X UE?",            DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 4800 },
+    {"#%02X DAC:VOL %d",        DENPO_DAC_HOST_TX_ADDR, TX_ITEM_INT_ARG, &Device.DenpoDAC.Volume, 250 },
+    {"#%02X DAC:VOL?",       DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 250 },
+    {"#%02X ROUTE %d",         DENPO_DAC_HOST_TX_ADDR, TX_ITEM_INT_ARG, &Device.DenpoDAC.Route, 250 },
+    {"#%02X ROUTE?",           DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 250 },
+//  {"#%02X DAC:CONFIG?",    DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
+//  {"#%02X SRC",    DENPO_DAC_HOST_TX_ADDR, TX_ITEM_NO_ARG, NULL, 500 },
 
+};
 
 /* USER CODE END PV */
 
@@ -219,7 +221,6 @@ void LiveLedOff(void);
 void LiveLedOn(void);
 
 /*** LCD ***/
-void ConsoleWrite(char *str);
 void UsbParser(char *request);
 void UsbUartTx(char *str);
 
@@ -1511,7 +1512,6 @@ void RS485UartTx(char *str)
 void RS485Parser(char *line)
 {
   unsigned int addr = 0;
-  char buffer[RS485_BUFFER_SIZE];
   char cmd[RS485_CMD_LENGTH];
   char arg1[RS485_ARG1_LENGTH];
   char arg2[RS485_ARG2_LENGTH];
@@ -1526,61 +1526,60 @@ void RS485Parser(char *line)
   sscanf(line, "#%x %s %s", &addr, cmd, arg1);
   if(addr == DENPO_DAC_HOST_RX_ADDR )
   {
-    if(!strcmp(cmd, "OK")){
-      Device.DenpoDAC.OkCnt++;
+    /*  addr cmd   arg1
+     *   #30 ROUTE OK
+     */
+    if(!strcmp(arg1, "OK")){
+      Device.DenpoDAC.Diag.OkCnt++;
     }
-    else if(!strcmp(cmd, "FW")){
+    else if(!strcmp(cmd, "FW?")){
        uint8_t i = strlen(arg1);
        if(i<DEVICE_FW_SIZE && i!=0)
          strcpy(Device.DenpoDAC.FW, arg1);
        else
          strcpy(Device.DenpoDAC.FW, "?");
     }
-    else if(!strcmp(cmd, "UID")){
+    else if(!strcmp(cmd, "UID?")){
       uint8_t i = strlen(arg1);
       if(i<DEVICE_UID_SIZE && i!=0)
         strcpy(Device.DenpoDAC.UID, arg1);
       else
         strcpy(Device.DenpoDAC.UID, "?");
     }
-    else if(!strcmp(cmd, "PCB")){
+    else if(!strcmp(cmd, "PCB?")){
       uint8_t i = strlen(arg1);
       if(i<DEVICE_PCB_SIZE && i!=0)
         strcpy(Device.DenpoDAC.PCB, arg1);
       else
         strcpy(Device.DenpoDAC.PCB, "?");
     }
-    else if(!strcmp(cmd,"UPTIME")){
+    else if(!strcmp(cmd,"UPTIME?")){
       Device.DenpoDAC.UpTimeSec = strtol(arg1, NULL, 16);
     }
-    else if(!strcmp(cmd, "DI")){
+    else if(!strcmp(cmd, "DI?")){
       Device.DenpoDAC.DI = strtol(arg1, NULL, 16);
     }
-    else if(!strcmp(cmd, "DO")){
+    else if(!strcmp(cmd, "DO?")){
       Device.DenpoDAC.DO = strtol(arg1, NULL, 16);
     }
-    else if(!strcmp(cmd, "UE")){
+    else if(!strcmp(cmd, "UE?")){
       Device.DenpoDAC.UartErrorCnt = strtol(arg1, NULL, 16);
     }
-    else if(!strcmp(cmd,"DAC:VOL"))
+    else if(!strcmp(cmd,"DAC:VOL?"))
     {
       sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
       Device.DenpoDAC.StatusOfVolume = intarg;
-      strcpy(buffer, "DAC:VOL1 OK");
     }
-    else if(!strcmp(cmd,"ROUTE")){
+    else if(!strcmp(cmd,"ROUTE?")){
       sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
       Device.DenpoDAC.StatusOfRoute = intarg;
-      strcpy(buffer, "ROUTE OK");
     }
     else if(!strcmp(cmd,"DAC:CONFIG")){
       sscanf(line, "#%x %s %d",&addr, cmd, &intarg);
       Device.DenpoDAC.StatusOfConfig = intarg;
-      strcpy(buffer, "DAC:CONFIG OK");
     }
-
     else{
-      Device.DenpoDAC.UnknownCnt++;
+      Device.DenpoDAC.Diag.UnknownCnt++;
     }
   }
 }

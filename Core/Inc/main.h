@@ -114,8 +114,6 @@ typedef struct _AppTypeDef
     char FW[DEVICE_FW_SIZE];
     char UID[DEVICE_UID_SIZE];
     char PCB[DEVICE_PCB_SIZE];
-    uint32_t OkCnt;
-    uint32_t UnknownCnt;
 
     uint32_t DI;
     uint32_t DO;
@@ -144,6 +142,12 @@ typedef struct _AppTypeDef
     uint8_t StatusOfSRCBits;
 
     uint8_t HeatedTemp;
+
+    struct
+    {
+      uint32_t OkCnt;
+      uint32_t UnknownCnt;
+    }Diag;
 
   }DenpoDAC;
 

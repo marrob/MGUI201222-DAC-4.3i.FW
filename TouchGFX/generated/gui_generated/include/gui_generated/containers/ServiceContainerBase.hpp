@@ -47,7 +47,7 @@ protected:
      * Member Declarations
      */
     touchgfx::TextArea lblKarunaUptimeTitle;
-    touchgfx::TextAreaWithOneWildcard lblKarunaUptime;
+    touchgfx::TextAreaWithOneWildcard lblDenpoDacUptime;
     touchgfx::TextArea lblDASClockTempTitle_0;
     touchgfx::TextAreaWithOneWildcard lblClocktemp_0;
     touchgfx::TextArea lblDASClockCurrentTitle_0;
@@ -67,8 +67,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard lblGUIFwVersion;
     touchgfx::Line line0;
     touchgfx::PainterRGB565 line0Painter;
-    touchgfx::TextArea lblKarunaFwVerTitle;
-    touchgfx::TextAreaWithOneWildcard lblKarunaFwVersion;
+    touchgfx::TextArea lblDenpoDacFwVerTitle;
+    touchgfx::TextAreaWithOneWildcard lblDenpoDacFwVersion;
     touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnFactoryReset;
     touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnSoftReset;
     touchgfx::Line line2_1;
@@ -78,7 +78,7 @@ protected:
     touchgfx::TextArea lblBusUartErrorCntTitle;
     touchgfx::TextAreaWithOneWildcard lblBusUartErrorCnt;
     touchgfx::TextArea lblKarunaUptimeCntTitle;
-    touchgfx::TextAreaWithOneWildcard lblKarunaUartErrorCnt;
+    touchgfx::TextAreaWithOneWildcard lblDenpoDacUartErrorCnt;
     touchgfx::Line line1_1;
     touchgfx::PainterRGB565 line1_1Painter;
     touchgfx::Line line1_1_1;
@@ -94,8 +94,8 @@ protected:
     /*
      * Wildcard Buffers
      */
-    static const uint16_t LBLKARUNAUPTIME_SIZE = 12;
-    touchgfx::Unicode::UnicodeChar lblKarunaUptimeBuffer[LBLKARUNAUPTIME_SIZE];
+    static const uint16_t LBLDENPODACUPTIME_SIZE = 12;
+    touchgfx::Unicode::UnicodeChar lblDenpoDacUptimeBuffer[LBLDENPODACUPTIME_SIZE];
     static const uint16_t LBLCLOCKTEMP_0_SIZE = 12;
     touchgfx::Unicode::UnicodeChar lblClocktemp_0Buffer[LBLCLOCKTEMP_0_SIZE];
     static const uint16_t LBLCLOCKLOCK_0_SIZE = 12;
@@ -106,14 +106,14 @@ protected:
     touchgfx::Unicode::UnicodeChar lblClockLock_2Buffer[LBLCLOCKLOCK_2_SIZE];
     static const uint16_t LBLGUIFWVERSION_SIZE = 50;
     touchgfx::Unicode::UnicodeChar lblGUIFwVersionBuffer[LBLGUIFWVERSION_SIZE];
-    static const uint16_t LBLKARUNAFWVERSION_SIZE = 50;
-    touchgfx::Unicode::UnicodeChar lblKarunaFwVersionBuffer[LBLKARUNAFWVERSION_SIZE];
+    static const uint16_t LBLDENPODACFWVERSION_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar lblDenpoDacFwVersionBuffer[LBLDENPODACFWVERSION_SIZE];
     static const uint16_t LBLBOOTUPCNT_SIZE = 12;
     touchgfx::Unicode::UnicodeChar lblBootupCntBuffer[LBLBOOTUPCNT_SIZE];
     static const uint16_t LBLBUSUARTERRORCNT_SIZE = 12;
     touchgfx::Unicode::UnicodeChar lblBusUartErrorCntBuffer[LBLBUSUARTERRORCNT_SIZE];
-    static const uint16_t LBLKARUNAUARTERRORCNT_SIZE = 12;
-    touchgfx::Unicode::UnicodeChar lblKarunaUartErrorCntBuffer[LBLKARUNAUARTERRORCNT_SIZE];
+    static const uint16_t LBLDENPODACUARTERRORCNT_SIZE = 12;
+    touchgfx::Unicode::UnicodeChar lblDenpoDacUartErrorCntBuffer[LBLDENPODACUARTERRORCNT_SIZE];
     static const uint16_t LBLTEMPOFFSETRANGES_SIZE = 100;
     touchgfx::Unicode::UnicodeChar lblTempOffsetRangesBuffer[LBLTEMPOFFSETRANGES_SIZE];
     static const uint16_t LBLCLOCKCURRENT_INTEXT_SIZE = 12;

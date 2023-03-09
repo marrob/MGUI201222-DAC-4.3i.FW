@@ -55,7 +55,7 @@ DisplayScreenViewBase::DisplayScreenViewBase() :
     btnDisplayOff.setPosition(402, 404, 394, 72);
     btnDisplayOff.setAction(flexButtonCallback);
 
-    textArea2_1.setPosition(10, 80, 931, 40);
+    textArea2_1.setPosition(11, 80, 931, 40);
     textArea2_1.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
     textArea2_1.setLinespacing(0);
     textArea2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_L22C));

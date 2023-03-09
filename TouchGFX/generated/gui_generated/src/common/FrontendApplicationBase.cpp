@@ -23,8 +23,6 @@
 #include <gui/passwordscreen_screen/PasswordScreenPresenter.hpp>
 #include <gui/clockscreen_screen/ClockScreenView.hpp>
 #include <gui/clockscreen_screen/ClockScreenPresenter.hpp>
-#include <gui/logscreen_screen/LogScreenView.hpp>
-#include <gui/logscreen_screen/LogScreenPresenter.hpp>
 #include <gui/splashscreen_screen/SplashScreenView.hpp>
 #include <gui/splashscreen_screen/SplashScreenPresenter.hpp>
 #include <gui/saverscreen_screen/SaverScreenView.hpp>
@@ -158,17 +156,6 @@ void FrontendApplicationBase::gotoServiceScreenScreenSlideTransitionEastImpl()
     touchgfx::makeTransition<ServiceScreenView, ServiceScreenPresenter, touchgfx::SlideTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-void FrontendApplicationBase::gotoServiceScreenScreenSlideTransitionWest()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoServiceScreenScreenSlideTransitionWestImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
-
-void FrontendApplicationBase::gotoServiceScreenScreenSlideTransitionWestImpl()
-{
-    touchgfx::makeTransition<ServiceScreenView, ServiceScreenPresenter, touchgfx::SlideTransition<WEST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
-}
-
 void FrontendApplicationBase::gotoServiceScreenScreenNoTransition()
 {
     transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoServiceScreenScreenNoTransitionImpl);
@@ -204,19 +191,6 @@ void FrontendApplicationBase::gotoClockScreenScreenSlideTransitionEast()
 void FrontendApplicationBase::gotoClockScreenScreenSlideTransitionEastImpl()
 {
     touchgfx::makeTransition<ClockScreenView, ClockScreenPresenter, touchgfx::SlideTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
-}
-
-// LogScreen
-
-void FrontendApplicationBase::gotoLogScreenScreenSlideTransitionEast()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoLogScreenScreenSlideTransitionEastImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
-
-void FrontendApplicationBase::gotoLogScreenScreenSlideTransitionEastImpl()
-{
-    touchgfx::makeTransition<LogScreenView, LogScreenPresenter, touchgfx::SlideTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // SplashScreen

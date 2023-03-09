@@ -8,13 +8,13 @@ static uint32_t mHeatedTemp = 30;
 /*** GUI ***/
 uint8_t ServiceContainer::GuiItfGetVersion(char** fw, char** uid, char** pcb)
 {
-	char _fw[25] = "220613_1241";
-	char _uidI[25] = "0123456789ABCDEF0000001";
-	char _pcb[25] = "V01";
-	*fw = _fw;
-	*uid = _uidI;
-	*pcb = _pcb;
-	return 0;
+  char _fw[25] = "220613_1241";
+  char _uidI[25] = "0123456789ABCDEF0000001";
+  char _pcb[25] = "V01";
+  *fw = _fw;
+  *uid = _uidI;
+  *pcb = _pcb;
+  return 0;
 }
 
 uint32_t ServiceContainer::GuiItfGetBootupCnt(void)
@@ -47,17 +47,48 @@ void ServiceContainer::GuiItfSetClockHeatedTemperature(uint32_t temp)
 	mHeatedTemp = temp;
 }
 
+/*** Denpo DAC ***/
+uint32_t ServiceContainer::GuiItfGetDacUpTimeSec(void)
+{
+  return 123456;
+}
+
+uint32_t ServiceContainer::GuiItfGetDacBusErrorCnt(void)
+{
+  return 123456;
+}
+
+/*** GUI ***/
+uint8_t ServiceContainer::GuiItfGetDacVersion(char** fw, char** uid, char** pcb)
+{
+  char _fw[25] = "220613_1241";
+  char _uidI[25] = "0123456789ABCDEF0000001";
+  char _pcb[25] = "V01";
+  *fw = _fw;
+  *uid = _uidI;
+  *pcb = _pcb;
+  return 0;
+}
+
+
+
 #else
 extern "C"
 {
-	/*** GUI ***/
-	uint8_t GuiItfGetVersion(char** fw, char** uid, char** pcb);
-	uint32_t GuiItfGetBootupCnt(void);
-	uint32_t GuiItfGetBusUartErrorCnt(void);
-	void GuiItfFacotryReset(void);
-	void GuiItfSoftReset(void);
-	uint32_t GuiItfGetClockHeatedTemperature();
-	void GuiItfSetClockHeatedTemperature(uint32_t temp);
+  /*** GUI ***/
+  uint8_t GuiItfGetVersion(char** fw, char** uid, char** pcb);
+  uint32_t GuiItfGetBootupCnt(void);
+  uint32_t GuiItfGetBusUartErrorCnt(void);
+  void GuiItfFacotryReset(void);
+  void GuiItfSoftReset(void);
+  uint32_t GuiItfGetClockHeatedTemperature();
+  void GuiItfSetClockHeatedTemperature(uint32_t temp);
+
+
+  /*** Denpo DAC ***/
+  uint8_t GuiItfGetDacVersion(char** fw, char** uid, char** pcb);
+  uint32_t GuiItfGetDacUpTimeSec(void);
+  uint32_t GuiItfGetDacBusErrorCnt(void);
 }
 #endif
 
@@ -81,11 +112,11 @@ void ServiceContainer::OffsetValueChangedCallbackHandler(uint32_t value)
 
 void ServiceContainer::RefresTempRanges(uint32_t heatedTemp)
 {
-	Unicode::snprintf(lblTempOffsetRangesBuffer, LBLTEMPOFFSETRANGES_SIZE, "..%d < %d-%d < %d-%d <<< %d-%d >>> %d-%d > %d-%d > %d..",
-		heatedTemp - 30, heatedTemp - 30, heatedTemp - 20, heatedTemp - 20, heatedTemp - 10,
-		heatedTemp - 10, heatedTemp + 10,
-		heatedTemp + 10, heatedTemp + 15, heatedTemp + 15, heatedTemp + 20, heatedTemp + 20);
-	lblTempOffsetRanges.invalidate();
+  Unicode::snprintf(lblTempOffsetRangesBuffer, LBLTEMPOFFSETRANGES_SIZE, "..%d < %d-%d < %d-%d <<< %d-%d >>> %d-%d > %d-%d > %d..",
+  heatedTemp - 30, heatedTemp - 30, heatedTemp - 20, heatedTemp - 20, heatedTemp - 10,
+  heatedTemp - 10, heatedTemp + 10,
+  heatedTemp + 10, heatedTemp + 15, heatedTemp + 15, heatedTemp + 20, heatedTemp + 20);
+  lblTempOffsetRanges.invalidate();
 }
 
 
@@ -97,30 +128,51 @@ void ServiceContainer::initialize()
 
 void ServiceContainer::RefreshServiceInfo()
 {
-	/*** Gui ***/
-	uint32_t bootUp = GuiItfGetBootupCnt();
-	Unicode::snprintf(lblBootupCntBuffer, LBLBOOTUPCNT_SIZE, "%d", bootUp);
-	lblBootupCnt.invalidate();
-	uint32_t busUartError = GuiItfGetBusUartErrorCnt();
-	Unicode::snprintf(lblBusUartErrorCntBuffer, LBLBOOTUPCNT_SIZE, "%d", busUartError);
-	lblBusUartErrorCnt.invalidate();
+  /*** Gui ***/
+  uint32_t bootUp = GuiItfGetBootupCnt();
+  Unicode::snprintf(lblBootupCntBuffer, LBLBOOTUPCNT_SIZE, "%d", bootUp);
+  lblBootupCnt.invalidate();
+  uint32_t busUartError = GuiItfGetBusUartErrorCnt();
+  Unicode::snprintf(lblBusUartErrorCntBuffer, LBLBUSUARTERRORCNT_SIZE, "%d", busUartError);
+  lblBusUartErrorCnt.invalidate();
+
+  /*** Denpo DAC ***/
+  uint32_t dacUpTime = GuiItfGetDacUpTimeSec();
+  Unicode::snprintf(lblDenpoDacUptimeBuffer, LBLDENPODACUPTIME_SIZE, "%d", dacUpTime);
+  lblDenpoDacUptime.invalidate();
+
+  uint32_t dacBusErrorCnt = GuiItfGetDacBusErrorCnt();
+  Unicode::snprintf(lblDenpoDacUartErrorCntBuffer, LBLDENPODACUARTERRORCNT_SIZE, "%d", dacBusErrorCnt);
+  lblDenpoDacUartErrorCnt.invalidate();
+
+
 }
 
 void ServiceContainer::GetVersionInfo()
 {
-	char* fw = nullptr;
-	char* uid = nullptr;
-	char* pcb = nullptr;
-	Unicode::UnicodeChar uni_fw[LBLGUIFWVERSION_SIZE];
-	Unicode::UnicodeChar uni_uid[LBLGUIFWVERSION_SIZE];
-	Unicode::UnicodeChar uni_pcb[LBLGUIFWVERSION_SIZE];
+  char* fw = nullptr;
+  char* uid = nullptr;
+  char* pcb = nullptr;
+  Unicode::UnicodeChar uni_fw[LBLGUIFWVERSION_SIZE];
+  Unicode::UnicodeChar uni_uid[LBLGUIFWVERSION_SIZE];
+  Unicode::UnicodeChar uni_pcb[LBLGUIFWVERSION_SIZE];
 
-	GuiItfGetVersion(&fw, &uid, &pcb);
-	Unicode::fromUTF8((const uint8_t*)fw, uni_fw, sizeof(uni_fw));
-	Unicode::fromUTF8((const uint8_t*)uid, uni_uid, sizeof(uni_uid));
-	Unicode::fromUTF8((const uint8_t*)pcb, uni_pcb, sizeof(uni_pcb));
-	Unicode::snprintf(lblGUIFwVersionBuffer, LBLGUIFWVERSION_SIZE, "%s-%s-%s", uni_fw, uni_uid, uni_pcb);
-	lblGUIFwVersion.invalidate();
+  /*** GUI ***/
+  GuiItfGetVersion(&fw, &uid, &pcb);
+  Unicode::fromUTF8((const uint8_t*)fw, uni_fw, sizeof(uni_fw));
+  Unicode::fromUTF8((const uint8_t*)uid, uni_uid, sizeof(uni_uid));
+  Unicode::fromUTF8((const uint8_t*)pcb, uni_pcb, sizeof(uni_pcb));
+  Unicode::snprintf(lblGUIFwVersionBuffer, LBLGUIFWVERSION_SIZE, "%s-%s-%s", uni_fw, uni_uid, uni_pcb);
+  lblGUIFwVersion.invalidate();
+
+
+  /*** DAC ***/
+  GuiItfGetDacVersion(&fw, &uid, &pcb);
+  Unicode::fromUTF8((const uint8_t*)fw, uni_fw, sizeof(uni_fw));
+  Unicode::fromUTF8((const uint8_t*)uid, uni_uid, sizeof(uni_uid));
+  Unicode::fromUTF8((const uint8_t*)pcb, uni_pcb, sizeof(uni_pcb));
+  Unicode::snprintf(lblDenpoDacFwVersionBuffer, LBLDENPODACFWVERSION_SIZE, "%s-%s-%s", uni_fw, uni_uid, uni_pcb);
+  lblDenpoDacFwVersion.invalidate();
 
 }
 

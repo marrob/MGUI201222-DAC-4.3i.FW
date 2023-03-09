@@ -325,7 +325,7 @@ MainViewBase::MainViewBase() :
 
     containerVolumeSet.setPosition(6, -200, 789, 199);
 
-    boxWithBorder2.setPosition(0, 0, 789, 199);
+    boxWithBorder2.setPosition(-4, -36, 789, 199);
     boxWithBorder2.setColor(touchgfx::Color::getColorFromRGB(32, 32, 32));
     boxWithBorder2.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     boxWithBorder2.setBorderSize(5);

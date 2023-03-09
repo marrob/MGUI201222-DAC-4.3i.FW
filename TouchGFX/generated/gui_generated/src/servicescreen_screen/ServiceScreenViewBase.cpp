@@ -40,7 +40,6 @@ ServiceScreenViewBase::ServiceScreenViewBase() :
     btnLog.setBitmaps(Bitmap(BITMAP_LOG_ID), Bitmap(BITMAP_LOG_ID));
     btnLog.setBitmapXY(20, 5);
     btnLog.setPosition(402, 404, 394, 72);
-    btnLog.setAction(flexButtonCallback);
 
     boxWithBorder1.setPosition(4, 80, 792, 320);
     boxWithBorder1.setColor(touchgfx::Color::getColorFromRGB(25, 25, 25));
@@ -52,11 +51,11 @@ ServiceScreenViewBase::ServiceScreenViewBase() :
     lblServiceTitle.setLinespacing(0);
     lblServiceTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_LJNE));
 
-    scrollContService.setPosition(4, 80, 792, 320);
+    scrollContService.setPosition(2, 80, 792, 320);
     scrollContService.enableHorizontalScroll(false);
     scrollContService.setScrollbarsColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
-    serviceControl.setXY(-5, 0);
+    serviceControl.setXY(0, 0);
     scrollContService.add(serviceControl);
     scrollContService.setScrollbarsPermanentlyVisible();
     scrollContService.setScrollbarsVisible(false);
@@ -83,12 +82,5 @@ void ServiceScreenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractBu
         //When btnBack clicked change screen to SettingsScreen
         //Go to SettingsScreen with screen transition towards West
         application().gotoSettingsScreenScreenSlideTransitionWest();
-    }
-    else if (&src == &btnLog)
-    {
-        //ShowLog
-        //When btnLog clicked change screen to LogScreen
-        //Go to LogScreen with screen transition towards East
-        application().gotoLogScreenScreenSlideTransitionEast();
     }
 }

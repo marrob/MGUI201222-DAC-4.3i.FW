@@ -576,64 +576,50 @@ uint8_t(*GuiItfGetDacFilters())[DAC_SETTINGS_SIZE_COLS]
 {
   return NULL;
 }
-void GuiItfSaveDacFilters(void)
-{
+void GuiItfSaveDacFilters(void){
 
 }
 
 /*Volume ---------------------------------------------------------------------*/
-void GuiItfSetVolume(uint8_t value)
-{
+void GuiItfSetVolume(uint8_t value){
   Device.DenpoDAC.Volume = value;
   EepromU32Write(EEP_DAC_VOLUME_ADDR, Device.DenpoDAC.Volume);
 }
 
-uint8_t GuiItfGetVolume(void)
-{
+uint8_t GuiItfGetVolume(void){
   return Device.DenpoDAC.StatusOfVolume;
 }
 
 /*SRC ------------------------------------------------------------------------*/
-uint8_t GuiItfGetSRCEnable(void)
-{
+uint8_t GuiItfGetSRCEnable(void){
   return Device.DenpoDAC.SRCEnabled;
 }
 
-void GuiItfSetSRCEnable(uint8_t value)
-{
+void GuiItfSetSRCEnable(uint8_t value){
   Device.DenpoDAC.SRCEnabled = value;
   EepromU32Write(EEP_DAC_SRC_ENABLED_ADDR, Device.DenpoDAC.SRCEnabled);
 }
 
-int GuiItfGetSRCFsout(void)
-{
+int GuiItfGetSRCFsout(void){
   return Device.DenpoDAC.StatusOfSRCFsout;
 }
 
-void GuiItfSetSRCFsout(uint8_t value)
-{
+void GuiItfSetSRCFsout(uint8_t value){
   Device.DenpoDAC.SRCFsout = value;
   EepromU32Write(EEP_DAC_SRC_FSOUT_ADDR, Device.DenpoDAC.SRCFsout);
 }
 
-int GuiItfGetSRCBits(void)
-{
+int GuiItfGetSRCBits(void){
   return Device.DenpoDAC.StatusOfSRCBits;
 }
 
-void GuiItfSetSRCBits(uint8_t value)
-{
+void GuiItfSetSRCBits(uint8_t value){
   Device.DenpoDAC.SRCBits = value;
   EepromU32Write(EEP_DAC_SRC_BITS_ADDR, Device.DenpoDAC.SRCBits);
-
-
 }
 
-
-
 /*Mute -----------------------------------------------------------------------*/
-void GuiItfSetMute(int value)
-{
+void GuiItfSetMute(int value){
   static Route_t lastRoute = ROUTE_MUTE_DAC;
   if(value != 0){
     lastRoute = Device.DenpoDAC.StatusOfRoute;
@@ -645,36 +631,55 @@ void GuiItfSetMute(int value)
   }
 }
 
-uint8_t GuiItfGetMute(void)
-{
+uint8_t GuiItfGetMute(void){
   return (ROUTE_MUTE_DAC == Device.DenpoDAC.StatusOfRoute);
 }
 
 /*Route ----------------------------------------------------------------------*/
-uint8_t GuiItfGetRoute(void)
-{
+uint8_t GuiItfGetRoute(void){
   return Device.DenpoDAC.StatusOfRoute;
 }
 
-void GuiItfSetRoute(int value)
-{
+void GuiItfSetRoute(int value){
+  EepromU32Write(EEP_DAC_ROUTE_ADDR, value);
   Device.DenpoDAC.Route = value;
 }
 
 /*Route ----------------------------------------------------------------------*/
-uint8_t GuiItfGetConfig(void)
-{
+uint8_t GuiItfGetConfig(void){
   return Device.DenpoDAC.StatusOfConfig;
 }
 
 /*Heated Temperature ---------------------------------------------------------*/
-uint32_t GuiItfGetClockHeatedTemperature()
-{
+uint32_t GuiItfGetClockHeatedTemperature(){
   return Device.DenpoDAC.HeatedTemp;
 }
 
-void GuiItfSetClockHeatedTemperature(uint32_t temp)
-{
+void GuiItfSetClockHeatedTemperature(uint32_t temp){
   Device.DenpoDAC.HeatedTemp = temp;
   EepromU32Write(EEP_DAC_CLOCK_HEATED_TEMP_ADDR, Device.DenpoDAC.HeatedTemp);
+}
+
+/*DAC Tools -------- ---------------------------------------------------------*/
+/*
+ * fw:  220510_2157               size: DEVICE_FW_SIZE
+ * uid: 66DFF323530505243052936   size: DEVICE_UID_SIZE
+ * pcb: V00                       size: DEVICE_PCB_SIZE
+ */
+uint8_t GuiItfGetDacVersion(char **fw, char **uid, char **pcb)
+{
+  *fw = Device.DenpoDAC.FW;
+  *uid = Device.DenpoDAC.UID;
+  *pcb = Device.DenpoDAC.PCB;
+  return GUIITF_OK;
+}
+
+uint32_t GuiItfGetDacUpTimeSec()
+{
+  return Device.DenpoDAC.UpTimeSec;
+}
+
+uint32_t GuiItfGetDacBusErrorCnt()
+{
+  return Device.DenpoDAC.UartErrorCnt;
 }

@@ -43,8 +43,6 @@ public:
     // ServiceScreen
     void gotoServiceScreenScreenSlideTransitionEast();
 
-    void gotoServiceScreenScreenSlideTransitionWest();
-
     void gotoServiceScreenScreenNoTransition();
 
     // PasswordScreen
@@ -52,9 +50,6 @@ public:
 
     // ClockScreen
     void gotoClockScreenScreenSlideTransitionEast();
-
-    // LogScreen
-    void gotoLogScreenScreenSlideTransitionEast();
 
     // SplashScreen
     void gotoSplashScreenScreenNoTransition();
@@ -93,8 +88,6 @@ protected:
     // ServiceScreen
     void gotoServiceScreenScreenSlideTransitionEastImpl();
 
-    void gotoServiceScreenScreenSlideTransitionWestImpl();
-
     void gotoServiceScreenScreenNoTransitionImpl();
 
     // PasswordScreen
@@ -102,9 +95,6 @@ protected:
 
     // ClockScreen
     void gotoClockScreenScreenSlideTransitionEastImpl();
-
-    // LogScreen
-    void gotoLogScreenScreenSlideTransitionEastImpl();
 
     // SplashScreen
     void gotoSplashScreenScreenNoTransitionImpl();

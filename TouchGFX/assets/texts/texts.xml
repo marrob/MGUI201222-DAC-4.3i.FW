@@ -458,7 +458,7 @@
         <Translation Language="GB">TRI Clock</Translation>
       </Text>
       <Text Id="__SingleUse_0LDD" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Karuna</Translation>
+        <Translation Language="GB">Denpo DAC</Translation>
       </Text>
       <Text Id="__SingleUse_VBNA" Alignment="Left" TypographyId="Settings">
         <Translation Language="GB">Unknown</Translation>
@@ -505,35 +505,11 @@
       <Text Id="__SingleUse_QYPN" Alignment="Left" TypographyId="Settings">
         <Translation Language="GB">Uptime counter : </Translation>
       </Text>
-      <Text Id="__SingleUse_Y806" Alignment="Left" TypographyId="Settings">
-        <Translation Language="GB">ERROR</Translation>
-      </Text>
-      <Text Id="__SingleUse_G4CD" Alignment="Left" TypographyId="Settings">
-        <Translation Language="GB">WARN</Translation>
-      </Text>
-      <Text Id="__SingleUse_LTA0" Alignment="Left" TypographyId="Settings">
-        <Translation Language="GB">INFO</Translation>
-      </Text>
-      <Text Id="__SingleUse_HXDW" Alignment="Left" TypographyId="Desc">
-        <Translation Language="GB">23.08.2022 - 20.08.2022</Translation>
-      </Text>
-      <Text Id="__SingleUse_ZK75" Alignment="Left" TypographyId="Desc">
-        <Translation Language="GB">Date : &lt;value&gt;</Translation>
-      </Text>
       <Text Id="__SingleUse_9NVL" Alignment="Left" TypographyId="Desc">
         <Translation Language="GB" />
       </Text>
       <Text Id="__SingleUse_GCT7" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_C0B1" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Next Page</Translation>
-      </Text>
-      <Text Id="__SingleUse_FDYF" Alignment="Right" TypographyId="Default">
-        <Translation Language="GB">Back</Translation>
-      </Text>
-      <Text Id="__SingleUse_BPY3" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Prev. Page</Translation>
       </Text>
       <Text Id="__SingleUse_USF5" Alignment="Left" TypographyId="Desc">
         <Translation Language="GB">00:00</Translation>

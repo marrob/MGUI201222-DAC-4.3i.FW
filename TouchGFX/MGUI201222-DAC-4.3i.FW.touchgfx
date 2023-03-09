@@ -892,6 +892,8 @@
               {
                 "Type": "BoxWithBorder",
                 "Name": "boxWithBorder2",
+                "X": -4,
+                "Y": -36,
                 "Width": 789,
                 "Height": 199,
                 "Color": {
@@ -1497,6 +1499,7 @@
               {
                 "Type": "CustomContainerInstance",
                 "Name": "dacContainer1",
+                "X": 2,
                 "Width": 792,
                 "Height": 1501,
                 "CustomContainerDefinitionName": "DacContainer"
@@ -1814,7 +1817,7 @@
           {
             "Type": "TextArea",
             "Name": "textArea2_1",
-            "X": 10,
+            "X": 11,
             "Y": 80,
             "Width": 931,
             "Height": 40,
@@ -2450,7 +2453,7 @@
           {
             "Type": "ScrollableContainer",
             "Name": "scrollContService",
-            "X": 4,
+            "X": 2,
             "Y": 80,
             "Width": 792,
             "Height": 320,
@@ -2466,7 +2469,6 @@
               {
                 "Type": "CustomContainerInstance",
                 "Name": "serviceControl",
-                "X": -5,
                 "Width": 800,
                 "Height": 953,
                 "CustomContainerDefinitionName": "ServiceContainer"
@@ -2519,8 +2521,7 @@
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "East",
-              "ActionComponent": "LogScreen"
+              "ScreenTransitionDirection": "East"
             }
           }
         ]
@@ -4033,455 +4034,6 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "SetClockTime"
-            }
-          }
-        ]
-      },
-      {
-        "Name": "LogScreen",
-        "CanvasBufferSize": 12000,
-        "Components": [
-          {
-            "Type": "Box",
-            "Name": "box1",
-            "Width": 800,
-            "Height": 480
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "btnPrevPage",
-            "X": 411,
-            "Y": 404,
-            "Width": 190,
-            "Height": 72,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "TextButtonStyle",
-                "Y": 20,
-                "TextId": "__SingleUse_BPY3",
-                "TextRotation": "0",
-                "ColorReleased": {
-                  "Red": 150,
-                  "Green": 118,
-                  "Blue": 73
-                },
-                "ColorPressed": {
-                  "Red": 64,
-                  "Green": 64,
-                  "Blue": 64
-                }
-              },
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 190,
-                "Height": 72,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 1,
-                "ColorPressed": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
-                },
-                "ColorBorderReleased": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "ColorBorderPressed": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              }
-            ]
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "btnBack",
-            "X": 4,
-            "Y": 404,
-            "Width": 394,
-            "Height": 72,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "TextButtonStyle",
-                "X": -20,
-                "Y": 20,
-                "TextId": "__SingleUse_FDYF",
-                "TextRotation": "0",
-                "ColorReleased": {
-                  "Red": 150,
-                  "Green": 118,
-                  "Blue": 73
-                },
-                "ColorPressed": {
-                  "Red": 64,
-                  "Green": 64,
-                  "Blue": 64
-                }
-              },
-              {
-                "Type": "ImageButtonStyle",
-                "X": 20,
-                "Y": -5,
-                "ImageReleased": "GoBack.png",
-                "ImagePressed": "GoBack.png"
-              },
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 394,
-                "Height": 72,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 1,
-                "ColorPressed": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
-                },
-                "ColorBorderReleased": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "ColorBorderPressed": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              }
-            ]
-          },
-          {
-            "Type": "BoxWithBorder",
-            "Name": "boxWithBorder1",
-            "X": 5,
-            "Y": 4,
-            "Width": 792,
-            "Height": 396,
-            "Color": {
-              "Red": 25,
-              "Green": 25,
-              "Blue": 25
-            },
-            "BorderColor": {
-              "Red": 100,
-              "Green": 100,
-              "Blue": 100
-            },
-            "BorderSize": 1
-          },
-          {
-            "Type": "ScrollableContainer",
-            "Name": "scrollableCont",
-            "X": 4,
-            "Y": 6,
-            "Width": 793,
-            "Height": 391,
-            "VerticalScrollEnabled": true,
-            "ScrollbarsVisible": true,
-            "ScrollbarsColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "ScrollbarsAlpha": 255,
-            "Components": [
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_0",
-                "X": 2,
-                "Y": 2,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_1",
-                "X": 2,
-                "Y": 62,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_2",
-                "X": 4,
-                "Y": 122,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_3",
-                "X": 4,
-                "Y": 182,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_4",
-                "X": 2,
-                "Y": 242,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_5",
-                "X": 2,
-                "Y": 302,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_6",
-                "X": 2,
-                "Y": 362,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_7",
-                "X": 2,
-                "Y": 422,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_8",
-                "X": 2,
-                "Y": 482,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              },
-              {
-                "Type": "CustomContainerInstance",
-                "Name": "scrollElment_9",
-                "X": 2,
-                "Y": 542,
-                "Width": 792,
-                "Height": 60,
-                "CustomContainerDefinitionName": "ScrollElment"
-              }
-            ]
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "btnNextPage",
-            "X": 607,
-            "Y": 404,
-            "Width": 190,
-            "Height": 72,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "TextButtonStyle",
-                "Y": 20,
-                "TextId": "__SingleUse_C0B1",
-                "TextRotation": "0",
-                "ColorReleased": {
-                  "Red": 150,
-                  "Green": 118,
-                  "Blue": 73
-                },
-                "ColorPressed": {
-                  "Red": 64,
-                  "Green": 64,
-                  "Blue": 64
-                }
-              },
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 190,
-                "Height": 72,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 1,
-                "ColorPressed": {
-                  "Red": 32,
-                  "Green": 32,
-                  "Blue": 32
-                },
-                "ColorBorderReleased": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                },
-                "ColorBorderPressed": {
-                  "Red": 100,
-                  "Green": 100,
-                  "Blue": 100
-                }
-              }
-            ]
-          },
-          {
-            "Type": "TextArea",
-            "Name": "lblDate",
-            "X": 16,
-            "Y": 453,
-            "Width": 489,
-            "Height": 30,
-            "Visible": false,
-            "TextId": "__SingleUse_ZK75",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 170,
-              "Green": 170,
-              "Blue": 170
-            },
-            "Wildcard1": {
-              "TextId": "__SingleUse_HXDW",
-              "UseBuffer": true,
-              "BufferSize": 70
-            }
-          },
-          {
-            "Type": "Container",
-            "Name": "container1",
-            "X": 329,
-            "Y": 407,
-            "Width": 467,
-            "Height": 66,
-            "Visible": false,
-            "Components": [
-              {
-                "Type": "ToggleButton",
-                "Name": "chbxINFO",
-                "Y": 11,
-                "Width": 44,
-                "Height": 44,
-                "InitialStatePressed": true,
-                "Pressed": "OFF_44x44.png",
-                "Released": "ON_44x44.png"
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblInfo",
-                "X": 54,
-                "Y": 15,
-                "Width": 63,
-                "Height": 37,
-                "TextId": "__SingleUse_LTA0",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 200,
-                  "Green": 200,
-                  "Blue": 200
-                },
-                "AutoSize": true
-              },
-              {
-                "Type": "ToggleButton",
-                "Name": "chbxWarn",
-                "X": 158,
-                "Y": 11,
-                "Width": 44,
-                "Height": 44,
-                "InitialStatePressed": true,
-                "Pressed": "OFF_44x44.png",
-                "Released": "ON_44x44.png"
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblWARN",
-                "X": 212,
-                "Y": 15,
-                "Width": 80,
-                "Height": 37,
-                "TextId": "__SingleUse_G4CD",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 200,
-                  "Green": 200,
-                  "Blue": 200
-                },
-                "AutoSize": true
-              },
-              {
-                "Type": "ToggleButton",
-                "Name": "chbxError",
-                "X": 315,
-                "Y": 11,
-                "Width": 44,
-                "Height": 44,
-                "InitialStatePressed": true,
-                "Pressed": "OFF_44x44.png",
-                "Released": "ON_44x44.png"
-              },
-              {
-                "Type": "TextArea",
-                "Name": "lblERROR",
-                "X": 369,
-                "Y": 15,
-                "Width": 88,
-                "Height": 37,
-                "TextId": "__SingleUse_Y806",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 200,
-                  "Green": 200,
-                  "Blue": 200
-                },
-                "AutoSize": true
-              }
-            ]
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "ShowService",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnBack"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionSlide",
-              "ScreenTransitionDirection": "West",
-              "ActionComponent": "ServiceScreen"
-            }
-          },
-          {
-            "InteractionName": "NextPage",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnNextPage"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "OnClickNextPage"
-            }
-          },
-          {
-            "InteractionName": "PrevPage",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnPrevPage"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "OnClickPrevPage"
             }
           }
         ]
@@ -6029,8 +5581,8 @@
           },
           {
             "Type": "TextArea",
-            "Name": "lblKarunaUptime",
-            "X": 478,
+            "Name": "lblDenpoDacUptime",
+            "X": 479,
             "Y": 274,
             "Width": 184,
             "Height": 44,
@@ -6321,7 +5873,7 @@
           },
           {
             "Type": "TextArea",
-            "Name": "lblKarunaFwVerTitle",
+            "Name": "lblDenpoDacFwVerTitle",
             "X": 32,
             "Y": 237,
             "Width": 219,
@@ -6337,7 +5889,7 @@
           },
           {
             "Type": "TextArea",
-            "Name": "lblKarunaFwVersion",
+            "Name": "lblDenpoDacFwVersion",
             "X": 271,
             "Y": 241,
             "Width": 522,
@@ -6493,10 +6045,10 @@
           {
             "Type": "TextArea",
             "Name": "lblBootupCnt",
-            "X": 476,
+            "X": 479,
             "Y": 94,
-            "Width": 174,
-            "Height": 44,
+            "Width": 172,
+            "Height": 46,
             "TextId": "__SingleUse_KTHD",
             "TextRotation": "0",
             "Color": {
@@ -6529,8 +6081,8 @@
           {
             "Type": "TextArea",
             "Name": "lblBusUartErrorCnt",
-            "X": 476,
-            "Y": 131,
+            "X": 477,
+            "Y": 134,
             "Width": 174,
             "Height": 44,
             "TextId": "__SingleUse_3TGM",
@@ -6564,8 +6116,8 @@
           },
           {
             "Type": "TextArea",
-            "Name": "lblKarunaUartErrorCnt",
-            "X": 478,
+            "Name": "lblDenpoDacUartErrorCnt",
+            "X": 479,
             "Y": 313,
             "Width": 182,
             "Height": 44,

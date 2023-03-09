@@ -16,12 +16,12 @@ ServiceContainerBase::ServiceContainerBase() :
     lblKarunaUptimeTitle.setLinespacing(0);
     lblKarunaUptimeTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QYPN));
 
-    lblKarunaUptime.setPosition(478, 274, 184, 44);
-    lblKarunaUptime.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
-    lblKarunaUptime.setLinespacing(0);
-    Unicode::snprintf(lblKarunaUptimeBuffer, LBLKARUNAUPTIME_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_IA01).getText());
-    lblKarunaUptime.setWildcard(lblKarunaUptimeBuffer);
-    lblKarunaUptime.setTypedText(touchgfx::TypedText(T___SINGLEUSE_27WL));
+    lblDenpoDacUptime.setPosition(479, 274, 184, 44);
+    lblDenpoDacUptime.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
+    lblDenpoDacUptime.setLinespacing(0);
+    Unicode::snprintf(lblDenpoDacUptimeBuffer, LBLDENPODACUPTIME_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_IA01).getText());
+    lblDenpoDacUptime.setWildcard(lblDenpoDacUptimeBuffer);
+    lblDenpoDacUptime.setTypedText(touchgfx::TypedText(T___SINGLEUSE_27WL));
 
     lblDASClockTempTitle_0.setPosition(32, 416, 399, 44);
     lblDASClockTempTitle_0.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
@@ -123,18 +123,18 @@ ServiceContainerBase::ServiceContainerBase() :
     line0.setLineWidth(2);
     line0.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
 
-    lblKarunaFwVerTitle.setXY(32, 237);
-    lblKarunaFwVerTitle.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
-    lblKarunaFwVerTitle.setLinespacing(0);
-    lblKarunaFwVerTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_G1LA));
+    lblDenpoDacFwVerTitle.setXY(32, 237);
+    lblDenpoDacFwVerTitle.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
+    lblDenpoDacFwVerTitle.setLinespacing(0);
+    lblDenpoDacFwVerTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_G1LA));
 
-    lblKarunaFwVersion.setPosition(271, 241, 522, 31);
-    lblKarunaFwVersion.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
-    lblKarunaFwVersion.setLinespacing(0);
-    lblKarunaFwVersion.setAlpha(100);
-    lblKarunaFwVersionBuffer[0] = 0;
-    lblKarunaFwVersion.setWildcard(lblKarunaFwVersionBuffer);
-    lblKarunaFwVersion.setTypedText(touchgfx::TypedText(T___SINGLEUSE_AT65));
+    lblDenpoDacFwVersion.setPosition(271, 241, 522, 31);
+    lblDenpoDacFwVersion.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
+    lblDenpoDacFwVersion.setLinespacing(0);
+    lblDenpoDacFwVersion.setAlpha(100);
+    lblDenpoDacFwVersionBuffer[0] = 0;
+    lblDenpoDacFwVersion.setWildcard(lblDenpoDacFwVersionBuffer);
+    lblDenpoDacFwVersion.setTypedText(touchgfx::TypedText(T___SINGLEUSE_AT65));
 
     btnFactoryReset.setBoxWithBorderPosition(0, 0, 250, 72);
     btnFactoryReset.setBorderSize(1);
@@ -167,7 +167,7 @@ ServiceContainerBase::ServiceContainerBase() :
     lblBootUpCountTitle.setLinespacing(0);
     lblBootUpCountTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_3GMJ));
 
-    lblBootupCnt.setPosition(476, 94, 174, 44);
+    lblBootupCnt.setPosition(479, 94, 172, 46);
     lblBootupCnt.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
     lblBootupCnt.setLinespacing(0);
     Unicode::snprintf(lblBootupCntBuffer, LBLBOOTUPCNT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_Z9BW).getText());
@@ -179,7 +179,7 @@ ServiceContainerBase::ServiceContainerBase() :
     lblBusUartErrorCntTitle.setLinespacing(0);
     lblBusUartErrorCntTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_W2OM));
 
-    lblBusUartErrorCnt.setPosition(476, 131, 174, 44);
+    lblBusUartErrorCnt.setPosition(477, 134, 174, 44);
     lblBusUartErrorCnt.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
     lblBusUartErrorCnt.setLinespacing(0);
     Unicode::snprintf(lblBusUartErrorCntBuffer, LBLBUSUARTERRORCNT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_WMAQ).getText());
@@ -191,12 +191,12 @@ ServiceContainerBase::ServiceContainerBase() :
     lblKarunaUptimeCntTitle.setLinespacing(0);
     lblKarunaUptimeCntTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_KPYH));
 
-    lblKarunaUartErrorCnt.setPosition(478, 313, 182, 44);
-    lblKarunaUartErrorCnt.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
-    lblKarunaUartErrorCnt.setLinespacing(0);
-    Unicode::snprintf(lblKarunaUartErrorCntBuffer, LBLKARUNAUARTERRORCNT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_6BR6).getText());
-    lblKarunaUartErrorCnt.setWildcard(lblKarunaUartErrorCntBuffer);
-    lblKarunaUartErrorCnt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_9QB9));
+    lblDenpoDacUartErrorCnt.setPosition(479, 313, 182, 44);
+    lblDenpoDacUartErrorCnt.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
+    lblDenpoDacUartErrorCnt.setLinespacing(0);
+    Unicode::snprintf(lblDenpoDacUartErrorCntBuffer, LBLDENPODACUARTERRORCNT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_6BR6).getText());
+    lblDenpoDacUartErrorCnt.setWildcard(lblDenpoDacUartErrorCntBuffer);
+    lblDenpoDacUartErrorCnt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_9QB9));
 
     line1_1.setPosition(45, 789, 710, 15);
     line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(64, 64, 64));
@@ -256,7 +256,7 @@ ServiceContainerBase::ServiceContainerBase() :
     lblClockCurrent_Intext.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0PRL));
 
     add(lblKarunaUptimeTitle);
-    add(lblKarunaUptime);
+    add(lblDenpoDacUptime);
     add(lblDASClockTempTitle_0);
     add(lblClocktemp_0);
     add(lblDASClockCurrentTitle_0);
@@ -273,8 +273,8 @@ ServiceContainerBase::ServiceContainerBase() :
     add(lblGUIFwVerTitle);
     add(lblGUIFwVersion);
     add(line0);
-    add(lblKarunaFwVerTitle);
-    add(lblKarunaFwVersion);
+    add(lblDenpoDacFwVerTitle);
+    add(lblDenpoDacFwVersion);
     add(btnFactoryReset);
     add(btnSoftReset);
     add(line2_1);
@@ -283,7 +283,7 @@ ServiceContainerBase::ServiceContainerBase() :
     add(lblBusUartErrorCntTitle);
     add(lblBusUartErrorCnt);
     add(lblKarunaUptimeCntTitle);
-    add(lblKarunaUartErrorCnt);
+    add(lblDenpoDacUartErrorCnt);
     add(line1_1);
     add(line1_1_1);
     add(btnDebug);

@@ -26,8 +26,11 @@ public:
     void GuiItfSoftReset(void);
 
     /*** Denpo DAC ***/
+    uint8_t GuiItfGetDacVersion(char** fw, char** uid, char** pcb);
     uint32_t GuiItfGetClockHeatedTemperature();
     void GuiItfSetClockHeatedTemperature(uint32_t temp);
+    uint32_t GuiItfGetDacUpTimeSec(void);
+    uint32_t GuiItfGetDacBusErrorCnt(void);
 
 #endif
 

@@ -29,8 +29,6 @@
 #include <gui/passwordscreen_screen/PasswordScreenPresenter.hpp>
 #include <gui/clockscreen_screen/ClockScreenView.hpp>
 #include <gui/clockscreen_screen/ClockScreenPresenter.hpp>
-#include <gui/logscreen_screen/LogScreenView.hpp>
-#include <gui/logscreen_screen/LogScreenPresenter.hpp>
 #include <gui/splashscreen_screen/SplashScreenView.hpp>
 #include <gui/splashscreen_screen/SplashScreenPresenter.hpp>
 #include <gui/saverscreen_screen/SaverScreenView.hpp>
@@ -66,11 +64,10 @@ public:
             touchgfx::meta::TypeList< ServiceScreenView,
             touchgfx::meta::TypeList< PasswordScreenView,
             touchgfx::meta::TypeList< ClockScreenView,
-            touchgfx::meta::TypeList< LogScreenView,
             touchgfx::meta::TypeList< SplashScreenView,
             touchgfx::meta::TypeList< SaverScreenView,
             touchgfx::meta::TypeList< DebugScreenView,
-            touchgfx::meta::Nil > > > > > > > > > >
+            touchgfx::meta::Nil > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -89,11 +86,10 @@ public:
             touchgfx::meta::TypeList< ServiceScreenPresenter,
             touchgfx::meta::TypeList< PasswordScreenPresenter,
             touchgfx::meta::TypeList< ClockScreenPresenter,
-            touchgfx::meta::TypeList< LogScreenPresenter,
             touchgfx::meta::TypeList< SplashScreenPresenter,
             touchgfx::meta::TypeList< SaverScreenPresenter,
             touchgfx::meta::TypeList< DebugScreenPresenter,
-            touchgfx::meta::Nil > > > > > > > > > >
+            touchgfx::meta::Nil > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**
