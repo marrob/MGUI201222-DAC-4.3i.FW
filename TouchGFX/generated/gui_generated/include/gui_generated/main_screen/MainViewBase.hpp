@@ -17,9 +17,9 @@
 #include <touchgfx/widgets/canvas/Circle.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/RadioButton.hpp>
+#include <touchgfx/widgets/RadioButtonGroup.hpp>
 #include <touchgfx/containers/Slider.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
-#include <touchgfx/widgets/RadioButtonGroup.hpp>
 #include <touchgfx/EasingEquations.hpp>
 #include <touchgfx/mixins/MoveAnimator.hpp>
 
@@ -27,7 +27,7 @@ class MainViewBase : public touchgfx::View<MainPresenter>
 {
 public:
     MainViewBase();
-    virtual ~MainViewBase() {}
+    virtual ~MainViewBase();
     virtual void setupScreen();
 
     /*
@@ -37,32 +37,26 @@ public:
     {
         // Override and implement this function in Main
     }
-
     virtual void chbxMuteChanged()
     {
         // Override and implement this function in Main
     }
-
     virtual void rdbXLRInputsSelected()
     {
         // Override and implement this function in Main
     }
-
     virtual void rdbUSBInputsSelected()
     {
         // Override and implement this function in Main
     }
-
     virtual void rdbHDMIInputsSelected()
     {
         // Override and implement this function in Main
     }
-
     virtual void rdbRCAInputsSelected()
     {
         // Override and implement this function in Main
     }
-
     virtual void rdbBNCInputsSelected()
     {
         // Override and implement this function in Main
@@ -128,6 +122,7 @@ protected:
     touchgfx::MoveAnimator< touchgfx::Container > containerInputs;
     touchgfx::BoxWithBorder boxWithBorder3;
     touchgfx::Box bxInput;
+    touchgfx::RadioButtonGroup<5> inputs;
     touchgfx::RadioButton rdbBNC;
     touchgfx::RadioButton rdbRCA;
     touchgfx::RadioButton rdbHDMI;
@@ -141,7 +136,6 @@ protected:
     touchgfx::TextArea lblVolumeLevel;
     touchgfx::TextArea lblMute;
     touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnBackVolume;
-    touchgfx::RadioButtonGroup<5> inputs;
 
     /*
      * Wildcard Buffers
@@ -162,38 +156,31 @@ protected:
 private:
 
     /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+
+    /*
      * Callback Declarations
      */
-    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<MainViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback < MainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > showInputsEndedCallback;
+    touchgfx::Callback < MainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > hideInputsEndedCallback;
     touchgfx::Callback<MainViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
+    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
 
     /*
      * Callback Handler Declarations
      */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
-    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
-    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
-    /*
-     * Interaction Callback Declarations
-     */
-    touchgfx::Callback < MainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > showInputsEndedCallback;
-    touchgfx::Callback < MainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > hideInputsEndedCallback;
-
-
-    /*
-     * Interaction Handlers
-     */
     void showInputsEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp);
     void hideInputsEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp);
+    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
 
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // MAINVIEWBASE_HPP

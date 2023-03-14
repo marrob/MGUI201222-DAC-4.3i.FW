@@ -17,7 +17,7 @@ class ServiceContainerBase : public touchgfx::Container
 {
 public:
     ServiceContainerBase();
-    virtual ~ServiceContainerBase() {}
+    virtual ~ServiceContainerBase();
     virtual void initialize();
 
     /*
@@ -27,12 +27,10 @@ public:
     {
         // Override and implement this function in ServiceContainer
     }
-
     virtual void OnClickFactoryReset()
     {
         // Override and implement this function in ServiceContainer
     }
-
     virtual void OnOffsetValueChanged(uint32_t value)
     {
         // Override and implement this function in ServiceContainer

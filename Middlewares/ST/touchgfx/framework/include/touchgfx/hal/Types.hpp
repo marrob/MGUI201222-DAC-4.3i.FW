@@ -2,7 +2,7 @@
 * Copyright (c) 2018(-2022) STMicroelectronics.
 * All rights reserved.
 *
-* This file is part of the TouchGFX 4.19.1 distribution.
+* This file is part of the TouchGFX 4.21.0 distribution.
 *
 * This software is licensed under terms that can be found in the LICENSE file in
 * the root directory of this software component.
@@ -82,11 +82,11 @@ struct colortype
 
     /**
      * Constructor which creates a colortype with the given color. Use
-     * Color::getColorFrom24BitRGB() to create a color that will work on your selected LCD type.
+     * Color::getColorFromRGB() to create a color that will work on your selected LCD type.
      *
      * @param  col The color.
      *
-     * @see Color::getColorFrom24BitRGB
+     * @see Color::getColorFromRGB
      */
     colortype(uint32_t col)
         : color(col)
@@ -132,13 +132,13 @@ public:
     /**
      * Initializes a new instance of the Rect class.
      *
-     * @param  x      The x coordinate.
-     * @param  y      The y coordinate.
-     * @param  width  The width.
-     * @param  height The height.
+     * @param  rectX      The x coordinate.
+     * @param  rectY      The y coordinate.
+     * @param  rectWidth  The width.
+     * @param  rectHeight The height.
      */
-    Rect(int16_t x, int16_t y, int16_t width, int16_t height)
-        : x(x), y(y), width(width), height(height)
+    Rect(int16_t rectX, int16_t rectY, int16_t rectWidth, int16_t rectHeight)
+        : x(rectX), y(rectY), width(rectWidth), height(rectHeight)
     {
     }
 
@@ -353,7 +353,7 @@ public:
      *
      * @return area of the rectangle.
      */
-    uint32_t area() const
+    int32_t area() const
     {
         return isEmpty() ? 0 : width * height;
     }
@@ -457,12 +457,12 @@ public:
     {
         assert(index < _size);
 
+        _size--;
         T tmp = _elem[index];
         for (int i = index; i < _size; i++)
         {
             _elem[i] = _elem[i + 1];
         }
-        _size--;
         return tmp;
     }
 
@@ -578,7 +578,7 @@ struct Point
      *
      * @return The squared distance.
      */
-    unsigned dist_sqr(struct Point& o)
+    int32_t dist_sqr(struct Point& o)
     {
         return (x - o.x) * (x - o.x) + (y - o.y) * (y - o.y);
     }
@@ -646,9 +646,11 @@ enum TextRotation
 enum WideTextAction
 {
     WIDE_TEXT_NONE,                          ///< Do nothing, simply cut the text in the middle of any character that extends beyond the width of the TextArea
-    WIDE_TEXT_WORDWRAP,                      ///< Wrap between words, ellipsis anywhere "Very long t..."
-    WIDE_TEXT_WORDWRAP_ELLIPSIS_AFTER_SPACE, ///< Wrap between words, ellipsis anywhere only after space "Very long ..."
-    WIDE_TEXT_CHARWRAP,                      ///< Wrap between any two characters, ellipsis anywhere, as used in Chinese
+    WIDE_TEXT_WORDWRAP,                      ///< Wrap between words, no ellipsis, keep wrapping lines
+    WIDE_TEXT_WORDWRAP_ELLIPSIS,             ///< Wrap between words, ellipsis anywhere "Very long t..."
+    WIDE_TEXT_WORDWRAP_ELLIPSIS_AFTER_SPACE, ///< Wrap between words, ellipsis only after space "Very long ..."
+    WIDE_TEXT_CHARWRAP,                      ///< Wrap between any two characters, no ellipsis, keep wrapping lines
+    WIDE_TEXT_CHARWRAP_ELLIPSIS,             ///< Wrap between any two characters, ellipsis anywhere, as used in Chinese
     WIDE_TEXT_CHARWRAP_DOUBLE_ELLIPSIS       ///< Wrap between any two characters, double ellipsis anywhere, as used in Chinese
 };
 
@@ -758,6 +760,22 @@ enum DMAType
 {
     DMA_TYPE_GENERIC, ///< Generic DMA Implementation
     DMA_TYPE_CHROMART ///< ChromART hardware DMA Implementation
+};
+
+/**
+ * A list of the vector graphics primitives.
+ *
+ * @see VectorRenderer::drawPath
+ */
+enum VectorPrimitives
+{
+    VECTOR_PRIM_CLOSE = 0,       ///< Close the path
+    VECTOR_PRIM_MOVE = 1,        ///< Move to a point
+    VECTOR_PRIM_LINE = 2,        ///< Line to a point from current position
+    VECTOR_PRIM_HLINE = 3,       ///< Horizontal line to a point from current position
+    VECTOR_PRIM_VLINE = 4,       ///< Vertical line to a point from current position
+    VECTOR_PRIM_BEZIER_QUAD = 5, ///< Quadratic Bezier (1 control point) curve to a point from the current position
+    VECTOR_PRIM_BEZIER_CUBIC = 6 ///< Cubic Bezier (2 control points) curve to a point from the current position
 };
 
 } // namespace touchgfx

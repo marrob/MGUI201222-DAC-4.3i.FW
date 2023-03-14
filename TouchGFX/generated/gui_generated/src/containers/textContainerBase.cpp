@@ -15,12 +15,15 @@ textContainerBase::textContainerBase()
     Unicode::snprintf(textBuffer, TEXT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_X53I).getText());
     text.setWildcard(textBuffer);
     text.setTypedText(touchgfx::TypedText(T___SINGLEUSE_FGW4));
-
     add(text);
+}
+
+textContainerBase::~textContainerBase()
+{
+
 }
 
 void textContainerBase::initialize()
 {
 
 }
-

@@ -22,7 +22,7 @@ class DebugScreenViewBase : public touchgfx::View<DebugScreenPresenter>
 {
 public:
     DebugScreenViewBase();
-    virtual ~DebugScreenViewBase() {}
+    virtual ~DebugScreenViewBase();
     virtual void setupScreen();
 
     /*
@@ -32,37 +32,30 @@ public:
     {
         // Override and implement this function in DebugScreen
     }
-
     virtual void OnClickDO_1()
     {
         // Override and implement this function in DebugScreen
     }
-
     virtual void OnClickDO_2()
     {
         // Override and implement this function in DebugScreen
     }
-
     virtual void OnClickDO_3()
     {
         // Override and implement this function in DebugScreen
     }
-
     virtual void OnClickDO_4()
     {
         // Override and implement this function in DebugScreen
     }
-
     virtual void OnClickDO_5()
     {
         // Override and implement this function in DebugScreen
     }
-
     virtual void OnClickDO_6()
     {
         // Override and implement this function in DebugScreen
     }
-
     virtual void OnClickDO_7()
     {
         // Override and implement this function in DebugScreen
@@ -176,22 +169,23 @@ protected:
 private:
 
     /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+
+    /*
      * Callback Declarations
      */
-    touchgfx::Callback<DebugScreenViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<DebugScreenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<DebugScreenViewBase, const touchgfx::AbstractButton&> buttonCallback;
 
     /*
      * Callback Handler Declarations
      */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // DEBUGSCREENVIEWBASE_HPP

@@ -31,6 +31,11 @@
 using namespace touchgfx;
 CortexMMCUInstrumentation instrumentation;
 
+
+LOCATION_PRAGMA("TouchGFX_Framebuffer")
+uint32_t animationBuffer[(800 * 480 * 2 + 3) / 4] LOCATION_ATTRIBUTE("TouchGFX_Framebuffer");
+
+
 void TouchGFXHAL::initialize()
 {
     // Calling parent implementation of initialize().
@@ -39,7 +44,13 @@ void TouchGFXHAL::initialize()
     // and implemented needed functionality here.
     // Please note, HAL::initialize() must be called to initialize the framework.
     TouchGFXGeneratedHAL::initialize();
-    setFrameBufferStartAddresses((void*)0xD0000000, (void*)0xD012C000, (void*)0xD0258000);  //enable the animation storage to allow slide animations
+
+    /*
+     * ToDo: ez még nem megy, ilyenkor kicsit kásás az animáció és egy idő után megáll a kijelző
+     *  igazából nem tudom hogy hol fgolalja le frameBuffer0-hez a területet?
+     */
+    //setFrameBufferStartAddresses((void*)frameBuffer0, (void*)frameBuffer1, (void*)animationBuffer);  //enable the animation storage to allow slide animations
+    setFrameBufferStartAddresses((void*)0xD0000000, (void*)0xD012C000, (void*)0xD0258000);
     lockDMAToFrontPorch(false);
     instrumentation.init();
     setMCUInstrumentation(&instrumentation);

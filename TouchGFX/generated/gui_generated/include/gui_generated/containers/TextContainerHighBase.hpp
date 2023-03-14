@@ -12,7 +12,7 @@ class TextContainerHighBase : public touchgfx::Container
 {
 public:
     TextContainerHighBase();
-    virtual ~TextContainerHighBase() {}
+    virtual ~TextContainerHighBase();
     virtual void initialize();
 
 protected:

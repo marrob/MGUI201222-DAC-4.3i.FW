@@ -232,6 +232,7 @@ void DeviceBacklightOffTimerReset(void);
 #define BTN_PWM_GPIO_Port GPIOA
 #define DISP_PWM_Pin GPIO_PIN_11
 #define DISP_PWM_GPIO_Port GPIOA
+
 /* USER CODE BEGIN Private defines */
   void ConsoleWrite(char *str);
 /* USER CODE END Private defines */

@@ -558,10 +558,10 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "CenterX": 25,
-                "CenterY": 25,
-                "Radius": 20,
-                "EndAngle": 360,
+                "CenterX": 25.0,
+                "CenterY": 25.0,
+                "Radius": 20.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -576,10 +576,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 25,
-                "CenterY": 25,
-                "Radius": 20,
-                "EndAngle": 360,
+                "CenterX": 25.0,
+                "CenterY": 25.0,
+                "Radius": 20.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -593,10 +593,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 25,
-                "CenterY": 25,
-                "Radius": 20,
-                "EndAngle": 360,
+                "CenterX": 25.0,
+                "CenterY": 25.0,
+                "Radius": 20.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               }
             ]
@@ -1576,9 +1576,9 @@
                       "Green": 64,
                       "Blue": 64
                     },
-                    "EndX": 920,
-                    "EndY": 1,
-                    "LineWidth": 2,
+                    "EndX": 920.0,
+                    "EndY": 1.0,
+                    "LineWidth": 2.0,
                     "LineEndingStyle": "Butt"
                   },
                   {
@@ -2154,9 +2154,9 @@
               "Blue": 64
             },
             "Alpha": 128,
-            "EndX": 920,
-            "EndY": 1,
-            "LineWidth": 1,
+            "EndX": 920.0,
+            "EndY": 1.0,
+            "LineWidth": 1.0,
             "LineEndingStyle": "Butt"
           }
         ],
@@ -2488,28 +2488,6 @@
               "ScreenTransitionType": "ScreenTransitionSlide",
               "ScreenTransitionDirection": "West",
               "ActionComponent": "SettingsScreen"
-            }
-          },
-          {
-            "InteractionName": "FactoryReset",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnFactoryReset"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "OnClickFactoryReset"
-            }
-          },
-          {
-            "InteractionName": "SoftReset",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnSoftReset"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "OnClickSoftReset"
             }
           },
           {
@@ -3880,9 +3858,9 @@
                       "Green": 64,
                       "Blue": 64
                     },
-                    "EndX": 920,
-                    "EndY": 1,
-                    "LineWidth": 2,
+                    "EndX": 920.0,
+                    "EndY": 1.0,
+                    "LineWidth": 2.0,
                     "LineEndingStyle": "Butt"
                   },
                   {
@@ -3897,9 +3875,9 @@
                       "Green": 64,
                       "Blue": 64
                     },
-                    "EndX": 920,
-                    "EndY": 1,
-                    "LineWidth": 2,
+                    "EndX": 920.0,
+                    "EndY": 1.0,
+                    "LineWidth": 2.0,
                     "LineEndingStyle": "Butt"
                   },
                   {
@@ -3914,9 +3892,9 @@
                       "Green": 64,
                       "Blue": 64
                     },
-                    "EndX": 920,
-                    "EndY": 1,
-                    "LineWidth": 2,
+                    "EndX": 920.0,
+                    "EndY": 1.0,
+                    "LineWidth": 2.0,
                     "LineEndingStyle": "Butt"
                   }
                 ]
@@ -3933,9 +3911,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               },
               {
@@ -4003,9 +3981,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               }
             ]
@@ -4080,9 +4058,9 @@
               "Blue": 73
             },
             "Alpha": 134,
-            "EndX": 765,
-            "EndY": 1,
-            "LineWidth": 2,
+            "EndX": 765.0,
+            "EndY": 1.0,
+            "LineWidth": 2.0,
             "LineEndingStyle": "Butt"
           },
           {
@@ -4216,8 +4194,8 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "EndX": 960,
-                "LineWidth": 2,
+                "EndX": 960.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               },
               {
@@ -4772,10 +4750,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -4806,10 +4784,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -4840,10 +4818,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -4874,10 +4852,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -4908,10 +4886,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -4942,10 +4920,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -4976,10 +4954,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5010,10 +4988,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5043,10 +5021,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5077,10 +5055,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5111,10 +5089,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5145,10 +5123,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5179,10 +5157,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5213,10 +5191,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5247,10 +5225,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               },
               {
@@ -5281,10 +5259,10 @@
                   "Green": 118,
                   "Blue": 73
                 },
-                "CenterX": 20,
-                "CenterY": 20,
-                "Radius": 14,
-                "EndAngle": 360,
+                "CenterX": 20.0,
+                "CenterY": 20.0,
+                "Radius": 14.0,
+                "EndAngle": 360.0,
                 "CapPrecision": "Butt"
               }
             ]
@@ -5302,11 +5280,11 @@
               "Blue": 255
             },
             "Alpha": 177,
-            "StartX": 1,
-            "StartY": 5,
-            "EndX": 1,
-            "EndY": 400,
-            "LineWidth": 1,
+            "StartX": 1.0,
+            "StartY": 5.0,
+            "EndX": 1.0,
+            "EndY": 400.0,
+            "LineWidth": 1.0,
             "LineEndingStyle": "Round"
           },
           {
@@ -5322,11 +5300,11 @@
               "Blue": 255
             },
             "Alpha": 177,
-            "StartX": 1,
-            "StartY": 5,
-            "EndX": 1,
-            "EndY": 400,
-            "LineWidth": 1,
+            "StartX": 1.0,
+            "StartY": 5.0,
+            "EndX": 1.0,
+            "EndY": 400.0,
+            "LineWidth": 1.0,
             "LineEndingStyle": "Round"
           },
           {
@@ -5550,9 +5528,9 @@
               "Green": 32,
               "Blue": 32
             },
-            "EndX": 920,
-            "EndY": 1,
-            "LineWidth": 2,
+            "EndX": 920.0,
+            "EndY": 1.0,
+            "LineWidth": 2.0,
             "LineEndingStyle": "Butt"
           }
         ],
@@ -5781,9 +5759,9 @@
               "Green": 32,
               "Blue": 32
             },
-            "EndX": 920,
-            "EndY": 1,
-            "LineWidth": 2,
+            "EndX": 920.0,
+            "EndY": 1.0,
+            "LineWidth": 2.0,
             "LineEndingStyle": "Butt"
           },
           {
@@ -5798,9 +5776,9 @@
               "Green": 64,
               "Blue": 64
             },
-            "EndX": 920,
-            "EndY": 1,
-            "LineWidth": 2,
+            "EndX": 920.0,
+            "EndY": 1.0,
+            "LineWidth": 2.0,
             "LineEndingStyle": "Butt"
           },
           {
@@ -5866,9 +5844,9 @@
               "Green": 64,
               "Blue": 64
             },
-            "EndX": 920,
-            "EndY": 1,
-            "LineWidth": 2,
+            "EndX": 920.0,
+            "EndY": 1.0,
+            "LineWidth": 2.0,
             "LineEndingStyle": "Butt"
           },
           {
@@ -5921,7 +5899,7 @@
               {
                 "Type": "TextButtonStyle",
                 "Y": 20,
-                "TextId": "__SingleUse_GKKS",
+                "TextId": "__SingleUse_HF8K",
                 "TextRotation": "0",
                 "ColorReleased": {
                   "Red": 150,
@@ -5961,7 +5939,7 @@
           {
             "Type": "FlexButton",
             "Name": "btnSoftReset",
-            "X": 275,
+            "X": 276,
             "Y": 804,
             "Width": 250,
             "Height": 72,
@@ -5972,7 +5950,7 @@
               {
                 "Type": "TextButtonStyle",
                 "Y": 20,
-                "TextId": "__SingleUse_T381",
+                "TextId": "__SingleUse_WPEC",
                 "TextRotation": "0",
                 "ColorReleased": {
                   "Red": 150,
@@ -6021,9 +5999,9 @@
               "Green": 64,
               "Blue": 64
             },
-            "EndX": 920,
-            "EndY": 1,
-            "LineWidth": 2,
+            "EndX": 920.0,
+            "EndY": 1.0,
+            "LineWidth": 2.0,
             "LineEndingStyle": "Butt"
           },
           {
@@ -6146,9 +6124,9 @@
               "Green": 64,
               "Blue": 64
             },
-            "EndX": 920,
-            "EndY": 1,
-            "LineWidth": 2,
+            "EndX": 920.0,
+            "EndY": 1.0,
+            "LineWidth": 2.0,
             "LineEndingStyle": "Butt"
           },
           {
@@ -6163,9 +6141,9 @@
               "Green": 64,
               "Blue": 64
             },
-            "EndX": 920,
-            "EndY": 1,
-            "LineWidth": 2,
+            "EndX": 920.0,
+            "EndY": 1.0,
+            "LineWidth": 2.0,
             "LineEndingStyle": "Butt"
           },
           {
@@ -6393,10 +6371,10 @@
               "Green": 118,
               "Blue": 73
             },
-            "CenterX": 20,
-            "CenterY": 20,
-            "Radius": 20,
-            "EndAngle": 360,
+            "CenterX": 20.0,
+            "CenterY": 20.0,
+            "Radius": 20.0,
+            "EndAngle": 360.0,
             "CapPrecision": "Butt"
           }
         ],
@@ -6837,9 +6815,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               }
             ]
@@ -6863,9 +6841,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               },
               {
@@ -7049,9 +7027,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               },
               {
@@ -7114,9 +7092,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               },
               {
@@ -7172,9 +7150,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               },
               {
@@ -7239,9 +7217,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               },
               {
@@ -7356,9 +7334,9 @@
                   "Green": 64,
                   "Blue": 64
                 },
-                "EndX": 920,
-                "EndY": 1,
-                "LineWidth": 2,
+                "EndX": 920.0,
+                "EndY": 1.0,
+                "LineWidth": 2.0,
                 "LineEndingStyle": "Butt"
               },
               {
@@ -7685,7 +7663,6 @@
     "SelectedColorDepth": 16,
     "StartupScreenName": "SplashScreen",
     "SelectedStartupLanguage": "GB",
-    "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "AvailableColorDepths": [
@@ -7724,11 +7701,14 @@
     "PortraitSkinY": 0,
     "DisplayOrientation": "Landscape",
     "Family": "STM32F7",
+    "SubFamily": "STM32F7x6",
+    "Toolchain": "STM32CubeIDE",
     "Platform": "m7",
     "ProjectFile": "../MGUI201222-DAC-4.3i.FW.ioc",
     "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
-    "OptionalComponents": []
+    "OptionalComponents": [],
+    "AdditionalFeatures": []
   },
-  "Version": "4.19.1",
+  "Version": "4.21.0",
   "CreatedBy": "4.15.0"
 }

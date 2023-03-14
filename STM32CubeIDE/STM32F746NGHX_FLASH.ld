@@ -64,6 +64,7 @@ MEMORY
   RAM     (xrw)  : ORIGIN = 0x20000000,  LENGTH = 320K
   FLASH   (rx)   : ORIGIN = 0x8000000,   LENGTH = 1024K
   QUADSPI (r)    : ORIGIN = 0x90000000,  LENGTH = 32M
+  SDRAM   (xrw)  : ORIGIN = 0xD0000000,  LENGTH = 8M
 }
 
 /* Sections */
@@ -198,24 +199,36 @@ SECTIONS
   }
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
-    ExtFlashSection :
-    {
-        *(ExtFlashSection ExtFlashSection.*)
-        *(.gnu.linkonce.r.*)
-        . = ALIGN(0x4);
-    } >QUADSPI
+  
+  BufferSection (NOLOAD) :
+  {
+    *(TouchGFX_Framebuffer TouchGFX_Framebuffer.*)
+    *(.gnu.linkonce.r.*)
+    . = ALIGN(0x4);
+    
+    *(Video_RGB_Buffer Video_RGB_Buffer.*)
+    *(.gnu.linkonce.r.*)
+    . = ALIGN(0x4);
+  } >SDRAM
+  
+  ExtFlashSection :
+  {
+      *(ExtFlashSection ExtFlashSection.*)
+      *(.gnu.linkonce.r.*)
+      . = ALIGN(0x4);
+  } >QUADSPI
 
   FontFlashSection :
-    {
-        *(FontFlashSection FontFlashSection.*)
-        *(.gnu.linkonce.r.*)
-        . = ALIGN(0x4);
-    } >FLASH
+  {
+      *(FontFlashSection FontFlashSection.*)
+      *(.gnu.linkonce.r.*)
+      . = ALIGN(0x4);
+  } >FLASH
 
   TextFlashSection :
-    {
-        *(TextFlashSection TextFlashSection.*)
-        *(.gnu.linkonce.r.*)
-        . = ALIGN(0x4);
-    } >FLASH
+  {
+      *(TextFlashSection TextFlashSection.*)
+      *(.gnu.linkonce.r.*)
+      . = ALIGN(0x4);
+  } >FLASH
 }

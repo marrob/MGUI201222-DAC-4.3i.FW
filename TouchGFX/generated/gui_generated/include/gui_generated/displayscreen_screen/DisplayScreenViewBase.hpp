@@ -14,17 +14,17 @@
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/containers/Slider.hpp>
 #include <touchgfx/widgets/RadioButton.hpp>
+#include <touchgfx/widgets/RadioButtonGroup.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
-#include <touchgfx/widgets/RadioButtonGroup.hpp>
 
 class DisplayScreenViewBase : public touchgfx::View<DisplayScreenPresenter>
 {
 public:
     DisplayScreenViewBase();
-    virtual ~DisplayScreenViewBase() {}
+    virtual ~DisplayScreenViewBase();
     virtual void setupScreen();
 
     /*
@@ -34,42 +34,34 @@ public:
     {
         // Override and implement this function in DisplayScreen
     }
-
     virtual void rbtnSelect0OffTmr()
     {
         // Override and implement this function in DisplayScreen
     }
-
     virtual void rbtnSelect1OffTmr()
     {
         // Override and implement this function in DisplayScreen
     }
-
     virtual void rbtnSelect5OffTmr()
     {
         // Override and implement this function in DisplayScreen
     }
-
     virtual void rbtnSelect10OffTmr()
     {
         // Override and implement this function in DisplayScreen
     }
-
     virtual void rbtnSelect30OffTmr()
     {
         // Override and implement this function in DisplayScreen
     }
-
     virtual void rbtnSelect60OffTmr()
     {
         // Override and implement this function in DisplayScreen
     }
-
     virtual void rbtnSelect120OffTmr()
     {
         // Override and implement this function in DisplayScreen
     }
-
     virtual void chbxChangeEnableScreen()
     {
         // Override and implement this function in DisplayScreen
@@ -92,6 +84,7 @@ protected:
     touchgfx::TextArea textArea2_1;
     touchgfx::Container container1;
     touchgfx::Slider sldrBrightnes;
+    touchgfx::RadioButtonGroup<7> radioButtonGroup1;
     touchgfx::RadioButton rdbtnSet0;
     touchgfx::TextArea textArea2;
     touchgfx::RadioButton rdbtnSet1;
@@ -113,7 +106,6 @@ protected:
     touchgfx::TextArea lblScreenSaverEnable;
     touchgfx::Line line1;
     touchgfx::PainterRGB565 line1Painter;
-    touchgfx::RadioButtonGroup<7> radioButtonGroup1;
 
     /*
      * Wildcard Buffers
@@ -126,26 +118,27 @@ protected:
 private:
 
     /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+
+    /*
      * Callback Declarations
      */
-    touchgfx::Callback<DisplayScreenViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<DisplayScreenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
     touchgfx::Callback<DisplayScreenViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
     touchgfx::Callback<DisplayScreenViewBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
+    touchgfx::Callback<DisplayScreenViewBase, const touchgfx::AbstractButton&> buttonCallback;
 
     /*
      * Callback Handler Declarations
      */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
     void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
     void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // DISPLAYSCREENVIEWBASE_HPP

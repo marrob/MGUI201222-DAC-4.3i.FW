@@ -6,9 +6,9 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
-#include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/RadioButton.hpp>
+#include <touchgfx/widgets/RadioButtonGroup.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
@@ -16,13 +16,12 @@
 #include <touchgfx/containers/Slider.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
-#include <touchgfx/widgets/RadioButtonGroup.hpp>
 
 class DacContainerBase : public touchgfx::Container
 {
 public:
     DacContainerBase();
-    virtual ~DacContainerBase() {}
+    virtual ~DacContainerBase();
     virtual void initialize();
 
     /*
@@ -32,82 +31,66 @@ public:
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void OnFirValueChanged(uint32_t value)
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void OnDeEmpValueChanged(uint32_t value)
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void OnDeltaSigmaValueChanged(uint32_t value)
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void chbxSwapChanged()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void chbxPhaseChanged()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void chbxHighPrecChanged()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void chbxMuteChanged()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void sldrVolumeValueChanged(int value)
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void chbxEnableSRCChecked()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void rdbSRCFreqLowSelected()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void rdbSRCFreqMidSelected()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void rdbSRCFreqHighSelected()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void rdbSRCBit16Selected()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void rdbSRCBit24Selected()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void btnUserProfileClicked()
     {
         // Override and implement this function in DacContainer
     }
-
     virtual void btnFactoryProfileClicked()
     {
         // Override and implement this function in DacContainer
@@ -124,6 +107,7 @@ protected:
     touchgfx::Container containerSRC;
     touchgfx::TextArea lblSRC;
     touchgfx::TextArea lblOutputFreq;
+    touchgfx::RadioButtonGroup<3> SRC;
     touchgfx::RadioButton rdbSRCFreqLow;
     touchgfx::TextArea lblLowFreq;
     touchgfx::RadioButton rdbSRCFreqMid;
@@ -131,6 +115,7 @@ protected:
     touchgfx::RadioButton rdbSRCFreqHigh;
     touchgfx::TextArea lblHighFreq;
     touchgfx::TextArea lblOutputBit;
+    touchgfx::RadioButtonGroup<2> SRCBitGroup;
     touchgfx::RadioButton rdbSRCBit16;
     touchgfx::TextArea lbl16Bit;
     touchgfx::RadioButton rdbSRCBit24;
@@ -186,8 +171,6 @@ protected:
     touchgfx::TextArea lblProfile;
     touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnFactoryProfile;
     touchgfx::TextButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  btnUserProfile;
-    touchgfx::RadioButtonGroup<3> SRC;
-    touchgfx::RadioButtonGroup<2> SRCBitGroup;
 
     /*
      * Wildcard Buffers
@@ -200,26 +183,26 @@ private:
     /*
      * Callback Declarations
      */
-    touchgfx::Callback<DacContainerBase, const touchgfx::AbstractButton&> buttonCallback;
-    touchgfx::Callback<DacContainerBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-    touchgfx::Callback<DacContainerBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
-    touchgfx::Callback<DacContainerBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
     touchgfx::Callback<DacContainerBase, uint32_t> nudDSDCutOffValueChangedTriggerCallback;
     touchgfx::Callback<DacContainerBase, uint32_t> nudFIRValueChangedTriggerCallback;
     touchgfx::Callback<DacContainerBase, uint32_t> nudDeEnpValueChangedTriggerCallback;
     touchgfx::Callback<DacContainerBase, uint32_t> nudDeltaSigmaValueChangedTriggerCallback;
+    touchgfx::Callback<DacContainerBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<DacContainerBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
+    touchgfx::Callback<DacContainerBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
+    touchgfx::Callback<DacContainerBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
 
     /*
      * Callback Handler Declarations
      */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
-    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
-    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
-    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
     void nudDSDCutOffValueChangedTriggerCallbackHandler(uint32_t value);
     void nudFIRValueChangedTriggerCallbackHandler(uint32_t value);
     void nudDeEnpValueChangedTriggerCallbackHandler(uint32_t value);
     void nudDeltaSigmaValueChangedTriggerCallbackHandler(uint32_t value);
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
+    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 

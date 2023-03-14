@@ -18,7 +18,7 @@ class PasswordScreenViewBase : public touchgfx::View<PasswordScreenPresenter>
 {
 public:
     PasswordScreenViewBase();
-    virtual ~PasswordScreenViewBase() {}
+    virtual ~PasswordScreenViewBase();
     virtual void setupScreen();
 
     /*
@@ -28,52 +28,42 @@ public:
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn1()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn2()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn3()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn4()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn5()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn6()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn7()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn8()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtn9()
     {
         // Override and implement this function in PasswordScreen
     }
-
     virtual void ClickBtnOK()
     {
         // Override and implement this function in PasswordScreen

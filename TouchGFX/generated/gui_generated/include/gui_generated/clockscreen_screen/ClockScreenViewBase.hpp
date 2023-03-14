@@ -23,7 +23,7 @@ class ClockScreenViewBase : public touchgfx::View<ClockScreenPresenter>
 {
 public:
     ClockScreenViewBase();
-    virtual ~ClockScreenViewBase() {}
+    virtual ~ClockScreenViewBase();
     virtual void setupScreen();
 
     virtual void scrollMonthUpdateItem(textContainer& item, int16_t itemIndex)
@@ -114,27 +114,21 @@ protected:
     touchgfx::ScrollWheelWithSelectionStyle scrollMonth;
     touchgfx::DrawableListItems<textContainer, 6> scrollMonthListItems;
     touchgfx::DrawableListItems<TextContainerHigh, 2> scrollMonthSelectedListItems;
-
     touchgfx::ScrollWheelWithSelectionStyle scrollDay;
     touchgfx::DrawableListItems<textContainer, 6> scrollDayListItems;
     touchgfx::DrawableListItems<TextContainerHigh, 2> scrollDaySelectedListItems;
-
     touchgfx::ScrollWheelWithSelectionStyle scrollYear;
     touchgfx::DrawableListItems<textContainer, 6> scrollYearListItems;
     touchgfx::DrawableListItems<TextContainerHigh, 2> scrollYearSelectedListItems;
-
     touchgfx::ScrollWheelWithSelectionStyle scrollHour;
     touchgfx::DrawableListItems<textContainer, 6> scrollHourListItems;
     touchgfx::DrawableListItems<TextContainerHigh, 2> scrollHourSelectedListItems;
-
     touchgfx::ScrollWheelWithSelectionStyle scrollMin;
     touchgfx::DrawableListItems<textContainer, 6> scrollMinListItems;
     touchgfx::DrawableListItems<TextContainerHigh, 2> scrollMinSelectedListItems;
-
     touchgfx::ScrollWheelWithSelectionStyle scrollSec;
     touchgfx::DrawableListItems<textContainer, 6> scrollSecListItems;
     touchgfx::DrawableListItems<TextContainerHigh, 2> scrollSecSelectedListItems;
-
     touchgfx::TextArea lblClockDay;
     touchgfx::TextArea lblClockMonth;
     touchgfx::TextArea lblClockYear;
@@ -164,22 +158,23 @@ protected:
 private:
 
     /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+
+    /*
      * Callback Declarations
      */
-    touchgfx::Callback<ClockScreenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
     touchgfx::Callback<ClockScreenViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
+    touchgfx::Callback<ClockScreenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
 
     /*
      * Callback Handler Declarations
      */
-    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
     void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // CLOCKSCREENVIEWBASE_HPP

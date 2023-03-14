@@ -254,6 +254,6 @@ touchgfx::GeneratedFont& getFont_arial_28_4bpp();
 
 touchgfx::GeneratedFont& getFont_arial_28_4bpp()
 {
-    static touchgfx::GeneratedFont arial_28_4bpp(glyphs_arial_28_4bpp, 77, 28, 6, 4, 1, 2, 1, unicodes_arial_28_4bpp, kerning_arial_28_4bpp, 63, 0, 0, &arial_contextualFormsTable);
+    static touchgfx::GeneratedFont arial_28_4bpp(glyphs_arial_28_4bpp, 77, 34, 28, 0, 0, 4, 1, 2, 1, unicodes_arial_28_4bpp, kerning_arial_28_4bpp, 63, 0, 0, &arial_contextualFormsTable);
     return arial_28_4bpp;
 }

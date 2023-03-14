@@ -6,18 +6,20 @@
 #include <texts/TextKeysAndLanguages.hpp>
 
 UpDownContainerBase::UpDownContainerBase() :
-    flexButtonCallback(this, &UpDownContainerBase::flexButtonCallbackHandler),
-    ValueChangedTriggerCallback(0)
+    ValueChangedTriggerCallback(0),
+    flexButtonCallback(this, &UpDownContainerBase::flexButtonCallbackHandler)
 {
     setWidth(250);
     setHeight(50);
     bacdround.setPosition(0, 0, 250, 50);
     bacdround.setColor(touchgfx::Color::getColorFromRGB(16, 16, 16));
+    add(bacdround);
 
     boxWithBorder1.setPosition(0, 0, 250, 50);
     boxWithBorder1.setColor(touchgfx::Color::getColorFromRGB(32, 32, 32));
     boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     boxWithBorder1.setBorderSize(2);
+    add(boxWithBorder1);
 
     btnDown.setBoxWithBorderPosition(0, 0, 60, 40);
     btnDown.setBorderSize(1);
@@ -25,8 +27,9 @@ UpDownContainerBase::UpDownContainerBase() :
     btnDown.setText(TypedText(T___SINGLEUSE_BWV6));
     btnDown.setTextPosition(0, -2, 60, 40);
     btnDown.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnDown.setPosition(6, 5, 60, 40);
     btnDown.setAction(flexButtonCallback);
+    btnDown.setPosition(6, 5, 60, 40);
+    add(btnDown);
 
     btnUp.setBoxWithBorderPosition(0, 0, 60, 40);
     btnUp.setBorderSize(1);
@@ -34,8 +37,9 @@ UpDownContainerBase::UpDownContainerBase() :
     btnUp.setText(TypedText(T___SINGLEUSE_IX9B));
     btnUp.setTextPosition(0, 2, 60, 40);
     btnUp.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnUp.setPosition(185, 5, 60, 40);
     btnUp.setAction(flexButtonCallback);
+    btnUp.setPosition(185, 5, 60, 40);
+    add(btnUp);
 
     lblValue.setPosition(57, 9, 136, 33);
     lblValue.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
@@ -43,12 +47,12 @@ UpDownContainerBase::UpDownContainerBase() :
     Unicode::snprintf(lblValueBuffer, LBLVALUE_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_MVNG).getText());
     lblValue.setWildcard(lblValueBuffer);
     lblValue.setTypedText(touchgfx::TypedText(T___SINGLEUSE_KMGP));
-
-    add(bacdround);
-    add(boxWithBorder1);
-    add(btnDown);
-    add(btnUp);
     add(lblValue);
+}
+
+UpDownContainerBase::~UpDownContainerBase()
+{
+
 }
 
 void UpDownContainerBase::initialize()
@@ -58,6 +62,13 @@ void UpDownContainerBase::initialize()
 
 void UpDownContainerBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
+    if (&src == &btnUp)
+    {
+        //BtnUpClick
+        //When btnUp clicked call virtual function
+        //Call OnBtnUpClick
+        OnBtnUpClick();
+    }
     if (&src == &btnDown)
     {
         //BtnDownClick
@@ -65,12 +76,4 @@ void UpDownContainerBase::flexButtonCallbackHandler(const touchgfx::AbstractButt
         //Call OnBtnDownClick
         OnBtnDownClick();
     }
-    else if (&src == &btnUp)
-    {
-        //BtnUpClick
-        //When btnUp clicked call virtual function
-        //Call OnBtnUpClick
-        OnBtnUpClick();
-    }
 }
-

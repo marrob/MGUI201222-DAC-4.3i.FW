@@ -98,6 +98,6 @@ touchgfx::GeneratedFont& getFont_micross_25_4bpp();
 
 touchgfx::GeneratedFont& getFont_micross_25_4bpp()
 {
-    static touchgfx::GeneratedFont micross_25_4bpp(glyphs_micross_25_4bpp, 76, 25, 5, 4, 1, 1, 1, unicodes_micross_25_4bpp, kerning_micross_25_4bpp, 63, 0, 0, &micross_contextualFormsTable);
+    static touchgfx::GeneratedFont micross_25_4bpp(glyphs_micross_25_4bpp, 76, 30, 25, 0, 0, 4, 1, 1, 1, unicodes_micross_25_4bpp, kerning_micross_25_4bpp, 63, 0, 0, &micross_contextualFormsTable);
     return micross_25_4bpp;
 }

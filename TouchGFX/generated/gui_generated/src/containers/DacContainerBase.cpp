@@ -4,22 +4,21 @@
 #include <gui_generated/containers/DacContainerBase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Color.hpp>
-#include <BitmapDatabase.hpp>
+#include <images/BitmapDatabase.hpp>
 
 DacContainerBase::DacContainerBase() :
-    buttonCallback(this, &DacContainerBase::buttonCallbackHandler),
-    flexButtonCallback(this, &DacContainerBase::flexButtonCallbackHandler),
-    sliderValueChangedCallback(this, &DacContainerBase::sliderValueChangedCallbackHandler),
-    radioButtonSelectedCallback(this, &DacContainerBase::radioButtonSelectedCallbackHandler),
     nudDSDCutOffValueChangedTriggerCallback(this, &DacContainerBase::nudDSDCutOffValueChangedTriggerCallbackHandler),
     nudFIRValueChangedTriggerCallback(this, &DacContainerBase::nudFIRValueChangedTriggerCallbackHandler),
     nudDeEnpValueChangedTriggerCallback(this, &DacContainerBase::nudDeEnpValueChangedTriggerCallbackHandler),
-    nudDeltaSigmaValueChangedTriggerCallback(this, &DacContainerBase::nudDeltaSigmaValueChangedTriggerCallbackHandler)
+    nudDeltaSigmaValueChangedTriggerCallback(this, &DacContainerBase::nudDeltaSigmaValueChangedTriggerCallbackHandler),
+    buttonCallback(this, &DacContainerBase::buttonCallbackHandler),
+    sliderValueChangedCallback(this, &DacContainerBase::sliderValueChangedCallbackHandler),
+    radioButtonSelectedCallback(this, &DacContainerBase::radioButtonSelectedCallbackHandler),
+    flexButtonCallback(this, &DacContainerBase::flexButtonCallbackHandler)
 {
     setWidth(792);
     setHeight(1501);
     containerSRC.setPosition(0, 1159, 792, 342);
-
     lblSRC.setPosition(15, -1, 294, 44);
     lblSRC.setColor(touchgfx::Color::getColorFromRGB(200, 200, 200));
     lblSRC.setLinespacing(0);
@@ -32,10 +31,13 @@ DacContainerBase::DacContainerBase() :
     lblOutputFreq.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EZGK));
     containerSRC.add(lblOutputFreq);
 
+    SRC.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
+    
     rdbSRCFreqLow.setXY(32, 139);
     rdbSRCFreqLow.setBitmaps(touchgfx::Bitmap(BITMAP_OFF_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_OFF_44X44_ID));
     rdbSRCFreqLow.setSelected(true);
     rdbSRCFreqLow.setDeselectionEnabled(false);
+    SRC.add(rdbSRCFreqLow);
     containerSRC.add(rdbSRCFreqLow);
 
     lblLowFreq.setXY(87, 139);
@@ -48,6 +50,7 @@ DacContainerBase::DacContainerBase() :
     rdbSRCFreqMid.setBitmaps(touchgfx::Bitmap(BITMAP_OFF_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_OFF_44X44_ID));
     rdbSRCFreqMid.setSelected(false);
     rdbSRCFreqMid.setDeselectionEnabled(false);
+    SRC.add(rdbSRCFreqMid);
     containerSRC.add(rdbSRCFreqMid);
 
     lblMidFreq.setXY(338, 139);
@@ -60,6 +63,7 @@ DacContainerBase::DacContainerBase() :
     rdbSRCFreqHigh.setBitmaps(touchgfx::Bitmap(BITMAP_OFF_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_OFF_44X44_ID));
     rdbSRCFreqHigh.setSelected(false);
     rdbSRCFreqHigh.setDeselectionEnabled(false);
+    SRC.add(rdbSRCFreqHigh);
     containerSRC.add(rdbSRCFreqHigh);
 
     lblHighFreq.setXY(593, 139);
@@ -74,10 +78,13 @@ DacContainerBase::DacContainerBase() :
     lblOutputBit.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HVM1));
     containerSRC.add(lblOutputBit);
 
+    SRCBitGroup.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
+    
     rdbSRCBit16.setXY(31, 246);
     rdbSRCBit16.setBitmaps(touchgfx::Bitmap(BITMAP_OFF_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_OFF_44X44_ID));
     rdbSRCBit16.setSelected(true);
     rdbSRCBit16.setDeselectionEnabled(false);
+    SRCBitGroup.add(rdbSRCBit16);
     containerSRC.add(rdbSRCBit16);
 
     lbl16Bit.setXY(86, 246);
@@ -90,6 +97,7 @@ DacContainerBase::DacContainerBase() :
     rdbSRCBit24.setBitmaps(touchgfx::Bitmap(BITMAP_OFF_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_ON_44X44_ID), touchgfx::Bitmap(BITMAP_OFF_44X44_ID));
     rdbSRCBit24.setSelected(false);
     rdbSRCBit24.setDeselectionEnabled(false);
+    SRCBitGroup.add(rdbSRCBit24);
     containerSRC.add(rdbSRCBit24);
 
     lbl24Bit.setXY(338, 246);
@@ -118,8 +126,9 @@ DacContainerBase::DacContainerBase() :
     lineSRC.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
     containerSRC.add(lineSRC);
 
-    containerPCM.setPosition(0, 663, 792, 495);
+    add(containerSRC);
 
+    containerPCM.setPosition(0, 663, 792, 495);
     linePCM.setPosition(45, 481, 710, 15);
     linePCMPainter.setColor(touchgfx::Color::getColorFromRGB(64, 64, 64));
     linePCM.setPainter(linePCMPainter);
@@ -194,8 +203,9 @@ DacContainerBase::DacContainerBase() :
     lblDeempDesc.setTypedText(touchgfx::TypedText(T___SINGLEUSE_J09Y));
     containerPCM.add(lblDeempDesc);
 
-    containerDSD.setPosition(0, 539, 792, 124);
+    add(containerPCM);
 
+    containerDSD.setPosition(0, 539, 792, 124);
     lineDSD.setPosition(45, 109, 710, 15);
     lineDSDPainter.setColor(touchgfx::Color::getColorFromRGB(64, 64, 64));
     lineDSD.setPainter(lineDSDPainter);
@@ -221,8 +231,9 @@ DacContainerBase::DacContainerBase() :
     lblDSD.setTypedText(touchgfx::TypedText(T___SINGLEUSE_D1OG));
     containerDSD.add(lblDSD);
 
-    containerAllSettings.setPosition(0, 289, 792, 250);
+    add(containerDSD);
 
+    containerAllSettings.setPosition(0, 289, 792, 250);
     lineChannel.setPosition(45, 111, 710, 15);
     lineChannelPainter.setColor(touchgfx::Color::getColorFromRGB(64, 64, 64));
     lineChannel.setPainter(lineChannelPainter);
@@ -275,8 +286,9 @@ DacContainerBase::DacContainerBase() :
     lblPhase.setTypedText(touchgfx::TypedText(T___SINGLEUSE_9T0G));
     containerAllSettings.add(lblPhase);
 
-    containerVolume.setPosition(0, 150, 792, 141);
+    add(containerAllSettings);
 
+    containerVolume.setPosition(0, 150, 792, 141);
     lineVolume.setPosition(45, 126, 710, 15);
     lineVolumePainter.setColor(touchgfx::Color::getColorFromRGB(64, 64, 64));
     lineVolume.setPainter(lineVolumePainter);
@@ -325,8 +337,9 @@ DacContainerBase::DacContainerBase() :
     lblVolumeTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DRWF));
     containerVolume.add(lblVolumeTitle);
 
-    containerFilters.setPosition(0, 0, 792, 150);
+    add(containerVolume);
 
+    containerFilters.setPosition(0, 0, 792, 150);
     lineProfie.setPosition(45, 142, 710, 15);
     lineProfiePainter.setColor(touchgfx::Color::getColorFromRGB(64, 64, 64));
     lineProfie.setPainter(lineProfiePainter);
@@ -348,8 +361,8 @@ DacContainerBase::DacContainerBase() :
     btnFactoryProfile.setText(TypedText(T___SINGLEUSE_5U3A));
     btnFactoryProfile.setTextPosition(0, 20, 350, 72);
     btnFactoryProfile.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnFactoryProfile.setPosition(31, 51, 350, 72);
     btnFactoryProfile.setAction(flexButtonCallback);
+    btnFactoryProfile.setPosition(31, 51, 350, 72);
     containerFilters.add(btnFactoryProfile);
 
     btnUserProfile.setBoxWithBorderPosition(0, 0, 350, 72);
@@ -358,24 +371,17 @@ DacContainerBase::DacContainerBase() :
     btnUserProfile.setText(TypedText(T___SINGLEUSE_8MP9));
     btnUserProfile.setTextPosition(0, 20, 350, 72);
     btnUserProfile.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnUserProfile.setPosition(405, 51, 350, 72);
     btnUserProfile.setVisible(false);
     btnUserProfile.setAction(flexButtonCallback);
+    btnUserProfile.setPosition(405, 51, 350, 72);
     containerFilters.add(btnUserProfile);
 
-    add(containerSRC);
-    add(containerPCM);
-    add(containerDSD);
-    add(containerAllSettings);
-    add(containerVolume);
     add(containerFilters);
-    SRC.add(rdbSRCFreqLow);
-    SRC.add(rdbSRCFreqMid);
-    SRC.add(rdbSRCFreqHigh);
-    SRCBitGroup.add(rdbSRCBit16);
-    SRCBitGroup.add(rdbSRCBit24);
-    SRC.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
-    SRCBitGroup.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
+}
+
+DacContainerBase::~DacContainerBase()
+{
+
 }
 
 void DacContainerBase::initialize()
@@ -420,58 +426,40 @@ void DacContainerBase::nudDeltaSigmaValueChangedTriggerCallbackHandler(uint32_t 
 
 void DacContainerBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &chbxEnableSRC)
-    {
-        //EnableSRC
-        //When chbxEnableSRC clicked call virtual function
-        //Call chbxEnableSRCChecked
-        chbxEnableSRCChecked();
-    }
-    else if (&src == &chbxHighPrec)
-    {
-        //HighPrecChanged
-        //When chbxHighPrec clicked call virtual function
-        //Call chbxHighPrecChanged
-        chbxHighPrecChanged();
-    }
-    else if (&src == &chbxSwap)
+    if (&src == &chbxSwap)
     {
         //SwapLRChanged
         //When chbxSwap clicked call virtual function
         //Call chbxSwapChanged
         chbxSwapChanged();
     }
-    else if (&src == &chbxPhase)
+    if (&src == &chbxPhase)
     {
         //PhaseChanged
         //When chbxPhase clicked call virtual function
         //Call chbxPhaseChanged
         chbxPhaseChanged();
     }
-    else if (&src == &chbxMute)
+    if (&src == &chbxHighPrec)
+    {
+        //HighPrecChanged
+        //When chbxHighPrec clicked call virtual function
+        //Call chbxHighPrecChanged
+        chbxHighPrecChanged();
+    }
+    if (&src == &chbxMute)
     {
         //MuteChenged
         //When chbxMute clicked call virtual function
         //Call chbxMuteChanged
         chbxMuteChanged();
     }
-}
-
-void DacContainerBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
-{
-    if (&src == &btnFactoryProfile)
+    if (&src == &chbxEnableSRC)
     {
-        //FactoryProfileClicked
-        //When btnFactoryProfile clicked call virtual function
-        //Call btnFactoryProfileClicked
-        btnFactoryProfileClicked();
-    }
-    else if (&src == &btnUserProfile)
-    {
-        //UserProfileClicked
-        //When btnUserProfile clicked call virtual function
-        //Call btnUserProfileClicked
-        btnUserProfileClicked();
+        //EnableSRC
+        //When chbxEnableSRC clicked call virtual function
+        //Call chbxEnableSRCChecked
+        chbxEnableSRCChecked();
     }
 }
 
@@ -495,28 +483,28 @@ void DacContainerBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
         //Call rdbSRCFreqLowSelected
         rdbSRCFreqLowSelected();
     }
-    else if (&src == &rdbSRCFreqMid)
+    if (&src == &rdbSRCFreqMid)
     {
         //SRCFreqMidSelected
         //When rdbSRCFreqMid selected call virtual function
         //Call rdbSRCFreqMidSelected
         rdbSRCFreqMidSelected();
     }
-    else if (&src == &rdbSRCFreqHigh)
+    if (&src == &rdbSRCFreqHigh)
     {
         //SRCFreqHighSelected
         //When rdbSRCFreqHigh selected call virtual function
         //Call rdbSRCFreqHighSelected
         rdbSRCFreqHighSelected();
     }
-    else if (&src == &rdbSRCBit16)
+    if (&src == &rdbSRCBit16)
     {
         //SRCBit16Selected
         //When rdbSRCBit16 selected call virtual function
         //Call rdbSRCBit16Selected
         rdbSRCBit16Selected();
     }
-    else if (&src == &rdbSRCBit24)
+    if (&src == &rdbSRCBit24)
     {
         //SRCBit24Selected
         //When rdbSRCBit24 selected call virtual function
@@ -525,3 +513,20 @@ void DacContainerBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
     }
 }
 
+void DacContainerBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &btnUserProfile)
+    {
+        //UserProfileClicked
+        //When btnUserProfile clicked call virtual function
+        //Call btnUserProfileClicked
+        btnUserProfileClicked();
+    }
+    if (&src == &btnFactoryProfile)
+    {
+        //FactoryProfileClicked
+        //When btnFactoryProfile clicked call virtual function
+        //Call btnFactoryProfileClicked
+        btnFactoryProfileClicked();
+    }
+}

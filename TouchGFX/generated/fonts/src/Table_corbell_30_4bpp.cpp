@@ -159,6 +159,6 @@ touchgfx::GeneratedFont& getFont_corbell_30_4bpp();
 
 touchgfx::GeneratedFont& getFont_corbell_30_4bpp()
 {
-    static touchgfx::GeneratedFont corbell_30_4bpp(glyphs_corbell_30_4bpp, 72, 30, 7, 4, 1, 2, 1, unicodes_corbell_30_4bpp, kerning_corbell_30_4bpp, 63, 0, 0, &corbell_contextualFormsTable);
+    static touchgfx::GeneratedFont corbell_30_4bpp(glyphs_corbell_30_4bpp, 72, 37, 30, 0, 0, 4, 1, 2, 1, unicodes_corbell_30_4bpp, kerning_corbell_30_4bpp, 63, 0, 0, &corbell_contextualFormsTable);
     return corbell_30_4bpp;
 }

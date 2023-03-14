@@ -18,13 +18,17 @@ class SplashScreenViewBase : public touchgfx::View<SplashScreenPresenter>
 {
 public:
     SplashScreenViewBase();
-    virtual ~SplashScreenViewBase() {}
+    virtual ~SplashScreenViewBase();
     virtual void setupScreen();
 
     /*
      * Custom Actions
      */
-    virtual void action1();
+    virtual void action1()
+    {
+        // Override and implement this function in Screen1
+    }
+    
 
 protected:
     FrontendApplication& application() {
@@ -46,6 +50,12 @@ protected:
 private:
 
     /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+
+    /*
      * Callback Declarations
      */
     touchgfx::Callback<SplashScreenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
@@ -55,11 +65,6 @@ private:
      */
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // SPLASHSCREENVIEWBASE_HPP

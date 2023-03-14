@@ -18,21 +18,8 @@ class ServiceScreenViewBase : public touchgfx::View<ServiceScreenPresenter>
 {
 public:
     ServiceScreenViewBase();
-    virtual ~ServiceScreenViewBase() {}
+    virtual ~ServiceScreenViewBase();
     virtual void setupScreen();
-
-    /*
-     * Virtual Action Handlers
-     */
-    virtual void OnClickFactoryReset()
-    {
-        // Override and implement this function in ServiceScreen
-    }
-
-    virtual void OnClickSoftReset()
-    {
-        // Override and implement this function in ServiceScreen
-    }
 
 protected:
     FrontendApplication& application() {
@@ -54,6 +41,12 @@ protected:
 private:
 
     /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+
+    /*
      * Callback Declarations
      */
     touchgfx::Callback<ServiceScreenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
@@ -63,11 +56,6 @@ private:
      */
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // SERVICESCREENVIEWBASE_HPP

@@ -11,6 +11,7 @@ ScrollElmentBase::ScrollElmentBase()
     setHeight(60);
     bacdround.setPosition(0, 0, 792, 60);
     bacdround.setColor(touchgfx::Color::getColorFromRGB(16, 16, 16));
+    add(bacdround);
 
     lblElement.setPosition(4, 0, 792, 60);
     lblElement.setColor(touchgfx::Color::getColorFromRGB(170, 170, 170));
@@ -18,6 +19,7 @@ ScrollElmentBase::ScrollElmentBase()
     Unicode::snprintf(lblElementBuffer, LBLELEMENT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_9NVL).getText());
     lblElement.setWildcard(lblElementBuffer);
     lblElement.setTypedText(touchgfx::TypedText(T___SINGLEUSE_GCT7));
+    add(lblElement);
 
     line4.setPosition(21, 54, 750, 7);
     line4Painter.setColor(touchgfx::Color::getColorFromRGB(32, 32, 32));
@@ -26,14 +28,15 @@ ScrollElmentBase::ScrollElmentBase()
     line4.setEnd(920, 1);
     line4.setLineWidth(2);
     line4.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
-
-    add(bacdround);
-    add(lblElement);
     add(line4);
+}
+
+ScrollElmentBase::~ScrollElmentBase()
+{
+
 }
 
 void ScrollElmentBase::initialize()
 {
 
 }
-

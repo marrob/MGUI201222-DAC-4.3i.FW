@@ -4,20 +4,20 @@
 #include <gui_generated/passwordscreen_screen/PasswordScreenViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
-#include <BitmapDatabase.hpp>
+#include <images/BitmapDatabase.hpp>
 
 PasswordScreenViewBase::PasswordScreenViewBase() :
     flexButtonCallback(this, &PasswordScreenViewBase::flexButtonCallbackHandler)
 {
-
     __background.setPosition(0, 0, 800, 480);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    add(__background);
 
     box1.setPosition(0, 0, 800, 480);
     box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    add(box1);
 
     containerNums.setPosition(16, 16, 458, 451);
-
     boxNumPad.setPosition(1, 1, 457, 450);
     boxNumPad.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     boxNumPad.setBorderColor(touchgfx::Color::getColorFromRGB(32, 32, 32));
@@ -30,8 +30,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_9.setText(TypedText(T___SINGLEUSE_70WT));
     btnNumber_9.setTextPosition(0, 15, 152, 112);
     btnNumber_9.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_9.setPosition(306, 2, 152, 112);
     btnNumber_9.setAction(flexButtonCallback);
+    btnNumber_9.setPosition(306, 2, 152, 112);
     containerNums.add(btnNumber_9);
 
     btnNumber_8.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -40,8 +40,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_8.setText(TypedText(T___SINGLEUSE_XAZG));
     btnNumber_8.setTextPosition(0, 15, 152, 112);
     btnNumber_8.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_8.setPosition(154, 2, 152, 112);
     btnNumber_8.setAction(flexButtonCallback);
+    btnNumber_8.setPosition(154, 2, 152, 112);
     containerNums.add(btnNumber_8);
 
     btnNumber_7.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -50,8 +50,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_7.setText(TypedText(T___SINGLEUSE_3CBB));
     btnNumber_7.setTextPosition(0, 12, 152, 112);
     btnNumber_7.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_7.setPosition(2, 2, 152, 112);
     btnNumber_7.setAction(flexButtonCallback);
+    btnNumber_7.setPosition(2, 2, 152, 112);
     containerNums.add(btnNumber_7);
 
     btnNumber_6.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -60,8 +60,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_6.setText(TypedText(T___SINGLEUSE_DPOV));
     btnNumber_6.setTextPosition(0, 15, 152, 112);
     btnNumber_6.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_6.setPosition(306, 114, 152, 112);
     btnNumber_6.setAction(flexButtonCallback);
+    btnNumber_6.setPosition(306, 114, 152, 112);
     containerNums.add(btnNumber_6);
 
     btnNumber_5.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -70,8 +70,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_5.setText(TypedText(T___SINGLEUSE_8WBT));
     btnNumber_5.setTextPosition(0, 15, 152, 112);
     btnNumber_5.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_5.setPosition(154, 114, 152, 112);
     btnNumber_5.setAction(flexButtonCallback);
+    btnNumber_5.setPosition(154, 114, 152, 112);
     containerNums.add(btnNumber_5);
 
     btnNumber_4.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -80,8 +80,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_4.setText(TypedText(T___SINGLEUSE_X6QP));
     btnNumber_4.setTextPosition(0, 15, 152, 112);
     btnNumber_4.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_4.setPosition(2, 114, 152, 112);
     btnNumber_4.setAction(flexButtonCallback);
+    btnNumber_4.setPosition(2, 114, 152, 112);
     containerNums.add(btnNumber_4);
 
     btnNumber_3.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -90,8 +90,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_3.setText(TypedText(T___SINGLEUSE_7J4G));
     btnNumber_3.setTextPosition(0, 15, 152, 112);
     btnNumber_3.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_3.setPosition(306, 226, 152, 112);
     btnNumber_3.setAction(flexButtonCallback);
+    btnNumber_3.setPosition(306, 226, 152, 112);
     containerNums.add(btnNumber_3);
 
     btnNumber_2.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -100,8 +100,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_2.setText(TypedText(T___SINGLEUSE_O6OI));
     btnNumber_2.setTextPosition(0, 15, 152, 112);
     btnNumber_2.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_2.setPosition(154, 226, 152, 112);
     btnNumber_2.setAction(flexButtonCallback);
+    btnNumber_2.setPosition(154, 226, 152, 112);
     containerNums.add(btnNumber_2);
 
     btnNumber_1.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -110,8 +110,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_1.setText(TypedText(T___SINGLEUSE_9F30));
     btnNumber_1.setTextPosition(0, 15, 152, 112);
     btnNumber_1.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_1.setPosition(2, 226, 152, 112);
     btnNumber_1.setAction(flexButtonCallback);
+    btnNumber_1.setPosition(2, 226, 152, 112);
     containerNums.add(btnNumber_1);
 
     btnNumber_0.setBoxWithBorderPosition(0, 0, 152, 112);
@@ -120,8 +120,8 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnNumber_0.setText(TypedText(T___SINGLEUSE_L5OG));
     btnNumber_0.setTextPosition(0, 15, 152, 112);
     btnNumber_0.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnNumber_0.setPosition(154, 338, 152, 112);
     btnNumber_0.setAction(flexButtonCallback);
+    btnNumber_0.setPosition(154, 338, 152, 112);
     containerNums.add(btnNumber_0);
 
     btnDumb.setBoxWithBorderPosition(0, 0, 190, 140);
@@ -130,26 +130,31 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnDumb.setText(TypedText(T___SINGLEUSE_PMC0));
     btnDumb.setTextPosition(0, 30, 190, 140);
     btnDumb.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnDumb.setPosition(2, 422, 190, 140);
     btnDumb.setVisible(false);
     btnDumb.setAction(flexButtonCallback);
+    btnDumb.setPosition(2, 422, 190, 140);
     containerNums.add(btnDumb);
+
+    add(containerNums);
 
     boxWithBorder1.setPosition(490, 16, 300, 340);
     boxWithBorder1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(150, 118, 73));
     boxWithBorder1.setBorderSize(1);
     boxWithBorder1.setAlpha(91);
+    add(boxWithBorder1);
 
     lblPintTitle_0.setXY(572, 37);
     lblPintTitle_0.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     lblPintTitle_0.setLinespacing(0);
     lblPintTitle_0.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Q977));
+    add(lblPintTitle_0);
 
     lblPinTitle.setXY(570, 66);
     lblPinTitle.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     lblPinTitle.setLinespacing(0);
     lblPinTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_YQCS));
+    add(lblPinTitle);
 
     lblPinCode.setPosition(500, 156, 280, 61);
     lblPinCode.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
@@ -157,6 +162,7 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     lblPinCodeBuffer[0] = 0;
     lblPinCode.setWildcard(lblPinCodeBuffer);
     lblPinCode.setTypedText(touchgfx::TypedText(T___SINGLEUSE_G81B));
+    add(lblPinCode);
 
     btnOK.setBoxWithBorderPosition(0, 0, 280, 72);
     btnOK.setBorderSize(1);
@@ -164,8 +170,9 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnOK.setText(TypedText(T___SINGLEUSE_LOWN));
     btnOK.setTextPosition(0, 20, 280, 72);
     btnOK.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnOK.setPosition(500, 262, 280, 72);
     btnOK.setAction(flexButtonCallback);
+    btnOK.setPosition(500, 262, 280, 72);
+    add(btnOK);
 
     btnBack.setBoxWithBorderPosition(0, 0, 300, 72);
     btnBack.setBorderSize(1);
@@ -175,24 +182,20 @@ PasswordScreenViewBase::PasswordScreenViewBase() :
     btnBack.setText(TypedText(T___SINGLEUSE_CJEC));
     btnBack.setTextPosition(-20, 20, 300, 72);
     btnBack.setTextColors(touchgfx::Color::getColorFromRGB(150, 118, 73), touchgfx::Color::getColorFromRGB(64, 64, 64));
-    btnBack.setPosition(490, 394, 300, 72);
     btnBack.setAction(flexButtonCallback);
+    btnBack.setPosition(490, 394, 300, 72);
+    add(btnBack);
 
     lblPinIsNotCorrect.setXY(518, 357);
     lblPinIsNotCorrect.setColor(touchgfx::Color::getColorFromRGB(138, 1, 1));
     lblPinIsNotCorrect.setLinespacing(0);
     lblPinIsNotCorrect.setTypedText(touchgfx::TypedText(T___SINGLEUSE_H4DE));
-
-    add(__background);
-    add(box1);
-    add(containerNums);
-    add(boxWithBorder1);
-    add(lblPintTitle_0);
-    add(lblPinTitle);
-    add(lblPinCode);
-    add(btnOK);
-    add(btnBack);
     add(lblPinIsNotCorrect);
+}
+
+PasswordScreenViewBase::~PasswordScreenViewBase()
+{
+
 }
 
 void PasswordScreenViewBase::setupScreen()
@@ -202,6 +205,76 @@ void PasswordScreenViewBase::setupScreen()
 
 void PasswordScreenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
+    if (&src == &btnBack)
+    {
+        //ShowMain
+        //When btnBack clicked change screen to Main
+        //Go to Main with no screen transition
+        application().gotoMainScreenNoTransition();
+    }
+    if (&src == &btnNumber_0)
+    {
+        //ClickBtn0
+        //When btnNumber_0 clicked call virtual function
+        //Call ClickBtn0
+        ClickBtn0();
+    }
+    if (&src == &btnNumber_1)
+    {
+        //ClickBtn1
+        //When btnNumber_1 clicked call virtual function
+        //Call ClickBtn1
+        ClickBtn1();
+    }
+    if (&src == &btnNumber_2)
+    {
+        //ClickBtn2
+        //When btnNumber_2 clicked call virtual function
+        //Call ClickBtn2
+        ClickBtn2();
+    }
+    if (&src == &btnNumber_3)
+    {
+        //ClickBtn3
+        //When btnNumber_3 clicked call virtual function
+        //Call ClickBtn3
+        ClickBtn3();
+    }
+    if (&src == &btnNumber_4)
+    {
+        //ClickBtn4
+        //When btnNumber_4 clicked call virtual function
+        //Call ClickBtn4
+        ClickBtn4();
+    }
+    if (&src == &btnNumber_5)
+    {
+        //ClickBtn5
+        //When btnNumber_5 clicked call virtual function
+        //Call ClickBtn5
+        ClickBtn5();
+    }
+    if (&src == &btnNumber_6)
+    {
+        //ClickBtn6
+        //When btnNumber_6 clicked call virtual function
+        //Call ClickBtn6
+        ClickBtn6();
+    }
+    if (&src == &btnNumber_7)
+    {
+        //ClickBtn7
+        //When btnNumber_7 clicked call virtual function
+        //Call ClickBtn7
+        ClickBtn7();
+    }
+    if (&src == &btnNumber_8)
+    {
+        //ClickBtn8
+        //When btnNumber_8 clicked call virtual function
+        //Call ClickBtn8
+        ClickBtn8();
+    }
     if (&src == &btnNumber_9)
     {
         //ClickBtn9
@@ -209,88 +282,18 @@ void PasswordScreenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //Call ClickBtn9
         ClickBtn9();
     }
-    else if (&src == &btnNumber_8)
-    {
-        //ClickBtn8
-        //When btnNumber_8 clicked call virtual function
-        //Call ClickBtn8
-        ClickBtn8();
-    }
-    else if (&src == &btnNumber_7)
-    {
-        //ClickBtn7
-        //When btnNumber_7 clicked call virtual function
-        //Call ClickBtn7
-        ClickBtn7();
-    }
-    else if (&src == &btnNumber_6)
-    {
-        //ClickBtn6
-        //When btnNumber_6 clicked call virtual function
-        //Call ClickBtn6
-        ClickBtn6();
-    }
-    else if (&src == &btnNumber_5)
-    {
-        //ClickBtn5
-        //When btnNumber_5 clicked call virtual function
-        //Call ClickBtn5
-        ClickBtn5();
-    }
-    else if (&src == &btnNumber_4)
-    {
-        //ClickBtn4
-        //When btnNumber_4 clicked call virtual function
-        //Call ClickBtn4
-        ClickBtn4();
-    }
-    else if (&src == &btnNumber_3)
-    {
-        //ClickBtn3
-        //When btnNumber_3 clicked call virtual function
-        //Call ClickBtn3
-        ClickBtn3();
-    }
-    else if (&src == &btnNumber_2)
-    {
-        //ClickBtn2
-        //When btnNumber_2 clicked call virtual function
-        //Call ClickBtn2
-        ClickBtn2();
-    }
-    else if (&src == &btnNumber_1)
-    {
-        //ClickBtn1
-        //When btnNumber_1 clicked call virtual function
-        //Call ClickBtn1
-        ClickBtn1();
-    }
-    else if (&src == &btnNumber_0)
-    {
-        //ClickBtn0
-        //When btnNumber_0 clicked call virtual function
-        //Call ClickBtn0
-        ClickBtn0();
-    }
-    else if (&src == &btnDumb)
-    {
-        //ShowService
-        //When btnDumb clicked change screen to ServiceScreen
-        //Go to ServiceScreen with screen transition towards East
-        application().gotoServiceScreenScreenSlideTransitionEast();
-    }
-    else if (&src == &btnOK)
+    if (&src == &btnOK)
     {
         //ClickBtnOK
         //When btnOK clicked call virtual function
         //Call ClickBtnOK
         ClickBtnOK();
     }
-    else if (&src == &btnBack)
+    if (&src == &btnDumb)
     {
-        //ShowMain
-        //When btnBack clicked change screen to Main
-        //Go to Main with no screen transition
-        application().gotoMainScreenNoTransition();
+        //ShowService
+        //When btnDumb clicked change screen to ServiceScreen
+        //Go to ServiceScreen with screen transition towards East
+        application().gotoServiceScreenScreenSlideTransitionEast();
     }
 }

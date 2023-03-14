@@ -32,6 +32,6 @@ touchgfx::GeneratedFont& getFont_consola_70_4bpp();
 
 touchgfx::GeneratedFont& getFont_consola_70_4bpp()
 {
-    static touchgfx::GeneratedFont consola_70_4bpp(glyphs_consola_70_4bpp, 11, 70, 1, 4, 1, 0, 0, unicodes_consola_70_4bpp, kerning_consola_70_4bpp, 63, 0, 0, 0);
+    static touchgfx::GeneratedFont consola_70_4bpp(glyphs_consola_70_4bpp, 11, 71, 70, 0, 0, 4, 1, 0, 0, unicodes_consola_70_4bpp, kerning_consola_70_4bpp, 63, 0, 0, 0);
     return consola_70_4bpp;
 }

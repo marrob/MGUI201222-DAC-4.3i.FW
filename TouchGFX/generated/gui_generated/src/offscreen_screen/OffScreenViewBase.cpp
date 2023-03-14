@@ -8,12 +8,13 @@
 OffScreenViewBase::OffScreenViewBase() :
     flexButtonCallback(this, &OffScreenViewBase::flexButtonCallbackHandler)
 {
-
     __background.setPosition(0, 0, 800, 480);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    add(__background);
 
     box1.setPosition(0, 0, 800, 480);
     box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    add(box1);
 
     btnScreenOn.setBoxWithBorderPosition(0, 0, 800, 480);
     btnScreenOn.setBorderSize(0);
@@ -21,12 +22,14 @@ OffScreenViewBase::OffScreenViewBase() :
     btnScreenOn.setText(TypedText(T___SINGLEUSE_WDG2));
     btnScreenOn.setTextPosition(0, 224, 800, 480);
     btnScreenOn.setTextColors(touchgfx::Color::getColorFromRGB(64, 64, 64), touchgfx::Color::getColorFromRGB(10, 10, 10));
-    btnScreenOn.setPosition(0, 0, 800, 480);
     btnScreenOn.setAction(flexButtonCallback);
-
-    add(__background);
-    add(box1);
+    btnScreenOn.setPosition(0, 0, 800, 480);
     add(btnScreenOn);
+}
+
+OffScreenViewBase::~OffScreenViewBase()
+{
+
 }
 
 void OffScreenViewBase::setupScreen()
@@ -41,8 +44,7 @@ void OffScreenViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButton
         //ChangeToMainScreen
         //When btnScreenOn clicked change screen to Main
         //Go to Main with screen transition towards West
-        application().gotoMainScreenSlideTransitionWest();
-
+        application().gotoMainScreenSlideTransitionWest();
         //btnScreenOnClick
         //When btnScreenOn clicked call virtual function
         //Call btnScreenOnClick

@@ -13,6 +13,7 @@ DIContainerBase::DIContainerBase()
     lblDO.setColor(touchgfx::Color::getColorFromRGB(100, 100, 100));
     lblDO.setLinespacing(0);
     lblDO.setTypedText(touchgfx::TypedText(T___SINGLEUSE_39RD));
+    add(lblDO);
 
     circLed.setPosition(98, 0, 40, 40);
     circLed.setCenter(20, 20);
@@ -21,13 +22,15 @@ DIContainerBase::DIContainerBase()
     circLed.setArc(0, 360);
     circLedPainter.setColor(touchgfx::Color::getColorFromRGB(150, 118, 73));
     circLed.setPainter(circLedPainter);
-
-    add(lblDO);
     add(circLed);
+}
+
+DIContainerBase::~DIContainerBase()
+{
+
 }
 
 void DIContainerBase::initialize()
 {
 
 }
-

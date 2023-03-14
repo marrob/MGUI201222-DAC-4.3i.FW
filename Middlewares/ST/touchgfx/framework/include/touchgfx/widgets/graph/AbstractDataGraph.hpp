@@ -2,7 +2,7 @@
 * Copyright (c) 2018(-2022) STMicroelectronics.
 * All rights reserved.
 *
-* This file is part of the TouchGFX 4.19.1 distribution.
+* This file is part of the TouchGFX 4.21.0 distribution.
 *
 * This software is licensed under terms that can be found in the LICENSE file in
 * the root directory of this software component.
@@ -57,6 +57,7 @@ public:
             : index(i), clickEvent(event)
         {
         }
+
         int16_t index;                ///< The index of the item clicked.
         const ClickEvent& clickEvent; ///< The ClickEvent that caused the callback to be executed.
     };
@@ -81,6 +82,7 @@ public:
             : index(i), dragEvent(event)
         {
         }
+
         int16_t index;              ///< The index of the item where the drag has ended.
         const DragEvent& dragEvent; ///< The DragEvent that caused the callback to be executed.
     };
@@ -110,6 +112,7 @@ public:
      */
     virtual void setScaleX(int scale, bool updateData = false)
     {
+        (void)updateData; // Unused variable
         assert(scale != 0);
         xScale = scale;
     }
@@ -144,6 +147,7 @@ public:
      */
     virtual void setScaleY(int scale, bool updateData = false)
     {
+        (void)updateData; // Unused variable
         assert(scale != 0);
         yScale = scale;
     }
@@ -1034,12 +1038,12 @@ public:
      */
     FORCE_INLINE_FUNCTION static int float2scaled(float f, int scale)
     {
-        const float fs = f * scale;
+        const float fs = f * (float)scale;
         if (fs >= 0)
         {
-            return int(fs + 0.5f);
+            return (int)(fs + 0.5f);
         }
-        return (int(fs) - 1) + int(1.5f + (fs - int(fs)));
+        return ((int)fs - 1) + (int)(1.5f + (fs - (float)(int)fs));
     }
 
     /**
@@ -1431,6 +1435,7 @@ public:
     {
         setXAxisFactor(scale);
     }
+
     /// @endcond
 
     /**
@@ -1449,6 +1454,7 @@ public:
     {
         setXAxisFactor(scale);
     }
+
     /// @endcond
 
     /** @copydoc setXAxisFactor(int) */
@@ -1475,6 +1481,7 @@ public:
     {
         return getXAxisFactorAsInt();
     }
+
     /// @endcond
 
     /**
@@ -1493,6 +1500,7 @@ public:
     {
         return getXAxisFactorAsFloat();
     }
+
     /// @endcond
 
     /** @copydoc getXAxisFactorAsInt() */
@@ -1664,6 +1672,7 @@ protected:
     {
         setXAxisFactorScaled(scale);
     }
+
     /// @endcond
 
     /// @cond
@@ -1671,6 +1680,7 @@ protected:
     {
         return getXAxisFactorScaled();
     }
+
     /// @endcond
 
     virtual CWRUtil::Q5 indexToScreenXQ5(int16_t index) const

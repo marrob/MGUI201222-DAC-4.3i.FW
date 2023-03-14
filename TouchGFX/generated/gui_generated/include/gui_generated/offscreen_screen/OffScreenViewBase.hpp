@@ -14,7 +14,7 @@ class OffScreenViewBase : public touchgfx::View<OffScreenPresenter>
 {
 public:
     OffScreenViewBase();
-    virtual ~OffScreenViewBase() {}
+    virtual ~OffScreenViewBase();
     virtual void setupScreen();
 
     /*

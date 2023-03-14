@@ -15,7 +15,7 @@ class UpDownContainerBase : public touchgfx::Container
 {
 public:
     UpDownContainerBase();
-    virtual ~UpDownContainerBase() {}
+    virtual ~UpDownContainerBase();
     virtual void initialize();
 
     /*
@@ -33,7 +33,6 @@ public:
     {
         // Override and implement this function in UpDownContainer
     }
-
     virtual void OnBtnDownClick()
     {
         // Override and implement this function in UpDownContainer
@@ -51,7 +50,7 @@ protected:
     {
         if (ValueChangedTriggerCallback && ValueChangedTriggerCallback->isValid())
         {
-            this->ValueChangedTriggerCallback->execute(value);
+            this->ValueChangedTriggerCallback->execute( value);
         }
     }
 
@@ -73,14 +72,14 @@ protected:
 private:
 
     /*
-     * Callback Declarations
-     */
-    touchgfx::Callback<UpDownContainerBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-
-    /*
      * Custom Trigger Callback Declarations
      */
     touchgfx::GenericCallback<uint32_t>* ValueChangedTriggerCallback;
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<UpDownContainerBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
 
     /*
      * Callback Handler Declarations

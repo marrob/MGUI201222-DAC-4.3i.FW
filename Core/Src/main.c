@@ -194,9 +194,9 @@ RS485TxItem_t RS485TxCollection[] =
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_DMA2D_Init(void);
-static void MX_FMC_Init(void);
 static void MX_DMA_Init(void);
+static void MX_FMC_Init(void);
+static void MX_DMA2D_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_CRC_Init(void);
 static void MX_I2C2_Init(void);
@@ -268,13 +268,17 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 
+  /*** SysTick The Highest Interrupt Priorty  ***/
+   HAL_NVIC_SetPriority(TIM5_IRQn, 0 , 0U);
+
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA2D_Init();
-  MX_FMC_Init();
   MX_DMA_Init();
+  MX_FMC_Init();
+  MX_DMA2D_Init();
   MX_LTDC_Init();
   MX_CRC_Init();
   MX_I2C2_Init();
@@ -287,7 +291,11 @@ int main(void)
   MX_I2C1_Init();
   MX_RTC_Init();
   MX_TouchGFX_Init();
+  /* Call PreOsInit function */
+  MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
+
+
 
   /*** Display ***/
   BacklightEn(0);
@@ -295,7 +303,7 @@ int main(void)
   /*** Flash ***/
   MX25_Init(&hqspi);
   MX25_EnableMemoryMappedMode(&hqspi);
-  HAL_NVIC_DisableIRQ(QUADSPI_IRQn);
+
 
   /*** Leds ***/
   BacklightInit(&htim1);
@@ -331,6 +339,9 @@ int main(void)
   setenv("TZ", "UTC", 0);
   tzset();
 
+
+  /*** SysTick The Lowest Interrupt Priorty  ***/
+  HAL_NVIC_SetPriority(TIM5_IRQn, /*TICK_INT_PRIORITY*/5 , 0U);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -385,7 +396,6 @@ int main(void)
 
   /* Start scheduler */
   osKernelStart();
-
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -1114,6 +1124,8 @@ static void MX_FMC_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+/* USER CODE BEGIN MX_GPIO_Init_1 */
+/* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
@@ -1219,6 +1231,8 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -1601,6 +1615,8 @@ void StartDefaultTask(void *argument)
 
  // LogWriteLine("Start Default Task");
 
+
+
   MX_TouchGFX_Process();
   /* Infinite loop */
   for(;;)
@@ -1837,7 +1853,7 @@ void PeriTask(void *argument)
 
 /**
   * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM6 interrupt took place, inside
+  * @note   This function is called  when TIM5 interrupt took place, inside
   * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
   * a global variable "uwTick" used as application time base.
   * @param  htim : TIM handle
@@ -1848,7 +1864,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* USER CODE BEGIN Callback 0 */
 
   /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM6) {
+  if (htim->Instance == TIM5) {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */

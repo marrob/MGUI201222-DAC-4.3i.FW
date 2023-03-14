@@ -21,7 +21,7 @@ class SettingsScreenViewBase : public touchgfx::View<SettingsScreenPresenter>
 {
 public:
     SettingsScreenViewBase();
-    virtual ~SettingsScreenViewBase() {}
+    virtual ~SettingsScreenViewBase();
     virtual void setupScreen();
 
 protected:
@@ -49,6 +49,12 @@ protected:
 private:
 
     /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+
+    /*
      * Callback Declarations
      */
     touchgfx::Callback<SettingsScreenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
@@ -58,11 +64,6 @@ private:
      */
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // SETTINGSSCREENVIEWBASE_HPP
