@@ -341,7 +341,7 @@ int main(void)
 
 
   /*** SysTick The Lowest Interrupt Priorty  ***/
-  HAL_NVIC_SetPriority(TIM5_IRQn, /*TICK_INT_PRIORITY*/5 , 0U);
+  HAL_NVIC_SetPriority(TIM5_IRQn, TICK_INT_PRIORITY , 0U);
   /* USER CODE END 2 */
 
   /* Init scheduler */
