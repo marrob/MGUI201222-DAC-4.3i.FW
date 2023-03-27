@@ -60,25 +60,6 @@ typedef struct _RS485TxItem
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-/*** SDRAM ***/
-/* SDRAM refresh counter (100Mhz SD clock)    */
-#define SDRAM_REFRESH_COUNT                      ((uint32_t)0x0603)
-#define SDRAM_TIMEOUT                            ((uint32_t)0xFFFF)
-#define SDRAM_DEVICE_ADDR                        ((uint32_t)0xD0000000)
-/* SDRAM device size in MBytes */
-#define SDRAM_DEVICE_SIZE                        ((uint32_t)0x800000)
-#define SDRAM_MODEREG_BURST_LENGTH_1             ((uint16_t)0x0000)
-#define SDRAM_MODEREG_BURST_LENGTH_2             ((uint16_t)0x0001)
-#define SDRAM_MODEREG_BURST_LENGTH_4             ((uint16_t)0x0002)
-#define SDRAM_MODEREG_BURST_LENGTH_8             ((uint16_t)0x0004)
-#define SDRAM_MODEREG_BURST_TYPE_SEQUENTIAL      ((uint16_t)0x0000)
-#define SDRAM_MODEREG_BURST_TYPE_INTERLEAVED     ((uint16_t)0x0008)
-#define SDRAM_MODEREG_CAS_LATENCY_2              ((uint16_t)0x0020)
-#define SDRAM_MODEREG_CAS_LATENCY_3              ((uint16_t)0x0030)
-#define SDRAM_MODEREG_OPERATING_MODE_STANDARD    ((uint16_t)0x0000)
-#define SDRAM_MODEREG_WRITEBURST_MODE_PROGRAMMED ((uint16_t)0x0000)
-#define SDRAM_MODEREG_WRITEBURST_MODE_SINGLE     ((uint16_t)0x0200)
-#define SDRAM_BUFFER_SIZE                        ((uint32_t)0x1000)
 
 
 /* USER CODE END PD */
@@ -269,7 +250,7 @@ int main(void)
   /* USER CODE BEGIN SysInit */
 
   /*** SysTick The Highest Interrupt Priorty  ***/
-   HAL_NVIC_SetPriority(TIM5_IRQn, 0 , 0U);
+   HAL_NVIC_SetPriority(TIM6_DAC_IRQn, 0 , 0U);
 
 
   /* USER CODE END SysInit */
@@ -341,7 +322,7 @@ int main(void)
 
 
   /*** SysTick The Lowest Interrupt Priorty  ***/
-  HAL_NVIC_SetPriority(TIM5_IRQn, TICK_INT_PRIORITY , 0U);
+  HAL_NVIC_SetPriority(TIM6_DAC_IRQn, TICK_INT_PRIORITY , 0U);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -1853,7 +1834,7 @@ void PeriTask(void *argument)
 
 /**
   * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM5 interrupt took place, inside
+  * @note   This function is called  when TIM6 interrupt took place, inside
   * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
   * a global variable "uwTick" used as application time base.
   * @param  htim : TIM handle
@@ -1864,7 +1845,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* USER CODE BEGIN Callback 0 */
 
   /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM5) {
+  if (htim->Instance == TIM6) {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
