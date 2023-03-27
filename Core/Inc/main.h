@@ -33,6 +33,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "DisplayLight.h"
+#include "mx25.h"
 #include "PowerLed.h"
 #include "GuiItf.h"
 #include "Periph.h"
@@ -169,9 +170,7 @@ typedef struct _AppTypeDef
     uint32_t OffTimerSec;    //If it is not 0, then it is valid time
     uint32_t RemainingTimeToOff;
     time_t TimestampToOff;
-    uint8_t LightPercent;
     uint32_t TouchInterrupt;
-    uint8_t LightIsEnabled;
   } Backlight;
 
 }Device_t;

@@ -25,7 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "string.h"
-#include "mx25.h"
+
 #include <stdio.h>
 #include <queue.h>
 #include <stdlib.h>
@@ -201,7 +201,7 @@ void PeriTask(void *argument);
 void LiveLedOff(void);
 void LiveLedOn(void);
 
-/*** LCD ***/
+/*** USB ***/
 void UsbParser(char *request);
 void UsbUartTx(char *str);
 
@@ -1313,7 +1313,7 @@ void UsbParser(char *request)
     }
     else if(!strcmp(cmd, "DIS:LIG?"))
     {
-      sprintf(response, "%d", Device.Backlight.LightPercent);
+      sprintf(response, "%d", BacklightGet());
     }
     else if(!strcmp(cmd, "DIS?"))
     {

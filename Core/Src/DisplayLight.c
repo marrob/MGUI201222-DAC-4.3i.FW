@@ -15,6 +15,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 static TIM_HandleTypeDef *_htim;
+uint8_t _backlightPercent;
+uint8_t _backlightEnabled;
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private user code ---------------------------------------------------------*/
 
@@ -25,27 +28,30 @@ void BacklightInit(TIM_HandleTypeDef *htim)
   BacklightSet(10);
 }
 
-uint8_t BacklightSet(uint8_t percent)
+uint8_t BacklightGet(void)
 {
-  Device.Backlight.LightPercent = percent;
+  return _backlightPercent;
+}
+
+void BacklightSet(uint8_t percent)
+{
+  _backlightPercent = percent;
   percent = 100 - percent;
   uint32_t arr = __HAL_TIM_GET_AUTORELOAD(_htim);
   uint32_t ccr = (arr * percent) / 100;
   __HAL_TIM_SET_COMPARE(_htim,TIM_CHANNEL_4, ccr);
-
-  return DISPLAY_LIGHT_OK;
 }
 
 void BacklightEn(uint8_t onoff)
 {
   if(onoff)
   {
-    Device.Backlight.LightIsEnabled = 1,
+    _backlightEnabled = 1,
     HAL_GPIO_WritePin(DISP_EN_GPIO_Port, DISP_EN_Pin, GPIO_PIN_SET);
   }
   else
   {
-    Device.Backlight.LightIsEnabled = 0,
+    _backlightEnabled = 0,
     HAL_GPIO_WritePin(DISP_EN_GPIO_Port, DISP_EN_Pin, GPIO_PIN_RESET);
   }
 }
@@ -53,7 +59,7 @@ void BacklightEn(uint8_t onoff)
 
 uint8_t BacklightIsEnabled(void)
 {
-  return Device.Backlight.LightIsEnabled;
+  return _backlightEnabled;
 }
 
 /************************ (C) COPYRIGHT KonvolucioBt ***********END OF FILE****/

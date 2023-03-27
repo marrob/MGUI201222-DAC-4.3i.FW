@@ -456,7 +456,7 @@ uint8_t GuiItfSetBacklight(uint8_t percent)
 
 uint8_t GuiItfGetBacklight(void)
 {
-  return Device.Backlight.LightPercent;
+  return BacklightGet();
 }
 
 void GuiItfSetBacklightEn(uint8_t onoff)
