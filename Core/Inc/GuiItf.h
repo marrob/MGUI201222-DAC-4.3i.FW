@@ -49,10 +49,7 @@ enum DacConfig
 #define GUIITF_FAIL           0x01
 #define GUIITF_OUT_OF_RANGE   0x02
 
-/*** Denpo DAC ***/
-//Host:0, Device:3
-#define DENPO_DAC_HOST_TX_ADDR      0x03//Host->Device 0->1
-#define DENPO_DAC_HOST_RX_ADDR      0x30
+
 
 #define DENPO_DAC_DI_A0             ((uint32_t)1<<0)
 #define DENPO_DAC_DI_A1             ((uint32_t)1<<1)

@@ -52,6 +52,8 @@ void TouchGFXHAL::initialize()
     //setFrameBufferStartAddresses((void*)frameBuffer0, (void*)frameBuffer1, (void*)animationBuffer);  //enable the animation storage to allow slide animations
     setFrameBufferStartAddresses((void*)0xD0000000, (void*)0xD012C000, (void*)0xD0258000);
     lockDMAToFrontPorch(false);
+
+    /*** Ezek csak diagnosztikához ***/
     instrumentation.init();
     setMCUInstrumentation(&instrumentation);
     enableMCULoadCalculation(true);

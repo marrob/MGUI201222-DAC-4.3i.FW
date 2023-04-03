@@ -226,7 +226,13 @@ uint8_t DeviceTimeUpdate(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+#ifndef DEBUG
+  /*** RELEASE ***/
+  SCB->VTOR =  0x08040000U;
+#else
+  /*** DEBUG ***/
+  SCB->VTOR =  0x08000000U;
+#endif
   /* USER CODE END 1 */
 
   /* Enable I-Cache---------------------------------------------------------*/
@@ -1265,6 +1271,15 @@ void SetDisplayOff()
 uint8_t GetDisply(void)
 {
   return HAL_GPIO_ReadPin(DISP_EN_GPIO_Port, DISP_EN_Pin) == GPIO_PIN_SET;
+}
+
+/* printf --------------------------------------------------------------------*/
+int _write(int file, char *ptr, int len)
+{
+  int i=0;
+  for(i=0 ; i<len ; i++)
+    ITM_SendChar((*ptr++));
+  return len;
 }
 
 /* Usb------------------------------------------------------------------------*/

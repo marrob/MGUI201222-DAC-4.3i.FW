@@ -10,8 +10,6 @@
 #include "Periph.h"
 #include "stdio.h"
 #include <string.h>
-#include "GuiItf.h"
-
 
 /*** MCP3208 ***/
 #define MCP320X_CH0          0

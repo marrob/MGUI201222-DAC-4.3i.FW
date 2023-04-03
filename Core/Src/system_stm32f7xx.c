@@ -130,11 +130,7 @@ void SystemInit(void)
 #endif
 
   /* Configure the Vector Table location -------------------------------------*/
-#ifndef DEBUG
-  SCB->VTOR =  0x08040000U; /*** RELEASE ***/
-#else
-  SCB->VTOR =  0x08000000U;  /*** DEBUG ***/
-#endif
+
 }
 
 /**

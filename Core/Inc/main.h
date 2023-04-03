@@ -79,6 +79,11 @@ extern "C" {
 #define RS485_ARG1_LENGTH     35
 #define RS485_ARG2_LENGTH     35
 
+/*** Denpo DAC ***/
+//Host:0, Device:3
+#define DENPO_DAC_HOST_TX_ADDR      0x03//Host->Device 0->1
+#define DENPO_DAC_HOST_RX_ADDR      0x30
+
 #define USB_BUFFER_SIZE       40
 
 /*** YYMMDD-HHmmss ***/
